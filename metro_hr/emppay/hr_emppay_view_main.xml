@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+<!-- Employee Payroll Pay Sheet-->
+        <record id="hr_emppay_sheet_filter" model="ir.ui.view">
+            <field name="name">hr_emppay_sheet_filter</field>
+            <field name="model">hr.emppay.sheet</field>
+            <field name="arch" type="xml">
+                <search string="Search Payroll">
+                    <field name="name" string="Payroll"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="attend_month_id"/>
+                    <filter icon="terp-document-new" string="Draft" domain="[('state','=','draft')]" help="Draft Payroll"/>
+                    <filter name="done_filter" icon="terp-camera_test" string="Done" domain="[('state','=','close')]" help="Done Payroll"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_emppay_sheet_tree" model="ir.ui.view">
+            <field name="name">hr_emppay_sheet_tree</field>
+            <field name="model">hr.emppay.sheet</field>
+            <field name="arch" type="xml">
+                <tree string="Payroll">
+                    <field name="name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="state"/>
+                    <field name="attend_month_id"/>
+                    <field name="account_period_id"/>
+                    <field name="wage_net" sum="Total"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_emppay_sheet_form" model="ir.ui.view">
+            <field name="name">hr_emppay_sheet_form</field>
+            <field name="model">hr.emppay.sheet</field>
+            <field name="arch" type="xml">
+                <form string="Payroll" version="7.0">
+                <header>
+                    <button name="add_from_att_report" type="object" states="draft" string="Generate from Attendance Report" groups="account.group_account_invoice"/>
+                    <button name="get_injury_days" type="object" string="Get Injury Days" states="draft"/>
+                    <button name="action_verify" type="object" string="Verify" states="draft" class="oe_highlight" groups="account.group_account_invoice"/>
+                    <button name="action_approve" type="object" string="Approve" states='verified' groups="account.group_account_manager"/>
+                    <button name="action_pay" type="object" string="Pay" states="approved" class="oe_highlight" groups="account.group_account_invoice"/>
+                    <button name="action_draft" type="object" string="Set to Draft" states='verified,approved,paid' groups="account.group_account_manager"/>
+                    
+                    <button name="print_sheet_slip" type="object" string="Print Slips"/>
+                    <button name="print_sheet_slip_sign" type="object" string="Print Slips for Signature"/>
+                    <button name="print_sheet_slip_india" type="object" string="Print India Slips"/>
+                    <button name="print_sheet_slip_sign_india" type="object" string="Print India Slips for Signature"/>
+                    <button name="recompute" type="object" string="Recompute" states="draft"/>
+                    
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                	<group col="4">
+                		<field name="name"/>
+	                    <label for= 'date_from' string="Period" class="oe_inline"/>
+                		<div>
+	                        <field name="date_from" class="oe_inline" attrs="{'readonly':[('state','!=','draft')]}" on_change="onchange_date(date_from, date_to)"/>
+	                         - 
+	                        <field name="date_to" class="oe_inline" attrs="{'readonly':[('state','!=','draft')]}" on_change="onchange_date(date_from, date_to)"/>
+                		</div>
+                		<field name="attend_month_id" readonly="1"/>
+						<field name="account_period_id"/>
+						<field name="company_id" groups="base.group_multi_company"/>       
+                	</group>
+                	<group col="4">
+                		<field name="wage_work"/>
+                		<field name="alw_total"/>
+						<field name="sick_pay"/>
+                		<field name="wage_total"/>
+                		<field name="ded_total"/>
+						<field name="house_rent_fund"/>
+						<field name="company_house_rent_fund"/>
+                		<field name="si_total_personal"/>
+                		<field name="si_total_company"/>
+                		<!-- <field name="money_borrow_deduction"/> -->
+                		<field name="wage_pay"/>
+                		            
+                		<field name="pit"/>
+                		<field name="wage_net"/>
+                	</group>
+            
+                	<notebook>
+                    	<page name="payslips" string="Payslips">
+                    		<field name="emppay_ids" attrs="{'readonly':[('state','!=','draft')]}" context="{'from_sheet':True}"/>
+                    	</page>
+                    	<page name="note" string="Notes">
+                    		<field name="note" Placeholder="Add an internal note..."/>
+                    	</page>
+						<page string="Messages">
+						    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+						    <field name="message_ids" widget="mail_thread"/>
+						</page>                       	
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_emppay_sheet" model="ir.actions.act_window">
+            <field name="name">Payroll</field>
+            <field name="res_model">hr.emppay.sheet</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_emppay_sheet_tree"/>
+            <field name="search_view_id" ref="hr_emppay_sheet_filter"/>
+        </record>
+        
+        <menuitem action="action_hr_emppay_sheet" id="menu_hr_emppay_sheet" parent="menu_hr_root_emppay" sequence="1"/>
+        
+<!-- Employee Payroll Pay Slip-->
+        
+        <record id="view_hr_emppay_list" model="ir.ui.view">
+            <field name="name">view_hr_emppay_list</field>
+            <field name="model">hr.emppay</field>
+            <field name="arch" type="xml">
+            	<!-- not allow to create, only can be generate from attendance on the payroll sheet screen -->
+                <tree colors="gray:state == 'cancel'" string="Payslips" create="0"> 
+                    <field name="emppay_sheet_id" invisible="context.get('from_sheet')"/>
+                	<field name="name" invisible="context.get('from_sheet')"/>
+                	<field name="employee_id"/>
+                	<field name="date_from" invisible="context.get('from_sheet')"/>
+                	<field name="date_to" invisible="context.get('from_sheet')"/>
+                	<field name="emp_took"/>
+                	
+                	<field name="attend_id" invisible="1"/>
+                	
+                	<field name="wage"/>
+                	<field name="days_work" avg="Average Work Days"/>
+                	<field name="days_attend" avg="Average Attend Days"/>
+					<field name="wage_attend" sum="Total Wage of Attendance"/>
+					
+					<field name="hours_ot" sum="Total OT Hours"/>
+                	<!-- 
+                	<field name="hours_ot_we"/>
+                	<field name="hours_ot_holiday"/> -->                	
+					<!-- <field name="wage_ot"/>					
+					<field name="wage_ot_we"/>
+					<field name="wage_ot_holiday"/> -->
+					<field name="wage_ot_total" sum="Total Wage of OT"/>
+					<field name="wage_work" sum="Total"/>
+										
+                	<field name="alw_total" sum="Total"/>
+					<!-- HoangTK add sick pay-->
+					<field name="sick_days" sum="Total Sick Days"/>
+					<field name="sick_pay" sum="Total Sick Pay"/>
+                	<field name="wage_total" sum="Total"/>
+                	<!--<field name="ded_total" sum="Total"/> -->
+					<field name="house_rent_fund" sum="Total"/>
+					<field name="company_house_rent_fund" sum="Total"/>
+                	<field name="si_total_personal" sum="Total"/>
+				    <field name="si_total_company" sum="Total"/>
+				    <field name="money_borrow_original" sum="Total"/>
+                	<field name="money_borrow_deduction" sum="Total"/>
+                	<field name="wage_pay" sum="Total"/>
+	               	<!-- wage_attend + wage_ot_total + alw_total - si_total_personal -->
+	               	<field name="wage_tax" sum="Total"/>
+                	<field name="pit" sum="Total"/>
+                	<field name="wage_net" sum="Total"/>
+                	
+                	<field name="wage2"/>
+                	<field name="days_work2"/>
+				    <field name="days_attend2_real"/>
+                	<field name="days_attend2"/>
+				    <field name="wage_attend2"/>	
+				    
+                	<field name="hours_ot2"/>
+                	<field name="hours_ot_we2"/>			    
+                	<!-- 	
+                	<field name="hours_ot_holiday2"/> -->
+					<field name="wage_ot2"/>
+					<field name="wage_ot_we2"/>
+					<!-- <field name="wage_ot_holiday2"/> -->			
+                	<field name="wage_ot_total2"/>
+                	<field name="wage_bonus2"/>
+				    <field name="alw_inwage_total"/>
+                	<field name="wage_work2"/>
+		                	
+                	<field name="state" invisible="context.get('from_sheet')"/>
+					<field name="company_id" groups="base.group_multi_company" invisible="context.get('from_sheet')"/>      
+		                    					
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hr_emppay_form" model="ir.ui.view">
+            <field name="name">view_hr_emppay_form</field>
+            <field name="model">hr.emppay</field>
+            <field name="arch" type="xml">
+                <form string="Payslip" version="7.0" create="0">
+                <header>
+                   	<button name="action_verify" type="object" string="Verify" states="draft" class="oe_highlight" groups="account.group_account_invoice" invisible="context.get('from_sheet')"/>
+                   	<button name="action_approve" type="object" string="Approve" states='verified' groups="account.group_account_manager" invisible="context.get('from_sheet')"/>
+                   	<button name="action_pay" type="object" string="Pay" states="approved" class="oe_highlight" groups="account.group_account_invoice" invisible="context.get('from_sheet')"/>
+                   	<button name="action_draft" type="object" string="Set to Draft" states='verified,approved,paid' groups="account.group_account_manager" invisible="context.get('from_sheet')"/>
+                    <button name="print_slip" type="object" string="Print Slip"/>
+                    <button name="print_slip_dimission" type="object" string="Print Slip for Dimission"/>
+                    <button name="print_slip_india" type="object" string="Print India Slip"/>
+                    <button name="emp_take" string="Take Slip" type="object" groups="account.group_account_invoice"/>
+                    <button name="recompute" type="object" string="Recompute" states="draft"/>
+                    <field name="state" widget="statusbar" invisible="context.get('from_sheet')"/>
+                </header>
+                <sheet>
+                	<div>
+                		<h1>
+                			<label for="employee_id" class="oe_inline"/>
+                    		<field name="employee_id" class="oe_inline"/>
+                			<label for="contract_id" class="oe_inline"/>
+	                        <field name="contract_id" 
+		                        domain="[('employee_id','=',employee_id),('date_start','&lt;=',date_to),'|',('date_end','&gt;=',date_from),('date_end','=',False)]" 
+		                        context="{'default_employee_id': employee_id}" class="oe_inline"/>                        	
+                		</h1>
+                	</div>
+                    <group col="4" invisible="context.get('from_sheet')">
+	                    <label for="date_from" string="Dates"/>
+	                    <div>
+						    <field name="date_from" class="oe_inline"/> -
+						    <field name="date_to" class="oe_inline"/>  
+	                    </div>	
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="company_currency_id" invisible="1"/>
+                        <field name="emppay_sheet_id" readonly="1"/>     
+                        <field name="emppay_year_id"/>
+                    </group>
+                    <notebook>
+                    	<page name="base" string="Payslip">
+                    		<label for="emp_took"/>
+                    		<field name="emp_took"/>
+		                    <group name="attend_wage">
+			                	<field name="attend_id" invisible="1"/>
+		                    	<group name="attend" string="Attendance">
+				                	<field name="days_work"/>
+				                	<field name="days_attend"/>
+				                	<field name="hours_ot"/>
+				                	<!-- <field name="hours_ot_we"/>
+				                	<field name="hours_ot_holiday"/> -->
+		                    	</group>
+		                    	<group name="wage" string="Work Wage">      
+				                	<field name="wage"/>        	
+				                	<field name="wage_attend"/>	
+									<!-- <field name="wage_ot"/>
+									<field name="wage_ot_we"/>
+									<field name="wage_ot_holiday"/> -->
+									<field name="sick_days"/>
+									<field name="sick_pay"/>
+				                	<field name="wage_ot_total"/>
+				                	<field name="wage_work"/>
+		                    	</group>
+		                    </group>
+		                    <group name="alwded_and_wage">
+		                    	<group>
+			                    	<group name='alwded' string="Allowance, Deduction and Borrow Money">
+					                	<field name="alw_total"/>
+					                	<field name="ded_total"/>
+										<field name="house_rent_fund"/>
+										<field name="company_house_rent_fund"/>
+					                	<field name="si_total_personal"/>
+					                	<field name="si_total_company"/>
+				                		<field name="money_borrow_original" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+				                		<field name="money_borrow_deduction" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+				                		<field name="money_borrow_residual" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>        
+			                    	</group>
+			                    	<!-- <group name='money_borrow' string="Borrow Monecy">
+				                		<field name="money_borrowed"/>
+				                		<field name="money_returned"/>
+				                		<field name="money_borrow_deduction"/>
+			                    	</group> -->
+		                    	</group>
+		                    	
+                		
+		                    	<group name='wage_sum' string="Wage Summary">
+				                	<!-- wage_attend + wage_ot_total + alw_total -->
+				                	<field name="wage_total"/>
+				                	<!-- wage_attend + wage_ot_total + alw_total - ded_total - si_total_personal -->
+				                	<field name="wage_pay"/>
+				                	<!-- wage_attend + wage_ot_total + alw_total - si_total_personal -->
+				                	<field name="wage_tax"/>
+				                	<field name="pit"/>
+				                	<!-- wage_pay - PIT -->
+				                	<field name="wage_net"/>
+		                    	</group>
+		                    </group>	
+		                    <group name="attend_wage2">
+		                    	<group name="attend2" string="Attendance2">
+				                	<field name="days_work2"/>
+				                	<field name="days_attend2_real"/>
+				                	<field name="days_attend2"/>
+				                	<field name="hours_ot2"/>
+				                	<field name="hours_ot_we2"/>
+				                	<!-- <field name="hours_ot_holiday2"/> -->
+		                    	</group>
+		                    	<group name="wage2" string="Work Wage2">
+				                	<field name="wage2"/>
+				                	<field name="wage_attend2"/>	
+									<field name="wage_ot2"/>
+									<field name="wage_ot_we2"/>
+									<!-- <field name="wage_ot_holiday2"/> -->													                	
+				                	<field name="wage_ot_total2"/>
+				                	<field name="wage_bonus2"/>
+				                	<field name="alw_inwage_total"/>
+				                	<field name="wage_work2"/>
+		                    	</group>
+		                    </group>	                    
+                    	</page>
+                    	<page name="alw" string="Allowance">
+                    		<separator string="Allowance"/>
+			               	<field name="alw_ids" context="{'default_type':'alw'}">
+		                       <tree string="Allowance" editable="bottom">
+			                    <field name="sequence"/>
+			                    <field name="code"/>
+			                    <field name="name"/>
+			                    <field name="type" invisible="1"/>
+			                    <field name="type_calc"/>
+			                    <field name="amount" sum="Total"/>
+		                       </tree>
+			               	</field>
+			               	<separator string="Allowance In Wage"/>
+			               	<field name="alw_inwage_ids" context="{'default_type':'alw_inwage'}">
+		                       <tree string="Allowance" editable="bottom">
+			                    <field name="sequence"/>
+			                    <field name="code"/>
+			                    <field name="name"/>
+			                    <field name="type" invisible="1"/>
+			                    <field name="type_calc"/>
+			                    <field name="amount" sum="Total"/>
+		                       </tree>
+			               	</field>			               	
+                    	</page>
+                    	<page name="alw" string="Deduction">
+			               	<field name="ded_ids" context="{'default_type':'ded'}">
+		                       <tree string="Deduction" editable="bottom">
+			                    <field name="sequence"/>
+			                    <field name="code"/>
+			                    <field name="name"/>
+			                    <field name="type" invisible="1"/>
+			                    <field name="type_calc"/>
+			                    <field name="amount" sum="Total"/>
+		                       </tree>
+			               	</field>
+                    	</page>
+                    	<page name="alw" string="Social Insurance">
+			               	<field name="si_ids">
+		                       <tree string="Social Insurance" editable="bottom">
+			                    <field name="sequence"/>
+			                    <field name="code"/>
+			                    <field name="name"/>
+			                    <field name="amount_base"/>
+			                    <field name="rate_company"/>
+			                    <field name="rate_personal"/>
+			                    <field name="amount_company" sum="Company Total"/>
+			                    <field name="amount_personal" sum="Employee Total"/>
+		                       </tree>
+			               	</field>
+                    	</page>
+                    	<page name="note" string="Notes">
+                    		<field name="note" Placeholder="Add an internal note..."/>
+                    	</page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_emppay_search" model="ir.ui.view">
+            <field name="name">view_hr_emppay_search</field>
+            <field name="model">hr.emppay</field>
+            <field name="arch" type="xml">
+                <search string="Search Payslip">
+                    <field name="name" string="Payslips" filter_domain="['|','|',('name','ilike',self),('employee_id.name','ilike',self),('employee_id.emp_code','ilike',self)]"  context="{'active_test':False}"/>
+                    <field name="date_from"/>
+                    <filter icon="terp-document-new" string="Draft" domain="[('state','=','draft')]" help="Draft Slip"/>
+                    <filter icon="terp-camera_test" string="Verified" domain="[('state','=','verified')]" help="Verified Slip"/>
+                    <filter icon="terp-camera_test" string="Paid" domain="[('state','=','paid')]" help="Paid Slip"/>
+                    <field name="employee_id"  domain="['|',('active','=',True),('active','=',False)]"/>
+                    <field name="emppay_sheet_id"/>
+                    <separator/>
+                    <filter icon="terp-document-new" string="Untook" domain="[('emp_took','=',False)]"/>
+                    <filter icon="terp-document-new" string="Took" domain="[('emp_took','=',True)]"/>
+                    
+                    <group expand="0" string="Group By...">
+                        <filter string="Employees" icon="terp-personal" name="employee_id" context="{'group_by':'employee_id'}"/>
+                        <filter string="Payroll" name="emppay_sheet_id" icon="terp-folder-orange" context="{'group_by':'emppay_sheet_id'}"/>
+                        <filter string="Companies" name="company_id" groups="base.group_multi_company" icon="terp-go-home" context="{'group_by':'company_id'}"/>
+                        <filter string="States" name="state" icon="terp-stock_effects-object-colorize" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_hr_emppay" model="ir.actions.act_window">
+            <field name="name">Payslips</field>
+            <field name="res_model">hr.emppay</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_emppay_list"/>
+            <field name="search_view_id" ref="view_hr_emppay_search"/>
+        </record>
+
+        <menuitem action="action_hr_emppay" id="menu_hr_emppay" parent="menu_hr_root_emppay" sequence="2"/>                
+
+<!-- 
+1.Add button to genrate payroll from attendance report
+2.Show the related payrolls in attendance report
+ -->    
+        <record id="hr_rpt_attend_month_view_emppay" model="ir.ui.view">
+            <field name="name">hr_rpt_attend_month_view_emppay</field>
+            <field name="model">hr.rpt.attend.month</field>
+            <field name="inherit_id" ref="hr_rpt_attend_month_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <button name="pdf_inspection" position="after">
+                	<field name='emppay_sheet_ids' invisible="1"/>
+                	<!-- the domain ant states attrbiute will generate one domain with 'and', so if we want they are 'or', then  need remove the 'states' attribute and add it to the domain-->
+                	<!-- <button name="new_payroll" string="Generate Payroll" type="object" states="done" attrs="{'invisible':[('emppay_shee_ids','!=',None)]}"/> -->
+                	<button name="new_payroll" string="Generate Payroll" type="object" attrs="{'invisible':['|',('state','!=','done'), ('emppay_sheet_ids','not_empty',0)]}"/>                	
+                	<field name="id" invisible="1"/>
+                	<button name="view_payroll" string="Payrolls" type="object" attrs="{'invisible':['|',('state','!=','done'), ('emppay_sheet_ids','is_empty',0)]}"/>
+                </button>
+<!--                 <page name="employee" position="after">
+                	<page name="payroll" string="Payrolls">
+                		<field name="emppay_sheet_ids"/>
+                	</page>
+                </page> -->
+            </data>
+            </field>
+        </record>                
+
+<!-- Add 'Take Slip' to payslip list page -->
+        <record id="action_server_hr_emppay_take" model="ir.actions.server">
+            <field name="name">Take Slip</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_hr_emppay" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.emp_take(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_hr_emppay_take">
+            <field name="name">action_hr_emppay_take</field>
+            <field name="action_id" ref="action_server_hr_emppay_take" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_hr_emppay_take'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_hr_emppay" />
+            <field name="model">hr.emppay</field>
+            <!-- <field name="key2">client_action_multi</field> -->
+            <field name="key2">client_action_multi</field>
+        </record>    
+                        
+    </data>
+</openerp>
+

@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>    
+        <record id="metro_purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+				<xpath expr="//sheet" position="attributes">
+				    <attribute name="class">oe_form_sheet_width_wider</attribute>
+				</xpath>           
+            	<xpath expr="//button[@name='purchase_approve']" position="attributes" >
+            		<attribute name="groups">metro_purchase.group_pur_req_manager</attribute>
+            	</xpath>            
+            	<xpath expr="//button[@name='purchase_approve']" position="after" >
+            		<button name="%(act_purchase_reject)d" states="confirmed" string="Reject Order" type="action" groups="metro_purchase.group_pur_req_manager"/>
+            	</xpath>            
+                 <xpath expr="//button[@name='purchase_confirm'][2]" position="after" >
+                     <button name="purchase_confirm" states="rejected" string="Confirm Order" class="oe_highlight"/>
+                     <button name="fix_po_location" states="draft,sent,confirmed,approved,changing,changing_confirmed,wait_receipt" type="object" string="Fix Location"/>
+                </xpath>            
+                 <xpath expr="//button[@name='action_cancel']" position="attributes" >
+                 	<attribute name="states">approved,except_picking,except_invoice,rejected,changing,changing_rejected</attribute>
+                 	<attribute name="groups">metro_purchase.group_pur_req_manager</attribute>
+                </xpath>             
+                <xpath expr="//button[@name='picking_ok']" position="replace" >
+                </xpath>             
+                <xpath expr="//button[@name='invoice_ok']" position="replace" >
+                </xpath>                
+                <xpath expr="//button[@name='view_picking']" position="replace" >
+                	<button name="view_picking" string="Receive Products" type="object" attrs="{'invisible': [('state','!=', 'approved')]}" groups="stock.group_stock_user"/>
+                </xpath>                       
+                <xpath expr="//tree[@string='Purchase Order Lines']" position="attributes" >
+            		<attribute name="editable"></attribute>
+                </xpath>
+                 <xpath expr="//field[@name='payment_term_id']" position="replace" >
+                </xpath> 
+                 <xpath expr="//field[@name='shipped']" position="replace" >
+                </xpath> 
+                 <xpath expr="//field[@name='invoiced']" position="replace" >
+                </xpath>                                       
+                 <xpath expr="//field[@name='pricelist_id']" position="after" >
+                	<field name="payment_term_id" widget="selection"/>
+                	<field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
+                	<field name="is_sent_supplier"/>
+                    <!-- <field name="invoiced_rate" readonly="1"/> -->
+                	<field name="invoiced"/>
+                	<field name="ap_checked"/>
+                	<field name="receipt_number"/>
+                	<field name="create_uid"/>
+                	<!-- <field name="paid_done"/> -->
+                </xpath>     
+                 <xpath expr="//sheet/div" position="after" >
+                 	<group style="color:red">
+                		<field name="reject_msg" states="rejected,changing_rejected" readonly="1"/>
+                	</group>
+                </xpath>       
+                 <xpath expr="//field[@name='company_id']" position="after" >
+                	<field name="has_freight"/>
+                	<field name="amount_freight"/>
+
+                </xpath>       
+                 <xpath expr="//tree/field[@name='price_subtotal']" position="after" >
+                	<field name="state"/>
+                </xpath>     
+                 <xpath expr="//field[@name='location_id']" position="replace" >
+                </xpath>    
+                 <xpath expr="//field[@name='warehouse_id']" position="after" >
+                	<field name="location_id" groups="stock.group_locations"/> 
+                    <!-- <field name="shipped_rate" readonly="1"/> -->
+                    <field name="shipped"/>
+                </xpath>    
+                 <xpath expr="//page[@string='Incoming Shipments &amp; Invoices']" position="inside" >
+					<separator string="Incoming Shipments"/>
+                	<field name="picking_ids"/>  
+                 	<separator string="Invoices"/>
+                	<field name="invoice_ids" readonly="1"/>
+                </xpath>     
+                 <xpath expr="//field[@name='partner_ref']" position="replace" >
+                </xpath>     
+                 <xpath expr="//field[@name='minimum_planned_date']" position="after" >
+                 	<field name="partner_ref"/>
+                </xpath>
+                <field name="order_line" position="attributes">
+                	<attribute name="context">{'po_taxes_id':taxes_id}</attribute>             	
+                </field>
+                <field name="notes" position="replace">
+                	<label for="notes"/>
+                	<field name="notes" placeholder="Terms and conditions..."/>
+                	<label for="comments"/>
+					<field name="comments" placeholder="Comments..."/>                	             	
+                </field>         
+                 <xpath expr="//tree/field[@name='name']" position="after" >
+                	<field name="supplier_prod_name"/>
+                </xpath>      
+<!-- purchase changing after approved -->                          
+                <xpath expr="//button[@name='action_cancel']" position="after" >
+               		<button name="button_cancel_except" states="approved" string="Cancel With Exception" type="object" groups="metro_purchase.group_pur_req_manager" confirm="Are you sure you want to cancel this purchase order with exception?"/>
+                 	<button name="button_to_changing" states="approved,except_picking,except_invoice" string="Change" type="object" groups="metro_purchase.group_pur_req_manager"/>
+                 	<button name="button_to_changing_confirmed" states="changing,changing_rejected" string="Confirm Changing" type="object"/>
+                 	<button name="%(act_purchase_changing_reject)d" states="changing_confirmed" string="Reject Changing" type="action" groups="metro_purchase.group_pur_req_manager"/>
+                 	<button name="button_to_changing_approved" states="changing_confirmed" string="Approve Changing" type="object" groups="metro_purchase.group_pur_req_manager"/>
+                 	<button name="button_manual_done" states="approved,wait_receipt" string="Manual Done" type="object" groups="metro_purchase.group_pur_req_manager" confirm="Are you sure you want to make this purchase order done manually?"/>
+                 	<button name="button_done_except" states="approved,wait_receipt" string="Done With Exception" type="object" groups="metro_purchase.group_pur_req_manager" confirm="Are you sure you want to finish this purchase order with exception?"/>
+                </xpath>     
+                <xpath expr="//tree/field[@name='product_qty']" position="after">
+                	<field name="receive_qty"/>
+                	<field name="return_qty"/>      	
+            		<field name="mfg_ids" widget="many2many_tags"/>
+            		<field name="move_dest_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//tree/field[@name='date_planned']" position="attributes">
+                    <attribute name="string">Delivery Date (ETA)</attribute>
+                </xpath>
+                <!-- Add supplier bank name and account -->
+                <field name="partner_id" position="after">
+                	<field name="bank_name"/>
+                	<field name="bank_account"/>
+                </field>   
+                
+                <!-- set fields readonly --> 
+                <field name="order_line" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected','changing','changing_rejected'))]}</attribute>
+                </field>   
+                <field name="partner_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                	<attribute name="domain">[('supplier','=',True),('is_company','=',True)]</attribute>
+                </field>                
+                <field name="pricelist_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>
+                <field name="date_order" position="before">
+                    <field name="create_date"/>
+                </field>
+                <field name="date_order" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected','changing','changing_rejected'))]}</attribute>
+                </field>      
+                <field name="warehouse_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>       
+                <field name="location_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>     
+                <field name="company_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>    
+                <field name="fiscal_position" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>    
+                <field name="payment_term_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>
+                <field name="taxes_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected','changing','changing_rejected'))]}</attribute>
+                </field>    
+                <field name="has_freight" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>    
+                <field name="amount_freight" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','not in',('draft','sent','rejected'))]}</attribute>
+                </field>
+                <button name="view_invoice" position="replace">
+                	<!-- <button name="view_invoice" string="Receive Invoice" type="object" attrs="{'invisible': ['|', ('invoice_method','=','picking'), '|', ('state','!=', 'approved'), ('invoiced','=',True) ]}" class="oe_highlight"/> -->
+                	<button name="%(act_pur_invoice)d" string="Receive Invoice" type="action" groups="account.group_account_invoice" attrs="{'invisible': ['|',('state','!=','approved'),('invoice_method','=','picking')]}"/>
+                </button>
+				<xpath expr="//tree/field[@name='price_subtotal']" position="replace">
+					<field name="price_subtotal_withtax"/>
+				</xpath>           
+                <xpath expr="//button[@name='action_cancel']" position="before" >
+                 	<button name="button_update_uom" states="draft,rejected,changing" string="Update UOM" type="object"/>
+                </xpath>     
+                <xpath expr="//tree/field[@name='price_unit']" position="after">
+                	<field name="product_uom_base_qty"/>
+                	<field name="product_uom_base"/>
+                </xpath>
+                <!-- add sequence the order line tree -->     
+                <xpath expr="//tree/field[@name='product_id']" position="before">
+                	<field name="sequence"/>
+                </xpath>    
+                <!-- Add change log -->
+                <page string="Incoming Shipments &amp; Invoices" position="after">
+                	<page string="Line Change Log">
+                		<field name="change_log_line">
+                			<tree>
+			                  <field name="po_line_id"/>
+			                  <field name="product_id"/>
+			                  <field name="field_name"/>
+			                  <field name="value_old"/>
+			                  <field name="value_new"/>
+			                  <field name="create_uid"/>
+			                  <field name="create_date"/>
+                			</tree>
+                		</field>
+                	</page>
+                	<!--+++ HoangTK - 01/12/2016: Add purchase history -->
+                	<page string="Purchase History" groups="metro.group_metro_oversight">
+                	   <field name="purchase_history" colspan="4" nolabel="1" widget="many2many_list" readonly="1">
+                	       <tree string="Purchase History">
+                    	       <field name="date"/>
+                    	       <field name="po_id"/>
+                    	       <field name="supplier"/>
+                    	       <field name="product_id"/>
+                    	       <field name="quantity"/>
+                    	       <field name="price" groups="metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties"/>
+                	       </tree>
+                	   </field>
+                	</page>
+                	<!--... HoangTK - 01/12/2016: Add purchase history -->
+                </page>      
+       		</field>
+        </record>  
+        <!--+++ HoangTK - 01/13/2016: Add purchase history tab to product -->    
+        <record id="view_product_supplier_inherit" model="ir.ui.view">
+            <field name="name">product.normal.supplier.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="purchase.view_product_supplier_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Information']" position="after">
+                    <page string="Purchase History">
+                        <field name="purchase_history" colspan="4" nolabel="1" widget="one2many_list">
+                            <tree string="Purchase History">
+                               <field name="date"/>
+                               <field name="po_id"/>
+                               <field name="supplier"/>
+                               <field name="product_id"/>
+                               <field name="quantity"/>
+                               <field name="price" groups="metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties"/>
+                            </tree>
+                        </field>
+                    </page>                
+                </xpath>            
+            </field>
+        </record>
+        <!--... HoangTK - 01/13/2016: Add purchase history tab to product -->
+        <!--+++ HoangTK - 01/12/2016: Add purchase history -->
+        <record model="ir.ui.view" id="purchase_history_tree_view">
+            <field name="name">purchase.history.tree</field>
+            <field name="model">purchase.history</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase History">
+                    <field name="date"/>
+                    <field name="po_id"/>
+                    <field name="supplier"/>
+                    <field name="product_id"/>
+                    <field name="quantity"/>
+                    <field name="price" groups="metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties"/>
+                    <field name="uom"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="purchase_history_form_view">
+            <field name="name">purchase.history.form</field>
+            <field name="model">purchase.history</field>
+            <field name="arch" type="xml">
+                <form string="Purchase History" version="7.0">
+                    <group>
+                    <field name="date"/>
+                    <field name="po_id"/>
+                    <field name="supplier"/>
+                    <field name="product_id"/>
+                    <field name="quantity"/>
+                    <field name="price" groups="metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties"/>
+                    <field name="uom"/>
+                    </group>
+                </form>
+            </field>
+        </record> 
+        <!--... HoangTK - 01/12/2016: Add purchase history -->
+        <record id="metro_purchase_order_line_form" model="ir.ui.view">
+            <field name="name">metro.purchase.order.line.form</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_form"/>
+            <field name="arch" type="xml">
+            	<notebook position="before">
+                     <group>
+	                     <group>
+	                         <field name="supplier_prod_id" readonly="0" invisible="1"/>
+	                         <field name="supplier_prod_name" readonly="0" />
+	                         <field name="supplier_prod_code" readonly="0" />
+	                     </group>   
+	                     <group>
+	                         <field name="supplier_delay" on_change = "onchange_lead('supplier_delay',supplier_delay,parent.date_order,context)" readonly="0" />
+	                     </group>	                              	
+                     </group>            	
+            	</notebook>
+            	<field name="date_planned" position="attributes">            	
+            		<attribute name="on_change">onchange_lead('date_planned',date_planned,parent.date_order,context)</attribute>
+                    <attribute name="string">Delivery Date (ETA)</attribute>
+            	</field>
+            	<field name="taxes_id" position="attributes">
+            		<attribute name="attrs">{'readonly':[('can_change_price','=',False)]}</attribute>
+            	</field>
+                <field name="price_unit" position="before">
+            		<field name="can_change_price" invisible="1"/>
+            		<field name="can_change_product" invisible="1"/>
+                </field>
+                <field name="price_unit" position="attributes">
+                	<attribute name="attrs">{'readonly':[('can_change_price','=',False)]}</attribute>
+                </field> 
+                <field name="product_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('can_change_product','=',False)]}</attribute>
+                </field>
+                <field name="product_qty"  position="attributes">
+                	<attribute name="context">{'supplier_prod_id':supplier_prod_id,'supplier_prod_name':supplier_prod_name,'supplier_prod_code':supplier_prod_code,'supplier_delay':supplier_delay}</attribute>
+                </field>
+                <!--<field name="product_uom" position="attributes">
+                	<attribute name="attrs">{'readonly':1}</attribute>
+                </field>-->
+                <field name="price_unit" position="after">
+                	<field name="product_uom_base_qty"/>
+                	<field name="product_uom_base"/>
+                </field>
+            	<field name="date_planned" position="after">            	
+            		<field name="mfg_ids" widget="many2many_tags"/>
+            		<field name="move_dest_id" readonly="1"/>
+            	</field>
+            	<!-- po line change log -->
+<!--             	<xpath expr="//page[@string='Invoices and Receptions']" position="after">
+            		<page string="Change Log">
+            			<field name="change_log" readonly="1"/>
+            		</page>
+            	</xpath> -->
+            	<page string='Invoices and Receptions' position="after">
+            		<page string="Change Log">
+            			<field name="change_log" readonly="1"/>
+            		</page>
+            	</page>
+            </field>
+        </record>
+          
+        <record id="metro_purchase_order_tree" model="ir.ui.view">
+            <field name="name">purchase.order.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="/tree" position="attributes">
+                    <attribute name="colors"><![CDATA[red:state in ('except_invoice','except_picking','rejected') or (not shipped and state not in ('cancel', 'done', 'cancel_except') and current_date > minimum_planned_date);grey:state=='cancel';blue:state in ('wait','confirmed');green:state=='done']]></attribute>
+                    <attribute name="fonts"><![CDATA[bold:state=='done' or (not shipped and state not in ('cancel', 'done') and current_date > minimum_planned_date)]]></attribute>
+                </xpath>
+                <field name="state" position="before">
+                	<field name="is_sent_supplier"/>
+                	<field name="ap_checked"/>
+                	<field name="invoiced"/>
+                	<field name="receipt_number"/>
+                	<field name="shipped"/>
+                	<field name="create_uid"/>
+                	<field name="create_date" widget="date"/>
+                </field>
+                <field name="amount_total" position="after">
+                	<field name="amount_paid"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="metro_view_purchase_order_filter" model="ir.ui.view">
+            <field name="name">purchase.order.list.select</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//filter[@name='draft']" position="after" >
+            		<filter icon="terp-document-new" name="confirmed" string="Waitting Approval" domain="[('state','=','confirmed')]" help="Purchase orders waitting approval"/>
+            		<filter icon="terp-document-new" name="rejected" string="Rejected" domain="[('state','=','rejected')]" help="Purchase orders been rejected"/>
+            	</xpath>
+            	
+            	<xpath expr="//filter[@name='approved']" position="replace" >
+            		<filter icon="terp-check" name="approved" string="Purchase Orders" domain="[('state','=','approved')]" help="Approved purchase orders"/>
+            	</xpath>            	
+            	<xpath expr="//filter[@name='exception']" position="before" >
+					<filter icon="terp-emblem-important" name="is_sent" string="Sent to Supplier" domain="[('is_sent_supplier','=',True)]"/>
+					<filter icon="terp-emblem-important" name="not_sent" string="Not Sent to Supplier" domain="[('is_sent_supplier','!=',True)]"/>
+            		<separator/>
+            		<filter icon="terp-emblem-important" name="cancelled" string="Cancelled" domain="[('state','=','cancel')]" help="Purchase orders which are cancelled"/>
+            	</xpath>
+                <field name="create_uid" position="after">
+                	<field name="date_order"/>
+                	<field name="create_date"/>
+                </field>
+            </field>
+        </record>
+        
+       <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="domain">[('state','in',('draft','sent','confirmed','rejected'))]</field>
+        </record>
+
+        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <!-- <field name="domain">[('state','not in',('draft','sent','confirmed','rejected'))]</field> -->
+            <field name="domain"></field>
+        </record>
+<!-- 
+
+        <record id="metro_purchase_wait_approval" model="ir.actions.act_window">
+            <field name="name">PO Waitting Approval</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="domain">[('state','=','confirmed')]</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="search_view_id" ref="metro_view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a request for quotation.
+              </p><p>
+                The quotation contains the history of the discussion/negociation
+                you had with your supplier. Once confirmed, a request for
+                quotation is converted into a purchase order.
+              </p><p>
+                Most propositions of purchase orders are created automatically
+                by OpenERP based on inventory needs.
+              </p>
+            </field>
+        </record>
+        <menuitem action="metro_purchase_wait_approval" id="menu_purchase_wait_approval"
+            parent="purchase.menu_procurement_management"
+            sequence="-100"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+
+ -->
+<!-- PO Line View -->
+        <record id="metro_po_line_full_tree" model="ir.ui.view">
+            <field name="name">po.line.full.tree</field>
+            <field name="model">purchase.order.line</field>
+            <field name="arch" type="xml">
+                <tree colors="grey:state=='cancel';blue:state in ('confirmed');red:state in ('rejected')" string="Purchase Order Line">
+                    <field name="order_id"/>
+                    <field name="partner_id" string="Supplier" />
+                    <field name="date_order" />
+                    <field name="product_id"/>
+                    <field name="supplier_prod_name"/>
+                    <field name="name"/>
+                    <field name="date_planned"/>
+	                <field name="product_qty"/>
+	                <field name="product_uom"/>
+                    <field name="price_unit"/>
+                    <field name="price_subtotal"/>          
+	               	<field name="receive_qty"/>
+	               	<field name="return_qty"/>      	                    	
+            		<field name="move_dest_id" readonly="1"/>
+            		<field name="mfg_ids" widget="many2many_tags"/>
+                    <field name="state"/>
+                    <field name="create_uid"/> 
+                    <field name="create_date" widget="date"/>                  
+                </tree>
+            </field>
+        </record>
+        <record id="metro_po_line_full_form" model="ir.ui.view">
+            <field name="name">po.line.full.form</field>
+            <field name="model">purchase.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Order Line" version="7.0">  
+	                <header>
+	                    <button name="action_confirm" states="rejected" string="Confirm" type="object" class="oe_highlight"/>
+	                    <button name="action_approve" states="confirmed" string="Approve" type="object" class="oe_highlight" groups="metro_purchase.group_pur_req_manager"/>
+	                    <button name="%(act_purchase_line_reject)d" states="confirmed" string="Reject" type="action" groups="metro_purchase.group_pur_req_manager"/>
+	                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,done" statusbar_colors='{"confirmed":"blue"}' readonly="1"/>
+	                </header>
+                    <sheet>
+                    	<group style="color: red">        	
+	                        <field name="reject_msg" states="rejected" readonly="1"/>
+                    	</group>
+                        <group>
+                            <group>
+			                    <field name="order_id" readonly="1"/>
+			                    <field name="date_order" readonly="1"/>
+			                    <field name="payment_term_id" readonly="1"/>
+			                    <field name="has_freight" readonly="1"/>
+                            </group>
+                            <group>
+			                    <field name="partner_id" string="Supplier" readonly="1"/>
+			                    <field name="amount_freight" readonly="1"/>
+            					<field name="mfg_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                 		<group>
+                			<field name="po_notes" readonly="1"/>
+                		</group>                         
+                        <group>
+                            <group>
+                    			<label for="product_id"/>
+                    			<div>
+                    				<field name="image_medium" widget="image" class="oe_avatar oe_left" readonly="1"/>
+                                	<field name="product_id"  readonly="1"/>
+                                </div>
+                            </group>
+                            <group>
+                                <label for="product_qty"/>
+                                <div>
+                                    <field name="product_qty" class="oe_inline" attrs="{'readonly': [('state','!=', 'draft'),('state','!=', 'confirmed'),('state','!=', 'rejected')]}"/>
+                                    <field name="product_uom" class="oe_inline" attrs="{'readonly': [('state','!=', 'draft'),('state','!=', 'rejected')]}"/>
+                                </div>
+                                <field name="price_unit"  attrs="{'readonly': [('state','!=', 'draft'),('state','!=', 'rejected')]}"/>
+                                <field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"  attrs="{'readonly': [('state','!=', 'draft'),('state','!=', 'rejected')]}"/>
+                    			<field name="price_subtotal"/>
+                                <button string="Purchasing History" name="%(act_pur_history)d" type="action"/>
+                            </group>
+                        </group>
+                 		<group>
+                			<field name="change_log" readonly="1"/>
+                		</group>  
+                		             
+                        <group>
+	                    	 <group>
+		                         <field name="supplier_prod_id" readonly="0" invisible="1"/>
+		                         <field name="supplier_prod_name" readonly="0" />
+		                         <field name="supplier_prod_code" readonly="0" />
+		                     </group>   
+		                     <group>
+		                         <field name="supplier_delay" on_change = "onchange_lead('supplier_delay',supplier_delay,date_order,context)" readonly="0" />
+		                     </group>
+	                    </group>   
+	                     
+                        <group>
+                            <group>
+                                <field name="date_planned" widget="date"  attrs="{'readonly': [('state','!=', 'draft'),('state','!=', 'rejected')]}"  on_change = "onchange_lead('date_planned',date_planned,date_order,context)"/>
+                                <field name="account_analytic_id" colspan="2" groups="purchase.group_analytic_accounting"  attrs="{'readonly': [('state','!=', 'draft'),('state','!=', 'rejected')]}"/>
+                                <field name="company_id" groups="base.group_multi_company" widget="selection"  attrs="{'readonly': [('state','!=', 'draft'),('state','!=', 'rejected')]}"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </group>                            
+	                 		<group>
+			                	<field name="receive_qty"/>
+			                	<field name="return_qty"/>      	
+			            		<field name="move_dest_id" readonly="1"/>	                 		
+	                			<field name="name"/>
+	                		</group>
+	                	</group>
+						<!-- <field name="product_id" context="{'form_view_ref':'metro_product.metro_product_normal_form_view'}"/> -->
+						<!-- <field name="product_id" widget="one2many" mode="tree"/> -->						
+                        <notebook>
+	                        <page string="Invoices and Receptions">
+	                            <field name="invoice_lines"/>
+	                            <field name="move_ids"/>
+	                        </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>            
+       <record id="view_po_line_full_filter" model="ir.ui.view">
+            <field name="name">po.line.full.search</field>
+            <field name="model">purchase.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Purchase Order Line">
+                    <field name="name" string="PO Lines"/>
+                    <field name="mfg_ids"/>
+                    <filter icon="terp-document-new" name="draft" string="Quotations" domain="[('state','=','draft')]" help="Purchase order lines which are in draft state"/>
+            		<filter icon="terp-document-new" name="confirmed" string="Waitting Approval" domain="[('state','=','confirmed')]" help="Purchase order lines waitting approval"/>
+            		<filter icon="terp-document-new" name="rejected" string="Rejected" domain="[('state','=','rejected')]" help="Purchase order lines been rejected"/>
+                    <filter icon="terp-check" name="approved" string="Purchase Orders" domain="[('state','not in',('draft','cancel','rejected','confirmed'))]" help="Approved purchase order lines"/>
+                    <separator/>
+                    <filter icon="terp-emblem-important" name="cancelled" string="Cancelled" domain="[('state','=','cancel')]" help="Purchase order lines which are cancelled"/>                    
+                    <field name="order_id"/>
+                    <field name="partner_id"/>                    
+                    <!-- 
+                    Change the prodcut_id to allow query the purchase_ok=False/active=False products, since we will set the purchase_ok=False for the prodcuts that need to stop
+                    The purchase line's product searching won't show the products with purchase_ok=False, the reason is the below defining in purchase_order.py
+                    'product_id': fields.many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True),                    
+                     -->
+                    <!-- <field name="product_id"/> -->
+                    <field name="product_id" domain="['|','|',('purchase_ok','=',True),('purchase_ok','=',False),('active','=',False)]"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>              
+                    <group expand="0" string="Group By...">
+                        <filter string="Order" icon="terp-partner" domain="[]" context="{'group_by':'order_id'}"/>
+                        <filter string="Supplier" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Product" icon="terp-partner" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Order Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_order'}"/>
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Scheduled Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_planned'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>                
+        <record model="ir.actions.act_window" id="metro_po_line_full_action">
+            <field name="name">Purchase Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order.line</field>
+            <!-- <field name="domain">[('state','=','confirmed')]</field> -->
+            <!-- <field name="context">{'search_default_confirmed': 1}</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_po_line_full_filter"/>
+        </record>        
+        <record model="ir.actions.act_window.view" id="action_po_line_full_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="metro_po_line_full_tree"/>
+            <field name="act_window_id" ref="metro_po_line_full_action"/>
+        </record>        
+        <record model="ir.actions.act_window.view" id="action_po_line_full_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="metro_po_line_full_form"/>
+            <field name="act_window_id" ref="metro_po_line_full_action"/>
+        </record>
+        <menuitem id="purchase.menu_procurement_management" name="PO"
+            parent="base.menu_purchase_root" sequence="1" />
+
+        <menuitem action="purchase.purchase_form_action" id="purchase.menu_purchase_form_action"
+                  parent="purchase.menu_procurement_management" name="PO" sequence="6"/>
+
+        <menuitem action="metro_po_line_full_action" id="menu_po_line_full"
+            parent="purchase.menu_procurement_management"
+            sequence="7" name="PO by Products"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+            
+<!--         <record model="ir.actions.act_window" id="act_single_product">
+            <field name="name">Product's Information</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="domain">[('id','=',active_id.product_id]</field>
+        </record>     -->  
+        <record model="ir.ui.view" id="purchase_history_tree_view">
+            <field name="name">purchase.history.tree</field>
+            <field name="model">purchase.history</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase History">
+                    <field name="date" readonly="1"/>
+                    <field name="po_id" readonly="1"/>
+                    <field name="product_id" readonly="1"/>
+                    <field name="supplier" readonly="1"/>
+                    <field name="quantity" readonly="1"/>
+                    <field name="price" readonly="1" groups="metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties"/>
+                    <field name="uom" readonly="1"/>
+                    <field name="supplier_changed" readonly="1"/>
+                    <field name="price_changed" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="purchase_history_form_view">
+            <field name="name">purchase.history.form</field>
+            <field name="model">purchase.history</field>
+            <field name="arch" type="xml">
+                <form string="Purchase History" version="7.0">
+                    <group>
+                    <field name="date" readonly="1"/>
+                    <field name="po_id" readonly="1"/>
+                    <field name="product_id" readonly="1"/>
+                    <field name="supplier" readonly="1"/>
+                    <field name="quantity" readonly="1"/>
+                    <field name="price" readonly="1" groups="metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties"/>
+                    <field name="uom" readonly="1"/>
+                    <field name="supplier_changed" readonly="1"/>
+                    <field name="price_changed" readonly="1"/>                    
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="purchase_history_filter" model="ir.ui.view">
+            <field name="name">purchase.history.search</field>
+            <field name="model">purchase.history</field>
+            <field name="arch" type="xml">
+                <search string="Search Purchase Order Line">
+                    <field name="date"/>
+                    <field name="po_id"/>
+                    <field name="product_id"/>
+                    <field name="supplier"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Date" icon="terp-go-month" domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="Order" icon="terp-partner" domain="[]" context="{'group_by':'po_id'}"/>
+                        <filter string="Supplier" icon="terp-partner" domain="[]" context="{'group_by':'supplier'}"/>
+                        <filter string="Product" icon="terp-partner" domain="[]" context="{'group_by':'product_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>  
+        <record model="ir.actions.act_window" id="purchase_history_action">
+            <field name="name">Purchase History</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="target">current</field>
+            <field name="search_view_id" ref="purchase_history_filter"/>
+        </record>        
+        <menuitem action="purchase_history_action" id="menu_purchase_purchase_history"
+            parent="purchase.menu_procurement_management"
+            sequence="8"
+            groups="metro.group_metro_oversight"/>
+        <!-- Manual close mass POes -->
+        <record id="action_server_po_mass_manual_done" model="ir.actions.server">
+            <field name="name">Close PO</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_purchase_order" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.button_manual_done(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_po_mass_manual_done">
+            <field name="name">action_po_mass_manual_done</field>
+            <field name="action_id" ref="action_server_po_mass_manual_done" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_po_mass_manual_done'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_purchase_order" />
+            <field name="model">purchase.order</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+        <!-- Manual close mass POes with except-->
+        <record id="action_server_po_mass_manual_done_except" model="ir.actions.server">
+            <field name="name">Close PO with Except</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_purchase_order" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.button_done_except(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_po_mass_manual_done_except">
+            <field name="name">action_po_mass_manual_done_except</field>
+            <field name="action_id" ref="action_server_po_mass_manual_done_except" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_po_mass_manual_done_except'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_purchase_order" />
+            <field name="model">purchase.order</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+    </data>
+</openerp>

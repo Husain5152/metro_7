@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+	<data>
+		<record id="metro_employee_form_view" model="ir.ui.view">
+			<field name="name">metro.view.employee.form</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+				<data>
+					<notebook position="inside">
+	                    <page string="Images" groups="base.group_hr_user">
+	                        <field name="multi_images" widget="image_multi"/>
+	                    </page>
+						<page string="Employment History" groups="base.group_hr_user">
+							<group>
+								<group string="Employment Dates" name="employment_history">
+									<field name="employment_start"/>
+                                    <field name="employment_resigned"/>
+									<field name="employment_finish"/>
+									<!-- <field name="active"/> -->
+								</group>
+
+							</group>
+							<group>
+								<group string="Salary History">
+									<field name="salaryhistory_ids" colspan="4" nolabel="1">
+										<tree string="Salary History" editable="bottom">
+											<field name="date"/>
+											<field name="salary"/>
+											<field name="reason"/>
+										</tree>
+									</field>
+								</group>
+							</group>
+						</page>
+					</notebook>
+					<xpath expr="//notebook/page[@string='HR Settings']/group" position="before">
+						<group>
+							<group>
+								<field name="emp_code" required="1"/>
+							</group>
+							<group>
+								<field name="emp_card_id"/>
+							</group>
+						</group>
+					</xpath>		
+					<field name='mobile_phone' position='after'>
+		            	<field name="web_chat_no"/>
+					</field>
+					<xpath expr="//group[@string='Birth']" position="after">
+	                    <group>
+	                    	<field name="height"/>
+	                    	<field name="weight"/>
+	                    </group>
+	                    <group>
+	                    	<field name="degree_id"/>
+	                    	<field name="major"/>
+	                    </group>
+					</xpath>
+                    <field name="mobile_phone" position="after">
+	                    <field name="emergency_contacter"/>
+	                    <field name="emergency_phone"/>
+                    </field>
+                    <group name="active_group" position="after">
+	                    <group string="Others" colspan="4">
+		                    <group>
+		                        <field name="recruit_source_id"/>
+		                        <field name="date_orient_session"/>
+		                        <field name="name_tag"/>
+		                        <field name="tools_assigned"/>
+		                        <field name="business_card"/>
+		                        <field name="computer_id"/>
+		                    </group>
+		                    <group>
+		                    	<field name="known_medical_type" widget="many2many_tags"/>
+		                        <field name="known_allergies"/>
+		                        <field name="room_no"/>
+		                        <field name="bunk_no"/>		                        
+		                    </group>
+	                    </group>
+                    </group>
+                    <field name="notes" position="replace">
+                    </field>
+                    <field name="emp_code" position="after">
+                    	<field name="notes"/>
+                    </field>
+                    
+                    <field name="notes"/>
+                    <xpath expr="//div[@name='button_box']" position="inside">
+                        <button name="%(action_hr_send_checklist_batch)d" string="Send Welcome Cheklist" type="action" groups="base.group_hr_manager"/>
+                    </xpath>
+				</data>
+			</field>
+         </record>
+
+		<record id="metro_employee_tree_view" model="ir.ui.view">
+			<field name="name">metro.view.employee.tree</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_tree"/>
+			<field name="arch" type="xml">
+				<field name="name" position="before">
+					<field name="image_small" widget="image"/>
+					<field name="emp_code"/>
+				</field>
+				<field name="name" position="after">
+					<field name="emp_card_id"/>
+				</field>
+			</field>
+		</record>
+		<record id="metro_employee_kanban_view" model="ir.ui.view">
+			<field name="name">metro.view.employee.kanban</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+			<field name="arch" type="xml">
+				<field name="name" position="before">
+					 <t t-if="record.emp_code.raw_value"> (<field name="emp_code"/>)</t>
+				</field>
+			</field>
+		</record>
+        <record id="metro_view_employee_filter" model="ir.ui.view">
+            <field name="name">Employees</field>
+            <field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="replace">
+            		<field name="name" string="Employees" filter_domain="['|',('name','ilike',self),('emp_code','ilike',self)]"/>
+            		<field name="emp_card_id" />
+            	</field>
+             </field>
+         </record>		
+				         
+         <record model="ir.ui.view" id="metro_holiday_calendar">
+            <field name="name">hr_calendar</field>
+            <field name="model">hr.employee.holidaycalendar</field>
+            
+            <field name="arch" type="xml">
+                <calendar string="Holiday Calendar" color="holidaytype" date_start="date_start" date_stop="date_stop">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="metro_holiday_calendar_tree">
+            <field name="name">metro_holiday_calendar_tree</field>
+            <field name="model">hr.employee.holidaycalendar</field>
+            <field name="arch" type="xml">
+                <tree string="Calendar">
+                    <field name="name"/>
+                    <field name="date_start" />
+                    <field name="date_stop"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="metro_holiday_calendar_form">
+            <field name="name">metro_holiday_calendar_form</field>
+            <field name="model">hr.employee.holidaycalendar</field>
+            <field name="arch" type="xml">
+                <form string="Create a New Holiday">
+                    <field name="name"/>
+                    <field name="holidaytype"/>
+                    <field name="date_start" />
+                    <field name="date_stop" />
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="metro_holiday_calendar_action">
+            <field name="name">Factory Holidays</field>
+            <field name="res_model">hr.employee.holidaycalendar</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,tree,form</field>
+            <field name="view_id" ref="metro_holiday_calendar"/>
+        </record>
+        
+        <menuitem id="menu_metro_holiday_calendar_main_action"  name="Calendars" parent="metro.mttl_metro" sequence="20" />
+        <menuitem id="menu_metro_holiday_calendar_action" parent="menu_metro_holiday_calendar_main_action" action="metro_holiday_calendar_action" sequence="1"/>   
+        <menuitem id="menu_metro_hr_holiday_calendar_action" parent="hr.menu_hr_main" action="metro_holiday_calendar_action"/>
+        
+<!-- Add employee images to user -->
+		<record id="view_users_form_ext" model="ir.ui.view">
+			<field name="name">view_users_form_ext</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_form"/>
+			<field name="arch" type="xml">
+				<data>
+					<!-- replace the image with emp image -->
+					<field name="image" position="replace">
+						<field name="img_emp" widget='image' class="oe_avatar oe_left" options='{"preview_image": "img_emp_medium"}' readonly="1"/>	
+					</field>
+					<field name="company_id" position="after">
+						<field name="employee_id"/>
+					</field>
+					<!-- show employee list -->
+					<!-- <page string="Access Rights" position="after">
+						<page string="Employees">
+							<field name="employee_ids" readonly="1"/>
+						</page>
+					</page> -->
+				</data>
+			</field>
+		</record>
+		<record id="view_users_tree_ext" model="ir.ui.view">
+			<field name="name">view_users_tree_ext</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_tree"/>
+			<field name="arch" type="xml">
+				<data>
+					<!-- replace the image with emp image -->
+					<field name="name" position="before">
+						<field name="img_emp_medium" widget='image'/>	
+					</field>
+				</data>
+			</field>
+		</record>	
+        <!--+++ HoangTK - 11/19/2015: Add code to department -->
+        <record id="view_department_with_code_form" model="ir.ui.view">
+            <field name="name">view_department_with_code_form</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='name']" position="after">
+                        <field name="sequence"/>
+						<field name="code" class="oe_inline"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>		
+        <record id="view_department_with_code_tree" model="ir.ui.view">
+            <field name="name">view_department_with_code_tree</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='complete_name']" position="after">
+                        <field name="code"/>
+                    </xpath>
+					<xpath expr="//field[@name='complete_name']" position="before">
+                        <field name="sequence"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>        	
+        <!--... HoangTK - 11/19/2015 -->
+	</data>
+</openerp>	

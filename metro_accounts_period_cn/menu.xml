@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_account_period_cn"
+            name="End of Period CN" parent="account.menu_finance_periodical_processing"/>
+    </data>
+</openerp>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="view_stock_import_inventory" model="ir.ui.view">
+            <field name="name">Import Inventory</field>
+            <field name="model">stock.import.inventory</field>
+            <field name="arch" type="xml">
+              <form string="Import Inventory" version="7.0">
+                  <field name="file_template_name" invisible="1"/>
+                  <separator string="Import inventory from Excel"/>
+                  <group>
+                      	<field name="location_id" domain="[('usage','=','internal')]" />
+                      	<field name="consider_inventory" invisible="1"/>
+                  		<field name="import_file"/>
+                  		<field name="file_template" filename="file_template_name"/>
+                  </group>
+                  <footer>
+                      <button name="import_inventory" string="Import Inventory" type="object" class="oe_highlight"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel" />
+                  </footer>
+              </form>
+            </field>
+        </record>
+        
+       <record id="view_stock_inventory_import_result" model="ir.ui.view">
+            <field name="name">Import Inventory Result</field>
+            <field name="model">stock.import.inventory.result</field>
+            <field name="arch" type="xml">
+                 <tree string="Result Lines" editable="bottom" colors="red:True">
+                     <field name="row"/>
+                     <field name="msg"/>
+                 </tree>
+            </field>
+        </record>
+
+       <record id="view_stock_import_inventory_result" model="ir.ui.view">
+            <field name="name">Import Inventory Result</field>
+            <field name="model">stock.import.inventory</field>
+            <field name="arch" type="xml">
+              <form string="Import Inventory Result" version="7.0">
+                  <field name="all_done" invisible="1"/>
+                  <group>
+                      <h2>
+                          <label string="All Data were imported successfully!" attrs="{'invisible': [('all_done','=',False)]}"/>
+                          <label string="Data were imported partially, please correct your data by the messages below" attrs="{'invisible': [('all_done','=',True)]}"/>
+                      </h2>
+                  </group>
+                  <group attrs="{'invisible': [('all_done','=',True)]}">
+                      <field name="location_id" readonly="1"/>
+                      <field name="result_line" readonly="1"/>
+                  </group>
+                  <footer>
+                      <button string="Close" class="oe_link" special="cancel" />
+                  </footer>
+              </form>
+            </field>
+        </record>      
+        <record id="action_view_stock_import_inventory" model="ir.actions.act_window">
+            <field name="name">Import Inventory</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.import.inventory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_stock_import_inventory"/>
+            <field name="target">new</field>
+            <field name="context">{'search_default_in_location':1}</field>
+        </record>
+    </data>
+</openerp>

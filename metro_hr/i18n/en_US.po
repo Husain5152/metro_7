@@ -1,0 +1,315 @@
+#. module: metro_hr
+#: field:attend.empday.group.line,seq:0
+#: field:hr.department,sequence:0
+#: field:hr.rpt.attend.emp.day.line,seq:0
+#: field:hr.rpt.attend.month.line,seq:0
+#: field:hr.worktime.type,sequence:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_seq
+#: model:ir.model.fields,field_description:metro_hr.field_hr_department_sequence
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_seq
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_seq
+#: model:ir.model.fields,field_description:metro_hr.field_hr_worktime_type_sequence
+msgid "Sequence"
+msgstr "#"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_is_full_ot2
+#: field:resource.calendar.attendance,is_full_ot2:0
+msgid "Full OT2"
+msgstr "Full OT by five days"
+
+#. module: metro_hr
+#: field:resource.calendar.attendance,days_work2:0
+msgid "Work Days2"
+msgstr "Work Days by five days"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_work_ot2
+#: field:resource.calendar.attendance,hours_work_ot2:0
+msgid "Working hours(OT)2"
+msgstr "Working hours(OT) by five days"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_work_normal2
+#: field:resource.calendar.attendance,hours_work_normal2:0
+msgid "Working hours(normal)2"
+msgstr "Working hours(normal) by five days"
+
+#. module: metro_hr
+#: help:resource.calendar.attendance,hours_work_normal2:0
+msgid "[Working hours] - [Working hours(OT)2]"
+msgstr "[Working hours] - [Working hours(OT) by five days]"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,days_work:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_work
+msgid "Days"
+msgstr "Work Days"
+
+#. module: metro_hr
+#: field:hr.emppay,days_attend:0
+#: field:hr.rpt.attend.month.line,days_attend:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_attend
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_attend
+msgid "Days Attended"
+msgstr "Attended Days"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot
+msgid "Hours OT"
+msgstr "OT Hours"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,days_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_work2
+msgid "Days2"
+msgstr "Work Days by five days"
+
+#. module: metro_hr
+#: field:hr.emppay,days_attend2_real:0
+#: field:hr.rpt.attend.month.line,days_attend2_real:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_attend2_real
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_attend2_real
+msgid "Days Attended2 Real"
+msgstr "Attended Days by five days"
+
+#. module: metro_hr
+#: field:hr.emppay,days_attend2:0
+#: field:hr.rpt.attend.month.line,days_attend2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_attend2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_attend2
+msgid "Days Attended2"
+msgstr "Attended Days by 21.75"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot2_nonwe:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot2_nonwe
+msgid "Hours OT2 Non Weekend"
+msgstr "Non Weekend OT Hours"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot2_we:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot2_we
+msgid "Hours OT2 Weekend"
+msgstr "Weekend OT Hours"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot_law_holiday:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot_law_holiday
+msgid "Hours OT in Law Holiday"
+msgstr "OT Hours in Law Holiday"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,days_work_injury_holiday:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_work_injury_holiday
+msgid "Days of work injury Holiday"
+msgstr "Days of work injury Holiday"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,alw_house:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_alw_house
+msgid "House"
+msgstr "Apartment"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,alw_other:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_alw_other
+msgid "Other Allowance"
+msgstr "Other Allowance"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,ded_meal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_ded_meal
+msgid "Meal"
+msgstr "Meal"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,ded_utilities:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_ded_utilities
+msgid "Utilities"
+msgstr "Utilities"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,ded_other:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_ded_other
+msgid "Other Deduction"
+msgstr "Other Deduction"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_normal2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_normal2
+msgid "Work Normal2"
+msgstr "Working hours(normal) by five days"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_ot2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_ot2
+msgid "Work OT2"
+msgstr "Working hours(OT) by five days"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_normal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_normal
+msgid "Work Normal"
+msgstr "Working hours(normal)"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_ot
+msgid "Work OT"
+msgstr "Working hours(OT)"
+
+########################Payroll########################
+#. module: metro_hr
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emppay_configure
+#: model:ir.ui.menu,name:metro_hr.menu_hr_root_emppay
+msgid "Payroll2"
+msgstr "Payroll"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_attend:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_attend
+msgid "Wage(attend)"
+msgstr "Wage of Attendance"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot
+msgid "Hours OT(Normal)"
+msgstr "OT Hours"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_total
+msgid "Wage(OT Total)"
+msgstr "Total Wage of OT"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_work:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_work
+msgid "Wage(Work)"
+msgstr "Work Wage"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_total
+msgid "Wage(total)"
+msgstr "Total Wage"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_pay:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_pay
+msgid "Wage(Pay)"
+msgstr "Wage Should Pay"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_tax:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_tax
+msgid "Wage(for tax)"
+msgstr "Wage for Tax"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_net:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_net
+msgid "Wage(Net)"
+msgstr "Net Wage"
+
+#. module: metro_hr
+#: field:hr.emppay,days_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_work2
+msgid "Work Days2"
+msgstr "Work Days by five days"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot2
+msgid "Hours OT(Normal)2"
+msgstr "Non Weekend OT Hours"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot_we2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot_we2
+msgid "Hours OT(Week End)2"
+msgstr "Weekend OT Hours"
+
+#. module: metro_hr
+#: field:hr.emppay,wage2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage2
+msgid "Contract Wage2"
+msgstr "Basic Wage"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_attend2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_attend2
+msgid "Wage(attend)2"
+msgstr "Wage of Attendance by five days"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_total2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_total2
+msgid "Wage(OT Total)2"
+msgstr "Total Wage of OT by five days"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_work2
+msgid "Wage(Work)2"
+msgstr "Work Wage by five days"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot2
+msgid "Wage(OT)2"
+msgstr "Wage of OT"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_we2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_we2
+msgid "Wage(OT Weekend)2"
+msgstr "Wage of Weekend OT"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_total2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_total2
+msgid "Wage(OT Total)2"
+msgstr "Wage Total of OT by five days"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_bonus2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_bonus2
+msgid "Wage(Bonus)2"
+msgstr "Bonus"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_work2
+msgid "Wage(Work)2"
+msgstr "Work Wage by five days"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Attendance2"
+msgstr "Atendance by five days"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Work Wage2"
+msgstr "Work Wage by five days"
+
+########################Others########################
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,wage2_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_wage2_set
+msgid "Set Wage2"
+msgstr "Set Basic Wage"
+
+#. module: metro_hr
+#: field:hr.contract,wage2:0
+#: field:hr.contract.emppay.batchset,wage2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_wage2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_wage2
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_emppay_wage2
+#: field:res.company,emppay_wage2:0
+msgid "Wage2"
+msgstr "Basic Wage"

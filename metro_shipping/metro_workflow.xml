@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="wkf_metro" model="workflow">
+            <field name="name">shipment.shipment.basic</field>
+            <field name="osv">shipment.shipment</field>
+            <field name="on_create">True</field>
+        </record>
+        
+		<record id="act_intransit" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_metro"/>
+            <field name="flow_start">True</field>
+            <field name="name">transit</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'transit'})</field>
+        </record>
+
+		<record id="act_receive" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_metro"/>
+            <field name="name">received</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'received'})</field>
+        </record>
+        
+		<record id="trans_metro" model="workflow.transition">
+            <field name="act_from" ref="act_intransit"/>
+            <field name="act_to" ref="act_receive"/>
+            <field name="signal">metro_shippment_signal</field>
+        </record>
+        
+        <record id="trans_receive_metro" model="workflow.transition">
+            <field name="act_from" ref="act_receive"/>
+            <field name="act_to" ref="act_intransit"/>
+            <field name="signal">metro_shippment_cancel_signal</field>
+        </record>
+        
+        
+		
+	</data>
+</openerp>

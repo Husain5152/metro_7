@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_hr_contract_change_si" model="ir.ui.view">
+            <field name="name">view_hr_contract_change_si</field>
+            <field name="model">hr.contract.change.si</field>
+            <field name="arch" type="xml">
+                <form string="Contracts Change" version="7.0">
+                    <group>
+                        <separator string="House Fund" colspan="4"/>
+                        <field name="house_rent_fund"/>
+                        <field name="company_house_rent_fund"/>
+                        <separator string="Social Insurrance" colspan="4"/>
+                        <field name="si_value_ids" nolabel="1" colspan="4">
+                            <tree editable="top">
+                                <field name="si_id"/>
+                                <field name="amount_base"/>
+                            </tree>
+                        </field>
+                        <separator string="Contracts" colspan="4"/>
+                        <field name="contract_ids" nolabel="1" colspan="4"/>
+                    </group>
+                    <footer>
+                        <button name="do_update" string="Change" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_hr_contract_change_si">
+            <field name="name">Contracts Change</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.contract.change.si</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_hr_contract_change_si"/>
+        </record>
+
+        <menuitem
+            id="menu_hr_contract_change_si"
+            sequence="30"
+            parent="hr.menu_hr_configuration"
+            action="action_hr_contract_change_si"
+            groups="base.group_hr_manager"/>
+    </data>
+</openerp>
+

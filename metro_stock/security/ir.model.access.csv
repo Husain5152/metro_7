@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_material_request_user,material.request user,model_material_request,stock.group_stock_user,1,1,1,1
+access_material_request_line_user,material.request.line user,model_material_request_line,stock.group_stock_user,1,1,1,1
+access_plate_material_mrp_user,plate.material mrp user,model_plate_material,mrp.group_mrp_user,1,0,0,0
+access_plate_material_stock_user,plate.material stock user,model_plate_material,stock.group_stock_user,1,1,1,1
+access_stock_mt_rpt_user,stock_mt_rpt.request user,model_stock_mt_rpt,stock.group_stock_user,1,0,0,0

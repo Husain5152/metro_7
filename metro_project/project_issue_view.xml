@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>   
+        <record model="ir.ui.view" id="metro_project_issue_tree_view">
+            <field name="name">Metro Project Issue Tracker Tree</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="arch" type="xml">
+            	<field name="partner_id" position="replace">
+                    <field name="type"/>
+                    <field name="database"/>
+                    <field name="database_test"/>
+            	</field>
+            	<field name="create_date" position="before">
+                    <field name="create_by"/>
+            	</field>
+            	<field name="version_id" position="replace">
+            	</field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="metro_project_issue_form_view">
+            <field name="name">Project Issue Tracker Form</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="replace">
+                	<field name="database"/>
+                	<field name="database_test"/>
+                </field>
+                <field name="email_from" position="replace">
+                </field>
+                <field name="version_id" position="replace">
+                	<field name="type"/>
+                </field>
+                <field name="priority" position="after">
+                	<field name="create_by"/>
+                	<field name="create_date"/>
+                </field>
+                <xpath expr="//button[@name='case_escalate']" position="replace">
+                </xpath>
+                <xpath expr="//label[@for='task_id']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='task_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Extra Info']" position="after">
+                     <page string="Messages">
+		                <!-- <div class="oe_chatter"> -->
+		                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+		                    <field name="message_ids" widget="mail_thread"/>
+		                <!-- </div> -->
+                     </page>   
+                    <page string="Images">
+                        <field name="multi_images" widget="image_multi"/>
+                    </page> 
+                    <page string="Attachments">
+                        <field name="attachment_lines" nolabel="1" colspan="4"
+                                context="{'o2m_attach': True}">
+                           <tree string="Attachment">
+                                <field name="name"/>
+                                <field name="attach_type_id"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </tree>
+                        </field>
+                    </page>                    
+                </xpath>                
+                <xpath expr="//div[@class='oe_chatter']" position="replace">
+                </xpath>     
+            </field>
+        </record>               
+    </data>
+</openerp>

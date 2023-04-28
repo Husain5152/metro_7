@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_product_set_printflag" model="ir.ui.view">
+            <field name="name">view_product_set_printflag</field>
+            <field name="model">product.set.printflag</field>
+            <field name="arch" type="xml">
+               <form string="Set/Clear Products Barcode Print Flag" version="7.0">
+                    <group>
+                        <separator string="Are you sure you want to set or clear these selected products barcode print flag?"/>
+                    </group>
+                    
+                    <footer>
+                        <button name="set_print_flag" string="Set Print Flag" type="object" context="{'print_flag':True}" class="oe_highlight"/>
+                        <button name="set_print_flag" string="Clear Print Flag" type="object" context="{'print_flag':False}" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Set/Clear Print Flag"
+            res_model="product.set.printflag"
+            src_model="product.product"
+            view_mode="form"
+            target="new"
+            multi="True"
+            id="action_view_product_set_printflag"/>
+
+    </data>
+</openerp>
+

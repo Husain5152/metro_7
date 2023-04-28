@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="view_stock_move_inventory" model="ir.ui.view">
+            <field name="name">Move Inventory</field>
+            <field name="model">stock.move.inventory</field>
+            <field name="arch" type="xml">
+              <form string="Move Inventory" version="7.0">
+                  <group>
+                      <field name="src_location_id"/>
+                      <field name="dest_location_id" domain="[('usage','=','internal')]"/>
+                      <field name="company_id"/>
+                  </group>
+                  <separator string="Select inventory item to generate lines"/>
+                  <group>
+                      	<field name="inventory_ids" string="Inventory to get qty"/>
+                  </group>
+                  <footer>
+                      <button name="move_inventory" string="Create Internal Move" type="object" class="oe_highlight"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel" />
+                  </footer>
+              </form>
+            </field>
+        </record>
+
+        <record id="action_view_stock_move_inventory" model="ir.actions.act_window">
+            <field name="name">Move Inventory</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.move.inventory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_stock_move_inventory"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

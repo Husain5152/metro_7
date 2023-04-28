@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Activity 'Sales Agreement'-->
+        <record id="act_agree" model="workflow.activity">
+            <field name="wkf_id" ref="sale.wkf_sale"/>
+            <field name="name">agree</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'agreed'})</field>
+        </record>
+        <!-- Transistion -->
+        <record id="sale.trans_draft_agree" model="workflow.transition">
+            <field name="act_from" ref="sale.act_draft"/>
+            <field name="act_to" ref="act_agree"/>
+            <field name="signal">order_agree</field>
+        </record>
+        <record id="sale.trans_sent_agree" model="workflow.transition">
+            <field name="act_from" ref="sale.act_sent"/>
+            <field name="act_to" ref="act_agree"/>
+            <field name="signal">order_agree</field>
+        </record>        
+        <record id="trans_agree_router" model="workflow.transition">
+            <field name="act_from" ref="act_agree"/>
+            <field name="act_to" ref="sale.act_router"/>
+            <field name="signal">order_confirm</field>
+        </record>
+        <record id="trans_agree_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_agree"/>
+            <field name="act_to" ref="sale.act_cancel"/>
+            <field name="signal">cancel_agree</field>
+        </record>        
+    </data>
+</openerp>

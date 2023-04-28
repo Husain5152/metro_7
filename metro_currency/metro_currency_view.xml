@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      
+      <record id="metro_product_supplier_form_view" model="ir.ui.view">
+         <field name="name">metro.product.supplier.form</field>
+         <field name="model">product.supplierinfo</field>
+         <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+         <field name="arch" type="xml">
+            <field name="name" position="attributes">
+            	<attribute name='on_change'>get_currency(name)</attribute>
+            </field>
+            <field name="company_id" position="after">
+                <field name="currency" group="base.group_multi_currency"/>
+            </field>
+         </field>
+     </record>
+
+      <record id="metro_product_supplier_tree_view" model="ir.ui.view">
+         <field name="name">metro.product.supplier.tree</field>
+         <field name="model">product.supplierinfo</field>
+         <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+         <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <field name="currency" group="base.group_multi_currency"/>
+            </field>
+         </field>
+     </record>
+     
+    </data>
+</openerp>
+

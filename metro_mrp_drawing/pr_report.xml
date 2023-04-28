@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+        <report auto="False" id="report_pr_mfg_part" model="pur.req" header="True"
+                name="pr.mfg.part" rml="metro_mrp_drawing/report/pr_mfg_part.rml"
+                usage="default" string="PR MFG Full List"/>
+        <report auto="False" id="report_pr_mfg_form" model="pur.req" header="False"
+                name="pr.mfg.form" rml="metro_mrp_drawing/report/pr_mfg_form.rml"
+                usage="default" string="PR MFG Form"/>
+
+    </data>
+</openerp>

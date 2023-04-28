@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_procurement_form_mrp" model="ir.ui.view">
+            <field name="name">view_procurement_form_mrp</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_form_view"/>
+            <field name="arch" type="xml">
+            	<data>
+                <xpath expr="//field[@name='move_id']" position="after">
+                    <field name="mfg_ids" readonly="1" widget="many2many_tags"/>
+                </xpath>
+               </data>
+            </field>
+        </record>     
+    </data>
+</openerp>

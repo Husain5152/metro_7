@@ -1,0 +1,4900 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* metro_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-28 00:07+0000\n"
+"PO-Revision-Date: 2015-01-28 08:33+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "HR Settings"
+msgstr "人力资源设置"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Net-W"
+msgstr "Net-W"
+
+#. module: metro_hr
+#: selection:hr.contract,ot_pay_holiday:0
+#: selection:hr.contract,ot_pay_holiday2:0
+#: selection:hr.contract,ot_pay_normal:0
+#: selection:hr.contract,ot_pay_normal2:0
+#: selection:hr.contract,ot_pay_weekend:0
+#: selection:hr.contract,ot_pay_weekend2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_holiday:0
+#: selection:hr.contract.emppay.batchset,ot_pay_holiday2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_normal:0
+#: selection:hr.contract.emppay.batchset,ot_pay_normal2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_weekend:0
+#: selection:hr.contract.emppay.batchset,ot_pay_weekend2:0
+#: field:hr.emppay.rpt.emp.year,wage2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage2
+msgid "Basic Wage"
+msgstr "Basic Wage"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_attend:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_attend
+msgid "Wage(attend)"
+msgstr "出勤工资"
+
+#. module: metro_hr
+#: view:exhibit.calendar:0
+#: view:hr.employee.holidaycalendar:0
+msgid "Calendar"
+msgstr "日历"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month,attend_day_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_attend_day_id
+msgid "Daily Attendances Report"
+msgstr "出勤日报表"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "正常工资 Normal Wage"
+msgstr "正常工资 Normal Wage"
+
+#. module: metro_hr
+#: view:hr.emp.wtgrp.set:0
+msgid "Set Employees Working Time Group"
+msgstr "设置员工班次分组"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_punch_in_late
+#: field:resource.calendar.attendance,punch_in_late:0
+msgid "Sign in punching late"
+msgstr "签入迟到"
+
+#. module: metro_hr
+#: field:hr.contract.si,rate_personal:0
+#: field:hr.emppay.ln.si,rate_personal:0
+#: field:hr.emppay.si,rate_personal:0
+#: field:hr.set.si,rate_personal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_rate_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_rate_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_rate_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_si_rate_personal
+msgid "Personal Rate"
+msgstr "个人缴费率"
+
+#. module: metro_hr
+#: view:exhibit.calendar:0
+msgid "Create a New Exhibition"
+msgstr "创建一个展览"
+
+#. module: metro_hr
+#: field:hr.employee,date_orient_session:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_date_orient_session
+msgid "Orientation Session Date"
+msgstr "入职培训"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_emppay
+msgid "Pay Slip"
+msgstr "工资单"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_pay:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_pay
+msgid "Wage(Pay)"
+msgstr "应发工资"
+
+#. module: metro_hr
+#: help:hr.holidays,ticket_approve_id:0
+msgid "The department approve user on the leave ticket"
+msgstr "部门批准人(纸质单)"
+
+#. module: metro_hr
+#: field:hr.dimission.item,done_required:0
+#: field:hr.dimission.item.template,done_required:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_done_required
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_template_done_required
+msgid "Required for Done"
+msgstr "必须完成"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_ot:0
+msgid "Work OT"
+msgstr "加班工作时数"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_emppay_pit_formula
+#: field:res.company,emppay_pit_formula:0
+msgid "PIT Formula"
+msgstr "个人所得税公式"
+
+#. module: metro_hr
+#: field:hr.dimission.item,type:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: metro_hr
+#: field:hr.employee,clock_pwd:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_pwd
+msgid "Clock Password"
+msgstr "考勤机密码"
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "HR Clocks Search"
+msgstr "考勤机搜索"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Search Payroll"
+msgstr "搜索工资表"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Attachments"
+msgstr "附件"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+msgid "View Generated Attendances"
+msgstr "查看生成的考勤表"
+
+#. module: metro_hr
+#: sql_constraint:resource.calendar:0
+msgid "Calendar must be unique!"
+msgstr "日历必须唯一"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_emppay_ln_si
+#: model:ir.model,name:metro_hr.model_hr_emppay_si
+msgid "Salary Social Insurance"
+msgstr "工资的社保"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Are you sure to execute?"
+msgstr "确认执行?"
+
+#. module: metro_hr
+#: field:hr.emppay.sheet,wage_net:0
+msgid "Net Wage"
+msgstr "实发工资"
+
+#. module: metro_hr
+#: field:hr.contract.alwded,currency_id:0
+#: field:hr.emppay,currency_id:0
+#: field:hr.emppay.sheet,currency_id:0
+#: field:hr.emppay.ln.alwded,currency_id:0
+#: field:hr.set.alwded,currency_id:0
+msgid "Currency"
+msgstr "币种"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Base-W"
+msgstr "Base-W"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+#: view:hr.rpt.attend.month:0
+msgid "Approve"
+msgstr "审批"
+
+#. module: metro_hr
+#: field:hr.emppay,days_attend2_real:0
+#: field:hr.rpt.attend.month.line,days_attend2_real:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_attend2_real
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_attend2_real
+msgid "Days Attended2 Real"
+msgstr "5天制实出勤"
+
+#. module: metro_hr
+#: field:hr.employee.holidaycalendar,holidaytype:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_holidaycalendar_holidaytype
+msgid "Holiday Type"
+msgstr "假期类型"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Employee Welcome List"
+msgstr "Employee Welcome List"
+
+#. module: metro_hr
+#: field:hr.contract,ot_pay_weekend2:0
+#: field:hr.contract.emppay.batchset,ot_pay_weekend2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_weekend2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_weekend2
+msgid "Weekend OT Pay by five days"
+msgstr "Weekend OT Pay by five days"
+
+#. module: metro_hr
+#: view:hr.contract:0
+#: field:hr.contract,si_ids:0
+#: field:hr.contract.emppay.batchset,si_ids:0
+#: field:hr.contract.si,si_id:0
+#: view:hr.emppay:0
+#: field:hr.emppay,si_ids:0
+#: field:hr.set.si,si_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_si_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_si_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_si_si_id
+msgid "Social Insurance"
+msgstr "社会保险"
+
+#. module: metro_hr
+#: selection:hr.set.alwded,type:0
+msgid "Allowance In Wage"
+msgstr "Allowance In Wage"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Payslips"
+msgstr "工资单"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,days_work_injury_holiday:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_work_injury_holiday
+msgid "Days  of work injury Holiday"
+msgstr "工伤假天数"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "补贴"
+msgstr "补贴"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,alw_hightemp:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_alw_hightemp
+msgid "High Temperature Allowance"
+msgstr "高温补贴"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Reject"
+msgstr "拒绝"
+
+#. module: metro_hr
+#: field:hr.dimission.item,doc_file_name:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_doc_file_name
+msgid "Document File Name"
+msgstr "文档附件文件名"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp9:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp9
+msgid "Finger Print9"
+msgstr "指纹9"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Draft Payroll"
+msgstr "草稿工资表"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day,title:0
+#: field:hr.rpt.attend.month,title:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_title
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_title
+msgid "Report Title"
+msgstr "报表标题"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "借款扣除"
+msgstr "借款扣除"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Orientation Session Date:"
+msgstr "Orientation Session Date:"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,emp_pos:0
+msgid "Clock All"
+msgstr "考勤机-所有"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_work_ot2
+#: field:resource.calendar.attendance,hours_work_ot2:0
+msgid "Working hours(OT)2"
+msgstr "5天制加班工作时数"
+
+#. module: metro_hr
+#: field:hr.emppay,pit:0
+#: field:hr.emppay.rpt.emp.year,pit:0
+#: field:hr.emppay.sheet,pit:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_pit
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_pit
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_pit
+msgid "PIT"
+msgstr "个人所得税"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_total:0
+msgid "Wage(attend) + Wage(OT) + Allowance"
+msgstr "Wage(attend) + Wage(OT) + Allowance"
+
+#. module: metro_hr
+#: view:hr.send.checklist:0
+msgid "Are you sure to send the employee welcome checklist?"
+msgstr "确认发送员工欢迎列表?"
+
+#. module: metro_hr
+#: field:hr.dimission,employment_start:0
+msgid "Employment Started"
+msgstr "入职日期"
+
+#. module: metro_hr
+#: field:hr.clock,message_summary:0
+#: field:hr.rpt.attend.month,message_summary:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_message_summary
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_message_summary
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_message_summary
+msgid "Summary"
+msgstr "总计"
+
+#. module: metro_hr
+#: field:hr.employee,tools_assigned:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_tools_assigned
+msgid "Tools Assigned"
+msgstr "领取的工具"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "考勤月报表(Attendances Monthly Report)"
+msgstr "考勤月报表(Attendances Monthly Report)"
+
+#. module: metro_hr
+#: field:attend.empday.group.line,sign_out_a:0
+#: field:attend.empday.group.line,sign_out_b:0
+#: field:attend.empday.group.line,sign_out_c:0
+#: field:hr.rpt.attend.emp.day.line,sign_out:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_sign_out_a
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_sign_out_b
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_sign_out_c
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_sign_out
+msgid "Sign Out"
+msgstr "签出"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+#: selection:hr.dimission,state:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.month:0
+msgid "Confirm"
+msgstr "确认"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_date_done
+msgid "Done Date"
+msgstr "完成日期"
+
+#. module: metro_hr
+#: selection:resource.calendar,type:0
+msgid "Employee Working Time"
+msgstr "员工班次"
+
+#. module: metro_hr
+#: field:hr.emppay.sheet,attend_month_id:0
+#: model:ir.actions.report.xml,name:metro_hr.report_hr_rpt_attend_month_general
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_attend_month_id
+msgid "Attendance Report"
+msgstr "考勤月报表"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Room#:"
+msgstr "Room#:"
+
+#. module: metro_hr
+#: selection:hr.contract.alwded,type_calc:0
+#: selection:hr.emppay.alwded,type_calc:0
+#: selection:hr.emppay.ln.alwded,type_calc:0
+#: selection:hr.set.alwded,type_calc:0
+msgid "Fixed"
+msgstr "固定金额"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Search Payslip"
+msgstr "搜索工资条"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Coporate Phone Number:"
+msgstr "Coporate Phone Number:"
+
+#. module: metro_hr
+#: field:hr.dimission,payslip_id:0
+msgid "Payslip"
+msgstr "工资条"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "OT Hours in Law Holiday"
+msgstr "OT Hours in Law Holiday"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_emppay_my
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emppay_my
+msgid "My Payslips"
+msgstr "我的工资条"
+
+#. module: metro_hr
+#: field:hr.wt.grp.line,date_from:0
+msgid "From Date"
+msgstr "从"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,target_state:0
+msgid "to delete"
+msgstr "将删除"
+
+#. module: metro_hr
+#: field:hr.contract,wage2:0
+#: field:hr.contract.emppay.batchset,wage2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_wage2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_wage2
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_emppay_wage2
+#: field:res.company,emppay_wage2:0
+msgid "Wage2"
+msgstr "基本工资"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_clock_emp_sync
+msgid "Sync Employees with Clock"
+msgstr "同考勤机同步员工"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "应出勤"
+msgstr "应出勤"
+
+#. module: metro_hr
+#: field:hr.clock,message_ids:0
+#: field:hr.rpt.attend.month,message_ids:0
+msgid "Messages"
+msgstr "消息"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_work_normal2
+#: field:resource.calendar.attendance,hours_work_normal2:0
+msgid "Working hours(normal)2"
+msgstr "5天制正常工作时数"
+
+#. module: metro_hr
+#: selection:hr.rpt.attend.month,state:0
+msgid "Waiting Approve"
+msgstr "待审批"
+
+#. module: metro_hr
+#: field:attend.empday.group.line,weekday:0
+#: field:hr.rpt.attend.emp.day.line,p_weekday:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_weekday
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_p_weekday
+msgid "Day of Week"
+msgstr "星期"
+
+#. module: metro_hr
+#: field:hr.employee,room_no:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_room_no
+msgid "Room#"
+msgstr "宿舍号"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Employment History"
+msgstr "工作经历"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Are you sure to candel this done order?"
+msgstr "确定取消此已经完成的单据?"
+
+#. module: metro_hr
+#: field:hr.emppay.sheet,wage_pay:0
+msgid "Wage Should Pay"
+msgstr "应发工资"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_period_id
+msgid "Period"
+msgstr "期间"
+
+#. module: metro_hr
+#: view:hr.contract:0
+#: view:hr.employee:0
+msgid "Images"
+msgstr "图片附件"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_contract_emppay_batchset
+msgid "Set Contract Payroll in batch"
+msgstr "批量设置合同工资信息"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_emppay_alwded
+#: model:ir.model,name:metro_hr.model_hr_emppay_ln_alwded
+msgid "Salary allowance and the deduction"
+msgstr "工资的补贴和扣费"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_work2_subtotal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_work2_subtotal
+msgid "Wage2 Subtotal"
+msgstr "Wage2 Subtotal"
+
+#. module: metro_hr
+#: field:hr.contract.alwded,attend_field:0
+#: field:hr.emppay.alwded,attend_field:0
+#: field:hr.set.alwded,attend_field:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_attend_field
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alwded_attend_field
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_alwded_attend_field
+msgid "Attend Field"
+msgstr "出勤字段"
+
+#. module: metro_hr
+#: view:hr.employee.holidaycalendar:0
+msgid "Holiday Calendar"
+msgstr "假期日历"
+
+#. module: metro_hr
+#: field:hr.dimission,dimmission_reason:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_dimmission_reason
+msgid "Dimission Reason"
+msgstr "离职原因"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp10:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp10
+msgid "Finger Print10"
+msgstr "指纹10"
+
+#. module: metro_hr
+#: field:hr.attendance,notes:0
+#: view:hr.contract:0
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+#: field:hr.rpt.attend.month.line,note:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_notes
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_note
+msgid "Notes"
+msgstr "备注"
+
+#. module: metro_hr
+#: view:hr.employee:0
+#: field:hr.employee,salaryhistory_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_salaryhistory_ids
+msgid "Salary History"
+msgstr "工资历史"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,is_early:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_is_early
+#: selection:res.company,hr_att_no_out_option:0
+#: selection:resource.calendar,no_out_option:0
+msgid "Leave Early"
+msgstr "早退"
+
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,pit_base_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_pit_base_set
+msgid "Set PIT Start Point"
+msgstr "设置个税起征点"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Business Cards:"
+msgstr "Business Cards:"
+
+#. module: metro_hr
+#: view:hr.attend.calc.action:0
+#: view:hr.clock.emp.sync:0
+#: view:hr.contract.emppay.batchset:0
+#: view:hr.emp.wtgrp.set:0
+#: view:hr.rpt.attend.emp.day.wizard:0
+#: view:hr.send.checklist:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "扣除(Deductions)"
+msgstr "扣除(Deductions)"
+
+#. module: metro_hr
+#: field:hr.contract.alwded,type:0
+#: field:hr.emppay.alwded,type:0
+#: field:hr.emppay.ln.alwded,type:0
+#: field:hr.set.alwded,type:0
+#: field:hr.worktime.type,name:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_template_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alwded_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_alwded_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_worktime_type_name
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_type_id
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_type
+#: field:resource.calendar,type:0
+#: field:resource.calendar.attendance,type_id:0
+msgid "Type"
+msgstr "类型"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_work2
+msgid "Work Wage by five days"
+msgstr "Work Wage by five days"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "Other Allowance"
+msgstr "Other Allowance"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_rpt_attend_emp_day
+msgid "HR Attendance Employee Day Report"
+msgstr "HR考勤报表(员工/天)"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_audittrail_log_tree_attendance
+#: model:ir.ui.menu,name:metro_hr.menu_audittrail_log_tree_attendance
+msgid "Attendance Changing Log"
+msgstr "考勤修改日志"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,emp_pos:0
+msgid "On Clocks"
+msgstr "打卡机上"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_ot_total2:0
+msgid "Wage(OT)2 + Wage(OT Weekend)2 + Wage(OT Holiday)2"
+msgstr "Wage(OT)2 + Wage(OT Weekend)2 + Wage(OT Holiday)2"
+
+#. module: metro_hr
+#: field:hr.emppay,date_to:0
+#: field:hr.emppay.sheet,date_to:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_date_to
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_date_to
+msgid "Date To"
+msgstr "到"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_tax:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_tax
+msgid "Wage(for tax)"
+msgstr "应纳税工资"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "days"
+msgstr "天数"
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "Download Attendance Log"
+msgstr "下载考勤记录"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot_holiday:0
+#: field:hr.emppay,hours_ot_holiday2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot_holiday
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot_holiday2
+msgid "Hours OT(Law Holiday)"
+msgstr "加班时数(假日)"
+
+#. module: metro_hr
+#: field:hr.contract.alwded,alwded_id:0
+#: field:hr.set.alwded,alwded_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_alwded_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_alwded_alwded_id
+msgid "Allowance/Deduction"
+msgstr "补贴/扣费"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: selection:hr.rpt.attend.emp.day,state:0
+#: selection:hr.rpt.attend.emp.day.line,state:0
+msgid "Confirmed"
+msgstr "已确认"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_non_work
+#: field:resource.calendar.attendance,hours_non_work:0
+msgid "Non work hours"
+msgstr "非工作时数"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: field:hr.emppay,emppay_sheet_id:0
+#: view:hr.emppay.sheet:0
+#: field:hr.rpt.attend.month,emppay_sheet_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_emppay_sheet_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_emppay_sheet_ids
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emppay_sheet
+msgid "Payroll"
+msgstr "工资表"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+msgid "Approve"
+msgstr "批准"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,sync_direction:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_sync_direction
+msgid "Sync Direction"
+msgstr "同步方向"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+#: selection:hr.dimission,state:0
+#: selection:hr.dimission.item,state_transfer:0
+msgid "Done"
+msgstr "完成"
+
+#. module: metro_hr
+#: selection:attend.empday.group.line,weekday:0
+#: selection:hr.rpt.attend.emp.day.line,p_weekday:0
+msgid "Friday"
+msgstr "五"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Attendances"
+msgstr "考勤记录"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot
+msgid "Hours OT(Normal)"
+msgstr "加班时数"
+
+#. module: metro_hr
+#: selection:hr.contract.alwded,type:0
+#: view:hr.emppay:0
+#: field:hr.emppay,alw_ids:0
+#: field:hr.emppay,alw_inwage_ids:0
+#: field:hr.emppay,alw_total:0
+#: selection:hr.emppay.alwded,type:0
+#: selection:hr.emppay.ln.alwded,type:0
+#: field:hr.emppay.rpt.emp.year,alw_total:0
+#: field:hr.emppay.sheet,alw_total:0
+#: selection:hr.set.alwded,type:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alw_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alw_inwage_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alw_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_alw_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_alw_total
+msgid "Allowance"
+msgstr "补贴"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: selection:hr.emppay,state:0
+#: selection:hr.emppay.sheet,state:0
+msgid "Verified"
+msgstr "已验证"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Print India Slip"
+msgstr "打印印度工资条"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot2
+msgid "Hours OT(Normal)2"
+msgstr "5天制加班时数"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_hr_att_tole_start_stop_default
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_tolerence_start_stop_default
+#: field:res.company,hr_att_tole_start_stop_default:0
+#: field:resource.calendar,tolerence_start_stop_default:0
+msgid "Default Start/Stop Tolerance (minutes)"
+msgstr "默认可打卡偏移间隔(分钟)"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Total-W"
+msgstr "Total-W"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "PIT"
+msgstr "PIT"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_holidays_status
+msgid "Leave Type"
+msgstr "准假类型"
+
+#. module: metro_hr
+#: view:resource.calendar:0
+msgid "Working Time"
+msgstr "排班"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_ot_we:0
+#: field:hr.emppay.rpt.emp.year,wage_ot_we2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot_we
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot_we2
+msgid "Wage of Weekend OT"
+msgstr "周末加班工资"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Print India Slips for Signature"
+msgstr "打印印度签字工资条"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+#: field:hr.emppay.sheet,message_ids:0
+#: view:hr.rpt.attend.month:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_message_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_message_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_message_ids
+msgid "Messages"
+msgstr "Messages"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,ded_meal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_ded_meal
+msgid "Meal"
+msgstr "餐费"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_clock_emp_sync
+msgid "Sync Clock Employee"
+msgstr "同步考勤机员工"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_emp_worktime
+#: model:ir.ui.menu,name:metro_hr.menu_view_emp_resource_calendar
+msgid "Working Time"
+msgstr "工作时间"
+
+#. module: metro_hr
+#: field:attend.empday.group,hours_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_hours_ot
+msgid "Overtime"
+msgstr "加班"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,is_late:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_is_late
+#: selection:res.company,hr_att_no_in_option:0
+#: selection:resource.calendar,no_in_option:0
+msgid "Be Late"
+msgstr "迟到"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_net:0
+msgid "Wage(Pay) - PIT"
+msgstr "Wage(Pay) - PIT"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,sync_opt_base:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_sync_opt_base
+msgid "Base Info"
+msgstr "基本信息"
+
+#. module: metro_hr
+#: view:hr.emppay.alwded:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_emppay_alwded
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emppay_alwded
+msgid "Payroll Allowance&Deduction"
+msgstr "工资补贴和扣费"
+
+#. module: metro_hr
+#: field:hr.employee.salaryhistory,salary_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_salaryhistory_salary_id
+msgid "Test"
+msgstr "Test"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: model:ir.actions.act_window,name:metro_hr.hr_rpt_attend_emp_day_action
+#: model:ir.ui.menu,name:metro_hr.hr_rpt_attend_emp_day_menu
+msgid "Attendances Daily Report"
+msgstr "考勤日报表"
+
+#. module: metro_hr
+#: view:res.company:0
+msgid "Salary"
+msgstr "工资"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_wage_pay
+msgid "Wage Should Pay"
+msgstr "应发工资"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Employess to Sync"
+msgstr "将同步的员工"
+
+#. module: metro_hr
+#: selection:hr.contract.alwded,type_calc:0
+#: selection:hr.emppay.alwded,type_calc:0
+#: selection:hr.emppay.ln.alwded,type_calc:0
+#: selection:hr.set.alwded,type_calc:0
+msgid "By Attendance"
+msgstr "依据出勤"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day,name:0
+#: field:hr.rpt.attend.month,name:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_name
+msgid "Report Name"
+msgstr "报表名称"
+
+#. module: metro_hr
+#: selection:attend.empday.group.line,weekday:0
+#: selection:hr.rpt.attend.emp.day.line,p_weekday:0
+msgid "Saturday"
+msgstr "六"
+
+#. module: metro_hr
+#: field:attend.empday.group.line,day:0
+#: view:hr.rpt.attend.emp.day.line:0
+#: field:hr.rpt.attend.emp.day.line,day:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_day
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_day
+msgid "Day"
+msgstr "天"
+
+#. module: metro_hr
+#: field:hr.emppay,wage:0
+#: field:hr.emppay.rpt.emp.year,wage:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage
+msgid "Contract Wage"
+msgstr "合同工资"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Previous"
+msgstr "前一步"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+msgid "Select data you want to set"
+msgstr "选择需要设置的数据"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,days_work:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_work
+msgid "Days"
+msgstr "应出勤"
+
+#. module: metro_hr
+#: selection:attend.empday.group.line,weekday:0
+#: selection:hr.rpt.attend.emp.day.line,p_weekday:0
+msgid "Monday"
+msgstr "一"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_resource_calendar
+msgid "Resource Calendar"
+msgstr "资源日程表"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "工伤假天数"
+msgstr "工伤假天数"
+
+#. module: metro_hr
+#: field:attend.empday.group.line,seq:0
+#: field:hr.department,sequence:0
+#: field:hr.rpt.attend.emp.day.line,seq:0
+#: field:hr.rpt.attend.month.line,seq:0
+#: field:hr.worktime.type,sequence:0
+msgid "Sequence"
+msgstr "#"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Print Slip"
+msgstr "打印工资条"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Employment Dates"
+msgstr "就职日期"
+
+#. module: metro_hr
+#: field:hr.employee,emergency_phone:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_emergency_phone
+msgid "Emergency Phone"
+msgstr "紧急联系电话"
+
+#. module: metro_hr
+#: field:hr.emppay.sheet,message_summary:0
+msgid "Summary"
+msgstr "Summary"
+
+#. module: metro_hr
+#: field:hr.send.checklist,partner_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_send_checklist_partner_ids
+msgid "Contacts"
+msgstr "接收人"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "备注(Notes):"
+msgstr "备注(Notes):"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,sync_opt_pwd:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_sync_opt_pwd
+msgid "Password"
+msgstr "密码"
+
+#. module: metro_hr
+#: field:hr.dimission.item,name:0
+#: field:hr.dimission.item,template_id:0
+#: field:hr.dimission.item.template,name:0
+msgid "Name"
+msgstr "名称"
+
+#. module: metro_hr
+#: sql_constraint:hr.dimission.item.template:0
+msgid "Name must be unique per Type!"
+msgstr "每种类型的名称不能重复!"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp6:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp6
+msgid "Finger Print6"
+msgstr "指纹6"
+
+#. module: metro_hr
+#: field:hr.contract.si,amount_base:0
+#: field:hr.emppay.ln.si,amount_base:0
+#: field:hr.emppay.si,amount_base:0
+#: field:hr.set.si,amount_base:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_amount_base
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_amount_base
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_amount_base
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_si_amount_base
+msgid "Base Amount"
+msgstr "缴费基数"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_currency_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_currency_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_currency_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_alwded_currency_id
+msgid "Currency"
+msgstr "币种"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_tax:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_tax
+msgid "Wage for Tax"
+msgstr "纳税工资"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_worktime_type
+msgid "Working time type"
+msgstr "Working time type"
+
+#. module: metro_hr
+#: field:hr.dimission.item,state_approve:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_state_approve
+msgid "State of Approve"
+msgstr "审批状态"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "High Temp"
+msgstr "High Temp"
+
+#. module: metro_hr
+#: help:resource.calendar.attendance,hours_work_normal2:0
+msgid "[Working hours] - [Working hours(OT)2]"
+msgstr "[工作时数] - [5天制加班时数]"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_rpt_attend_month_line
+msgid "HR Attendance Monthly Report Lines"
+msgstr "出勤日报表明细"
+
+#. module: metro_hr
+#: field:exhibit.calendar,date_start:0
+#: field:hr.employee.holidaycalendar,date_start:0
+#: model:ir.model.fields,field_description:metro_hr.field_exhibit_calendar_date_start
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_holidaycalendar_date_start
+msgid "Start date"
+msgstr "开始日期"
+
+#. module: metro_hr
+#: field:hr.clock,message_is_follower:0
+#: field:hr.emppay.sheet,message_is_follower:0
+#: field:hr.rpt.attend.month,message_is_follower:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_message_is_follower
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_message_is_follower
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_message_is_follower
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: metro_hr
+#: field:hr.contract,have_pit:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_have_pit
+msgid "Have PIT"
+msgstr "计算所得税"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+#: field:hr.dimission,employee_id:0
+#: field:hr.dimission.item,process_emp_id:0
+msgid "Employee"
+msgstr "员工"
+
+#. module: metro_hr
+#: field:hr.holidays,ticket_approve_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_holidays_ticket_approve_id
+msgid "Department Approval(ticket)"
+msgstr "部门审批(纸质单)"
+
+#. module: metro_hr
+#: selection:hr.emppay,state:0
+#: selection:hr.emppay.sheet,state:0
+msgid "Approved"
+msgstr "已批准"
+
+#. module: metro_hr
+#: selection:hr.employee.holidaycalendar,holidaytype:0
+msgid "Extra Working Day"
+msgstr "额外工作日"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp5:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp5
+msgid "Finger Print5"
+msgstr "指纹5"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync,step_no:0
+msgid "Do Sync"
+msgstr "开始同步"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "加班工资 Wage Overtime"
+msgstr "加班工资 Wage Overtime"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_emp_worktime
+msgid "Set Employee Working Time"
+msgstr "设置员工班次"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "扣费/Expenses:"
+msgstr "扣费/Expenses:"
+
+#. module: metro_hr
+#: field:hr.dimission,department_id:0
+#: field:hr.dimission.item,department_id:0
+#: field:hr.dimission.item.template,department_id:0
+msgid "Department"
+msgstr "部门"
+
+#. module: metro_hr
+#: field:hr.contract,ot_pay_holiday:0
+#: field:hr.contract.emppay.batchset,ot_pay_holiday:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_holiday
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_holiday
+msgid "Holiday OT Pay"
+msgstr "Holiday OT Pay"
+
+#. module: metro_hr
+#: model:ir.actions.server,name:metro_hr.action_server_hr_empday_line_pdf
+msgid "Employee Daily Attendance Report"
+msgstr "出勤日报表"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Print Notification"
+msgstr "打印考勤公示"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Search Dimission"
+msgstr "搜索离职单"
+
+#. module: metro_hr
+#: model:ir.actions.report.xml,name:metro_hr.report_hr_rpt_attend_month_notification
+msgid "Attendance Notification"
+msgstr "考勤公示"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot
+msgid "Hours OT"
+msgstr "加班时数"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Allowance, Deduction and Borrow Money"
+msgstr "补贴,扣费和借款"
+
+#. module: metro_hr
+#: field:hr.emppay,date_from:0
+#: field:hr.emppay.sheet,date_from:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_date_from
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_date_from
+msgid "Date From"
+msgstr "从"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_normal2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_normal2
+msgid "Work Normal2"
+msgstr "5天制正常工作时数"
+
+#. module: metro_hr
+#: model:ir.module.category,name:metro_hr.module_category_hr_holiday
+msgid "HR Holidays"
+msgstr "假期"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_analytic_timesheet
+msgid "Timesheet Line"
+msgstr "计工单明细"
+
+#. module: metro_hr
+#: field:hr.contract.si,rate_company:0
+#: field:hr.emppay.ln.si,rate_company:0
+#: field:hr.emppay.si,rate_company:0
+#: field:hr.set.si,rate_company:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_rate_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_rate_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_rate_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_si_rate_company
+msgid "Company Rate"
+msgstr "公司缴费率"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_holiday:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_holiday
+msgid "Wage(OT Holiday)"
+msgstr "假日加班工资"
+
+#. module: metro_hr
+#: field:resource.calendar.attendance,days_work:0
+msgid "Work Days"
+msgstr "应出勤天数"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_ot_total:0
+msgid "Wage(OT) + Wage(OT Weekend) + Wage(OT Holiday)"
+msgstr "Wage(OT) + Wage(OT Weekend) + Wage(OT Holiday)"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_pay:0
+msgid "Wage(total) - Deduction - SI(Personal) - Borrow Deduction"
+msgstr "Wage(total) - Deduction - SI(Personal) - Borrow Deduction"
+
+#. module: metro_hr
+#: field:hr.contract,ot_pay_normal:0
+#: field:hr.contract.emppay.batchset,ot_pay_normal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_normal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_normal
+msgid "Normal OT Pay"
+msgstr "Normal OT Pay"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "基本工资"
+msgstr "基本工资"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_ot_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot_total
+msgid "Total Wage of OT"
+msgstr "Total Wage of OT"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Tools Assigned:"
+msgstr "Tools Assigned:"
+
+#. module: metro_hr
+#: field:hr.attendance,create_uid:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_create_uid
+msgid "Creator"
+msgstr "创建人"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day,type:0
+#: field:hr.rpt.attend.month,type:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_type
+msgid "Report Type"
+msgstr "报表类型"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.month:0
+msgid "Set to Draft"
+msgstr "设为草稿"
+
+#. module: metro_hr
+#: field:hr.employee,employment_finish:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_employment_finish
+msgid "Employment Finished"
+msgstr "离职日期"
+
+#. module: metro_hr
+#: selection:hr.employee.holidaycalendar,holidaytype:0
+msgid "Dongguan Longju Holiday"
+msgstr "龙驹假期"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,clock_role:0
+#: selection:hr.employee,clock_role:0
+msgid "Manager"
+msgstr "管理员"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_attendance_my
+#: model:ir.ui.menu,name:metro_hr.menu_hr_attendance_my
+msgid "My Attendances"
+msgstr "我的考勤"
+
+#. module: metro_hr
+#: field:hr.emppay,note:0
+#: field:hr.emppay.sheet,note:0
+#: field:hr.rpt.attend.emp.day,note:0
+#: field:hr.rpt.attend.month,note:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_note
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_template_note
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_note
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_note
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_note
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_note
+msgid "Description"
+msgstr "描述"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Send Welcome Cheklist"
+msgstr "发送员工欢迎清单"
+
+#. module: metro_hr
+#: field:hr.wt.grp,worktime_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_wt_grp_worktime_ids
+msgid "Working times"
+msgstr "Working times"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Rehire"
+msgstr "重新雇佣"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.open_view_employee_list_dimission
+#: model:ir.ui.menu,name:metro_hr.menu_hr_dimission_employee
+msgid "Dimission Employees"
+msgstr "离职员工"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+#: view:hr.employee:0
+msgid "Foreign Employees"
+msgstr "外国员工"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "本年总计(Total of this year):"
+msgstr "本年总计(Total of this year):"
+
+#. module: metro_hr
+#: field:hr.contract,si_total_personal:0
+#: field:hr.contract.si,amount_personal:0
+#: field:hr.emppay.ln.si,amount_personal:0
+#: field:hr.emppay.si,amount_personal:0
+#: field:hr.set.si,amount_personal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_amount_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_total_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_amount_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_amount_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_si_amount_personal
+msgid "Personal Amount"
+msgstr "个人金额"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Print With Attendance by Employee"
+msgstr "按照员工打印考勤明细"
+
+#. module: metro_hr
+#: field:hr.emp.wtgrp.set,wt_grp_id:0
+#: view:hr.employee:0
+#: field:hr.employee,wt_grp_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emp_wtgrp_set_wt_grp_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_wt_grp_id
+msgid "Working time group"
+msgstr "班次分组"
+
+#. module: metro_hr
+#: field:hr.attendance,cale_period_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_cale_period_id
+msgid "Working Period"
+msgstr "时间段"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Attend-D"
+msgstr "Attend-D"
+
+#. module: metro_hr
+#: view:hr.attend.calc.action:0
+msgid "Please confirm the attendance log action calculation"
+msgstr "确认计算打卡的动作?"
+
+#. module: metro_hr
+#: field:hr.employee,emppay_ids:0
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+#: field:hr.emppay.sheet,emppay_ids:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_emppay
+#: model:ir.actions.act_window,name:metro_hr.action_hr_emppay_employee
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_emppay_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_emppay_ids
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emppay
+msgid "Payslips"
+msgstr "工资条"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day,attend_month_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_attend_month_ids
+msgid "Attendances Monthly"
+msgstr "考勤月报表"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+#: model:ir.actions.act_window,name:metro_hr.hr_rpt_attend_month_action
+#: model:ir.ui.menu,name:metro_hr.hr_rpt_attend_month_menu
+msgid "Attendances Monthly Report"
+msgstr "考勤月报表"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_total
+#: field:resource.calendar.attendance,hours_total:0
+msgid "Total hours"
+msgstr "总时数"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "States"
+msgstr "状态"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_contract_alwded
+#: model:ir.model,name:metro_hr.model_hr_set_alwded
+msgid "Contact Salarys allowance and the deduction"
+msgstr "合同的补贴和扣费"
+
+#. module: metro_hr
+#: selection:attend.empday.group.line,weekday:0
+#: selection:hr.rpt.attend.emp.day.line,p_weekday:0
+msgid "Wednesday"
+msgstr "三"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_resource_calendar_attendance
+msgid "Work Detail"
+msgstr "工作细节"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "The default duration interval between the start date and the end date is 8 hours.  Feel free to adapt it to your needs."
+msgstr "开始时间与结束时间之间的默认时间间隔是8小时，你可以根据实际情况进行调整。"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync,step_no:0
+msgid "Select Employee"
+msgstr "选择员工"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot_we2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot_we2
+msgid "Hours OT(Week End)2"
+msgstr "5天制加班时数(周末)"
+
+#. module: metro_hr
+#: field:hr.employee,employment_resigned:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_employment_resigned
+msgid "Employment Resigned"
+msgstr "辞职申请"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_ot2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_ot2
+msgid "Work OT2"
+msgstr "5天制加班工作时数"
+
+#. module: metro_hr
+#: help:hr.clock,message_unread:0
+#: help:hr.emppay.sheet,message_unread:0
+#: help:hr.rpt.attend.month,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Are you sure canel this done dimission order?"
+msgstr "你确认取消此已经完成的离职单吗?"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_total2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_total2
+msgid "Wage(OT Total)2"
+msgstr "5天制总加班工资"
+
+#. module: metro_hr
+#: selection:attend.empday.group.line,weekday:0
+#: selection:hr.rpt.attend.emp.day.line,p_weekday:0
+msgid "Thursday"
+msgstr "四"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,days_attend2_real:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_days_attend2_real
+msgid "Attended Days by five days"
+msgstr "Attended Days by five days"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Select Employess of Clock"
+msgstr "选择考勤机上的员工"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_users_img_emp_small
+#: field:res.users,img_emp_small:0
+msgid "Small-sized image"
+msgstr "小照片"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,emp_pos:0
+msgid "To Sync"
+msgstr "将同步"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_ot:0
+#: field:hr.emppay.rpt.emp.year,wage_ot2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot2
+msgid "Wage of OT"
+msgstr "正常加班工资"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,p_hours_normal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_p_hours_normal
+msgid "Normal"
+msgstr "正常"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync,sync_direction:0
+msgid "Clock to Servr"
+msgstr "考勤机到ERP"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync.emp,clock_role:0
+#: field:hr.employee,clock_role:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_clock_role
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_role
+msgid "Clock Role"
+msgstr "考勤机角色"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,days_attend2:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_days_attend2
+msgid "Attended Days by 21.75"
+msgstr "Attended Days by 21.75"
+
+#. module: metro_hr
+#: field:hr.employee,known_allergies:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_known_allergies
+msgid "Known Allergies"
+msgstr "已知的过敏"
+
+#. module: metro_hr
+#: help:hr.clock,message_ids:0
+#: help:hr.emppay.sheet,message_ids:0
+#: help:hr.rpt.attend.month,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Next"
+msgstr "下一步"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,ded_utilities:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_ded_utilities
+msgid "Utilities"
+msgstr "水电费"
+
+#. module: metro_hr
+#: constraint:hr.attendance:0
+msgid "Error ! Sign in (resp. Sign out) must follow Sign out (resp. Sign in)"
+msgstr "错误！签入（或签出）动作必须在签出（或签入）动作之后。"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp7:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp7
+msgid "Finger Print7"
+msgstr "指纹7"
+
+#. module: metro_hr
+#: field:hr.attendance,clock_log_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_clock_log_id
+msgid "Clock Log ID"
+msgstr "打卡ID"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_work_ot
+#: field:resource.calendar.attendance,hours_work_ot:0
+msgid "Working hours(OT)"
+msgstr "加班工作时数"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_punch_in_start
+#: field:resource.calendar.attendance,punch_in_start:0
+msgid "Sign in punching start"
+msgstr "签入开始"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,hours_normal:0
+msgid "Work Normal"
+msgstr "正常工作时数"
+
+#. module: metro_hr
+#: field:hr.employee.salaryhistory,salary:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_salaryhistory_salary
+msgid "Amount (CNY)"
+msgstr "金额（万元）"
+
+#. module: metro_hr
+#: field:hr.dimission,job_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_job_id
+msgid "Title"
+msgstr "职位"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "工资条/Payslip"
+msgstr "工资条/Payslip"
+
+#. module: metro_hr
+#: field:hr.dimission,company_id:0
+#: field:hr.dimission.item.template,company_id:0
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "QQ#:"
+msgstr "QQ#:"
+
+#. module: metro_hr
+#: field:hr.emppay,money_borrow_residual:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_money_borrow_residual
+msgid "Borrowed Residual"
+msgstr "借款余额"
+
+#. module: metro_hr
+#: field:hr.clock,clock_info:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_clock_info
+msgid "Clock Information"
+msgstr "考勤机信息"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Set to Draft"
+msgstr "设为草稿"
+
+#. module: metro_hr
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emppay_configure
+#: model:ir.ui.menu,name:metro_hr.menu_hr_root_emppay
+msgid "Payroll2"
+msgstr "工资"
+
+#. module: metro_hr
+#: field:hr.contract,ot_pay_normal2:0
+#: field:hr.contract.emppay.batchset,ot_pay_normal2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_normal2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_normal2
+msgid "Normal OT Pay by five days"
+msgstr "Normal OT Pay by five days"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "W: Wage; D: Days"
+msgstr "W: Wage; D: Days"
+
+#. module: metro_hr
+#: field:hr.employee,last_punch_time:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_last_punch_time
+msgid "Last Punching Time"
+msgstr "最后打卡时间"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,clock_role:0
+#: selection:hr.employee,clock_role:0
+msgid "User"
+msgstr "用户"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_work_normal
+#: field:resource.calendar.attendance,hours_work_normal:0
+msgid "Working hours(normal)"
+msgstr "正常工作时数"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_department
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_department_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_department_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_template_department_id
+msgid "Department"
+msgstr "部门"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Dept."
+msgstr "Dept."
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day.wizard:0
+msgid "Generate"
+msgstr "生成"
+
+#. module: metro_hr
+#: constraint:hr.rpt.attend.emp.day:0
+#: constraint:hr.rpt.attend.month:0
+msgid "The date end must be after the date start."
+msgstr "结束时间必须在开始时间之后"
+
+#. module: metro_hr
+#: view:hr.clock:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_clock
+#: model:ir.ui.menu,name:metro_hr.menu_open_view_attendance
+msgid "HR Clocks"
+msgstr "HR考勤机"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,emp_ids_sync:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_ids_sync
+msgid "Employees to Sync"
+msgstr "将同步的员工"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "水电费"
+msgstr "水电费"
+
+#. module: metro_hr
+#: view:hr.emppay.si:0
+msgid "Search Social Insurances"
+msgstr "搜索社保"
+
+#. module: metro_hr
+#: view:hr.attend.calc.action:0
+msgid "Are you sure to recalcuate the action of all the selected attendances?"
+msgstr "确认重新计算所有选定打卡记录的动作吗?"
+
+#. module: metro_hr
+#: view:hr.send.checklist:0
+msgid "Send"
+msgstr "发送"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_work2
+msgid "Wage(Work)2"
+msgstr "5天制工作工资"
+
+#. module: metro_hr
+#: field:hr.employee.salaryhistory,reason:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_salaryhistory_reason
+msgid "Reason for Change"
+msgstr "变更原因"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+msgid "Valid"
+msgstr "有效"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.emp.day.wizard:0
+#: model:ir.actions.act_window,name:metro_hr.action_rpt_attend_emp_day_wizard
+msgid "Generate Daily Attendance"
+msgstr "生成日考勤表"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_dimission_item_template
+#: model:ir.model,name:metro_hr.model_hr_dimission_item_template
+#: model:ir.ui.menu,name:metro_hr.menu_hr_dimission_item_template
+msgid "Dimission item template"
+msgstr "办理项目"
+
+#. module: metro_hr
+#: field:hr.employee,emergency_contacter:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_emergency_contacter
+msgid "Emergency Contacter"
+msgstr "紧急联系人"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+#: selection:hr.clock.emp.sync,step_no:0
+msgid "Select Clock"
+msgstr "选择考勤机"
+
+#. module: metro_hr
+#: field:hr.employee,bunk_no:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_bunk_no
+msgid "Bunk#"
+msgstr "床号"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "5天制应出勤"
+msgstr "5天制应出勤"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot2_we:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot2_we
+msgid "Hours OT2 Weekend"
+msgstr "加班时数(周末)"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Wage Summary"
+msgstr "工资汇总"
+
+#. module: metro_hr
+#: field:hr.emppay,money_borrow_original:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_money_borrow_original
+msgid "Borrowed Money"
+msgstr "借款"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Employee Name:"
+msgstr "Employee Name:"
+
+#. module: metro_hr
+#: field:attend.empday.group,date_from:0
+#: field:hr.rpt.attend.emp.day,date_from:0
+#: field:hr.rpt.attend.month,date_from:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_date_from
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_date_from
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_date_from
+msgid "Start Date"
+msgstr "开始日期"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_pay_local:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_pay_local
+msgid "Wage Should Pay Local"
+msgstr "应发工资(本币)"
+
+#. module: metro_hr
+#: field:exhibit.type,name:0
+#: field:hr.clock,name:0
+#: field:hr.clock.emp.sync.emp,emp_name:0
+#: field:hr.emppay,name:0
+#: field:hr.emppay.alwded,name:0
+#: field:hr.emppay.ln.alwded,name:0
+#: field:hr.emppay.ln.si,name:0
+#: field:hr.emppay.sheet,name:0
+#: field:hr.emppay.si,name:0
+#: field:hr.rpt.attend.emp.day.line,emp_name:0
+#: field:hr.rpt.attend.month.line,emp_name:0
+#: field:hr.rpt.attend.month.line,name:0
+#: field:hr.wt.grp,name:0
+#: field:hr.wt.grp.line,name:0
+#: model:ir.model.fields,field_description:metro_hr.field_exhibit_type_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_emp_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_template_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_template_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alwded_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_emp_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_emp_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_wt_grp_line_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_wt_grp_name
+msgid "Name"
+msgstr "名称"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_clock_emp_sync_emp
+msgid "hr.clock.emp.sync.emp"
+msgstr "hr.clock.emp.sync.emp"
+
+#. module: metro_hr
+#: view:hr.wt.grp:0
+msgid "Assigned Employees"
+msgstr "已分配的员工"
+
+#. module: metro_hr
+#: view:hr.contract:0
+#: view:hr.contract.emppay.batchset:0
+#: view:hr.emppay:0
+#: view:hr.emppay.si:0
+msgid "Company Total"
+msgstr "工资缴费总计"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,p_hour_to:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_p_hour_to
+msgid "To"
+msgstr "到"
+
+#. module: metro_hr
+#: selection:hr.dimission.item,state_transfer:0
+msgid "Pending"
+msgstr "待定"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Generate Payroll"
+msgstr "生成工资表"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Expense"
+msgstr "Expense"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_res_users
+msgid "Users"
+msgstr "用户"
+
+#. module: metro_hr
+#: field:hr.emppay,days_attend:0
+#: field:hr.rpt.attend.month.line,days_attend:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_attend
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_attend
+msgid "Days Attended"
+msgstr "实出勤"
+
+#. module: metro_hr
+#: field:hr.dimission.item,state_transfer:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_state_transfer
+msgid "State of Transfer"
+msgstr "交接状态"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_net:0
+#: field:hr.emppay.rpt.emp.year,wage_ot_holiday2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_net
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot_holiday2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_wage_net
+msgid "Net Wage"
+msgstr "Net Wage"
+
+#. module: metro_hr
+#: field:hr.emppay,si_total_personal:0
+#: field:hr.emppay.rpt.emp.year,si_total_personal:0
+#: field:hr.emppay.sheet,si_total_personal:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_si_total_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_si_total_personal
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_total_personal
+msgid "SI(Personal)"
+msgstr "社保(个人)"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "加班时数(非周末)"
+msgstr "加班时数(非周末)"
+
+#. module: metro_hr
+#: field:hr.medical.type,name:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_medical_type_name
+msgid "Medical Name"
+msgstr "保险名称"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+msgid "Total"
+msgstr "总计"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_attendance_employee
+msgid "Attendances"
+msgstr "考勤"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "No Punching today"
+msgstr "今天未打卡"
+
+#. module: metro_hr
+#: selection:hr.dimission.item,type:0
+#: selection:hr.dimission.item.template,type:0
+msgid "Transfer"
+msgstr "交接"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_holidays
+#: view:res.company:0
+msgid "Leave"
+msgstr "准假"
+
+#. module: metro_hr
+#: field:attend.empday.group,line_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_ids
+msgid "Group Lines"
+msgstr "Group Lines"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_employee_salaryhistory
+msgid "Employee Salary History"
+msgstr "职工工资历史"
+
+#. module: metro_hr
+#: field:hr.clock,message_unread:0
+#: field:hr.rpt.attend.month,message_unread:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_message_unread
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_message_unread
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_message_unread
+msgid "Unread Messages"
+msgstr "未读消息"
+
+#. module: metro_hr
+#: field:hr.holidays,job_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_holidays_job_id
+msgid "Job"
+msgstr "职位"
+
+#. module: metro_hr
+#: field:hr.attendance,date_search_to:0
+msgid "To Date"
+msgstr "结束日期"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+msgid "Pay"
+msgstr "支付"
+
+#. module: metro_hr
+#: field:exhibit.calendar,date_stop:0
+#: field:hr.employee.holidaycalendar,date_stop:0
+#: model:ir.model.fields,field_description:metro_hr.field_exhibit_calendar_date_stop
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_holidaycalendar_date_stop
+msgid "Stop date"
+msgstr "结束日期"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_work:0
+msgid "Wage(attend) + Wage(OT)"
+msgstr "Wage(attend) + Wage(OT)"
+
+#. module: metro_hr
+#: model:res.groups,name:metro_hr.group_hr_holiday_approver
+msgid "Holiday Approver"
+msgstr "假期审批人"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+msgid "This will keep the original Allowance&Deduction, Social Insurance, and add the new"
+msgstr "此操作将删除原来的补贴,扣费和社保配置,增加新的"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Phone#:"
+msgstr "Phone#:"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_attachment_lines
+msgid "Attachment"
+msgstr "附件"
+
+#. module: metro_hr
+#: field:hr.emppay,si_total_company:0
+#: field:hr.emppay.rpt.emp.year,si_total_company:0
+#: field:hr.emppay.sheet,si_total_company:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_si_total_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_si_total_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_total_company
+msgid "SI(Company)"
+msgstr "社保(公司)"
+
+#. module: metro_hr
+#: field:hr.contract.alwded,contract_id:0
+#: field:hr.contract.si,contract_id:0
+#: field:hr.emppay,contract_id:0
+#: model:ir.model,name:metro_hr.model_hr_contract
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_contract_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_contract_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_contract_id
+msgid "Contract"
+msgstr "合同"
+
+#. module: metro_hr
+#: field:hr.contract.alwded,type_calc:0
+#: field:hr.emppay.alwded,type_calc:0
+#: field:hr.emppay.ln.alwded,type_calc:0
+#: field:hr.set.alwded,type_calc:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_type_calc
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alwded_type_calc
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_type_calc
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_alwded_type_calc
+msgid "Calculation Type"
+msgstr "计算方法"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "其他补贴"
+msgstr "其他补贴"
+
+#. module: metro_hr
+#: help:hr.emppay,state:0
+msgid ""
+"* When the payslip is created the status is 'Draft'.            \n"
+"* If the payslip is verified, the status is 'Verified'.             \n"
+"* If the payslip is paid then status is set to 'Paid'."
+msgstr ""
+"* When the payslip is created the status is 'Draft'.            \n"
+"* If the payslip is verified, the status is 'Verified'.             \n"
+"* If the payslip is paid then status is set to 'Paid'."
+
+#. module: metro_hr
+#: field:hr.emppay,money_borrow_deduction:0
+#: field:hr.emppay.sheet,money_borrow_deduction:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_money_borrow_deduction
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_money_borrow_deduction
+msgid "Borrow Deduction"
+msgstr "借款扣除"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_total_local:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_total_local
+msgid "Total Wage Local"
+msgstr "总工资(本币)"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_ot_total2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot_total2
+msgid "Total Wage of OT by five days"
+msgstr "Total Wage of OT by five days"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+#: field:hr.dimission,approve_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_approve_ids
+msgid "Approvals"
+msgstr "审批"
+
+#. module: metro_hr
+#: help:hr.clock,message_summary:0
+#: help:hr.emppay.sheet,message_summary:0
+#: help:hr.rpt.attend.month,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: metro_hr
+#: help:res.company,hr_att_tole_late_early_default:0
+#: help:resource.calendar,tolerence_late_early_default:0
+msgid "default tolerance in minutes for the punching late/early time comparing to the resource_calendar_attendance's hour from/to"
+msgstr "默认相对上下班时间点,迟到/早退的时间间隔,在(上班时间+间隔(分钟))后打卡为迟到,在(下班时间-间隔(分钟)) 前打卡为早退"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_total
+msgid "Wage(total)"
+msgstr "总工资"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_ir_attachment
+msgid "ir.attachment"
+msgstr "ir.attachment"
+
+#. module: metro_hr
+#: field:hr.employee,known_medical_type:0
+#: model:ir.model,name:metro_hr.model_hr_medical_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_known_medical_type
+msgid "Known Medical Types"
+msgstr "医疗保险"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "出勤天数"
+msgstr "出勤天数"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Known Medical Conditions:"
+msgstr "Known Medical Conditions:"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Job"
+msgstr "职务"
+
+#. module: metro_hr
+#: help:res.company,hr_att_no_in_time:0
+#: help:resource.calendar,no_in_time:0
+msgid "if 'Be Late', then this field identify the minutes that will be substract from the 'WorkHours'"
+msgstr "如果设为\"迟到\",此为从\"工作时数\"里面减掉的分钟数"
+
+#. module: metro_hr
+#: view:hr.emp.wtgrp.set:0
+msgid "Are you sure to set the working time group to the selected employees?"
+msgstr "确定设置班次分组到选择的员工吗？"
+
+#. module: metro_hr
+#: model:res.groups,name:metro_hr.group_hr_holiday_approver_super
+msgid "Holiday Super Approver"
+msgstr "假期超级审批人"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_emppay_sheet
+msgid "Payroll"
+msgstr "Payroll"
+
+#. module: metro_hr
+#: selection:attend.empday.group.line,weekday:0
+#: selection:hr.rpt.attend.emp.day.line,p_weekday:0
+msgid "Tuesday"
+msgstr "二"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,clock_role:0
+#: selection:hr.employee,clock_role:0
+msgid "Operator"
+msgstr "操作员"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_send_checklist_batch
+msgid "Send Checklist"
+msgstr "发送员工欢迎清单"
+
+#. module: metro_hr
+#: view:hr.send.checklist:0
+msgid "Add contacts to notify..."
+msgstr "增加需要通知的人"
+
+#. module: metro_hr
+#: field:attend.empday.group.line,hours_ot_a:0
+#: field:attend.empday.group.line,hours_ot_b:0
+#: field:attend.empday.group.line,hours_ot_c:0
+#: field:attend.empday.group.line,hours_ot_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_ot_a
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_ot_b
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_ot_c
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_ot_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_ot
+msgid "Work OT"
+msgstr "加班工作"
+
+
+#: view:hr.dimission:0
+#: field:hr.dimission.item,dimission_id:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_dimission
+#: field:ir.attachment,hr_admission_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_dimission_id
+#: model:ir.model.fields,field_description:metro_hr.field_ir_attachment_hr_admission_id
+#: model:ir.ui.menu,name:metro_hr.menu_hr_dimission
+#: view:res.company:0
+msgid "Dimission"
+msgstr "离职单"
+
+#. module: metro_hr
+#: field:hr.emppay.ln.alwded,amount_local:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_amount_local
+msgid "Amount Local"
+msgstr "金额(本币)"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,p_hour_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_p_hour_ot
+msgid "OT"
+msgstr "加班"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Generate Attendance"
+msgstr "生成考勤表"
+
+#. module: metro_hr
+#: field:hr.contract,ot_pay_weekend:0
+#: field:hr.contract.emppay.batchset,ot_pay_weekend:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_weekend
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_weekend
+msgid "Weekend OT Pay"
+msgstr "Weekend OT Pay"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.notification:0
+msgid "Other"
+msgstr "Other"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,sync_opt_fp:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_sync_opt_fp
+msgid "Finger Print"
+msgstr "指纹"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "小计"
+msgstr "小计"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_contract_emppay_batchset
+#: model:ir.actions.act_window,name:metro_hr.action_hr_employee_emppay_batchset
+msgid "Set Payroll Info"
+msgstr "设置工资项目"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "加班时数"
+msgstr "加班时数"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: field:hr.emppay.rpt.emp.year,wage_work:0
+#: field:hr.emppay.sheet,wage_work:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_work
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_wage_work
+msgid "Work Wage"
+msgstr "工作工资"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Attend-W"
+msgstr "Attend-W"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,target_state:0
+msgid "Exist"
+msgstr "已存在"
+
+#. module: metro_hr
+#: field:hr.emppay.sheet,wage_total:0
+msgid "Total Wage"
+msgstr "总工资"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: field:hr.rpt.attend.emp.day.line,rpt_id:0
+#: view:hr.rpt.attend.month:0
+#: field:hr.rpt.attend.month.line,rpt_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_rpt_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_rpt_id
+msgid "Report"
+msgstr "报表"
+
+#. module: metro_hr
+#: view:hr.dimission.item.template:0
+msgid "Search Dimission Item Template"
+msgstr "搜索离职办理项目"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_attend_empday_group_line
+msgid "attend.empday.group.line"
+msgstr "attend.empday.group.line"
+
+#. module: metro_hr
+#: view:hr.attend.calc.action:0
+#: view:hr.clock.emp.sync:0
+#: view:hr.contract.emppay.batchset:0
+#: view:hr.emp.wtgrp.set:0
+#: view:hr.rpt.attend.emp.day:0
+#: selection:hr.rpt.attend.emp.day,state:0
+#: selection:hr.rpt.attend.emp.day.line,state:0
+#: view:hr.rpt.attend.emp.day.wizard:0
+#: view:hr.rpt.attend.month:0
+#: selection:hr.rpt.attend.month,state:0
+#: view:hr.send.checklist:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_hr
+#: selection:hr.employee.holidaycalendar,holidaytype:0
+msgid "Chinese National Holiday"
+msgstr "中国法定假日"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_is_full_ot
+#: field:resource.calendar.attendance,is_full_ot:0
+msgid "Full OT"
+msgstr "全为加班"
+
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,si_ids_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_si_ids_set
+msgid "Set Social Insurance"
+msgstr "设置社保"
+
+#. module: metro_hr
+#: field:hr.dimission,date_request:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_date_request
+msgid "Request Date"
+msgstr "申请日期"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_hr_att_no_out_time
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_no_out_time
+#: field:res.company,hr_att_no_out_time:0
+#: field:resource.calendar,no_out_time:0
+msgid "No Out to Subtract Minutes"
+msgstr "无签出减分钟"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "职务津贴"
+msgstr "职务津贴"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Clock Settings"
+msgstr "考勤机设置"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+msgid "Invalid"
+msgstr "无效"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "Super Approve"
+msgstr "二级审批"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync.emp,target_state:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_target_state
+msgid "Data state of Base Info on target"
+msgstr "基础信息在同步目标的状态"
+
+#. module: metro_hr
+#: field:attend.empday.group,date_to:0
+#: field:hr.rpt.attend.emp.day,date_to:0
+#: field:hr.rpt.attend.month,date_to:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_date_to
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_date_to
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_date_to
+msgid "End Date"
+msgstr "截止日期"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_attend:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_attend
+msgid "Wage of attendance"
+msgstr "出勤工资"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_net_local:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_net_local
+msgid "Net Wage Local"
+msgstr "实发工资(本币)"
+
+#. module: metro_hr
+#: field:hr.contract.alwded,amount:0
+#: field:hr.emppay.alwded,amount:0
+#: field:hr.emppay.ln.alwded,amount:0
+#: field:hr.set.alwded,amount:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_amount
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alwded_amount
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_amount
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_alwded_amount
+msgid "Amount"
+msgstr "金额"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+#: field:hr.rpt.attend.emp.day.line,period_id:0
+msgid "Period"
+msgstr "时间段"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "餐费"
+msgstr "餐费"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot
+msgid "Wage(OT)"
+msgstr "加班工资"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Pay-W"
+msgstr "Pay-W"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+#: view:hr.employee:0
+msgid "China Employees"
+msgstr "中国员工"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_tax:0
+msgid "Wage(total) - SI(Personal)"
+msgstr "Wage(total) - SI(Personal)"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.month:0
+msgid "Search Attendances"
+msgstr "搜索考勤"
+
+#. module: metro_hr
+#: field:hr.employee.holidaycalendar,name:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_holidaycalendar_name
+msgid "Holiday Name"
+msgstr "假期名称"
+
+#. module: metro_hr
+#: constraint:hr.emppay:0
+msgid "Payslip 'Date From' must be before 'Date To'."
+msgstr "开始日期必须在结束日期之前"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Punched today"
+msgstr "今天已打卡"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,p_hour_from:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_p_hour_from
+msgid "From"
+msgstr "从"
+
+#. module: metro_hr
+#: field:hr.emppay,company_id:0
+#: field:hr.emppay.alwded,company_id:0
+#: field:hr.emppay.sheet,company_id:0
+#: field:hr.emppay.si,company_id:0
+#: field:hr.holidays,company_id:0
+#: field:hr.rpt.attend.emp.day,company_id:0
+#: field:hr.rpt.attend.month,company_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_template_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alwded_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_holidays_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_company_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "21.75天折算"
+msgstr "21.75天折算"
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "HR Clocks attendances"
+msgstr "HR考勤机打卡记录"
+
+#. module: metro_hr
+#: field:hr.dimission,borrow_money_residual:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_borrow_money_residual
+msgid "Borrowed residual"
+msgstr "借款余额"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Coportate E-Mail:"
+msgstr "Coportate E-Mail:"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,days_work2:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_days_work2
+msgid "Work Days by five days"
+msgstr "Work Days by five days"
+
+#. module: metro_hr
+#: view:hr.employee.holidaycalendar:0
+msgid "Create a New Holiday"
+msgstr "创建一个假期"
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "Delete employees will erase all user data, including base info, finger print, password and the attendance log. Are you sure to continue? "
+msgstr "删除员工将删除所有相关数据,包括:基础信息,指纹,密码和打卡记录,继续吗?"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.notification:0
+msgid "Days"
+msgstr "Days"
+
+#. module: metro_hr
+#: view:hr.analytic.timesheet:0
+msgid "on_change_unit_amount(product_id, unit_amount, False, product_uom_id,journal_id,employee_id)"
+msgstr "on_change_unit_amount(product_id, unit_amount, False, product_uom_id,journal_id,employee_id)"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+msgid "Set"
+msgstr "设置"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.notification:0
+msgid "Work"
+msgstr "Work"
+
+#. module: metro_hr
+#: field:hr.contract,wage_currency_id:0
+#: field:hr.contract.emppay.batchset,wage_currency_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_wage_currency_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_wage_currency_id
+msgid "Wage Currency"
+msgstr "工资币种"
+
+#. module: metro_hr
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emp
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emp_root
+msgid "My Human Resources"
+msgstr "我的HR"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.month:0
+msgid "Print"
+msgstr "打印"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Overtime"
+msgstr "Overtime"
+
+#. module: metro_hr
+#: field:hr.employee,known_medical_cond:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_known_medical_cond
+msgid "Known Medical Conditions"
+msgstr "已知的医疗条件"
+
+#. module: metro_hr
+#: field:hr.employee.salaryhistory,date:0
+msgid "Date"
+msgstr "日"
+
+#. module: metro_hr
+#: selection:hr.dimission.item,state_approve:0
+msgid "Rejected"
+msgstr "拒绝"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Paid Slip"
+msgstr "已付工资条"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "EMP SI"
+msgstr "EMP SI"
+
+#. module: metro_hr
+#: field:hr.emppay,days_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_work2
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_days_work2
+msgid "Work Days2"
+msgstr "5天制应出勤"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: field:hr.emppay.ln.alwded,emppay_id:0
+#: field:hr.emppay.ln.si,emppay_id:0
+#: model:ir.actions.report.xml,name:metro_hr.report_hr_emppay_slip
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_payslip_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_emppay_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_emppay_id
+msgid "Payslip"
+msgstr "工资条"
+
+#. module: metro_hr
+#: field:hr.dimission,mobile_phone:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_mobile_phone
+msgid "Work Mobile"
+msgstr "电话"
+
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,wage_currency_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_wage_currency_set
+msgid "Set Wage Currency"
+msgstr "设置工资币种"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "序号"
+msgstr "序号"
+
+#. module: metro_hr
+#: field:hr.emppay,days_work:0
+#: field:hr.emppay.rpt.emp.year,days_work:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_work
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_days_work
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_days_work
+msgid "Work Days"
+msgstr "应出勤"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.metro_holiday_calendar_action
+#: model:ir.ui.menu,name:metro_hr.menu_metro_holiday_calendar_action
+#: model:ir.ui.menu,name:metro_hr.menu_metro_hr_holiday_calendar_action
+msgid "Factory Holidays"
+msgstr "工厂假期"
+
+#. module: metro_hr
+#: field:hr.emppay,show_local:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_show_local
+msgid "Show Local"
+msgstr "显示本币"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+msgid "Today"
+msgstr "今天"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+#: view:hr.rpt.attend.month:0
+#: selection:hr.rpt.attend.month,state:0
+msgid "Done"
+msgstr "完成"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day.line,is_absent:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_is_absent
+#: selection:res.company,hr_att_no_in_option:0
+#: selection:res.company,hr_att_no_out_option:0
+#: selection:resource.calendar,no_in_option:0
+#: selection:resource.calendar,no_out_option:0
+msgid "Absenteeism"
+msgstr "缺勤"
+
+#. module: metro_hr
+#: model:ir.actions.report.xml,name:metro_hr.report_hr_rpt_attend_month_inspection
+msgid "Attendance Inspection"
+msgstr "考勤(5天制)"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync,sync_direction:0
+msgid "Server to Clock"
+msgstr "ERP到考勤机"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,hours_ot_holiday:0
+#: field:hr.emppay.rpt.emp.year,hours_ot_holiday2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_hours_ot_holiday
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_hours_ot_holiday2
+msgid "Holiday OT Hours"
+msgstr "Holiday OT Hours"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp3:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp3
+msgid "Finger Print3"
+msgstr "指纹3"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "日期(Date):"
+msgstr "日期(Date):"
+
+#. module: metro_hr
+#: field:hr.emppay,alw_inwage_total:0
+#: field:hr.emppay.rpt.emp.year,alw_inwage_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alw_inwage_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_alw_inwage_total
+msgid "Allowage In Wage"
+msgstr "工资内补贴"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_hr_holiday_leave_second_approve_days
+#: field:res.company,hr_holiday_leave_second_approve_days:0
+msgid "Max days that do not need CEO approval"
+msgstr "超过此天数需要CEO批准"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_worktime_type
+#: model:ir.ui.menu,name:metro_hr.menu_hr_worktime_type
+msgid "Working Time Type"
+msgstr "班次类型"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,hours_ot2:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_hours_ot2
+msgid "Non Weekend OT Hours"
+msgstr "Non Weekend OT Hours"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Print Slips for Signature"
+msgstr "打印需签字工资条"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Country"
+msgstr "国籍"
+
+#. module: metro_hr
+#: field:hr.contract,pit_base:0
+#: field:hr.contract.emppay.batchset,pit_base:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_pit_base
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_pit_base
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_emppay_pit_base
+#: field:res.company,emppay_pit_base:0
+msgid "PIT Start Point"
+msgstr "个税起征点"
+
+#. module: metro_hr
+#: field:hr.clock,date_conn_last:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_date_conn_last
+msgid "Last date connected"
+msgstr "最后连接"
+
+#. module: metro_hr
+#: view:hr.contract:0
+msgid "onchange_employee_id(employee_id,context)"
+msgstr "onchange_employee_id(employee_id,context)"
+
+#. module: metro_hr
+#: selection:hr.contract.alwded,type:0
+#: view:hr.emppay:0
+#: selection:hr.emppay.alwded,type:0
+#: selection:hr.emppay.ln.alwded,type:0
+msgid "Allowance In Wage"
+msgstr "工资内补贴"
+
+#. module: metro_hr
+#: help:hr.emppay,wage_work2:0
+msgid "Wage(attend)2 + Wage(OT Total)2 + Wage(Bonus)2"
+msgstr "Wage(attend)2 + Wage(OT Total)2 + Wage(Bonus)2"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day.line:0
+msgid "Search Attendances Line"
+msgstr "搜素出勤明细"
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "Sync from Server to Clock"
+msgstr "同步-从ERP到考勤机"
+
+#. module: metro_hr
+#: field:hr.emppay,days_attend2:0
+#: field:hr.rpt.attend.month.line,days_attend2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_days_attend2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_attend2
+msgid "Days Attended2"
+msgstr "21.75天折算"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "其他扣费"
+msgstr "其他扣费"
+
+#. module: metro_hr
+#: field:hr.dimission,attachment_lines:0
+msgid "Attachment"
+msgstr "附件"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp2
+msgid "Finger Print2"
+msgstr "指纹2"
+
+#. module: metro_hr
+#: help:resource.calendar.attendance,hours_total:0
+msgid "[Work to] - [Work from]"
+msgstr "[下班] - [上班]"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,clock_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_clock_id
+msgid "Clock to Sync"
+msgstr "同步的考勤机"
+
+#. module: metro_hr
+#: field:hr.clock,datetime_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_datetime_set
+msgid "Set Datetime"
+msgstr "设置时间"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp1:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp1
+msgid "Finger Print1"
+msgstr "指纹1"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "部门"
+msgstr "部门"
+
+#. module: metro_hr
+#: field:hr.attendance,write_uid:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_write_uid
+msgid "Modifier"
+msgstr "修改人"
+
+#. module: metro_hr
+#: field:hr.dimission,date_done:0
+msgid "Done Date"
+msgstr "完成日期"
+
+#. module: metro_hr
+#: view:hr.emppay.alwded:0
+msgid "Search Allowance&Deduction"
+msgstr "搜索补贴和扣费"
+
+#. module: metro_hr
+#: help:hr.holidays,ticket_approve_id2:0
+msgid "The CEO approve user on the leave ticket"
+msgstr "厂部批准人(纸质单)"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync.emp,emp_pos:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_emp_pos
+msgid "Action"
+msgstr "动作"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "实发工资"
+msgstr "实发工资"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day.wizard:0
+msgid "Select employees to generate daily attendance"
+msgstr "选择生成日考勤表的员工"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "No."
+msgstr "No."
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_attend2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_attend2
+msgid "Wage of Attendance by five days"
+msgstr "5天制出勤工资"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_emppay_rpt_emp_year
+msgid "Payslip Report by employee and year"
+msgstr "Payslip Report by employee and year"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "工号"
+msgstr "工号"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Work Wage2"
+msgstr "5天制工作工资"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_punch_in_stop
+#: field:resource.calendar.attendance,punch_in_stop:0
+msgid "Sign in punching stop"
+msgstr "签入结束"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_is_full_ot2
+#: field:resource.calendar.attendance,is_full_ot2:0
+msgid "Full OT2"
+msgstr "5天制全为加班"
+
+#. module: metro_hr
+#: help:res.company,hr_att_no_in_option:0
+#: help:resource.calendar,no_in_option:0
+msgid "the configuration how to deal with the attendance only have sign in"
+msgstr "无签入处理方式"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,alw_other:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_alw_other
+msgid "Other Allowance"
+msgstr "其他补贴"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+msgid "Clear and Set"
+msgstr "清除并设置"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Items"
+msgstr "办理项目"
+
+#. module: metro_hr
+#: field:hr.clock,port:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_port
+msgid "Port"
+msgstr "端口"
+
+#. module: metro_hr
+#: field:hr.emppay,alw_total_local:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alw_total_local
+msgid "Allowance Local"
+msgstr "补贴(本币)"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+msgid "Are you sure to set the contract data to the selected employees?"
+msgstr "确认设置合同信息到选择的员工吗?"
+
+#. module: metro_hr
+#: field:hr.attendance,date_search_from:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_date_search_from
+#: model:ir.model.fields,field_description:metro_hr.field_hr_wt_grp_line_date_from
+msgid "From Date"
+msgstr "开始日期"
+
+#. module: metro_hr
+#: field:hr.dimission.item,process_date:0
+msgid "Date"
+msgstr "日期"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,step_no:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_step_no
+msgid "Wizard Step"
+msgstr "Wizard Step"
+
+#. module: metro_hr
+#: field:hr.dimission.item,note:0
+#: field:hr.dimission.item.template,note:0
+msgid "Description"
+msgstr "备注"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+msgid "Generate Monthly Report"
+msgstr "生成考勤月报"
+
+#. module: metro_hr
+#: field:hr.emppay.sheet,account_period_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_account_period_id
+msgid "Account Period"
+msgstr "会计期间"
+
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,ot_pay_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_set
+msgid "Set OT Pay Options"
+msgstr "Set OT Pay Options"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp4:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp4
+msgid "Finger Print4"
+msgstr "指纹4"
+
+#. module: metro_hr
+#: field:attend.empday.group.line,hours_normal_a:0
+#: field:attend.empday.group.line,hours_normal_b:0
+#: field:attend.empday.group.line,hours_normal_c:0
+#: field:attend.empday.group.line,hours_normal_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_normal_a
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_normal_b
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_normal_c
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_hours_normal_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_hours_normal
+msgid "Work Normal"
+msgstr "正常工作"
+
+#. module: metro_hr
+#: selection:hr.rpt.attend.month,state:0
+msgid "Rejected"
+msgstr "已拒绝"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_dimission_item
+msgid "Dimission Items"
+msgstr "离职办理项目"
+
+#. module: metro_hr
+#: model:ir.ui.menu,name:metro_hr.menu_metro_holiday_calendar_main_action
+msgid "Calendars"
+msgstr "日历"
+
+#. module: metro_hr
+#: selection:hr.contract,ot_pay_holiday:0
+#: selection:hr.contract,ot_pay_holiday2:0
+#: selection:hr.contract,ot_pay_normal:0
+#: selection:hr.contract,ot_pay_normal2:0
+#: selection:hr.contract,ot_pay_weekend:0
+#: selection:hr.contract,ot_pay_weekend2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_holiday:0
+#: selection:hr.contract.emppay.batchset,ot_pay_holiday2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_normal:0
+#: selection:hr.contract.emppay.batchset,ot_pay_normal2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_weekend:0
+#: selection:hr.contract.emppay.batchset,ot_pay_weekend2:0
+msgid "Fixed Amount"
+msgstr "固定金额"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_holiday2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_holiday2
+msgid "Wage(OT Holiday)2"
+msgstr "5天制假日加班工资"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_approve_ids
+#: field:res.company,approve_ids:0
+msgid "Dimission Approvals"
+msgstr "离职审批"
+
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,alwded_ids_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_alwded_ids_set
+msgid "Set Allowance&Deduction"
+msgstr "设置补贴和扣费"
+
+#. module: metro_hr
+#: view:hr.dimission.item.template:0
+msgid "Dimission Item templated"
+msgstr "Dimission Item templated"
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "Sync from Clock to Server"
+msgstr "同步-从考勤机到ERP"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+msgid "Employee attendances"
+msgstr "员工考勤"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Are you sure rehire this employee?"
+msgstr "你确认重新雇佣此员工吗?"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_hr_att_no_in_time
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_no_in_time
+#: field:res.company,hr_att_no_in_time:0
+#: field:resource.calendar,no_in_time:0
+msgid "No In to Subtract Minutes"
+msgstr "无签入减分钟"
+
+#. module: metro_hr
+#: field:hr.emppay,emppay_year_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_emppay_year_id
+msgid "Employee Year Total"
+msgstr "Employee Year Total"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Are you sure to continue to generate attendance report?"
+msgstr "确认继续重新生成考勤报表?"
+
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,wage2_set:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_wage2_set
+msgid "Set Wage2"
+msgstr "设置基本工资"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+#: model:ir.ui.menu,name:metro_hr.menu_hr_contract_emppay_batch
+msgid "Set Contract Payroll Info"
+msgstr "设置合同工资项目"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,data_level:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_data_level
+msgid "Data level code"
+msgstr "Data level code"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Select Employess of Server"
+msgstr "选择ERP里的员工"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,hours_ot_we:0
+#: field:hr.emppay.rpt.emp.year,hours_ot_we2:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_hours_ot_we
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_hours_ot_we2
+msgid "Weekend OT Hours"
+msgstr "Weekend OT Hours"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Print Inpsection"
+msgstr "打印考勤(5天制)"
+
+#. module: metro_hr
+#: field:hr.attendance,create_date:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_create_date
+msgid "Creation Date"
+msgstr "创建日期"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_clock
+msgid "HR Attendance Clock"
+msgstr "HR考勤机"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "COMP SI"
+msgstr "COMP SI"
+
+#. module: metro_hr
+#: view:hr.attend.calc.action:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_attend_calc_action
+#: model:ir.model,name:metro_hr.model_hr_attend_calc_action
+msgid "Calculate attendance action"
+msgstr "计算打卡动作"
+
+#. module: metro_hr
+#: field:attend.empday.group,days_attend:0
+#: field:hr.emppay.rpt.emp.year,days_attend:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_days_attend
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_days_attend
+msgid "Attended Days"
+msgstr "实出勤"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_rpt_attend_month
+msgid "HR Attendance monthly report"
+msgstr "HR考勤月报表"
+
+#. module: metro_hr
+#: field:attend.empday.group,period_type_a_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_period_type_a_id
+msgid "Worktime A"
+msgstr "Worktime A"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "Reset to New"
+msgstr "重置"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_month_attend_days_law
+#: field:res.company,month_attend_days_law:0
+msgid "Month working days in law"
+msgstr "月工作天数(法定)"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,emp_ids_server:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_ids_server
+msgid "Employees on Server"
+msgstr "ERP上的员工"
+
+#. module: metro_hr
+#: help:resource.calendar.attendance,hours_work:0
+msgid "[Total hours] - [Non work hours]"
+msgstr "[总时数] - [非工作时数]"
+
+#. module: metro_hr
+#: field:hr.contract,ot_pay_holiday2_multi:0
+#: field:hr.contract,ot_pay_holiday_multi:0
+#: field:hr.contract,ot_pay_normal2_multi:0
+#: field:hr.contract,ot_pay_normal_multi:0
+#: field:hr.contract,ot_pay_weekend2_multi:0
+#: field:hr.contract,ot_pay_weekend_multi:0
+#: field:hr.contract.emppay.batchset,ot_pay_holiday2_multi:0
+#: field:hr.contract.emppay.batchset,ot_pay_holiday_multi:0
+#: field:hr.contract.emppay.batchset,ot_pay_normal2_multi:0
+#: field:hr.contract.emppay.batchset,ot_pay_normal_multi:0
+#: field:hr.contract.emppay.batchset,ot_pay_weekend2_multi:0
+#: field:hr.contract.emppay.batchset,ot_pay_weekend_multi:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_holiday2_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_holiday_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_normal2_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_normal_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_weekend2_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_weekend_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_holiday2_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_holiday_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_normal2_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_normal_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_weekend2_multi
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_weekend_multi
+msgid "Multiple"
+msgstr "Multiple"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "姓名"
+msgstr "姓名"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_bonus2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_bonus2
+msgid "Wage(Bonus)2"
+msgstr "5天制职务津贴"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Weekend OT"
+msgstr "Weekend OT"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_wt_grp
+msgid "working time group"
+msgstr "working time group"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: model:ir.model,name:metro_hr.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,fiscalyear_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_fiscalyear_id
+msgid "Fiscal Year"
+msgstr "年度"
+
+#. module: metro_hr
+#: field:exhibit.calendar,name:0
+#: model:ir.model.fields,field_description:metro_hr.field_exhibit_calendar_name
+msgid "Exhibition Name"
+msgstr "展览名称"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,emp_pos:0
+msgid "On Servers"
+msgstr "ERP上"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "Allowance"
+msgstr "Allowance"
+
+#. module: metro_hr
+#: sql_constraint:hr.emppay.alwded:0
+msgid "Name must be unique per Type!"
+msgstr "同种类型下名称不能重复!"
+
+#. module: metro_hr
+#: selection:hr.contract,ot_pay_holiday:0
+#: selection:hr.contract,ot_pay_holiday2:0
+#: selection:hr.contract,ot_pay_normal:0
+#: selection:hr.contract,ot_pay_normal2:0
+#: selection:hr.contract,ot_pay_weekend:0
+#: selection:hr.contract,ot_pay_weekend2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_holiday:0
+#: selection:hr.contract.emppay.batchset,ot_pay_holiday2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_normal:0
+#: selection:hr.contract.emppay.batchset,ot_pay_normal2:0
+#: selection:hr.contract.emppay.batchset,ot_pay_weekend:0
+#: selection:hr.contract.emppay.batchset,ot_pay_weekend2:0
+msgid "Wage"
+msgstr "工资"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_attend2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_attend2
+msgid "Wage(attend)2"
+msgstr "5天制出勤工资"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Are you sure canel this dimission order?"
+msgstr "你确认取消此离职单吗?"
+
+#. module: metro_hr
+#: field:hr.set.alwded,set_id:0
+#: field:hr.set.si,set_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_type
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_alwded_set_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_si_set_id
+msgid "unknown"
+msgstr "未知"
+
+#. module: metro_hr
+#: view:hr.employee:0
+msgid "Others"
+msgstr "其它"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.month:0
+msgid "Payrolls"
+msgstr "工资表"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync.emp,emp_code:0
+#: field:hr.emppay.alwded,code:0
+#: field:hr.emppay.ln.alwded,code:0
+#: field:hr.emppay.ln.si,code:0
+#: field:hr.emppay.si,code:0
+#: field:hr.rpt.attend.emp.day.line,emp_code:0
+#: field:hr.rpt.attend.month.line,code:0
+#: field:hr.rpt.attend.month.line,emp_code:0
+msgid "Code"
+msgstr "编码"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_contract_dimission
+#: model:ir.ui.menu,name:metro_hr.menu_hr_dimission_contract
+msgid "Dimission Contracts"
+msgstr "离职合同"
+
+#. module: metro_hr
+#: field:hr.dimission.item,doc_file:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_doc_file
+msgid "Document"
+msgstr "文档附件"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Done Payroll"
+msgstr "完成的工资表"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync,sync_direction:0
+msgid "Delete Users"
+msgstr "删除用户"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_hr_emppay_sheet
+msgid "Payroll"
+msgstr "薪酬"
+
+#. module: metro_hr
+#: field:hr.wt.grp.line,date_to:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_date_search_to
+#: model:ir.model.fields,field_description:metro_hr.field_hr_wt_grp_line_date_to
+msgid "To Date"
+msgstr "到"
+
+#. module: metro_hr
+#: view:hr.wt.grp:0
+msgid "Work times"
+msgstr "Work times"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+msgid "Today's Valid"
+msgstr "今天有效"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_seq
+#: model:ir.model.fields,field_description:metro_hr.field_hr_department_sequence
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_seq
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_seq
+#: model:ir.model.fields,field_description:metro_hr.field_hr_worktime_type_sequence
+msgid "Sequence"
+msgstr "序号"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.emp.day,rpt_lines:0
+#: field:hr.rpt.attend.month,rpt_lines:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_rpt_lines
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_rpt_lines
+msgid "Report Line"
+msgstr "报表行"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_wage_total
+msgid "Total Wage"
+msgstr "Total Wage"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_hours_work
+#: field:resource.calendar.attendance,hours_work:0
+msgid "Working hours"
+msgstr "工作时数"
+
+#. module: metro_hr
+#: field:hr.contract,si_total_company:0
+#: field:hr.contract.si,amount_company:0
+#: field:hr.emppay.ln.si,amount_company:0
+#: field:hr.emppay.si,amount_company:0
+#: field:hr.set.si,amount_company:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_amount_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_si_total_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_amount_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_amount_company
+#: model:ir.model.fields,field_description:metro_hr.field_hr_set_si_amount_company
+msgid "Company Amount"
+msgstr "公司金额"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "Code"
+msgstr "Code"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_punch_out_early
+#: field:resource.calendar.attendance,punch_out_early:0
+msgid "Sign out punching early"
+msgstr "签出早退"
+
+#. module: metro_hr
+#: field:hr.contract,alwded_ids:0
+#: field:hr.contract.emppay.batchset,alwded_ids:0
+#: view:hr.emppay.alwded:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_alwded_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_alwded_ids
+msgid "Allowance&Deduction"
+msgstr "补贴和扣费"
+
+#. module: metro_hr
+#: view:hr.contract:0
+#: view:hr.contract.emppay.batchset:0
+msgid "Allowance and Deduction"
+msgstr "补贴和扣费"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,hours_ot:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.notification:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_hours_ot
+msgid "OT Hours"
+msgstr "OT Hours"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.emp.day.line:0
+#: model:ir.actions.act_window,name:metro_hr.act_empday_rpt_2_line
+msgid "Attendances Daily Report Line"
+msgstr "出勤日报表行"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "公司社保(本月/全年) / Company SI(month/year):"
+msgstr "公司社保(本月/全年) / Company SI(month/year):"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Verified Slip"
+msgstr "已验证工资条"
+
+#. module: metro_hr
+#: field:hr.clock,ip:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_ip
+msgid "IP Address"
+msgstr "IP地址"
+
+#. module: metro_hr
+#: model:ir.actions.report.xml,name:metro_hr.report_hr_welcome_checklist
+msgid "Welcome Cheklist"
+msgstr "Welcome Cheklist"
+
+#. module: metro_hr
+#: field:exhibit.calendar,exhibit_type_id:0
+#: model:ir.model,name:metro_hr.model_exhibit_type
+#: model:ir.model.fields,field_description:metro_hr.field_exhibit_calendar_exhibit_type_id
+msgid "Exhibition Type"
+msgstr "展览类型"
+
+#. module: metro_hr
+#: view:hr.attend.calc.action:0
+msgid "Calculate"
+msgstr "计算"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_we2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_we2
+msgid "Wage(OT Weekend)2"
+msgstr "5天制周末加班工资"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_hr_att_tole_late_early_default
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_tolerence_late_early_default
+#: field:res.company,hr_att_tole_late_early_default:0
+#: field:resource.calendar,tolerence_late_early_default:0
+msgid "Default Late/Early Tolerance (minutes)"
+msgstr "默认迟到早退偏移时间(分钟)"
+
+#. module: metro_hr
+#: view:hr.employee:0
+#: view:hr.wt.grp:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_wt_grp
+#: model:ir.ui.menu,name:metro_hr.menu_hr_wt_grp
+msgid "Working Time Group"
+msgstr "班次分组"
+
+#. module: metro_hr
+#: field:hr.attendance,calendar_id:0
+#: view:hr.worktime.type:0
+#: view:hr.wt.grp:0
+#: field:hr.wt.grp.line,calendar_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_calendar_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_wt_grp_line_calendar_id
+msgid "Working Time"
+msgstr "班次"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_punch_out_stop
+#: field:resource.calendar.attendance,punch_out_stop:0
+msgid "Sign out punching stop"
+msgstr "签出结束"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+msgid "This will clear the original Allowance&Deduction, Social Insurance, and add the new"
+msgstr "此操作将删除原来的补贴,扣费和社保配置,增加新的"
+
+#. module: metro_hr
+#: field:hr.contract.emppay.batchset,contract_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_contract_ids
+msgid "Contracts"
+msgstr "合同"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_bonus2:0
+#: report:hr.emppay.slip:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_bonus2
+msgid "Bonus"
+msgstr "Bonus"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_users_img_emp
+#: field:res.users,img_emp:0
+msgid "Image"
+msgstr "图片"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync,emp_ids_clock:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_ids_clock
+msgid "Clock Employees"
+msgstr "考勤机员工"
+
+#. module: metro_hr
+#: field:hr.employee,web_chat_no:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_web_chat_no
+msgid "QQ#"
+msgstr "QQ#"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_emp_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_alwded_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_alwded_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ln_si_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_si_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_emp_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_emp_code
+msgid "Code"
+msgstr "代码"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Bunk#:"
+msgstr "Bunk#:"
+
+#. module: metro_hr
+#: field:hr.emppay,company_currency_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_company_currency_id
+msgid "Company Currency"
+msgstr "公司币种"
+
+#. module: metro_hr
+#: view:hr.emppay.si:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_emppay_si
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emppay_si
+msgid "Social Insurances"
+msgstr "社会保险"
+
+#. module: metro_hr
+#: view:hr.emp.wtgrp.set:0
+#: view:hr.wt.grp:0
+#: model:ir.actions.act_window,name:metro_hr.action_hr_emp_wtgrp_set_batch
+#: model:ir.ui.menu,name:metro_hr.menu_hr_emp_wtgrp_set_batch
+msgid "Set Working Time Group"
+msgstr "设置班次分组"
+
+#. module: metro_hr
+#: field:resource.calendar.attendance,days_work2:0
+msgid "Work Days2"
+msgstr "5天制应出勤天数"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "工资总额"
+msgstr "工资总额"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_we:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_we
+msgid "Wage(OT Weekend)"
+msgstr "周末加班工资"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "Attended Days"
+msgstr "Attended Days"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "Refuse"
+msgstr "拒绝"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_dimission
+msgid "Employee Dimission"
+msgstr "员工离职单"
+
+#. module: metro_hr
+#: field:hr.holidays,ticket_approve_id2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_holidays_ticket_approve_id2
+msgid "CEO Approval(ticket)"
+msgstr "厂部批准(纸质单)"
+
+#. module: metro_hr
+#: selection:hr.dimission,state:0
+msgid "In Progress"
+msgstr "进行中"
+
+#. module: metro_hr
+#: selection:hr.dimission.item,state_approve:0
+msgid "Approved"
+msgstr "通过"
+
+#. module: metro_hr
+#: help:res.company,hr_holiday_leave_second_approve_days:0
+msgid "The maximal days that do not need CEO approval "
+msgstr "超过此天数需要厂部批准"
+
+#. module: metro_hr
+#: field:hr.dimission,state:0
+msgid "Status"
+msgstr "状态"
+
+#. module: metro_hr
+#: view:hr.analytic.timesheet:0
+msgid "{'employee_id':employee_id}"
+msgstr "{'employee_id':employee_id}"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "Duration"
+msgstr "间隔"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+msgid "Monthly Report"
+msgstr "考勤月报表"
+
+#. module: metro_hr
+#: field:attend.empday.group.line,sign_in_a:0
+#: field:attend.empday.group.line,sign_in_b:0
+#: field:attend.empday.group.line,sign_in_c:0
+#: field:hr.rpt.attend.emp.day.line,sign_in:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_sign_in_a
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_sign_in_b
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_sign_in_c
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_sign_in
+msgid "Sign In"
+msgstr "签入"
+
+#. module: metro_hr
+#: selection:hr.dimission,state:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Computer ID:"
+msgstr "Computer ID:"
+
+#. module: metro_hr
+#: help:res.company,hr_att_no_out_option:0
+#: help:resource.calendar,no_out_option:0
+msgid " the configuration how to deal with the attendance only have sign out"
+msgstr "没有签出记录的处理方式"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+msgid "Verify"
+msgstr "验证"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "员工"
+msgstr "员工"
+
+#. module: metro_hr
+#: field:hr.employee,hourly_rate:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_hourly_rate
+msgid "Hourly Rate"
+msgstr "小时费率"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Name Tag:"
+msgstr "Name Tag:"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "应发工资"
+msgstr "应发工资"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "Utilities"
+msgstr "Utilities"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_ot_holiday:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_ot_holiday
+msgid "Wage of Holiday OT"
+msgstr "节假日加班工资"
+
+#. module: metro_hr
+#: view:hr.rpt.attend.emp.day:0
+#: field:hr.rpt.attend.emp.day,emp_ids:0
+#: field:hr.rpt.attend.emp.day.wizard,emp_ids:0
+#: view:hr.rpt.attend.month:0
+#: field:hr.rpt.attend.month,emp_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_emp_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_wizard_emp_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_emp_ids
+msgid "Selected Employees"
+msgstr "选择的员工"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_net:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_net
+msgid "Wage(Net)"
+msgstr "实发工资"
+
+#. module: metro_hr
+#: field:hr.contract,multi_images:0
+#: field:hr.employee,multi_images:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_multi_images
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_multi_images
+msgid "Multi Images"
+msgstr "多图片"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Generate from Attendance Report"
+msgstr "从考勤报表生成"
+
+#. module: metro_hr
+#: field:hr.clock,active:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_active
+msgid "Active"
+msgstr "有效"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "高温补贴"
+msgstr "高温补贴"
+
+#. module: metro_hr
+#: field:hr.emppay,state:0
+#: field:hr.emppay.sheet,state:0
+#: field:hr.rpt.attend.emp.day,state:0
+#: field:hr.rpt.attend.emp.day.line,state:0
+#: field:hr.rpt.attend.month,state:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_state
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_state
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_state
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_state
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_state
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_state
+msgid "Status"
+msgstr "状态"
+
+#. module: metro_hr
+#: field:hr.employee,business_card:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_business_card
+msgid "Business Cards"
+msgstr "名片"
+
+#. module: metro_hr
+#: field:hr.clock,message_follower_ids:0
+#: field:hr.emppay.sheet,message_follower_ids:0
+#: field:hr.rpt.attend.month,message_follower_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_message_follower_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_message_follower_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_message_follower_ids
+msgid "Followers"
+msgstr "Followers"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_rpt_attend_emp_day_line
+msgid "HR Attendance Employee Day Report Lines"
+msgstr "出勤日报表明细"
+
+#. module: metro_hr
+#: field:hr.wt.grp.line,grp_id:0
+msgid "Group"
+msgstr "Group"
+
+#. module: metro_hr
+#: help:res.company,hr_att_no_out_time:0
+#: help:resource.calendar,no_out_time:0
+msgid "if 'Leave Early', then this field identify the minutes that will be substract from the 'WorkHours'"
+msgstr "如果设为\"早退\",此为从\"工作时数\"里面减掉的分钟数"
+
+#. module: metro_hr
+#: sql_constraint:hr.clock:0
+msgid "Clock name must be unique!"
+msgstr "考勤机名字必须唯一!"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot2
+msgid "Wage(OT)2"
+msgstr "5天制加班工资"
+
+#. module: metro_hr
+#: field:hr.emp.wtgrp.set,emp_ids:0
+msgid "Employees"
+msgstr "选择员工"
+
+#. module: metro_hr
+#: field:attend.empday.group,attend_month_line_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_attend_month_line_id
+msgid "Attend Month Line"
+msgstr "月考勤报表行"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_users_img_emp_medium
+#: field:res.users,img_emp_medium:0
+msgid "Medium-sized image"
+msgstr "中照片"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "周末加班"
+msgstr "周末加班"
+
+#. module: metro_hr
+#: help:hr.contract.alwded,attend_field:0
+#: help:hr.emppay.alwded,attend_field:0
+#: help:hr.set.alwded,attend_field:0
+msgid "Associated field in the attendance report."
+msgstr "月出勤报表相关字段"
+
+#. module: metro_hr
+#: field:hr.dimission,emp_code:0
+msgid "Employee Code"
+msgstr "工号"
+
+#. module: metro_hr
+#: field:hr.employee,name_tag:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_name_tag
+msgid "Name Tag"
+msgstr "姓名标签"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_work:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_work
+msgid "Wage(Work)"
+msgstr "工作工资"
+
+#. module: metro_hr
+#: selection:resource.calendar,type:0
+msgid "Simple"
+msgstr "简单"
+
+#. module: metro_hr
+#: field:hr.dimission.item.template,type:0
+msgid "Type"
+msgstr "类型"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_attend_empday_group
+msgid "attend.empday.group"
+msgstr "attend.empday.group"
+
+#. module: metro_hr
+#: field:hr.emppay.sheet,message_unread:0
+msgid "Unread Messages"
+msgstr "Unread Messages"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "5天制实出勤"
+msgstr "5天制实出勤"
+
+#. module: metro_hr
+#: view:hr.attendance:0
+msgid "Recalculate Action"
+msgstr "重新计算动作"
+
+#. module: metro_hr
+#: field:hr.employee,emp_code:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_emp_code
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_emp_code
+msgid "Employee Code"
+msgstr "编号"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync.emp,order_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_order_id
+msgid "Sync Order"
+msgstr "Sync Order"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+#: field:hr.dimission,transfer_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_transfer_ids
+msgid "Transfers"
+msgstr "交接"
+
+#. module: metro_hr
+#: selection:hr.dimission.item,type:0
+#: selection:hr.dimission.item.template,type:0
+msgid "Approval"
+msgstr "审批"
+
+#. module: metro_hr
+#: field:hr.employee,recruit_source_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_recruit_source_id
+msgid "Recruitment Source"
+msgstr "入职渠道"
+
+#. module: metro_hr
+#: view:hr.contract.emppay.batchset:0
+msgid "Select contracts to set"
+msgstr "选择需设置的合同"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.exhibition_calendar_action
+#: model:ir.ui.menu,name:metro_hr.menu_exhibition_calendar_action
+msgid "Exhibitions"
+msgstr "展览"
+
+#. module: metro_hr
+#: field:attend.empday.group,emp_id:0
+#: field:hr.analytic.timesheet,employee_id:0
+#: field:hr.emppay,employee_id:0
+#: field:hr.emppay.rpt.emp.year,employee_id:0
+#: view:hr.rpt.attend.emp.day.line:0
+#: field:hr.rpt.attend.emp.day.line,emp_id:0
+#: field:hr.rpt.attend.month.line,emp_id:0
+#: model:ir.model,name:metro_hr.model_hr_employee
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_emp_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_analytic_timesheet_employee_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_employee_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_process_emp_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_employee_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_employee_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_emp_day_line_emp_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_emp_id
+#: model:ir.model.fields,field_description:metro_hr.field_res_users_employee_id
+#: field:res.users,employee_id:0
+msgid "Employee"
+msgstr "员工"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_attendance_punch_out_start
+#: field:resource.calendar.attendance,punch_out_start:0
+msgid "Sign out punching start"
+msgstr "签出开始"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_contract_si
+#: model:ir.model,name:metro_hr.model_hr_set_si
+msgid "Contacts Salary Social Insurance"
+msgstr "合同的社保"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Attendance2"
+msgstr "5天制考勤"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "Apartment"
+msgstr "Apartment"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.rpt.attend.emp.day.line:0
+msgid "Group By..."
+msgstr "分组..."
+
+#. module: metro_hr
+#: field:attend.empday.group,name:0
+#: field:attend.empday.group.line,group_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_line_group_id
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_name
+#: model:ir.model.fields,field_description:metro_hr.field_hr_wt_grp_line_grp_id
+msgid "Group"
+msgstr "组"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Execute"
+msgstr "执行"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Employess"
+msgstr "员工"
+
+#. module: metro_hr
+#: field:hr.emppay,wage2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage2
+msgid "Contract Wage2"
+msgstr "合同基本工资"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "Other Deduction"
+msgstr "Other Deduction"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "Meal"
+msgstr "Meal"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Draft Slip"
+msgstr "草稿工资条"
+
+#. module: metro_hr
+#: field:hr.employee,employment_start:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_employment_start
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_employment_start
+msgid "Employment Started"
+msgstr "就业开始"
+
+#. module: metro_hr
+#: field:hr.emppay,hours_ot_we:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_hours_ot_we
+msgid "Hours OT(Week End)"
+msgstr "加班时数(周末)"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,help:metro_hr.action_emp_worktime
+msgid "Define working hours of employees"
+msgstr "定义员工的工作小时数"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,alw_house:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_alw_house
+msgid "House"
+msgstr "住宿"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "补贴/Allowances:"
+msgstr "补贴/Allowances:"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "Mode"
+msgstr "模式"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_wt_grp_line
+msgid "working time group line"
+msgstr "working time group line"
+
+#. module: metro_hr
+#: view:hr.contract:0
+#: view:hr.contract.emppay.batchset:0
+#: view:hr.emppay:0
+#: view:hr.emppay.si:0
+msgid "Employee Total"
+msgstr "员工缴费总计"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "个人社保"
+msgstr "个人社保"
+
+#. module: metro_hr
+#: field:attend.empday.group,period_type_b_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_period_type_b_id
+msgid "Worktime B"
+msgstr "Worktime B"
+
+#. module: metro_hr
+#: help:res.company,hr_att_tole_start_stop_default:0
+#: help:resource.calendar,tolerence_start_stop_default:0
+msgid "default tolerance for the punching start/stop time comparing to the resource_calendar_attendance's hour from/to"
+msgstr "默认相对上下班时间点,可打卡的时间间隔,在(上班时间-间隔(分钟)) 到 (上班时间+间隔(分钟)) / (下班时间-间隔(分钟)) 到 (下班时间+间隔(分钟)), 时间段内可以打卡"
+
+#. module: metro_hr
+#: view:hr.dimission:0
+msgid "Confirm"
+msgstr "确认"
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "Refresh Clock Info"
+msgstr "刷新考勤机信息"
+
+#. module: metro_hr
+#: field:hr.attendance,clock_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_clock_id
+msgid "Clock"
+msgstr "考勤机"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_transfer_ids
+#: field:res.company,transfer_ids:0
+msgid "Dimission Transfers"
+msgstr "离职交接"
+
+#. module: metro_hr
+#: help:hr.rpt.attend.month,state:0
+msgid ""
+"* When the report is created the status is 'Draft'.            \n"
+"* If the report is confirmed, the status is 'Waiting Approve'.             \n"
+"* If the report is approved then status is set to 'Done'.            \n"
+"* If the report is rejected then status is set to 'Rejected'.            \n"
+"* When user cancel payslip the status is 'Cancel'."
+msgstr ""
+"* When the report is created the status is 'Draft'.            \n"
+"* If the report is confirmed, the status is 'Waiting Approve'.             \n"
+"* If the report is approved then status is set to 'Done'.            \n"
+"* If the report is rejected then status is set to 'Rejected'.            \n"
+"* When user cancel payslip the status is 'Cancel'."
+
+#. module: metro_hr
+#: view:hr.clock:0
+msgid "Delete Employees on Clock"
+msgstr "删除考勤机上的员工"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Emergency Contact:"
+msgstr "Emergency Contact:"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,target_state:0
+msgid "Missing"
+msgstr "不存在"
+
+#. module: metro_hr
+#: sql_constraint:hr.employee:0
+msgid "Employee Code must be unique!"
+msgstr "员工编码不能重复"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync.emp:0
+#: view:hr.employee:0
+#: view:hr.emppay:0
+#: field:hr.send.checklist,emp_ids:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emp_wtgrp_set_emp_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_send_checklist_emp_ids
+#: model:ir.ui.menu,name:metro_hr.menu_hr_employee_my
+msgid "Employees"
+msgstr "员工"
+
+#. module: metro_hr
+#: selection:hr.clock.emp.sync.emp,target_state:0
+msgid "Exist with Difference"
+msgstr "已存在并且有差异"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "扣费"
+msgstr "扣费"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "Days of work injury Holiday"
+msgstr "Days of work injury Holiday"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: selection:hr.emppay,state:0
+#: selection:hr.emppay.sheet,state:0
+msgid "Paid"
+msgstr "已付"
+
+#. module: metro_hr
+#: field:hr.employee,computer_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_computer_id
+msgid "Computer ID"
+msgstr "计算机ID"
+
+#. module: metro_hr
+#: view:res.company:0
+#: view:resource.calendar:0
+msgid "Minutes"
+msgstr "分钟"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_employee_holidaycalendar
+msgid "Holiday Calendar Dates"
+msgstr "假期日历日期"
+
+#. module: metro_hr
+#: field:hr.attendance,write_date:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_attendance_write_date
+msgid "Modify Date"
+msgstr "修改日期"
+
+#. module: metro_hr
+#: field:hr.clock.emp.sync.emp,emp_card_id:0
+#: field:hr.employee,emp_card_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_clock_emp_sync_emp_emp_card_id
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_emp_card_id
+msgid "Employee Card ID"
+msgstr "卡号"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Print Slips"
+msgstr "打印工资条"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "法定节假日加班小时"
+msgstr "法定节假日加班小时"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "加班时数(周末)"
+msgstr "加班时数(周末)"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "平时加班"
+msgstr "平时加班"
+
+#. module: metro_hr
+#: view:hr.emppay.sheet:0
+msgid "Print India Slips"
+msgstr "打印印度工资条"
+
+#. module: metro_hr
+#: selection:attend.empday.group.line,weekday:0
+#: selection:hr.rpt.attend.emp.day.line,p_weekday:0
+msgid "Sunday"
+msgstr "日"
+
+#. module: metro_hr
+#: field:hr.emppay,wage_ot_total:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_wage_ot_total
+msgid "Wage(OT Total)"
+msgstr "总加班工资"
+
+#. module: metro_hr
+#: report:hr.welcome.checklist:0
+msgid "Known Allergies:"
+msgstr "Known Allergies:"
+
+#. module: metro_hr
+#: field:hr.contract,ot_pay_holiday2:0
+#: field:hr.contract.emppay.batchset,ot_pay_holiday2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_emppay_batchset_ot_pay_holiday2
+#: model:ir.model.fields,field_description:metro_hr.field_hr_contract_ot_pay_holiday2
+msgid "Holiday OT Pay by five days"
+msgstr "Holiday OT Pay by five days"
+
+#. module: metro_hr
+#: selection:hr.contract.alwded,type:0
+#: view:hr.emppay:0
+#: field:hr.emppay,ded_ids:0
+#: field:hr.emppay,ded_total:0
+#: selection:hr.emppay.alwded,type:0
+#: selection:hr.emppay.ln.alwded,type:0
+#: field:hr.emppay.rpt.emp.year,ded_total:0
+#: field:hr.emppay.sheet,ded_total:0
+#: selection:hr.set.alwded,type:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ded_ids
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ded_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_ded_total
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_sheet_ded_total
+msgid "Deduction"
+msgstr "扣费"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_item_process_date
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_salaryhistory_date
+msgid "Date"
+msgstr "日期"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "Number of Days"
+msgstr "天数"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "个税"
+msgstr "个税"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_hr_att_no_out_option
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_no_out_option
+#: field:res.company,hr_att_no_out_option:0
+#: field:resource.calendar,no_out_option:0
+msgid "How to Deal No Sign Out"
+msgstr "无签出处理方式"
+
+#. module: metro_hr
+#: field:hr.emppay.rpt.emp.year,wage_pay:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_rpt_emp_year_wage_pay
+msgid "Wage should Pay"
+msgstr "应发工资"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+msgid "Work Days"
+msgstr "Work Days"
+
+#. module: metro_hr
+#: view:hr.clock.emp.sync:0
+msgid "Sync Options"
+msgstr "同步选项"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: selection:hr.emppay,state:0
+#: view:hr.emppay.sheet:0
+#: selection:hr.emppay.sheet,state:0
+#: view:hr.rpt.attend.emp.day:0
+#: selection:hr.rpt.attend.emp.day,state:0
+#: selection:hr.rpt.attend.emp.day.line,state:0
+#: view:hr.rpt.attend.month:0
+#: selection:hr.rpt.attend.month,state:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: metro_hr
+#: view:exhibit.calendar:0
+#: model:ir.model,name:metro_hr.model_exhibit_calendar
+msgid "Exhibition Calendar"
+msgstr "展览日历"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+msgid "住宿"
+msgstr "住宿"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,ded_other:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_ded_other
+msgid "Other Deduction"
+msgstr "其他扣费"
+
+#. module: metro_hr
+#: field:attend.empday.group,period_type_c_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_period_type_c_id
+msgid "Worktime C"
+msgstr "Worktime C"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.month:0
+msgid "Dates"
+msgstr "日期"
+
+#. module: metro_hr
+#: field:hr.emppay,ded_total_local:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_ded_total_local
+msgid "Deduction Local"
+msgstr "扣费(本币)"
+
+#. module: metro_hr
+#: model:ir.model.fields,field_description:metro_hr.field_res_company_hr_att_no_in_option
+#: model:ir.model.fields,field_description:metro_hr.field_resource_calendar_no_in_option
+#: field:res.company,hr_att_no_in_option:0
+#: field:resource.calendar,no_in_option:0
+msgid "How to Deal No Sign In"
+msgstr "无签入处理方式"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+msgid "出勤工资"
+msgstr "出勤工资"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "–"
+msgstr "–"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_rpt_attend_emp_day_wizard
+msgid "Generate daily attendances"
+msgstr "生成日考勤表"
+
+#. module: metro_hr
+#: field:hr.employee,degree_id:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_degree_id
+msgid "Degree"
+msgstr "学历"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: field:hr.emppay,attend_id:0
+#: view:hr.rpt.attend.emp.day:0
+#: view:hr.rpt.attend.month:0
+#: model:ir.model,name:metro_hr.model_hr_attendance
+#: model:ir.model.fields,field_description:metro_hr.field_hr_emppay_attend_id
+#: view:res.company:0
+msgid "Attendance"
+msgstr "考勤"
+
+#. module: metro_hr
+#: view:hr.send.checklist:0
+#: model:ir.model,name:metro_hr.model_hr_send_checklist
+msgid "Send Employee Welcome Checklist"
+msgstr "发送员工欢迎清单"
+
+#. module: metro_hr
+#: model:ir.model,name:metro_hr.model_hr_emp_wtgrp_set
+msgid "Set Employee Working Time Group"
+msgstr "设置员工班次分组"
+
+#. module: metro_hr
+#: help:resource.calendar.attendance,hours_work_normal:0
+msgid "[Working hours] - [Working hours(OT)]"
+msgstr "[[工作时数] - [加班时数]"
+
+#. module: metro_hr
+#: field:hr.dimission,advice_to_company:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_dimission_advice_to_company
+msgid "Advice to company"
+msgstr "对公司的建议"
+
+#. module: metro_hr
+#: view:hr.holidays:0
+msgid "Leave Request"
+msgstr "准假申请"
+
+#. module: metro_hr
+#: field:hr.employee,clock_fp8:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_employee_clock_fp8
+msgid "Finger Print8"
+msgstr "指纹8"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot2_nonwe:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot2_nonwe
+msgid "Hours OT2 Non Weekend"
+msgstr "加班时数(非周末)"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,hours_ot_law_holiday:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_hours_ot_law_holiday
+msgid "Hours OT in Law Holiday"
+msgstr "法定节假日加班小时"
+
+#. module: metro_hr
+#: field:hr.rpt.attend.month.line,days_work2:0
+#: model:ir.model.fields,field_description:metro_hr.field_hr_rpt_attend_month_line_days_work2
+msgid "Days2"
+msgstr "5天制应出勤"
+
+#. module: metro_hr
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "实出勤"
+msgstr "实出勤"
+
+#. module: metro_hr
+#: field:hr.employee,major:0
+msgid "Major"
+msgstr "专业"
+
+#. module: metro_hr
+#: field:hr.employee,height:0
+msgid "Height"
+msgstr "身高"
+
+#. module: metro_hr
+#: field:hr.employee,weight:0
+msgid "Weight(kg)"
+msgstr "体重"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: view:hr.emppay.sheet:0
+msgid "Recompute"
+msgstr "重算"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Print Slip for Dimission"
+msgstr "打印l离职工资条"
+
+#. module: metro_hr
+#: model:ir.actions.report.xml,name:metro_hr.report_hr_emppay_slip_dimission
+msgid "Payslip for Dimission"
+msgstr "离职工资条"
+
+#. module: metro_hr
+#: field:hr.emppay,emp_took:0
+msgid "Slip Took"
+msgstr "已领"
+
+#. module: metro_hr
+#: field:hr.emppay,emp_took:0
+msgid "Slip Took"
+msgstr "已领"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+#: model:ir.actions.server,name:metro_hr.action_server_hr_emppay_take
+msgid "Take Slip"
+msgstr "领取工资"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Untook"
+msgstr "未领取"
+
+#. module: metro_hr
+#: view:hr.emppay:0
+msgid "Took"
+msgstr "已领取"
+
+########################manual########################
+#. module: metro_hr
+#: model:ir.ui.menu,name:metro_hr.menu_hr_root_dimission
+msgid "Dimission"
+msgstr "离职"
+
+#. module: metro_hr
+#: report:hr.emppay.slip:0
+#: report:hr.rpt.attend.month.general:0
+#: report:hr.rpt.attend.month.inspection:0
+#: report:hr.rpt.attend.month.notification:0
+msgid "Name"
+msgstr "Name"
+
+#. module: hr_attendance
+#: view:hr.attendance:0
+#: field:hr.employee,state:0
+#: model:ir.model,name:hr_attendance.model_hr_attendance
+msgid "Attendance"
+msgstr "考勤记录"
+
+#. module: hr_attendance
+#: model:ir.actions.act_window,name:hr_attendance.open_view_attendance
+#: model:ir.ui.menu,name:hr_attendance.menu_open_view_attendance
+msgid "Attendances"
+msgstr "考勤记录"
+
+#. module: hr_attendance
+#: model:ir.ui.menu,name:hr_attendance.menu_hr_attendance
+msgid "Attendances"
+msgstr "考勤"
+
+#. module: metro_hr
+#: selection:hr.attendance,action:0
+msgid "Invalid"
+msgstr "无效"
+
+#. module: metro_hr
+#: selection:hr.attendance,action:0
+msgid "Sign In Late"
+msgstr "迟到"
+
+#. module: metro_hr
+#: selection:hr.attendance,action:0
+msgid "Sign Out Early"
+msgstr "早退"
+
+#. module: hr_holidays
+#: model:ir.actions.act_window,name:hr_holidays.request_approve_allocation
+#: model:ir.ui.menu,name:hr_holidays.menu_request_approve_allocation
+msgid "Allocation Requests to Approve"
+msgstr "假期分配审核"
+
+#. module: hr_holidays
+#: view:hr.employee:0
+#: model:ir.actions.act_window,name:hr_holidays.act_hr_employee_holiday_request
+#: model:ir.ui.menu,name:hr_holidays.menu_open_ask_holidays
+msgid "Leaves"
+msgstr "假期"
+
+#. module: hr_holidays
+#: model:ir.ui.menu,name:hr_holidays.menu_request_approve_holidays
+msgid "Leave Requests to Approve"
+msgstr "请假申请审核"
+
+#. module: hr_holidays
+#: view:hr.holidays.summary.dept:0
+#: model:ir.actions.act_window,name:hr_holidays.action_hr_holidays_summary_dept
+#: model:ir.ui.menu,name:hr_holidays.menu_account_central_journal
+msgid "Leaves by Department"
+msgstr "部门的请假"
+
+#. module: hr_holidays
+#: view:hr.holidays:0
+#: model:ir.actions.act_window,name:hr_holidays.open_ask_holidays
+#: model:ir.ui.menu,name:hr_holidays.menu_open_ask_holidays_new
+msgid "Leave Requests"
+msgstr "请假申请"
+
+#. module: hr_holidays
+#: model:ir.ui.menu,name:hr_holidays.menu_open_view_holiday_status
+msgid "Leaves Types"
+msgstr "请假类型"
+
+#. module: hr_holidays
+#: xsl:holidays.summary:0
+#: view:hr.holidays:0
+#: view:hr.holidays.summary.employee:0
+#: model:ir.actions.act_window,name:hr_holidays.action_hr_holidays_summary_employee
+#: model:ir.actions.act_window,name:hr_holidays.open_company_allocation
+#: model:ir.actions.report.xml,name:hr_holidays.report_holidays_summary
+#: model:ir.ui.menu,name:hr_holidays.menu_open_company_allocation
+msgid "Leaves Summary"
+msgstr "请假汇总"
+
+#. module: hr_holidays
+#: model:ir.actions.act_window,name:hr_holidays.action_hr_available_holidays_report
+#: model:ir.ui.menu,name:hr_holidays.menu_hr_available_holidays_report_tree
+msgid "Leaves Analysis"
+msgstr "请假分析"
+
+#. module: hr_holidays
+#: view:hr.holidays:0
+#: model:ir.actions.act_window,name:hr_holidays.open_allocation_holidays
+#: model:ir.ui.menu,name:hr_holidays.menu_open_allocation_holidays
+msgid "Allocation Requests"
+msgstr "假期分配"
+
+#. module: metro_hr
+#: field:attend.empday.group,hours_ot:0
+#: model:ir.model.fields,field_description:metro_hr.field_attend_empday_group_hours_ot
+msgid "Overtime"
+msgstr "加班"
+
+#. module: metro_hr
+#: model:ir.actions.act_window,name:metro_hr.action_emp_worktime
+#: model:ir.ui.menu,name:metro_hr.menu_view_emp_resource_calendar
+msgid "Working Time"
+msgstr "班次管理"
+
+#. module: metro_hr
+#: code:addons/metro_hr/dimission/hr_dimission.py:173
+#, python-format
+msgid "Payslip is required for done!"
+msgstr "工资条必须设置才能完成离职!"
+
+#. module: metro_hr
+#: code:addons/metro_hr/dimission/hr_dimission.py:175
+#, python-format
+msgid "Borrowed residual must be zero for done!"
+msgstr "有借款余额不能离职!"
+
+#. module: metro_hr
+#: code:addons/metro_hr/dimission/hr_dimission.py:178
+#, python-format
+msgid "%s is not approved, can not finish the dimission!"
+msgstr "%s 审批项目未通过, 不能完成离职!"
+
+#. module: metro_hr
+#: code:addons/metro_hr/dimission/hr_dimission.py:181
+#, python-format
+msgid "%s is not approved, can not finish the dimission!"
+msgstr "%s 没有交接完毕, 不能完成离职!"
+
+#. module: metro_hr
+#: code:addons/metro_hr/emppay/hr_emppay.py:481
+#, python-format
+msgid "Generate payroll failed, no validate contracts were found for employee %s, please set contract and try again!"
+msgstr "生成工资表失败, 找不到员工 %s 的有效合同, 请设置合同后重试!"
+

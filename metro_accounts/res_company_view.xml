@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_company_form_ext">
+            <field name="name">view_company_form_ext</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+	            <field name="currency_id" position="after">
+	                <field name="report_bscn_id"/>
+	                <field name="report_plcn_id"/>
+	                <field name="report_cfcn_id"/>
+	            </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

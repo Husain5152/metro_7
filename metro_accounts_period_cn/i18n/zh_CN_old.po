@@ -1,0 +1,330 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* metro_accounts_period_cn
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-29 01:40+0000\n"
+"PO-Revision-Date: 2015-04-29 11:11+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+msgid "{'invisible':['|',('state','=','done'),('close_entry_done','=',True)]}"
+msgstr "{'invisible':['|',('state','=','done'),('close_entry_done','=',True)]}"
+
+#. module: metro_accounts_period_cn
+#: view:account.period.close.entry:0
+msgid "This wizard will generate the end of period journal entries of selected period. Note that you can run this wizard many times for the same period: it will simply replace the old closing entries with the new ones."
+msgstr "此向导将生成选定期间的结转会计凭证. 同一个期间, 你可以多次运行此向导, 如果已经生成结转凭证, 则系统会自动删除并生成新的凭证."
+
+#. module: metro_accounts_period_cn
+#: constraint:account.journal:0
+msgid ""
+"Error!\n"
+"Only one journal is allowed for Year Closing for one company."
+msgstr ""
+"错误!\n"
+"一个公司只允许有一个'年度结转'的账簿"
+
+#. module: metro_accounts_period_cn
+#: view:account.period:0
+msgid "Close Period"
+msgstr "关闭会计期间"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear.close.entry,journal_id:0
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_entry_journal_id
+msgid "Closing Journal"
+msgstr "结转账簿"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear.close.entry:0
+msgid "This wizard will generate the end of year journal entries of selected fiscal year. Note that you can run this wizard many times for the same yeat: it will simply replace the old closing entries with the new ones."
+msgstr "此向导将生成选定财务年度的结转会计凭证. 同一个年度, 你可以多次运行此向导, 如果已经生成结转凭证, 则系统会自动删除并生成新的凭证."
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear,close_entry_done:0
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_entry_done
+msgid "Close entry done"
+msgstr "已生成结转凭证"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model,name:metro_accounts_period_cn.model_account_journal
+msgid "Journal"
+msgstr "账簿"
+
+#. module: metro_accounts_period_cn
+#: model:ir.actions.act_window,name:metro_accounts_period_cn.action_account_year_close_entry_cancel
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_account_year_close_entry_cancel
+msgid "Cancel Year Closing Entries"
+msgstr "取消年度结转凭证"
+
+#. module: metro_accounts_period_cn
+#: selection:account.period.close.entry,auto_opt:0
+msgid "Post Entry and Close Period"
+msgstr "凭证登帐并且自动关闭期间"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model,name:metro_accounts_period_cn.model_validate_account_move
+msgid "Validate Account Move"
+msgstr "使凭证生效"
+
+#. module: metro_accounts_period_cn
+#: model:ir.actions.act_window,name:metro_accounts_period_cn.action_account_year_open_close
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_action_account_year_open_close
+msgid "Open a Closed Year"
+msgstr "打开关闭的年度"
+
+#. module: metro_accounts_period_cn
+#: model:ir.actions.act_window,name:metro_accounts_period_cn.action_account_period_open_close
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_action_account_period_open_close
+msgid "Open a Closed Period"
+msgstr "打开关闭的期间"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear.close.entry,company_id:0
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_accounts_period_cn
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_action_account_period_close_period
+msgid "Close a Period"
+msgstr "关闭一个会计期间"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+msgid "Closed"
+msgstr "已关闭"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model,name:metro_accounts_period_cn.model_account_period
+msgid "Account period"
+msgstr "会计期间"
+
+#. module: metro_accounts_period_cn
+#: help:account.period.close.entry,auto_opt:0
+msgid ""
+"1.Post Entry\n"
+"  auto post  the generated closing entry\n"
+"2.Post Entry and Close Period\n"
+"  auto post the generated closing entry, and close this period at last, but if this month is the last month of this year and company's 'Accounting Transfer Method' is 'Year', then this period will not be close, since the year closing need this period be opening to add closing entry"
+msgstr ""
+"1.凭证登帐\n"
+"  自动对生成的结转凭证进行登帐\n"
+"2.凭证登帐并关闭期间\n"
+"  自动对生成的结转凭证进行登帐, 并自动关闭此期间, 但是如果本月是一年的最后一个月, 并且公司配置的'科目结转方式'为'表结法'的时候, 则不会自动关闭此期间, 因为后面的年结需要此期间保持打开以便添加年结转凭证"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear.close.entry,notes:0
+msgid "Notes"
+msgstr "备注"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear.close.entry:0
+#: view:account.period.close.entry:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear.close.entry:0
+#: view:account.period.close.entry:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear.close.entry,fiscalyear_id:0
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_entry_fiscalyear_id
+msgid "Closing Year"
+msgstr "财务年"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_entry_notes
+msgid "Notes"
+msgstr "备注"
+
+#. module: metro_accounts_period_cn
+#: view:account.period:0
+msgid "Cancel Period Closing Entry"
+msgstr "取消期间结转凭证"
+
+#. module: metro_accounts_period_cn
+#: selection:account.fiscalyear.close.entry,auto_opt:0
+#: selection:account.period.close.entry,auto_opt:0
+msgid "None"
+msgstr "无"
+
+#. module: metro_accounts_period_cn
+#: view:account.period.close.entry:0
+#: model:ir.actions.act_window,name:metro_accounts_period_cn.action_account_period_close_entry
+#: model:ir.model,name:metro_accounts_period_cn.model_account_fiscalyear_close_entry
+#: model:ir.model,name:metro_accounts_period_cn.model_account_period_close_entry
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_account_period_close_entry
+msgid "Generate Period Closing Entries"
+msgstr "生成期间结转凭证"
+
+#. module: metro_accounts_period_cn
+#: help:account.fiscalyear.close.entry,company_id:0
+msgid "Company related to this journal"
+msgstr "账簿相关公司"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model,name:metro_accounts_period_cn.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear,need_open_period:0
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_need_open_period
+msgid "Generate Opening Period"
+msgstr "生成'开启/关闭'期间"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model,name:metro_accounts_period_cn.model_account_period_close
+msgid "period close"
+msgstr "关闭一个会计期间"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model,name:metro_accounts_period_cn.model_account_fiscalyear
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+#. module: metro_accounts_period_cn
+#: model:ir.actions.act_window,name:metro_accounts_period_cn.action_account_year_close
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_account_year_close
+msgid "Close a Year"
+msgstr "关闭一个财务年度"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear.close.entry,auto_opt:0
+#: field:account.period.close.entry,auto_opt:0
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_entry_auto_opt
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_period_close_entry_auto_opt
+msgid "Auto options"
+msgstr "自动操作"
+
+#. module: metro_accounts_period_cn
+#: view:account.period:0
+msgid "Closed"
+msgstr "已关闭"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+#: view:account.period:0
+msgid "Are you sure to cancel the closing entry?"
+msgstr "确认取消结转凭证吗?"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+#: view:account.period:0
+msgid "In Closing"
+msgstr "关闭中"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+msgid "Re-Open Year"
+msgstr "打开年度"
+
+#. module: metro_accounts_period_cn
+#: model:ir.actions.act_window,name:metro_accounts_period_cn.action_account_period_close_entry_cancel
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_account_period_close_entry_cancel
+msgid "Cancel Period Closing Entries"
+msgstr "取消期间结转凭证"
+
+#. module: metro_accounts_period_cn
+#: selection:account.fiscalyear.close.entry,auto_opt:0
+msgid "Post Entry and Close Last Period and Fiscal Year"
+msgstr "凭证登帐并且自动关闭期间和财务年"
+
+#. module: metro_accounts_period_cn
+#: constraint:account.journal:0
+msgid ""
+"Error!\n"
+"Only one journal is allowed for Period Closing for one company."
+msgstr ""
+"错误!\n"
+"一个公司只允许有一个'期间结转'的账簿"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear.close.entry:0
+#: model:ir.actions.act_window,name:metro_accounts_period_cn.action_account_fiscalyear_close_entry
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_account_fiscalyear_close_entry
+msgid "Generate Year Closing Entries"
+msgstr "生成年度结转凭证"
+
+#. module: metro_accounts_period_cn
+#: constraint:account.journal:0
+msgid ""
+"Error!\n"
+"Year and Period Closing flag can not be applied to same journal."
+msgstr ""
+"错误!\n"
+"'期间结转'和'年度结转'不能设置到统一个账簿"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+msgid "Are you sure to Re-Open this year?"
+msgstr "确认重新打开本财务年度吗?"
+
+#. module: metro_accounts_period_cn
+#: model:ir.ui.menu,name:metro_accounts_period_cn.menu_account_period_cn
+msgid "End of Period CN"
+msgstr "结束期间(中国)"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_entry_company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear,close_move_id:0
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_move_id
+msgid "Close Account Entries"
+msgstr "结转凭证"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+msgid "Are you sure to close this year?"
+msgstr "确认关闭本财务年度吗?"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+msgid "Cancel Year Closing Entry"
+msgstr "取消年度结转凭证"
+
+#. module: metro_accounts_period_cn
+#: model:ir.model,name:metro_accounts_period_cn.model_account_move
+msgid "Account Entry"
+msgstr "凭证"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear:0
+msgid "Close Year"
+msgstr "关闭财务年"
+
+#. module: metro_accounts_period_cn
+#: selection:account.fiscalyear.close.entry,auto_opt:0
+#: selection:account.period.close.entry,auto_opt:0
+msgid "Post Entry"
+msgstr "凭证登帐"
+
+#. module: metro_accounts_period_cn
+#: field:account.fiscalyear,close_journal_period_id:0
+#: model:ir.model.fields,field_description:metro_accounts_period_cn.field_account_fiscalyear_close_journal_period_id
+msgid "Close Journal Period"
+msgstr "结转凭证期间"
+
+#. module: metro_accounts_period_cn
+#: view:account.fiscalyear.close.entry:0
+#: view:account.period.close.entry:0
+msgid "Create"
+msgstr "创建"
+

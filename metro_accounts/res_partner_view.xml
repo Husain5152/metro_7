@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_partner_tree_account" model="ir.ui.view">
+            <field name="name">view_partner_tree_account</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+	            <field name="name" position="after">
+                    <field name="credit" groups="account.group_account_invoice"/>
+                    <field name="debit" groups="account.group_account_invoice"/>
+            		<button name="%(account.act_account_partner_account_move_all)d" type="action"  string="Receivables &amp; Payables" icon="gtk-justify-fill"/>
+	            </field>
+            </field>
+        </record>
+        <record id="view_partner_form_account" model="ir.ui.view">
+            <field name="name">view_partner_form_account</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            	<div name="buttons" position="inside">
+            		<button name="%(account.act_account_partner_account_move_all)d" type="action"  
+            		string="Receivables &amp; Payables"
+            		groups="account.group_account_invoice"/>
+            	</div>
+            </field>
+        </record>
+
+    </data>
+</openerp>

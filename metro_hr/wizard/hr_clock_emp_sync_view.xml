@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <act_window name="Sync Employees with Clock"
+            res_model="hr.clock.emp.sync"
+            src_model="hr.employee"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="action_hr_clock_emp_sync"
+            groups="base.group_hr_user"/>
+           
+        <record id="view_hr_clock_emp_sync_form" model="ir.ui.view">
+            <field name="name">view_hr_clock_emp_sync_form</field>
+            <field name="model">hr.clock.emp.sync</field>
+            <field name="arch" type="xml">
+                <form string="Sync Employees with Clock" version="7.0" edit="0">
+                   <group name="step_clock" string="Select Clock" attrs="{'invisible':[('step_no','!=','clock')]}">
+	                	<field name="clock_id" class="oe_inline"/>
+			            <field name="sync_direction" class="oe_inline" invisible="context.get('default_sync_direction')"/>
+                   </group>
+                   <group name="step_employee_s2c" string="Select Employess of Server" attrs="{'invisible':['|',('step_no','!=','employee'),('sync_direction','!=','server2clock')]}">
+<!--                    <group name="step_employee_s2c" string="Employess of Server" 
+                   		attrs="{'invisible':[('step_no', '!=', 'sync'), '|',('step_no','!=','employee'),('sync_direction','!=','server2clock')]}"> -->
+	                    <field name="emp_ids_server" colspan="2" nolabel="1">
+		                    <tree string="Employess" editable="bottom" create="1" edit="0" delete="1">
+			                    	<field name="emp_code"/>
+			                    	<field name="name"/>
+			                    	<field name="emp_card_id"/>
+			                    	<field name="clock_role"/>
+		                    </tree>
+		                </field>
+                   </group>
+                   <group name="step_employee_c2s" string="Select Employess of Clock" 
+                   		attrs="{'invisible':['|',('step_no','!=','employee'),('sync_direction','not in',('clock2server','user2delete'))]}">
+                   <!-- <group name="step_employee_c2s" string="Employess of Clock" 
+                   		attrs="{'invisible':[('step_no', '!=', 'sync'), '|',('step_no','!=','employee'),('sync_direction','!=','clock2server')]}"> -->
+                   		<field name="id" invisible="1"/>
+	                    <field name="emp_ids_clock" colspan="2" nolabel="1" domain="[('order_id','=',id)]"
+	                    	context="{'form_view_ref':'metro_hr.hr_clock_emp_sync_emp_tree'}">
+		                    <tree string="Employess" editable="bottom" create="1" edit="0" delete="1">
+			                    	<field name="emp_code"/>
+			                    	<field name="emp_name"/>
+			                    	<field name="emp_card_id"/>
+			                    	<field name="clock_role"/>
+		                    </tree>
+		                </field>
+                   </group>
+                   <group name="step_sync" attrs="{'invisible':[('step_no','!=','sync')]}">
+	                    <div>
+		                	<!-- sync data options -->
+		                	<div name="div_sync" attrs="{'invisible':[('sync_direction','not in',('server2clock','clock2server'))]}">
+			                	<separator string="Sync Options"/>
+			                  	<field name="sync_opt_base"/> <label for="sync_opt_base"/>
+			                  	<field name="sync_opt_fp"/> <label for="sync_opt_fp"/>
+			                  	<field name="sync_opt_pwd"/> <label for="sync_opt_pwd"/>
+				                <separator string="Employess to Sync"/>
+			                </div>
+		                    <field name="emp_ids_sync" colspan="2" nolabel="1">
+			                    <tree string="Employess to Sync" editable="bottom" create="0" edit="0" delete="1">
+				                    	<field name="emp_code"/>
+				                    	<field name="emp_name"/>
+				                    	<field name="emp_card_id"/>
+				                    	<field name="clock_role"/>
+				                    	<field name="target_state"/>
+			                    </tree>
+			                </field>
+	                    </div>
+                   </group>
+                <footer>
+                	<field name="step_no" invisible="1"/>
+		            <button name="step_prev" string="Previous" type="object"  attrs="{'invisible':[('step_no','=','clock')]}"/>
+		            <button name="step_next" string="Next" type="object"  attrs="{'invisible':[('step_no','=','sync')]}"/>
+		            <button name="do_exec" string="Execute" type="object" class="oe_highlight"  attrs="{'invisible':[('step_no','!=','sync')]}" confirm="Are you sure to execute?"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="hr_clock_emp_sync_emp_tree" model="ir.ui.view">
+            <field name="name">hr_clock_emp_sync_emp_tree</field>
+            <field name="model">hr.clock.emp.sync.emp</field>
+            <field name="arch" type="xml">
+                <tree string="Employees">
+                    <field name="emp_code"/>
+                    <field name="emp_name"/>
+                    <field name="emp_card_id"/>
+                    <field name="clock_role"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

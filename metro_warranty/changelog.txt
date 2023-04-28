@@ -1,0 +1,21 @@
+==================================================================================
+ Version ChangeLog (metro_warranty)
+==================================================================================
+0.04 by Dhwani on June 18, 2013
+	* Fixed the issue of customer and contacts that auto-populated from serial number, when the customer not defined in serials. 
+	* Fixed the issue of 'access error' for manager.
+
+0.03 by Nicholas on June 17th, 2013
+	* Added logo
+	* Changed XML to show only the Issue and Resolution char fields.
+
+0.02 by Dhwani on June 17, 2013
+	* Made the fields model, customer, contacts auto-populated from serial. 
+	
+0.01 by Dhwani on June 13, 2013
+	* Made the title field larger as it's on its own row.
+	* Added the model field to the form view, it displayed the value from serial number.
+	* Made the customer field related that set default value from the serial number.
+	* Added the contacts field that linked to the customer.
+	* Put the metro warranty user under the new application 'Metro Warranty'.
+	* Put the 'Issue' and 'resolution' under one2many field named 'Issues'.   

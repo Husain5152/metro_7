@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_shipping_list_wizard" model="ir.ui.view">
+            <field name="name">view_shipping_list_wizard</field>
+            <field name="model">shipping.list.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Shipping List Wizard" version="7.0">
+                    <group>
+                        <field name="po_id"/>
+                        <field name="break_do"/>
+                        <field name="break_id"/>
+                    </group>
+                    <footer>
+                        <button name="do_print_pdf" string="Print" type="object" class="oe_highlight"/>
+                        <button name="do_print_xls" string="Download Xls" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_shipping_list_wizard">
+            <field name="name">Shipping List Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipping.list.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_shipping_list_wizard"/>
+        </record>
+
+    </data>
+</openerp>
+

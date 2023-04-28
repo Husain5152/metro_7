@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data> 
+<!-- Engineering top menu item -->
+        <menuitem name="Engineering"
+            id="base.menu_eng_root"
+            groups="group_engineer_user,group_engineer_manager"
+            sequence="83"/> 
+        <menuitem name="Engineering"
+            id="menu_eng_engingeering"
+            parent="base.menu_eng_root"
+            sequence="1"/>             
+<!-- Engineer Project view and menu -->       
+        <record id="metro_view_project_engineer_tree" model="ir.ui.view">
+            <field name="name">metro_view_project_engineer_tree</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="arch" type="xml">
+            	<field name="name" position='after'>
+            		<field name="mfg_ids" widget='many2many_tags'/>
+            	</field>
+        	</field>    
+       	</record> 
+        <record model="ir.ui.view" id="metro_project_engineer_form_view">
+            <field name="name">metro_project_engineer_form_view</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+            	<page name="team" position="before">
+                    <page string="Engineer" name="engineer" attrs="{'invisible': [('project_type','!=','engineer')]}">
+                    	<group>
+                    		<group>
+			                    <label for="bom_id"/>
+			                    <div>
+			                        <field name="bom_id" class="oe_inline"/> 
+				            		<button string="Import BOM" name="%(metro_mrp.action_view_bom_import)d" type="action"/>
+			                    </div>
+								<field name="single_mrp_prod_order"/>  		
+                    		</group>
+                    		<group>
+	                    		<field name="product_id"/>
+	                    		<field name="mfg_ids" domain="[('state','in',('confirmed','engineer','manufacture'))]" widget="many2many_tags"/>
+                    		</group>
+                    	</group>
+                    	<!-- <label for='components'/>
+	                    <field name="bom_components" widget='one2many_tree'/> -->
+                    	<separator string="Tasks"/>
+                    	<field name="id" invisible="1"/>
+                    	<field name="tasks" context="{'default_project_id': id}"/>
+                    </page>
+            	</page>
+            </field>
+        </record>   
+        <record id="open_view_project_engineer" model="ir.actions.act_window">
+            <field name="name">Engineer Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="project.view_project_kanban"/>
+            <field name="search_view_id" ref="project.view_project_project_filter"/>
+            <field name="domain">[('project_type','=','engineer')]</field>
+            <field name="domain"></field>
+            <field name="context">{'search_default_Current': 1, 'default_project_type':'engineer'}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to start a new project.
+                </p><p>
+                  Projects are used to organize your activities; plan
+                  tasks, track issues, invoice timesheets. You can define
+                  internal projects (R&amp;D, Improve Sales Process),
+                  private projects (My Todos) or customer ones.
+                </p><p>
+                  You will be able collaborate with internal users on
+                  projects or invite customers to share your activities.
+                </p>
+            </field>
+        </record>
+		<menuitem action="open_view_project_engineer" id="menu_projects_engineer" parent="menu_eng_engingeering" sequence="1"/>
+                
+<!-- Engineer Tasks view and menu -->                
+        <record model="ir.ui.view" id="metro_project_task_engineer_form_view">
+            <field name="name">metro_project_task_engineer_form_view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+				<xpath expr="//page[@string='Extra Info']"  position="before">
+                    <page string="Bill of Material" name="bom" attrs="{'invisible':[('project_type','!=','engineer')]}">
+                    	<group>
+                    		<group>
+			                    <label for="bom_id"/>
+			                    <div>			                    
+			                        <field name="bom_id" class="oe_inline"/> 
+				            		<button string="Import BOM" name="%(metro_mrp.action_view_bom_import)d" type="action"/>
+			                    </div>	                    		
+                    		</group>
+                    		<group>
+	                    		<field name="product_id"/>
+                    		</group>
+                    	</group>
+                    	<label for='components'/>
+	                    <field name="components" widget='one2many_tree'/>
+                    </page>
+				</xpath>        	         
+            </field>
+        </record> 
+        <record id="action_view_task_engineer" model="ir.actions.act_window">
+            <field name="name">Engineer Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('project_type','=','engineer')]</field>
+            <field name="domain"></field>
+            <field name="context">{'default_project_type':'engineer'}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new task.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tasks in order to get things done efficiently. You can
+                track progress, discuss on tasks, attach documents, etc.
+              </p>
+            </field>
+        </record>
+        <record id="open_view_task_gtd_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">kanban</field>
+            <field name="act_window_id" ref="action_view_task_engineer"/>
+        </record>
+        <record id="open_view_task_gtd_list_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="action_view_task_engineer"/>
+        </record>
+        <menuitem action="action_view_task_engineer" id="menu_action_view_task_engineer" parent="menu_eng_engingeering" sequence="2"/>
+<!-- My Engineer Tasks -->        
+        <record id="action_view_task_engineer_my" model="ir.actions.act_window">
+            <field name="name">My Engineer Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('user_id','=',uid),('project_type','=','engineer')]</field>
+            <field name="domain">[('user_id','=',uid)]</field>            
+            <field name="context">{'default_project_type':'engineer'}</field>
+        </record>               
+        <menuitem action="action_view_task_engineer_my" id="menu_action_view_task_engineer_my" parent="menu_eng_engingeering" sequence="3"/>
+    </data>
+</openerp>

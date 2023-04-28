@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+<!-- customer payment -->    
+        <record id="invoice_payment_form" model="ir.ui.view">
+            <field name="name">invoice.payment.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<field name="payment_ids" position="before">
+            		<separator string="Payment vouchers"/>
+            		<field name="payment_voucher_ids" context="{'form_view_ref':'account_voucher.view_vendor_receipt_form'}"/>
+            		<separator string="Payment journal items"/>
+            	</field>
+            	<field name="payment_ids" position="after">
+            		<separator string="Sale Advance Payments"/>
+                    <field name="sale_payment_moves" widget="one2many_list" nolabel="1">
+                        <tree string="Payment Moves">
+                            <field name="name"/>
+                            <field name="narration" string="Description"/>
+                            <field name="journal_id" string="Payment Method"/>
+                            <field name="amount" string="Paid Amount"/>
+                            <field name="date" string="Date"/>
+                            <!-- this field is required since the above fields defined the 'states' in the account_move field definition  -->
+                            <field name="state"/>
+                        </tree>
+                    </field>
+            		<separator string="Sale Advance Payments journal items"/>
+                    <field name="sale_payment_ids" widget="one2many_list" nolabel="1">
+                        <tree string="Payment">
+                            <field name="name"/>
+                            <field name="journal_id" string="Payment Method"/>
+                            <field name="credit" string="Paid Amount"/>
+                            <field name="currency_id" string="Currency"/>
+                            <field name="amount_currency" string="Currency Amount"/>
+                            <field name="date" string="Date"/>
+                            <field name="amount_residual"/>
+                            <field name="reconcile_id"/>
+                            <field name="reconcile_partial_id"/>
+                        </tree>
+                    </field>       
+            	</field>
+            	<field name='fiscal_position' position='after'>
+            		<field name='auto_reconcile_sale_pay'/>
+            	</field>
+            </field>
+        </record>       
+        <record id="invoice_customer_payment_form_reconcile" model="ir.ui.view">
+            <field name="name">invoice_customer_payment_form_reconcile</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_voucher.view_invoice_customer"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='invoice_pay_customer'][1]" position="attributes">
+            		<attribute name="groups">account.group_account_invoice</attribute>
+            	</xpath>
+            	<xpath expr="//button[@name='invoice_pay_customer'][2]" position="attributes">
+            		<attribute name="groups">account.group_account_invoice</attribute>
+            	</xpath>
+            	<xpath expr="//button[@name='invoice_pay_customer'][last()]" position="after">
+            		<button name="reconcile_order_payment" string="Reconcile Advance Payments" type="object"
+            		attrs="{'invisible': [('state','!=','open')]}" groups="account.group_account_invoice"/>
+            	</xpath>
+            </field>
+        </record>        
+		<!-- can cancel when invoice is paid, from account_cancel_view.xml in account_cancel module -->
+        <record id="invoice_customer_form_cancel_ext" model="ir.ui.view">
+            <field name="name">invoice_customer_form_cancel_ext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_cancel.invoice_form_cancel_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_cancel']" position="replace">
+                    <button name="invoice_cancel" states="draft,proforma2,sale,open,paid" string="Cancel Invoice" groups="account.group_account_invoice"/>
+                </xpath>
+            </field>
+        </record>        
+        
+<!-- supplier payment -->        
+        <record id="invoice_supplier_payment_form" model="ir.ui.view">
+            <field name="name">invoice.supplier.payment.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<field name="payment_ids" position="before">
+            		<separator string="Payment vouchers"/>
+            		<field name="payment_voucher_ids" context="{'form_view_ref':'account_voucher.view_vendor_payment_form'}"/>
+            		<separator string="Payment journal items"/>
+            	</field>
+            	<field name="payment_ids" position="after">
+                    <group name="purchase_payments" string="Purchase Advance Payments" colspan="4">
+                        <field name="purchase_payment_ids" nolabel="1">
+                            <tree string="Payment">
+                                <field name="name"/>
+                                <field name="journal_id" string="Payment Method"/>
+                                <field name="debit" string="Paid Amount"/>
+                                <field name="date" string="Date"/>
+                                <field name="amount_residual"/>
+                                <field name="reconcile_id"/>
+                                <field name="reconcile_partial_id"/>
+                            </tree>
+                        </field>
+                    </group>
+            	</field>
+            	<field name='fiscal_position' position='after'>
+            		<field name='auto_reconcile_purchase_pay'/>
+            	</field>
+            </field>
+        </record>         
+        <record id="invoice_supplier_payment_form_reconcile" model="ir.ui.view">
+            <field name="name">invoice_supplier_payment_form_reconcile</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_voucher.view_invoice_supplier"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='invoice_pay_customer']" position="attributes">
+            		<attribute name="groups">account.group_account_invoice</attribute>
+            	</xpath>
+            	<xpath expr="//button[@name='invoice_pay_customer']" position="after">
+            		<button name="reconcile_order_payment" string="Reconcile Advance Payments" type="object"
+            		attrs="{'invisible': [('state','!=','open')]}" groups="account.group_account_invoice"/>
+            	</xpath>
+            </field>
+        </record>
+		<!-- can cancel when invoice is paid, from account_cancel_view.xml in account_cancel module -->
+        <record id="invoice_supplier_form_cancel_ext" model="ir.ui.view">
+            <field name="name">invoice_supplier_form_cancel_ext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_cancel.invoice_supplier_cancel_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_cancel']" position="replace">
+                    <button name="invoice_cancel" states="draft,proforma2,sale,open,paid" string="Cancel Invoice" groups="account.group_account_invoice"/>
+                </xpath>
+            </field>
+        </record>        
+        
+    </data>
+</openerp>

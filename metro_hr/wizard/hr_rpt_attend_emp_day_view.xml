@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>           
+<!-- Attendances Daily Report Line -->
+        <record id="view_hr_rpt_attend_emp_day_line_tree" model="ir.ui.view">
+            <field name="name">view_hr_rpt_attend_emp_day_line_tree</field>
+            <field name="model">hr.rpt.attend.emp.day.line</field>
+            <field name="arch" type="xml">
+					<tree editable="bottom" string="Attendances Daily Report Line" create="0" delete="1">
+						<field name="rpt_id" readonly="1" invisible="1"/>
+						<field name="state" invisible="1"/>
+						<field name="seq" readonly="1"/>
+						<field name="emp_id" readonly="1"/>						
+						<field name="day" readonly="1"/>
+						<field name="period_id" readonly="1"/>
+						<!-- <field name="p_hour_from" widget="float_time"/>
+						<field name="p_hour_to" widget="float_time"/>
+						<field name="p_hours_normal" widget="float_time"/>
+						<field name="p_hour_ot" widget="float_time"/> -->
+						<field name="p_weekday" readonly="1"/>
+						<field name="sign_in" widget="float_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+						<field name="sign_out" widget="float_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+						<field name="hours_normal" widget="float_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+						<field name="hours_ot" widget="float_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+						
+						<field name="is_late" attrs="{'readonly':[('state','!=','draft')]}"/>
+						<field name="is_early" attrs="{'readonly':[('state','!=','draft')]}"/>
+						<field name="is_absent" attrs="{'readonly':[('state','!=','draft')]}"/>
+						<field name="hours_normal2" widget="float_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+						<field name="hours_ot2" widget="float_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+					</tree>
+            </field>
+        </record>        
+
+
+        <record id="view_hr_rpt_attend_emp_day_line_filter" model="ir.ui.view">
+            <field name="name">view_hr_rpt_attend_emp_day_line_filter</field>
+            <field name="model">hr.rpt.attend.emp.day.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Attendances Line">
+                    <field name="emp_id"/>
+                    <field name="rpt_id"/>
+					<group expand="0" string="Group By...">
+					    <filter name="groupby_emp" string="Employee" icon="terp-personal" context="{'group_by':'emp_id'}"/>
+					    <filter name="groupby_day" string="Day" icon="terp-personal" context="{'group_by':'day'}"/>
+					</group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="act_empday_rpt_2_line" model="ir.actions.act_window">
+            <field name="name">Attendances Daily Report Line</field>
+            <field name="res_model">hr.rpt.attend.emp.day.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_hr_rpt_attend_emp_day_line_tree"/>
+            <field name="search_view_id" ref="view_hr_rpt_attend_emp_day_line_filter"/>
+            <field name="domain">[('rpt_id','=',active_id)]</field>
+            <!-- <field name="context">{'search_default_groupby_emp':True}</field> -->
+            <field name="context">{}</field>
+        </record>      
+        
+<!-- print PDF from line -->
+        <record id="action_server_hr_empday_line_pdf" model="ir.actions.server">
+            <field name="name">Employee Daily Attendance Report</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_hr_rpt_attend_emp_day_line" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_empday_line_group(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="report_hr_empday_line_pdf">
+            <field name="name">report_hr_empday_line_pdf</field>
+            <field name="action_id" ref="action_server_hr_empday_line_pdf" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_hr_empday_line_pdf'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_hr_rpt_attend_emp_day_line" />
+            <field name="model">hr.rpt.attend.emp.day.line</field>
+            <!-- <field name="key2">client_action_multi</field> -->
+            <field name="key2">client_print_multi</field>
+        </record>                            
+           
+<!-- generate daily report wizard by employee -->
+        <record id="view_rpt_attend_emp_day_wizard" model="ir.ui.view">
+            <field name="name">view_rpt_attend_emp_day_wizard</field>
+            <field name="model">hr.rpt.attend.emp.day.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate Daily Attendance" version="7.0">
+                	<separator string='Select employees to generate daily attendance'/>
+                	<field name="emp_ids"/>
+                <footer>
+		            <button name="set_data" string="Generate" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+        
+         <act_window name="Generate Daily Attendance"
+            res_model="hr.rpt.attend.emp.day.wizard"
+            src_model="hr.rpt.attend.emp.day"
+            view_mode="form"
+            target="new"
+            id="action_rpt_attend_emp_day_wizard"
+            groups="base.group_hr_user"/>           
+    
+<!-- Attendances Daily Report -->
+        <record id="view_hr_rpt_attend_emp_day_form" model="ir.ui.view">
+            <field name="name">HR Attendance Employee Daily Report</field>
+            <field name="model">hr.rpt.attend.emp.day</field>
+            <field name="arch" type="xml">
+            <form string="Report" version="7.0">
+                <field name="type" invisible="1"/>
+                <header>
+                	<button name="%(action_rpt_attend_emp_day_wizard)d" string="Generate Daily Attendance" type="action" states="draft" class="oe_highlight"/>
+                   	<button name="%(act_empday_rpt_2_line)d" string="View Generated Attendances" type="action"/>  	
+                   	<button name="print_empday_group" string="Print" type="object"/>                 
+                   	<button name="action_confirm" string="Confirm" states="draft" type="object" class="oe_highlight"/>                   	
+                   	<button name="action_cancel" string="Cancel" type="object" states="draft,confirmed"/>                   	
+                   	<button name="action_cancel_draft" string="Set to Draft" type="object" states="cancel"/>                   	
+                   	<!-- <button name="save_pdf" string="Print" type="object"/> -->
+                   	
+                	<button name="new_attend_month" string="Generate Monthly Report" type="object" states="confirmed"/>
+                	<button name="view_attend_month" string="Monthly Report" type="object" states="confirmed"/>
+                	<!-- <field name="id" invisible="1"/>
+                	<button name="%(hr_rpt_attend_month_action)d" string="Monthly Report" type="action" states="confirmed"
+                		context="{'search_default_attend_day_id': id}"/> -->
+                		
+                   	<field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                </header> 
+				<div class="oe_title">
+				    <label for="name" class="oe_edit_only"/>
+				    <h1>
+				        <field name="name"/>
+				    </h1>
+				</div>
+                <div class="oe_right oe_button_box" name="button_box">
+                </div>
+                <group name="options">
+	                <group col="4" name="options">
+	                	<!-- <field name="name" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+                        <label for="date_from" string="Dates"/>
+                        <div>
+						    <field name="date_from" domain="[('company_id', '=', company_id)]" 
+						    	class="oe_inline" widget="date" attrs="{'readonly':[('state','!=','draft')]}"/> -
+						    <field name="date_to" domain="[('company_id', '=', company_id)]" 
+						    	class="oe_inline" widget="date" attrs="{'readonly':[('state','!=','draft')]}"/>  
+                        </div>	        
+						<field name="company_id" groups="base.group_multi_company" widget="selection"
+							 attrs="{'readonly':[('state','!=','draft')]}"/>   
+						<field name="note" colspan="4"/>
+	                </group>
+                </group>     
+
+                <notebook>
+                	<page name="employee" string="Selected Employees">
+                		<field name="emp_ids" attrs="{'readonly':[('state','!=','draft')]}"/>
+                	</page>
+                	<page name="data" string="Attendance" invisible="1">
+						<!-- 3.Report lines -->
+						<field name="rpt_lines" attrs="{'readonly':[('state','!=','draft')]}">
+							<tree editable="bottom" string="Attendances Daily Report Line">
+								<field name="seq"/>
+								<field name="emp_id"/>
+								<!-- <field name="emp_code"/> -->
+								
+								<field name="day"/>
+								<field name="period_id"/>
+								<!-- <field name="p_hour_from" widget="float_time"/>
+								<field name="p_hour_to" widget="float_time"/>
+								<field name="p_hours_normal" widget="float_time"/>
+								<field name="p_hour_ot" widget="float_time"/> -->
+								<field name="p_weekday"/>
+								<field name="sign_in" widget="float_time"/>
+								<field name="sign_out" widget="float_time"/>
+								<field name="hours_normal" widget="float_time"/>
+								<field name="hours_ot" widget="float_time"/>
+								
+								<field name="is_late"/>
+								<field name="is_early"/>
+								<field name="is_absent"/>
+								<field name="hours_normal2" widget="float_time"/>
+								<field name="hours_ot2" widget="float_time"/>
+							</tree>
+						</field>
+                	</page>
+                	<page name="attend_month" string="Monthly Report" invisible="1">
+                		<field name="attend_month_ids"/>
+                	</page>
+                </notebook>
+            </form>
+            </field>
+        </record>   
+        
+        <record id="view_hr_rpt_attend_emp_day_tree" model="ir.ui.view">
+            <field name="name">view_hr_rpt_attend_emp_day_tree</field>
+            <field name="model">hr.rpt.attend.emp.day</field>
+            <field name="arch" type="xml">
+                <tree string="Attendances Daily Report">
+                        <field name="name"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="state"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>                
+
+        <record id="view_hr_rpt_attend_emp_day_filter" model="ir.ui.view">
+            <field name="name">view_hr_rpt_attend_emp_day_filter</field>
+            <field name="model">hr.rpt.attend.emp.day</field>
+            <field name="arch" type="xml">
+                <search string="Search Attendances">
+                    <field name="name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <filter icon="terp-document-new" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter name="done_filter" icon="terp-camera_test" string="Confirmed" domain="[('state','=','confirmed')]"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="hr_rpt_attend_emp_day_action" model="ir.actions.act_window">
+            <field name="name">Attendances Daily Report</field>
+            <field name="res_model">hr.rpt.attend.emp.day</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_rpt_attend_emp_day_tree"/>
+            <field name="search_view_id" ref="view_hr_rpt_attend_emp_day_filter"/>
+            <field name="context">{'default_title':'Attendances Report'}</field>
+            <field name="target">current</field>
+        </record>
+		
+        <menuitem
+            id="hr_rpt_attend_emp_day_menu"
+            action="hr_rpt_attend_emp_day_action"
+            groups="base.group_hr_manager"
+            parent="hr_attendance.menu_hr_attendance"
+            sequence="28"
+           />                        
+    </data>
+</openerp>

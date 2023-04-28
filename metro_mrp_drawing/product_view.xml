@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <!-- Product  -->
+        <record id="metro_product_product_tree_view" model="ir.ui.view">
+            <field name="name">metro.product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="metro_product.metro_product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="cn_name" position="after">
+                    <field name="thickness"/>
+                    <field name="mfg_standard"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="metro_product_normal_form_view" model="ir.ui.view">
+            <field name="name">metro.product.normal.form</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="metro_mrp.bom_product_mfg_view"/>
+            <field name="arch" type="xml">
+                <field name="manufacturer" position="before">
+                    <field name="width"/>
+                    <field name="thickness"/>
+                    <field name="part_type" on_change="onchange_part_type(part_type)"/>
+                    <field name="cnc_code" attrs="{'required':[('thickness','!=',False),('material','!=',False)]}"/>
+                </field>
+                <xpath expr="//page[@string='Information']" position="after">
+                    <page string="Drawing PDF">
+                	   <field name="do_lines" colspan="4" nolabel="1" widget="one2many_list">
+                	       <tree string="Product Drawing Order Line">
+                    	       <field name="date"/>
+                               <field name="user"/>
+                               <field name="drawing_order_id"/>
+                               <field name="drawing_file_name" invisible="1"/>
+                               <!--<field name="drawing_file" filename="drawing_file_name"/>-->
+                               <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '=', False)]}"/>
+                               <field name="type"/>
+                	       </tree>
+                           <form string="Product Drawing Order Line" version="7.0">
+                                <group>
+                                    <field name="date"/>
+                                    <field name="user"/>
+                                    <field name="drawing_order_id"/>
+                                    <field name="drawing_file_name" invisible="1"/>
+                                    <field name="drawing_file2" filename="drawing_file_name"/>
+                                    <field name="type"/>
+                                </group>
+                            </form>
+                	   </field>
+                	</page>
+                    <!--<page string="PR Reserved">
+                        <separator string="PR Reserved" colspan="4"/>
+                        <field name="pr_reserved_ids" colspan="4" nolabel="1" widget="one2many_list" readonly="1"/>
+                    </page>-->
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_pur_req_reserve_tree_view">
+            <field name="name">pur.req.reserve.tree</field>
+            <field name="model">pur.req.reserve</field>
+            <field name="arch" type="xml">
+                <tree string="PR Reserved">
+                    <field name="req_id"/>
+                    <field name="reserved_date"/>
+                    <field name="sale_product_ids" widget="many2many_tags"/>
+                    <field name="product_qty" sum="Total Reserved"/>
+                    <field name="location_id"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_do_line_tree_view">
+            <field name="name">product.do.line.tree</field>
+            <field name="model">product.do.line</field>
+            <field name="arch" type="xml">
+                <tree string="Product Drawing Order Line">
+                    <field name="date"/>
+                    <field name="user"/>
+                    <field name="drawing_order_id"/>
+                    <field name="drawing_file_name" invisible="1"/>
+                    <!--<field name="drawing_file" filename="drawing_file_name"/>-->
+                    <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '=', False)]}"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_do_line_form_view">
+            <field name="name">product.do.line.form</field>
+            <field name="model">product.do.line</field>
+            <field name="arch" type="xml">
+                <form string="Product Drawing Order Line" version="7.0">
+                    <group>
+                       <field name="date"/>
+                       <field name="user"/>
+                       <field name="drawing_order_id"/>
+                       <field name="drawing_file_name" invisible="1"/>
+                       <!--<field name="drawing_file" filename="drawing_file_name"/>-->
+                        <field name="drawing_file2" filename="drawing_file_name"/>
+                       <field name="type"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="metro_purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="metro_purchase.metro_purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_qty']" position="after">
+                    <field name="thickness"/>
+				</xpath>
+            </field>
+        </record>
+        <record id="metro_purchase_order_line_form" model="ir.ui.view">
+            <field name="name">metro.purchase.order.line.form</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="metro_purchase.metro_purchase_order_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='price_unit']" position="before">
+                    <field name="thickness"/>
+				</xpath>
+            </field>
+        </record>
+        <record id="product_mfg_product_tree_view" model="ir.ui.view">
+            <field name="name">product.product.tree</field>
+            <field name="model">product.product</field>
+            <field eval="7" name="priority"/>
+            <field name="arch" type="xml">
+                <tree colors="red:(virtual_available and virtual_available&lt;0);blue:virtual_available&gt;=0 and state in ('draft', 'end', 'obsolete');black:virtual_available&gt;=0 and state not in ('draft', 'end','obsolete')" string="Products">
+                    <field name="default_code"/>
+                    <field name="name"/>
+                    <field name="cn_name" string="中国名"/>
+                    <field name="material"/>
+                    <field name="thickness"/>
+                    <field name="mfg_standard"/>
+                    <field name="categ_id" invisible="1"/>
+                    <field name="type" invisible="1"/>
+                    <field name="variants" groups="product.group_product_variant"/>
+                    <field name="uom_id" string="Unit of Measure" groups="product.group_uom"/>
+                    <field name="qty_onhand"/>
+                    <field name="qty_available" invisible="1"/>
+                    <field name="qty_in"/>
+                    <field name="qty_out"/>
+                    <field name="qty_virtual"/>
+                    <field name="reserved_qty"/>
+                    <field name="product_qty_req"/>
+                    <field name="safe_qty"/>
+                    <field name="virtual_available" invisible="1"/>
+                    <field name="list_price" invisible="1"/>
+                    <field name="price" invisible="not context.get('pricelist',False)"/>
+                    <field name="standard_price" groups="metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties"/>
+                    <field name="loc_pos_code"/>
+                    <field name="state" invisible="1"/>
+                    <field name="sale_ok" invisible="1"/>
+                    <field name="purchase_ok" invisible="1"/>
+                    <field name="is_print_barcode" invisible="1"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+        <record id="mrp.product_supply_method_produce" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_filter_supply_method_produce' : 1}</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="view_id" ref="product_mfg_product_tree_view"/>
+        </record>
+        <record id="mfg_product_normal_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="domain">['|',('part_type','=',False),('part_type','!=','ASM')]</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id" ref="product.product_product_tree_view"/>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new product.
+              </p><p>
+                You must define a product for everything you buy or sell,
+                whether it's a physical product, a consumable or service.
+              </p>
+            </field>
+        </record>
+        <menuitem action="mfg_product_normal_action" id="stock.menu_stock_products_menu" parent="stock.menu_stock_product" sequence="1"/>
+    </data>
+</openerp>

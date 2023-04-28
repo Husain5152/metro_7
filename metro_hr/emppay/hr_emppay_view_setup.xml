@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Root Menus -->
+        <menuitem id="menu_hr_root_emppay" parent="hr.menu_hr_root" name="Payroll2" groups="base.group_hr_user,account.group_account_invoice" sequence="30"/>
+        <menuitem id="menu_hr_emppay_configure" parent="hr.menu_hr_configuration" name="Payroll2" groups="base.group_hr_user,account.group_account_invoice" sequence="45"/>
+
+<!-- Contract View -->
+        <record id="hr_contract_view_form_emppay" model="ir.ui.view">
+            <field name="name">hr_contract_view_form_emppay</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+            <data> 
+            	<field name="working_hours" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field>
+                <xpath expr="//field[@name='wage']" position="after">
+                    <field name="have_pit"/>
+                    <field name="pit_base"/>
+                    <field name="wage2"/>
+                    <label for="ot_pay_normal"/>
+                    <div>                    	
+                    	<field name="ot_pay_normal" class="oe_inline"/>
+                    	<label string="*" attrs="{'invisible':[('ot_pay_normal','=','fixed')]}"/>
+                    	<field name="ot_pay_normal_multi" class="oe_inline"/>
+                    </div>
+<!--                     <label for="ot_pay_weekend"/>
+                    <div>                    	
+                    	<field name="ot_pay_weekend" class="oe_inline"/>
+                    	<label string="*" attrs="{'invisible':[('ot_pay_weekend','=','fixed')]}"/>
+                    	<field name="ot_pay_weekend_multi" class="oe_inline"/>
+                    </div>
+                    <label for="ot_pay_holiday"/>
+                    <div>                    	
+                    	<field name="ot_pay_holiday" class="oe_inline"/>
+                    	<label string="*" attrs="{'invisible':[('ot_pay_holiday','=','fixed')]}"/>
+                    	<field name="ot_pay_holiday_multi" class="oe_inline"/>
+                    </div> -->
+                    
+                    <label for="ot_pay_normal2"/>
+                    <div>                    	
+                    	<field name="ot_pay_normal2" class="oe_inline"/>
+                    	<label string="*" attrs="{'invisible':[('ot_pay_normal2','=','fixed')]}"/>
+                    	<field name="ot_pay_normal2_multi" class="oe_inline"/>
+                    </div>
+                    <label for="ot_pay_weekend2"/>
+                    <div>                    	
+                    	<field name="ot_pay_weekend2" class="oe_inline"/>
+                    	<label string="*" attrs="{'invisible':[('ot_pay_weekend2','=','fixed')]}"/>
+                    	<field name="ot_pay_weekend2_multi" class="oe_inline"/>
+                    </div>
+                    <field name="house_rent_fund"/>
+                    <field name="company_house_rent_fund"/>
+<!--                     <label for="ot_pay_holiday2"/>
+                    <div>                    	
+                    	<field name="ot_pay_holiday2" class="oe_inline"/>
+                    	<label string="*" attrs="{'invisible':[('ot_pay_holiday2','=','fixed')]}"/>
+                    	<field name="ot_pay_holiday2_multi" class="oe_inline"/>
+                    </div> -->
+        
+                </xpath>
+                <separator string="Notes" position="before">
+                	<separator string="Allowance and Deduction"/>
+                	<field name="alwded_ids" widget="one2many_list" context="{'default_contract_id': id}">
+                        <tree string="Allowance and Deduction">
+		                    <field name="alwded_id" on_change="onchange_alwded_id(alwded_id,context)"/>
+		                    <field name="sequence"/>
+		                    <field name="type"/>
+		                    <field name="type_calc"/>
+		                    <field name="amount"/>
+		                    <field name="attend_field"/>
+                        </tree>
+                        <form string="Allowance and Deduction" version="7.0">
+                            <group>
+                                <group>
+                                    <field name="alwded_id" on_change="onchange_alwded_id(alwded_id,context)"/>
+                                    <field name="type"/>
+                                    <field name="amount"/>
+                                </group>
+                                <group>
+                                    <field name="sequence"/>
+                                    <field name="type_calc"/>
+                                    <field name="attend_field"/>
+                                </group>
+                            </group>
+                        </form>
+                	</field>
+                	<separator string="Social Insurance"/>
+                	<!-- <group col="4">
+                		<field name="si_total_company"/>
+                		<field name="si_total_personal"/>
+                	</group> -->
+                	<field name="si_ids" widget="one2many_list">
+                        <tree string="Social Insurance">
+		                    <field name="si_id" on_change="onchange_si_id(si_id,context)"/>
+		                    <field name="sequence"/>
+		                    <field name="amount_base"/>
+		                    <field name="rate_company"/>
+		                    <field name="rate_personal"/>
+		                    <field name="amount_company" sum="Company Total"/>
+		                    <field name="amount_personal" sum="Employee Total"/>
+                        </tree>
+                        <form string="Social Insurance" version="7.0">
+                            <group>
+                                <group>
+                                    <field name="si_id" on_change="onchange_si_id(si_id,context)"/>
+                                    <field name="amount_base"/>
+                                    <field name="rate_personal"/>
+                                    <field name="amount_personal" sum="Employee Total"/>
+                                </group>
+                                <group>
+                                    <field name="sequence"/>
+                                    <field name="rate_company"/>
+                                    <field name="amount_company" sum="Company Total"/>
+                                </group>
+                            </group>
+                        </form>
+                	</field>
+                </separator>
+            </data>
+            </field>
+        </record>
+        <record id="hr_contract_view_tree_emppay" model="ir.ui.view">
+            <field name="name">hr_contract_view_tree_emppay</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+            <field name="arch" type="xml">
+            <data>
+            	<field name="working_hours" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field>
+            </data>
+        	</field> 
+        </record>
+                    
+<!-- Company View, add the salary base info -->
+        <record model="ir.ui.view" id="view_company_form_emppay">
+            <field name="name">view_company_form_emppay</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+				<xpath expr="//group[@name='account_grp']" position="after">
+                    <group name="hr_emppay" string="Salary">
+                        <field name="emppay_pit_base"/>
+                        <field name="emppay_wage2"/>
+                        <field name="emppay_pit_formula"/>                        
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+<!-- Allowance&Deduction Rules -->
+        
+        <record id="view_hr_emppay_alwded_list" model="ir.ui.view">
+            <field name="name">view_hr_emppay_alwded_list</field>
+            <field name="model">hr.emppay.alwded</field>
+            <field name="arch" type="xml">
+                <tree string="Payroll Allowance&amp;Deduction" editable="bottom">
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="type_calc"/>
+                    <field name="amount"/>
+		            <field name="attend_field"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hr_emppay_alwded_form" model="ir.ui.view">
+            <field name="name">view_hr_emppay_alwded_form</field>
+            <field name="model">hr.emppay.alwded</field>
+            <field name="arch" type="xml">
+                <form string="Payroll Allowance&amp;Deduction" version="7.0">
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="type_calc"/>
+                    <field name="amount"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_emppay_alwded_search" model="ir.ui.view">
+            <field name="name">view_hr_emppay_alwded_search</field>
+            <field name="model">hr.emppay.alwded</field>
+            <field name="arch" type="xml">
+                <search string="Search Allowance&amp;Deduction">
+                    <field name="name" string="Allowance&amp;Deduction" filter_domain="['|',('name','ilike',self),('code','ilike',self)]"/>
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_hr_emppay_alwded" model="ir.actions.act_window">
+            <field name="name">Payroll Allowance&amp;Deduction</field>
+            <field name="res_model">hr.emppay.alwded</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_emppay_alwded_list"/>
+            <field name="search_view_id" ref="view_hr_emppay_alwded_search"/>
+        </record>
+
+        <menuitem id="menu_hr_emppay_alwded" action="action_hr_emppay_alwded" parent="menu_hr_root_emppay" sequence="11"/>
+        
+<!-- Social Insurances -->
+        
+        <record id="view_hr_emppay_si_list" model="ir.ui.view">
+            <field name="name">view_hr_emppay_si_list</field>
+            <field name="model">hr.emppay.si</field>
+            <field name="arch" type="xml">
+                <tree string="Social Insurances" editable="bottom">
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="amount_base"/>
+                    <field name="rate_company"/>
+                    <field name="rate_personal"/>
+                    <field name="amount_company" sum="Company Total"/>
+                    <field name="amount_personal" sum="Employee Total"/>
+                    <field name="company_id" groups="base.group_multi_company"/>        
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hr_emppay_si_form" model="ir.ui.view">
+            <field name="name">view_hr_emppay_si_form</field>
+            <field name="model">hr.emppay.si</field>
+            <field name="arch" type="xml">
+                <form string="Social Insurances" version="7.0">
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="amount_base"/>
+                    <field name="rate_company"/>
+                    <field name="rate_personal"/>
+                    <field name="amount_company"/>
+                    <field name="amount_personal"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_emppay_si_search" model="ir.ui.view">
+            <field name="name">view_hr_emppay_si_search</field>
+            <field name="model">hr.emppay.si</field>
+            <field name="arch" type="xml">
+                <search string="Search Social Insurances">
+                    <field name="name" string="Social Insurances" filter_domain="['|',('name','ilike',self),('code','ilike',self)]"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_hr_emppay_si" model="ir.actions.act_window">
+            <field name="name">Social Insurances</field>
+            <field name="res_model">hr.emppay.si</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_emppay_si_list"/>
+            <field name="search_view_id" ref="view_hr_emppay_si_search"/>
+        </record>
+
+        <menuitem id="menu_hr_emppay_si" action="action_hr_emppay_si" parent="menu_hr_root_emppay" sequence="12"/>   
+                
+    </data>
+</openerp>
+

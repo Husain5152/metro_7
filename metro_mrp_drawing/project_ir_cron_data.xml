@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="check_miss_dealine_task_scheduler" model="ir.cron">
+            <field name="name">Check miss deadline tasks</field>
+            <field name="active">True</field>
+            <field name="nextcall">2015/12/18 00:00:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">project.task</field>
+            <field name="function">_check_missed_dealine</field>  
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">days</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="update_purch_s_task_line_prepare_qty_scheduler" model="ir.cron">
+            <field name="name">Update PURCH-S task prepare qty</field>
+            <field name="active">True</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">project.task</field>
+            <field name="function">_update_purch_s_qty</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">days</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="update_pr_state" model="ir.cron">
+            <field name="name">Update PR State</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">pur.req</field>
+            <field name="function">_check_state</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">days</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="fix_pdf_dxf_attachment" model="ir.cron">
+            <field name="name">Fix PDF and DXF Attachment</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">drawing.order.line</field>
+            <field name="function">_search_and_fix_do_attachments</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="generate_warehous_task_for_existing_do" model="ir.cron">
+            <field name="name">Generate warehouse task for existing DO</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">project.task</field>
+            <field name="function">_generate_warehouse_tasks</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="generate_warehous_task_reports" model="ir.cron">
+            <field name="name">Generate warehouse task report</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">project.task</field>
+            <field name="function">_generate_warehouse_task_report</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="move_product_pdf_to_disk" model="ir.cron">
+            <field name="name">Move Product PDF to Disk</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">product.do.line</field>
+            <field name="function">_move_drawing_file_to_disk</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="delete_zero_pr_reserve" model="ir.cron">
+            <field name="name">Delete zero reserve</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">pur.req</field>
+            <field name="function">_delete_zero_reserved</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="move_original_drawing_file" model="ir.cron">
+            <field name="name">Move original drawing file to disk</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">drawing.order.line</field>
+            <field name="function">_move_original_drawing_file_original_drawing</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall">True</field>
+            <field name="args">()</field>
+        </record>
+        <record id="empty_original_drawing_file" model="ir.cron">
+            <field name="name">Empty original drawing file in db</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">drawing.order.line</field>
+            <field name="function">_empty_orignal_drawing_file_field</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall">False</field>
+            <field name="args">()</field>
+        </record>
+        <record id="update_task_mfg_ids" model="ir.cron">
+            <field name="name">Update task mfg ids</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">project.task</field>
+            <field name="function">_update_task_mfg_ids</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall" eval="False"></field>
+            <field name="args">()</field>
+        </record>
+        <record id="split_mfg_id_for_warehouse_task" model="ir.cron">
+            <field name="name">Split mfg id for warehouse task</field>
+            <field name="active">False</field>
+            <field name="nextcall">2015/12/18 01:01:01</field>
+            <field name="numberofcall">-1</field>
+            <field name="model">project.task</field>
+            <field name="function">_separate_mfg_id_warehouse_task</field>
+            <field name="intervalnumber">1</field>
+            <field name="interval_type">months</field>
+            <field name="doall" eval="False"></field>
+            <field name="args">()</field>
+        </record>
+    </data>
+</openerp>

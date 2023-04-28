@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data> 
+		<menuitem id="menu_rpt_account_cn" 
+			name="Account CN" 
+			parent="account.menu_finance" 
+			groups="account.group_account_user" 
+			sequence="6"/>
+			
+        <menuitem
+            id="rpt_account_cn_detail_menu"
+            action="rpt_account_cn_detail_action"
+            groups="account.group_account_manager,account.group_account_user"
+            parent="menu_rpt_account_cn"
+            sequence="2"
+           />
+    </data>
+</openerp>

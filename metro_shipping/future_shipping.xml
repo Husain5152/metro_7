@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="future_shipment_tree_view" model="ir.ui.view">
+            <field name="name">future.shipment.tree</field>
+            <field name='model'>future.shipment</field>
+            <field name="arch" type="xml">
+                <tree string="Future Shippings">
+                        <field name="code"/>
+                        <field name="origin_id"/>
+                        <field name="dest_id"/>
+                        <field name="state"/>
+                        <field name="real_ship_id"/>
+                        <field name="new_future_ship_id"/>
+                        <field name="delivery_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="future_shipment_form_view" model="ir.ui.view">
+    		<field name="name">future.shipment.form</field>
+        	<field name='model'>future.shipment</field>
+        	<field name="arch" type="xml">
+        		<form string="Future Shippings" version="7.0">
+        			<header>
+						<button name="%(act_fur_shipment_ship)d" string="Ship" type="action" class="oe_highlight" states="wait"/>
+						<button name="%(act_fur_shipment_split)d" string="Split" type="action" states="wait" context="{'split':True}"/>
+						<button name="action_cancel" string="Cancel" type="object" confirm="Are you sure to cancel this order?" states="wait,shipped"/>
+						<button name="print_report" string="Print Report" type="object"/>
+                		<field name="state" widget="statusbar" statusbar_visible="wait,shipped"/>
+            		</header>
+        			<group col="4">
+        				<field name="origin_id" domain="[('is_company','=',True)]"/>
+                    	<field name="dest_id" domain="[('is_company','=',True)]"/>
+                    	<field name="real_ship_id"/>
+                    	<field name="new_future_ship_id"/>
+                    	<field name="create_uid"/>
+                    	<field name="create_date"/>
+                    	<field name="delivery_type"/>
+                    </group>
+                    <notebook>
+                    	<page string="Products">
+                    		<separator string="Products"/>
+                    		<field name="line_ids"/>
+                    	</page>
+                    	<!--page string="Images">
+                			<field name="multi_images" widget="image_multi"/>
+            			</page-->
+            		</notebook>
+                </form>
+			</field>
+		</record>
+               
+    	<record id="future_shipment_view_search" model="ir.ui.view">
+    		<field name="name">future_shipment_view_search</field>
+        	<field name='model'>future.shipment</field>
+        	<field name="arch" type="xml">
+                <search string="Search Future Shippings">
+       				<field name="origin_id"/>
+                   	<field name="dest_id"/>
+                   	<field name="real_ship_id"/>
+                    <separator/>
+                    <filter icon="terp-document-new" name="wait" string="Waiting" domain="[('state','=','wait')]"/>
+                    <filter icon="terp-document-new" name="shipped" string="Shipped" domain="[('state','=','shipped')]"/>
+                    <filter icon="terp-document-new" name="cancel" string="Cancelled" domain="[('state','=','cancel')]"/>
+                </search>
+			</field>
+        </record>    
+        
+        <record id="future_shipment_line_form_view" model="ir.ui.view">
+    		<field name="name">future.shipment.line.form</field>
+        	<field name='model'>future.shipment.line</field>
+        	<field name="arch" type="xml">
+        		<form string="Future Shippings Line" version="7.0">
+        			<notebook>
+        				<page string="Basic Info.">
+        					<group>
+	        					<field name="product_id" options='{"no_open": True}'/>
+	        					<field name="notes"/>
+	                    		<field name="product_qty"/>
+	                    	</group>
+	                    </page>
+	                    <page string="Images">
+                            <field name="multi_images" widget="image_multi"/>
+	                    </page>
+	                    <page string="Change Log">
+        					<group>
+        						<field name="create_uid"/>
+	                    		<field name="create_date"/>
+	                    		<field name="write_uid"/>
+	                    		<field name="write_date"/>
+	                    	</group>
+        				</page>
+        			</notebook>
+                </form> 
+			</field>
+		</record>
+        
+        <record id="future_shipment_line_tree_view" model="ir.ui.view">
+    		<field name="name">future.shipment.line.tree</field>
+        	<field name='model'>future.shipment.line</field>
+        	<field name="arch" type="xml">
+        		<tree string="Future Shippings Line">
+        			<field name="product_id"/>
+        			<field name="notes"/>
+                    <field name="product_qty"/>
+        			<field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="write_uid"/>
+                    <field name="write_date"/>
+        		</tree>
+			</field>
+        </record>
+        
+        <record id="future_shipment_form_action" model="ir.actions.act_window">
+            <field name="name">Future Shipment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">future.shipment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="future_shipment_view_search"/>
+            <field name="context">{'search_default_wait':True}</field>
+        </record>
+        
+        <menuitem id="future_shipment_management_name" name="Future Shipment"
+        parent="menu_shipment_main_action"
+        action="future_shipment_form_action" sequence="10"/>
+    </data>
+</openerp>

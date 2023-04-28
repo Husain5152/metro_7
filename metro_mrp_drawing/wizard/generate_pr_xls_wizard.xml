@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_generate_pr_xls_wizard" model="ir.ui.view">
+            <field name="name">view_generate_pr_xls_wizard</field>
+            <field name="model">generate.pr.xls.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate PR From Xls Wizard" version="7.0">
+                    <separator string="Please fill the delivery date and warehouse"/>
+                    <group>
+                        <field name="filename" invisible="1"/>
+                        <field name="bom_file"  filename="filename" widget="xlsfile_widget" />
+                        <field name="warehouse_id" class="oe_inline"/>
+                        <field name="delivery_date" class="oe_inline"/>
+
+                    </group>
+                    <footer>
+                        <button name="do_generate" string="Generate PR" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_generate_pr_xls_wizard">
+            <field name="name">Generate PR From Xls</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">generate.pr.xls.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_generate_pr_xls_wizard"/>
+        </record>
+
+    </data>
+</openerp>

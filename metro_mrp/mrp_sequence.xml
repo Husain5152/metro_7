@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <!-- Sequences for mrp.bom --> 
+        <record id="seq_type_mrp_bom" model="ir.sequence.type">
+            <field name="name">MRP BOM</field>
+            <field name="code">mrp.bom</field>
+        </record>
+        <record id="seq_mrp_bom" model="ir.sequence">
+            <field name="name">MRP BOM</field>
+            <field name="code">mrp.bom</field>
+            <field name="padding">4</field>
+        </record>
+        <!-- Sequences for mrp.production.workcenter.line --> 
+        <record id="seq_type_mrp_production_workcenter_line" model="ir.sequence.type">
+            <field name="name">MRP Work Order</field>
+            <field name="code">mrp.production.workcenter.line</field>
+        </record>
+        <record id="seq_mrp_production_workcenter_line" model="ir.sequence">
+            <field name="name">MRP Work Order</field>
+            <field name="code">mrp.production.workcenter.line</field>
+            <field name="padding">5</field>
+            <field name="prefix">WO</field>
+        </record> 
+    </data>
+</openerp>

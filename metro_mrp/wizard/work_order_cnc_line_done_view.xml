@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_cnc_line_done" model="ir.ui.view">
+            <field name="name">view_cnc_line_done</field>
+            <field name="model">work.order.cnc.line.done</field>
+            <field name="arch" type="xml">
+               <form string="Finish the work order line" version="7.0">
+    				<group>
+    					<h1><field name="name" readonly="1"/></h1>
+    				</group>
+    				<group>
+    					<h1><field name="file_name" readonly="1"/></h1>
+    				</group>
+                    <group>
+							<field name="size" />
+							<field name="percent_usage" />
+							<field name="product_id" on_change="on_change_product(product_id)"/>
+							<field name="is_whole_plate" />
+							<field name="product_inv" readonly="1"/>
+							<field name="date_finished" />
+							<field name="property_cnc_mr_dept"/>
+                    </group>
+                    <footer>
+                        <button name="action_done" string="Done" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Finish the work order line"
+            res_model="work.order.cnc.line.done"
+            src_model="work.order.cnc.line"
+            view_mode="form"
+            target="new"
+            id="action_view_cnc_line_done"/>
+    </data>
+</openerp>
+

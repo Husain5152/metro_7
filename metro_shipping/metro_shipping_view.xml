@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <menuitem
+            id="menu_config_action"
+            name="Configuration"
+            parent="metro.mttl_metro"
+            sequence="2"
+            groups="group_metro_shipping_manager_right"/>
+        
+        <menuitem
+            id="menu_shipping_action"
+            name="Shipping"
+            parent="metro.menu_mttl_config"/>
+
+    
+         <record id="Ports_form_view" model="ir.ui.view">
+            <field name="name">Ports.form</field>
+            <field name="model">port.port</field>
+            <field name="arch" type="xml">
+                <form string="Ports" version="7.0">
+                <sheet>
+                       
+                                
+                    <group col="4">
+	                    <field name="name"/>
+	                    <field name="port_country_id"/>
+	                </group>
+                	<label for="address_1" string="Address"/>
+                    <div>
+		                <group>
+							<field name="address_1" placeholder="Street1" nolabel="1"/>
+		                    <field name="address_2" placeholder="Street2" nolabel="1"/>
+		                    <field name="address_3" placeholder="Street3" nolabel="1"/>
+		                    <field name="city" placeholder=" Port City" nolabel="1"/>
+		                    <field name="state_id" placeholder="State" nolabel="1"/>
+		                    <field name="country_id" placeholder="Country" nolabel="1"/>
+		                    <field name="zip" placeholder="Zip" nolabel="1"/>
+		                    <field name="phone" placeholder="Phone" nolabel="1"/>
+		                    <field name="fax" placeholder="Fax" nolabel="1"/>
+	                    </group>
+	                </div>
+                </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <record id="Ports_tree_view" model="ir.ui.view">
+            <field name="name">Ports.tree</field>
+            <field name="model">port.port</field>
+            <field name="arch" type="xml">
+                <tree string="Ports" version="7.0">
+                    <field name="name"/>
+                    <field name="port_country_id"/>
+                    <field name="address_1"/>
+                    <field name="address_2"/>
+                    <field name="address_3"/>
+                    <field name="city"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                    <field name="zip"/>
+                    <field name="phone"/>
+                    <field name="fax"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id='action_Ports_form_view' model='ir.actions.act_window'>
+            <field name='name'>Ports</field>
+            <field name='res_model'>port.port</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        
+       
+       <menuitem
+            action="action_Ports_form_view"
+            id="menu_port_action"
+            name="Ports"
+            parent="menu_shipping_action"/>
+            
+        <record id="shipment_shipment_form_view" model="ir.ui.view">
+            <field name="name">shipment.shipment.form</field>
+            <field name="model">shipment.shipment</field>
+            <field name="arch" type="xml">
+                <form string="Shipping" version="7.0">
+                <sheet>
+                    <header>
+                    	<button name="metro_shippment_signal" string="Received" states="transit" />
+                    	<button name="metro_shippment_cancel_signal" string="In Transit" states="received"/>
+						<field name="state" widget="statusbar" nolabel="1" statusbar_visible="transit,received" statusbar_colors='{"transit":"blue","received":"red"}'/>                    	                    
+                    </header>
+                    <notebook>
+                    	<page string="Information">
+		                    <group string="Details" col="4" colspan="2">
+		                    	<field name="shipment_type_id" on_change="on_change_shipment_type_id(shipment_type_id)"/>
+		                    	<field name="container" invisible="1"/>
+		                    	<field name="courier" invisible="1"/>
+		                    	<field name="method" invisible="1"/>
+		                    	<field name="port_of_deprature_id" attrs="{'invisible':[('method','!=','ocean_freight')]}"/>
+			                    <field name="port_of_destination_id" attrs="{'invisible':[('method','!=','ocean_freight')]}"/>
+			                    <field name="origination_address_id" attrs="{'invisible':['|',('method','!=','ocean_freight'),('container','=',True)]}"/>
+			                    <field name="destination_address_id" attrs="{'invisible':['|',('method','!=','ocean_freight'),('container','=',True)]}"/>
+			                    <field name="ship_origination_address_id" attrs="{'invisible':[('method','!=','courier')]}"/>
+			                    <field name="ship_partner_address_id" attrs="{'invisible':[('method','!=','courier')]}"/>
+			                    <field name="customer_id"/>
+			                    <label for="tracking_link"/>			                    
+			                    <div>
+			                    	<field name="tracking_link" widget="url" class="oe_edit_only" placeholder="e.g http://www.google.com" attrs="{'readonly':[('tracking_mark','=',True)]}"/>
+			                    	<button name="go_track" string="View" type="object" attrs="{'invisible':['|',('tracking_link','=','false'),('tracking_link','=',False)]}"/>
+			                    </div>
+		                    </group>
+		                    <group>
+			                    <group string="Dates" attrs="{'invisible':[('method','=',False)]}">
+				                    <field name="factory_pickle_date"/>
+				                    <field name="estimated_departure_date" attrs="{'invisible':[('method','=','courier')]}"/>
+				                    <field name="actual_deprature_date" attrs="{'invisible':[('method','=','courier')]}"/>
+				                    <field name="estimated_arrival_date"/>
+				                    <field name="actual_arrival_date"/>
+				                    <field name="tracking_mark" invisible="1"/>
+			                    </group>
+			                    <group string="Shipment Details" attrs="{'invisible':[('method','=',False)]}">
+				                    <field name="container_type_id"/>
+				                    <field name="container_no"/>
+				                    <field name="container_owner" attrs="{'invisible':['|',('method','=','courier'),('courier','=',True)]}"/>
+				                    <field name="obl_no" attrs="{'invisible':[('method','=','courier')]}"/>
+                                    <field name="seal_no" attrs="{'invisible':[('method','=','courier')]}"/>
+				                    <field name="weight"/>
+				                    <field name="hs_code_id" attrs="{'invisible':[('method','=','courier')]}"/>
+			                    </group>
+		                    </group>
+		                    <group>
+		                    	<field name="description"/>
+		                    </group>
+                    	</page>
+	                    <page string="Costs">
+	                    	<group>
+	                    		<field name="curr_cny_id" invisible="1"/>
+	                    		<field name="curr_cad_id" invisible="1"/>
+	                    		<field name="curr_usd_id" invisible="1"/>
+	                    		<field name="cost_cny" widget="monetary" options="{'currency_field': 'curr_cny_id'}"/>
+	                    		<field name="cost_cad" widget="monetary" options="{'currency_field': 'curr_cad_id'}"/>	                    		
+	                    		<field name="cost_usd" widget="monetary" options="{'currency_field': 'curr_usd_id'}"/>             	
+	                    	</group>
+	                    	<field name="cost_ids">
+	                    		<tree string="Costs" editable="bottom">
+	                    			<field name="name"/>
+	                    			<field name="currency_id"/>
+	                    			<field name="amount" sum='Amount'/>
+	                    		</tree>
+	                    	</field>
+		                    <!-- <group col="6" colspan="3">
+			                    <field name="shipping_cost"/>
+			                    <field name="crane_at_factory" attrs="{'invisible':[('method','=','courier')]}"/>
+			                    <field name="factory_to_port" attrs="{'invisible':[('method','=','courier')]}"/>
+			                    <field name="brokerage"/>
+			                    <field name="port_to_customer" attrs="{'invisible':[('method','=','courier')]}"/>
+		                    </group> --> 
+	                    </page>
+	                    <page string="Packing List">
+	                     	<field name="product_ids">
+	                          <tree string="Product" editable="top">
+	                             <field name="product_id"/>
+	                             <field name="product_qty"/>
+	                          </tree>
+	                     	</field>  
+	                    </page>
+	                    <page string="Commercial Invoice">
+	                    
+	                    </page>
+	                    <page string="Images">
+	                    	<field name="image" widget="image_multi"/>
+	                    </page>
+	                    <page string="Notes">
+	                    	<field name="note"/>
+		               	</page>		
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record> 
+              
+        <record id="shipment_shipment_tree_view" model="ir.ui.view">
+            <field name="name">shipment.shipment.tree</field>
+            <field name="model">shipment.shipment</field>
+            <field name="arch" type="xml">
+                <tree string="Shippings" version="7.0">
+                	<field name="customer_id"/>
+                    <field name="shipment_type_id"/>
+                    <field name="estimated_arrival_date"/>
+                    <field name="container_no"/>
+                    <field name="state"/>
+                    <button name="next_state" string="Next State" type="object" states="transit" icon="gtk-go-forward"/>
+                    <button name="previous_state" string="Previous State" type="object" states="received" icon="gtk-go-back"/>
+                </tree>
+            </field>
+        </record>  
+     
+        <record id="shipment_shipment_search" model="ir.ui.view">
+            <field name="name">shipment.shipment.search</field>
+            <field name="model">shipment.shipment</field>
+            <field name="arch" type="xml">
+                <search string="Shippings">
+                        <field name="customer_id" />
+                        <field name="container_no" />
+                        <field name="port_of_destination_id"/>
+                        <field name="shipment_type_id"/> 
+                 <group>
+	                <filter name="state" string="In Transit" domain="[('state','=','transit')]"/>
+	                <filter string="Received" domain="[('state','=','received')]"/>
+                </group>
+               </search>
+            </field>
+        </record>     
+          
+        <record id='shipment_shipment_view' model='ir.actions.act_window'>
+            <field name='name'>Shipping</field>
+            <field name='res_model'>shipment.shipment</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="context">{"search_default_state":"transit"}</field>
+            <field name="view_id" ref="shipment_shipment_tree_view"/>
+        </record>
+
+        <menuitem
+            id="menu_shipment_main_action"
+            name="Shipping"
+            parent="metro.mttl_metro"
+            sequence="10"/>
+        
+        <menuitem
+            action="shipment_shipment_view"
+            id="menu_shipment_action"
+            name="Shipping"
+            parent="menu_shipment_main_action"/>     
+
+        <record id="shipment_type_form_view" model="ir.ui.view">
+            <field name="name">shipment.type.form</field>
+            <field name="model">shipment.type</field>
+            <field name="arch" type="xml">
+                <form string="" version="7.0">
+                <sheet string="Shipment Type">
+                    <group>
+	                    <field name="name"/>
+	                    <field name="method"/>
+	                    <field name="web_tracking_link"/>
+	                    <field name="tracking_auto"/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>       
+        
+        <record id="shipment_type_tree_view" model="ir.ui.view">
+            <field name="name">shipment.type.tree</field>
+            <field name="model">shipment.type</field>
+            <field name="arch" type="xml">
+                <tree string="Shipment Type" version="7.0">
+                    <field name="name"/>
+                    <field name="method"/>
+                </tree>
+            </field>
+        </record> 
+        
+        <record id='shipment_type_view' model='ir.actions.act_window'>
+            <field name='name'>Shipment Type</field>
+            <field name='res_model'>shipment.type</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        
+        <menuitem
+            action="shipment_type_view"
+            id="menu_shipment_type_action"
+            name="Shipment Type"
+            parent="menu_shipping_action"/>
+
+
+        <record id="HS_Code_form_view" model="ir.ui.view">
+            <field name="name">HS.Code.form</field>
+            <field name="model">hs.code</field>
+            <field name="arch" type="xml">
+                <form string="HS Code" version="7.0">
+                <sheet string="HS Codes">
+                    <group>
+	                    <field name="hs_code"/>
+	                    <field name="description"/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>       
+        
+        <record id="HS_Code_tree_view" model="ir.ui.view">
+            <field name="name">HS.Code.tree</field>
+            <field name="model">hs.code</field>
+            <field name="arch" type="xml">
+                <tree string="HS Code" version="7.0">
+                    <field name="hs_code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record> 
+        
+        <record id='hs_code_view' model='ir.actions.act_window'>
+            <field name='name'>HS Code</field>
+            <field name='res_model'>hs.code</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        
+        <menuitem
+            action="hs_code_view"
+            id="menu_hs_code_action"
+            name="HS Codes"
+            parent="menu_shipping_action"/>
+     
+        <record id="Container_Types_form_view" model="ir.ui.view">
+            <field name="name">Container.Types.form</field>
+            <field name="model">container.type</field>
+            <field name="arch" type="xml">
+                <form string="Container Types" version="7.0">
+                <sheet string="Container Types">
+                    <group>
+	                    <field name="container_type"/>
+	                    <field name="description"/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="Container_Types_tree_view" model="ir.ui.view">
+            <field name="name">Container.Types.tree</field>
+            <field name="model">container.type</field>
+            <field name="arch" type="xml">
+                <tree string="Container Types" version="7.0">
+                    <field name="container_type"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>   
+        
+        <record id='container_type_view' model='ir.actions.act_window'>
+            <field name='name'>Container Types</field>
+            <field name='res_model'>container.type</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        
+        <menuitem
+            action="container_type_view"
+            id="menu_container_type_action"
+            name="Container Types"
+            parent="menu_shipping_action"/>                       
+    
+    </data>
+</openerp>

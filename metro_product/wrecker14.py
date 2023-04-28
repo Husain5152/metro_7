@@ -1,0 +1,5 @@
+WRECKER_URL = 'http://wrecker14.metro.industries'
+WRECKER_DB = 'metro14'
+WRECKER_USER = 'trankhaihoang@gmail.com'
+WRECKER_PASSWORD = 'danang'
+WRECKER_PORT = '80'

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Account Finance Reports Definition -->
+        <record id="view_account_financial_report_form_ext" model="ir.ui.view">
+            <field name="name">view_account_financial_report_form_ext</field>
+            <field name="model">account.financial.report</field>
+            <field name="inherit_id" ref="account.view_account_financial_report_form"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="before">
+            		<field name='code'/>
+            	</field>
+            	<field name="type" position="after">
+            		<field name='operator'/>
+            	</field>
+            	<field name="style_overwrite" position="after">
+                    <label for="excel_template_file" attrs="{'invisible':[('parent_id','!=',False)]}"/>
+                    <div attrs="{'invisible':[('parent_id','!=',False)]}">
+                    	<field name="excel_template_file_name" invisible="1"/>
+                        <field name="excel_template_file" filename="excel_template_file_name" class="oe_inline"/>
+                    </div>
+                    <label for="default_excel_template_file" attrs="{'invisible':[('parent_id','!=',False)]}"/>
+                    <div attrs="{'invisible':[('parent_id','!=',False)]}">
+                    	<field name="default_excel_template_file_name"/>
+                        <field name="default_excel_template_file" filename="default_excel_template_file_name" class="oe_inline"/>
+                    </div>
+            	</field>
+            	<field name="account_type_ids" position="after">
+            		<field name="children_ids"  attrs="{'invisible': [('type', '!=', 'sum')]}"/>
+            		<field name="account_item_ids" attrs="{'invisible': [('type', '!=', 'account_item')]}">
+            			<tree name="account_items" string="Accounting Items" editable="bottom">
+            				<field name="account_id" on_change="onchange_account_id(account_id)"/>
+            				<field name="name"/>
+            				<field name="operator"/>
+            				<field name="fetch_logic"/>
+            				<field name="report_id"/>
+            			</tree>
+            		</field>
+            	</field>            
+            	<field name="display_detail" position="attributes">
+            		<attribute name="attrs">{'invisible': [('type','not in',['accounts','account_item','account_type'])]}</attribute>
+            	</field>
+            </field>
+        </record>
+                
+        <record id="view_account_financial_report_tree_ext" model="ir.ui.view">
+            <field name="name">view_account_financial_report_tree_ext</field>
+            <field name="model">account.financial.report</field>
+            <field name="inherit_id" ref="account.view_account_financial_report_tree"/>
+            <field name="arch" type="xml">
+            	<tree string="Account Report" position="replace">
+	                <tree string="Account Report">
+	                    <field name="code"/>
+	                    <field name="name"/>
+	                    <field name="complete_name"/>	   
+	                    <field name="sequence"/>    
+	                    <field name="type"/>       
+	                    <field name="operator"/>
+	                    <field name="display_detail"/>
+	                    <field name="account_report_id"/>          
+	                    <field name="parent_id" invisible="1"/>
+	                </tree>
+            	</tree>
+            </field>
+        </record>
+        
+        <!-- report account items -->
+        <record id="view_account_financial_report_account_item_tree" model="ir.ui.view">
+            <field name="name">view_account_financial_report_account_item_tree</field>
+            <field name="model">account.financial.report.account.item</field>
+            <field name="arch" type="xml">
+            	<tree string="Account Report Account Items" editable="bottom">
+           				<field name="report_id" required="1"/>
+           				<field name="account_id" on_change="onchange_account_id(account_id)"/>
+           				<field name="name"/>
+           				<field name="operator"/>
+           				<field name="fetch_logic"/>
+            	</tree>
+            </field>
+        </record>        
+        <record id="view_account_financial_report_account_item_search" model="ir.ui.view">
+            <field name="name">view_account_financial_report_account_item_search</field>
+            <field name="model">account.financial.report.account.item</field>
+            <field name="arch" type="xml">
+                <search string="Account Report Account Items">
+                    <field name="name" string="Report Account Items" filter_domain="['|', '|', ('name','ilike',self), ('report_id.name','ilike',self), ('report_id.code','ilike',self)]"/>
+                    <field name="account_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Report" icon="terp-stock_symbol-selection" domain="[]" context="{'group_by':'report_id'}"/>
+                        <filter string="Account" icon="terp-stock_symbol-selection" domain="[]" context="{'group_by':'account_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_account_financial_report_account_item_tree" model="ir.actions.act_window">
+            <field name="name">Financial Report Account Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.financial.report.account.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_account_financial_report_account_item_search"/>
+            <field name="view_id" ref="view_account_financial_report_account_item_tree"/>
+        </record>
+        <menuitem id="menu_account_financial_report_account_item_tree" parent="account.menu_account_reports" action="action_account_financial_report_account_item_tree"/>
+        
+<!-- Add parent_report_item_ids/report_item_ids to account view -->
+        <record model="ir.ui.view" id="view_account_form_rpt_item">
+            <field name="name">view_account_form_rpt_item</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+            	<field name="user_type" position="after">
+            		<field name="parent_report_item_ids" widget="many2many_tags"/>
+            	</field>
+            	<field name="note" position="before">
+            		<label for="report_item_ids"/>
+            		<field name="report_item_ids"/>
+            	</field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_list_rpt_item">
+            <field name="name">view_account_list_rpt_item</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+            	<field name="user_type" position="after">
+            		<field name="parent_report_item_ids" widget="many2many_tags"/>
+            	</field>
+            </field>
+        </record>
+                
+    </data>
+</openerp>

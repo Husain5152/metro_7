@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data>
+        <record id="accounting_report_view_ext" model="ir.ui.view">
+            <field name="name">Accounting Report</field>
+            <field name="model">accounting.report</field>
+            <field name="inherit_id" ref="account.accounting_report_view"/>
+            <field name="arch" type="xml">
+            	<button name='check_report' position='replace'>
+            		<button name="check_report" string="PDF" type="object" default_focus="1" class="oe_highlight"/>
+            		<button name="check_report_excel" string="Excel" type="object" default_focus="1" class="oe_highlight"/>
+            	</button>
+            </field>
+        </record>
+<!-- Balance Sheet -->
+        <record id="account_financial_report_bscn_view" model="ir.ui.view">
+            <field name="name">account_financial_report_bscn_view</field>
+            <field name="model">accounting.report</field>
+            <field name="priority" eval="1001"/>
+            <field name="arch" type="xml">
+            <form string="Report Options" version="7.0">
+            	<field name="company_id" invisible="1"/>
+                <group col="4">
+                   <field name="chart_account_id" widget='selection' on_change="onchange_chart_id(chart_account_id, context)"/>
+                   <field name="target_move"/>
+                   <field name="fiscalyear_id" domain="[('company_id','=',company_id)]" required="1"/>
+                   <field name="period_to" domain="[('fiscalyear_id', '=', fiscalyear_id)]" required="1" string="Period"/>
+                   
+                   <field name="account_report_id" domain="[('parent_id','=',False)]" invisible="1"/>
+                </group>
+                <footer>
+            		<button name="check_report" string="PDF" type="object" default_focus="1" class="oe_highlight"/>
+            		<button name="check_report_excel" string="Excel" type="object" default_focus="1" class="oe_highlight"/>
+                    or 
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="account_financial_report_bscn_action" model="ir.actions.act_window">
+             <field name="name">Balance Sheet</field>
+             <field name="res_model">accounting.report</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">form</field>
+             <field name="view_id" ref="account_financial_report_bscn_view"/>
+             <field name="target">new</field>
+             <!-- for the default report
+             	if 'report_type_field' no value then will use the value from default_account_report_id
+             	report 'metro_accounts.bscn' was imported by csv
+             	see account_financial_report_wizard.accounting_report.default_get() for detail
+               -->
+             <!-- <field name="context" eval="{'default_account_report_id':ref('metro_accounts_report_data.bscn'), 'report_type_field':'report_bscn_id'}"/> -->
+             <field name="context" eval="{'report_type_field':'report_bscn_id'}"/>
+        </record>
+        
+        <menuitem
+            id="account_financial_report_bscn_menu"
+            action="account_financial_report_bscn_action"
+            groups="account.group_account_manager,account.group_account_user"
+            parent="menu_rpt_account_cn"
+            sequence="11"
+           />  
+           
+
+<!-- Profit Loss -->
+        <record id="account_financial_report_plcn_view" model="ir.ui.view">
+            <field name="name">account_financial_report_plcn_view</field>
+            <field name="model">accounting.report</field>
+            <field name="priority" eval="1002"/>
+            <field name="arch" type="xml">
+            <form string="Report Options" version="7.0">
+            	<field name="company_id" invisible="1"/>
+                <group col="4">
+                   <field name="chart_account_id" widget='selection' on_change="onchange_chart_id(chart_account_id, context)"/>
+                   <field name="target_move"/>
+                   <field name="fiscalyear_id" domain="[('company_id','=',company_id)]" required="1"/>
+                   <field name="period_to" domain="[('fiscalyear_id', '=', fiscalyear_id)]" required="1" string="Period"/>
+                   
+                   <field name="account_report_id" domain="[('parent_id','=',False)]" invisible="1"/>
+                </group>
+                <footer>
+            		<button name="check_report" string="PDF" type="object" default_focus="1" class="oe_highlight"/>
+            		<button name="check_report_excel" string="Excel" type="object" default_focus="1" class="oe_highlight"/>
+                    or 
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="account_financial_report_plcn_action" model="ir.actions.act_window">
+             <field name="name">Profit and Loss</field>
+             <field name="res_model">accounting.report</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">form</field>
+             <field name="view_id" ref="account_financial_report_plcn_view"/>
+             <field name="target">new</field>
+             <!-- for the default report
+             	if 'report_type_field' no value then will use the value from default_account_report_id
+             	report 'metro_accounts.plcn' was imported by csv
+             	see account_financial_report_wizard.accounting_report.default_get() for detail
+               -->
+             <!-- <field name="context" eval="{'default_account_report_id':ref('metro_accounts_report_data.plcn'), 'report_type_field':'report_plcn_id'}"/> -->
+             <field name="context" eval="{'report_type_field':'report_plcn_id'}"/>
+        </record>
+        
+        <menuitem
+            id="account_financial_report_plcn_menu"
+            action="account_financial_report_plcn_action"
+            groups="account.group_account_manager,account.group_account_user"
+            parent="menu_rpt_account_cn"
+            sequence="12"
+           />            
+            <!-- parent="menu_rpt_account_cn" -->
+            <!-- parent="account.menu_finance_reports" -->
+    </data>
+</openerp>

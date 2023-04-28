@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<menuitem id="menu_mttl_serials" name="Serial" parent="metro.mttl_metro"  sequence="30"/>
+		<menuitem id="menu_mttl_serial_config" name="Serial" 
+		    parent="metro.menu_mttl_config" groups="group_metro_serial_manager"/>
+
+<!-- View for Model - Start-->
+
+		<record id="mttl_models_tree" model="ir.ui.view">
+            <field name="name">mttl.config.models.tree</field>
+            <field name="model">mttl.models</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Models">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record id="mttl_models_form" model="ir.ui.view">
+            <field name="name">mttl.config.models.form</field>
+            <field name="model">mttl.models</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Models">
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mttl_models_tree_filter">
+            <field name="name">mttl_models_tree_filter</field>
+            <field name="model">mttl.models</field>
+            <field name="arch" type="xml">
+                <search string="Search Models">
+                    <field name="name"/>
+                    <field name="code"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="mttl_config_models_action" model="ir.actions.act_window">
+            <field name="name">Models</field>
+            <field name="res_model">mttl.models</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mttl_models_tree"/>
+            <field name="search_view_id" ref="mttl_models_tree_filter"/>
+        </record>
+
+        <record id="action_mttl_config_model_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="mttl_config_models_action"/>
+        </record>
+
+        <record id="action_mttl_config_model_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mttl_models_form"/>
+            <field name="act_window_id" ref="mttl_config_models_action"/>
+        </record>
+
+
+        <menuitem action="mttl_config_models_action" id="menu_mttl_config_model" 
+        			parent="menu_mttl_serial_config" sequence="4"/>
+
+<!-- View for Model - End-->		
+
+<!-- View for Years - Start-->
+
+		<record id="mttl_years_tree" model="ir.ui.view">
+            <field name="name">mttl.config.years.tree</field>
+            <field name="model">mttl.years</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Years">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record id="mttl_years_form" model="ir.ui.view">
+            <field name="name">mttl.config.years.form</field>
+            <field name="model">mttl.years</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Years">
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="mttl_config_years_action" model="ir.actions.act_window">
+            <field name="name">Years</field>
+            <field name="res_model">mttl.years</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mttl_years_tree"/>
+        </record>
+
+        <record id="action_mttl_config_year_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="mttl_config_years_action"/>
+        </record>
+
+        <record id="action_mttl_config_year_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mttl_years_form"/>
+            <field name="act_window_id" ref="mttl_config_years_action"/>
+        </record>
+
+
+        <menuitem action="mttl_config_years_action" id="menu_mttl_config_year" 
+        			parent="menu_mttl_serial_config" sequence="4"/>
+
+<!-- View for Year - End-->		
+
+<!-- View for Locations - Start-->
+
+		<record id="mttl_locations_tree" model="ir.ui.view">
+            <field name="name">mttl.config.locations.tree</field>
+            <field name="model">mttl.locations</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Locations">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record id="mttl_locations_form" model="ir.ui.view">
+            <field name="name">mttl.config.locations.form</field>
+            <field name="model">mttl.locations</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Locations">
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="mttl_config_locations_action" model="ir.actions.act_window">
+            <field name="name">Locations</field>
+            <field name="res_model">mttl.locations</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mttl_locations_tree"/>
+        </record>
+
+        <record id="action_mttl_config_location_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="mttl_config_locations_action"/>
+        </record>
+
+        <record id="action_mttl_config_location_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mttl_locations_form"/>
+            <field name="act_window_id" ref="mttl_config_locations_action"/>
+        </record>
+
+
+        <menuitem action="mttl_config_locations_action" id="menu_mttl_config_location" 
+        			parent="menu_mttl_serial_config" sequence="4"/>
+
+<!-- View for Location - End-->		
+
+<!-- View for Countries - Start-->
+
+		<record id="mttl_countries_tree" model="ir.ui.view">
+            <field name="name">mttl.config.countries.tree</field>
+            <field name="model">mttl.countries</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Countries">
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record id="mttl_countries_form" model="ir.ui.view">
+            <field name="name">mttl.config.countries.form</field>
+            <field name="model">mttl.countries</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Countries">
+                    <field name="country_id"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="mttl_config_countries_action" model="ir.actions.act_window">
+            <field name="name">Countries</field>
+            <field name="res_model">mttl.countries</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mttl_countries_tree"/>
+        </record>
+
+        <record id="action_mttl_config_country_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="mttl_config_countries_action"/>
+        </record>
+
+        <record id="action_mttl_config_country_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mttl_countries_form"/>
+            <field name="act_window_id" ref="mttl_config_countries_action"/>
+        </record>
+
+
+        <menuitem action="mttl_config_countries_action" id="menu_mttl_config_country" 
+        			parent="menu_mttl_serial_config" sequence="4"/>
+
+<!-- View for Country - End-->		
+
+<!-- View for Chassis - Start-->
+
+		<record id="mttl_chassis_tree" model="ir.ui.view">
+            <field name="name">mttl.config.chassis.tree</field>
+            <field name="model">mttl.chassis</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Chassis">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record id="mttl_chassis_form" model="ir.ui.view">
+            <field name="name">mttl.config.chassis.form</field>
+            <field name="model">mttl.chassis</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Chassis">
+                    <field name="name"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="mttl_config_chassis_action" model="ir.actions.act_window">
+            <field name="name">Chassis</field>
+            <field name="res_model">mttl.chassis</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mttl_chassis_tree"/>
+        </record>
+
+        <record id="action_mttl_config_chassis_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="mttl_config_chassis_action"/>
+        </record>
+
+        <record id="action_mttl_config_chassis_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mttl_chassis_form"/>
+            <field name="act_window_id" ref="mttl_config_chassis_action"/>
+        </record>
+
+
+        <menuitem action="mttl_config_chassis_action" id="menu_mttl_config_chassis" 
+        			parent="menu_mttl_serial_config" sequence="4"/>
+
+<!-- View for Chassis - End-->		
+
+<!-- View for Serials - Start-->
+
+		<record id="mttl_serials_tree" model="ir.ui.view">
+            <field name="name">mttl.config.serials.tree</field>
+            <field name="model">mttl.serials</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Serials">
+                	<field name="serial"/>
+                    <field name="model"/>
+                    <field name="chassis"/>
+                    <field name="partner_id"/>
+                    <field name="country"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_mttl_serial_search" model="ir.ui.view">
+            <field name="name">mttl.config.serials.search</field>
+            <field name="model">mttl.serials</field>
+            <field name="arch" type="xml">
+                <search string="Search Metro Serial">
+                    <field name="serial_number" string="" 
+                        filter_domain="['|','|','|','|',('serial_number','ilike',self),('serial','ilike',self),('partner_id.name','ilike',self),('model','ilike',self),('model.code','ilike',self)]"/>
+                    <field name="serial_number" string="Serial Number" 
+                        filter_domain="['|',('serial_number','ilike',self),('serial','ilike',self)]"/>
+                    <field name="partner_id" string="Customer"/>
+                    <field name="model" string="Model"/>
+                </search>
+            </field>
+        </record>
+
+		<record id="mttl_serials_form" model="ir.ui.view">
+            <field name="name">mttl.config.serials.form</field>
+            <field name="model">mttl.serials</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Serials">
+                	<group colspan="2">
+                		<field name="serial"/>
+            		</group>
+                    <notebook colspan="4">
+                    	<page string="Serial">
+                        <newline/>
+                    		<group col="2" colspan="2">
+                    			<separator string="Specifics" colspan="2"/>
+			                    <field name="model"/>
+			                    <field name="year"/>
+			                    <field name="location"/>
+			                    <field name="chassis"/>
+			                    <field name="country"/>
+                          <field name="serial_number"/>
+                          <group col="2" colspan="2">
+                            <button name="generate_serial" type="object" string="Generate Serial"/>
+                          </group>
+		                    </group>
+		                    <group col="2" colspan="2">
+                          <separator string="Customer Information" colspan="2"/>
+                          <field name="partner_id"/>
+                          <field name="destination_id"/>
+                          <field name="dealer_id"/>
+		                    </group>
+	                    </page>
+                        <page string="Vehicle Information">
+	                        <separator string="Vehicle Information" colspan="4"/>
+                            <group col="2" colspan="2">
+                              <field name="vehicle_year"/>
+                              <field name="vehicle_make"/>
+                              <field name="vehicle_model" domain="[('make','=',vehicle_make)]"/>
+                            </group>
+                            <group col="2" colspan="2">
+							    <field name="vehicle_vin"/>
+	                            <field name="engine_serial"/>
+                            </group>
+	                          <separator string="Final Dimensions" colspan="4"/>
+                            <group col="2" colspan="1">
+                              <field name="chassis_weight"/>
+                              <field name="wrecker_weight"/>
+                              <field name="installed_weight"/>
+                            </group>
+                            <group col="2" colspan="1">
+			                    <field name="installed_height"/>
+			                    <field name="installed_length"/>
+			                    <field name="installed_width"/>
+		                    </group>
+                            <separator string="Axle Weights" colspan="4"/>  
+		                    <group col="2" colspan="1">
+			                    <field name="chassis_1st_fa"/>
+			                    <field name="chassis_2nd_fa"/>
+			                    <field name="chassis_1st_ra"/>
+			                    <field name="chassis_2nd_ra"/>
+			                    <field name="chassis_3rd_ra"/>
+		                    </group>
+		                    <group col="2" colspan="1">
+			                    <field name="chassis_1st_fa_rating"/>
+			                    <field name="chassis_2nd_fa_rating"/>
+			                    <field name="chassis_1st_ra_rating"/>
+			                    <field name="chassis_2nd_ra_rating"/>
+			                    <field name="chassis_3rd_ra_rating"/>
+		                    </group>
+		                    <group col="2" colspan="1">
+			                    <field name="installed_1st_fa"/>
+			                    <field name="installed_2nd_fa"/>
+			                    <field name="installed_1st_ra"/>
+			                    <field name="installed_2nd_ra"/>
+			                    <field name="installed_3rd_ra"/>
+		                    </group>
+		                    <newline/>
+		                    <label string="All weights and measurements are Metric (KG and MM)" colspan="4"/>
+	                    </page>
+	                    <page string="Warranty">
+                            <!--+++ HoangTK : 02/18/2016 Remove the warranty history, link to warranty module instead -->
+                            <!--
+                        <group col="2" colspan="2">
+                          <field name="warranty_start_date"/>
+                          <field name="warranty_finish_date"/>
+                          <field name="warranty_duration"/>
+                          <field name="warranty_completion_date"/>
+                        </group>
+	                    	<newline/>
+	                    	<field name="warranty_history" widget="one2many_list" nolabel="1" colspan="4">
+	                    		<form string="Warranty History">
+	                    			<field name="date"/>
+	                    			<field name="status"/>
+	                    			<field name="incident"/>
+	                    			<field name="action_taken"/>
+	                    		</form>
+	                    		<tree string="Warranty History">
+	                    			<field name="date"/>
+	                    			<field name="incident"/>
+	                    			<field name="action_taken"/>
+	                    			<field name="status"/>
+	                    		</tree>
+	                    	</field> -->
+                            <field name="warranty_ids" widget="one2many_list" nolabel="1" colspan="4" context="{'default_serial_id':id}">
+                            </field>
+                            <!--... HoangTK : 02/18/2016 Remove the warranty history, link to warranty module instead -->
+	                    </page>
+                        <page string="Images">
+                            <group  colspan="2">
+                                <field name="image" widget="image_multi" colspan="4"/>
+                            </group>
+	                    </page>
+	                    <page string="Attachment">
+	                        <field name="attachment_lines" nolabel="1" colspan="4"
+	                                context="{'o2m_attach': True}">
+	                           <tree string="Attachment">
+	                                <field name="name"/>
+	                                <field name="attach_type_id"/>
+	                                <field name="create_uid"/>
+	                                <field name="create_date"/>
+	                            </tree>
+	                        </field>
+	                    </page>	                    
+	                    <page string="Notes">
+	                    	<field name="notes"/>
+	                    </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="mttl_serials_action" model="ir.actions.act_window">
+            <field name="name">Serials</field>
+            <field name="res_model">mttl.serials</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_mttl_serial_search"/>
+            <field name="view_id" ref="mttl_serials_tree"/>
+        </record>
+
+        <record id="action_mttl_serial_tree_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="mttl_serials_action"/>
+        </record>
+
+        <record id="action_mttl_serial_form_view" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mttl_serials_form"/>
+            <field name="act_window_id" ref="mttl_serials_action"/>
+        </record>
+
+
+        <menuitem action="mttl_serials_action" id="menu_mttl_serial" 
+        			parent="menu_mttl_serials" sequence="4"/>
+
+<!-- View for Serial - End-->		
+
+<!-- Sequences for serial number -->
+        <record id="seq_type_mttl_serial_number" model="ir.sequence.type">
+            <field name="name">Serial Number</field>
+            <field name="code">serial.number</field>
+        </record>
+
+        <record id="seq_nttl_serial_number" model="ir.sequence">
+            <field name="name">Serial Number</field>
+            <field name="code">serial.number</field>
+        </record>
+
+<!-- dealer flag on customer form -->
+        <record id="view_metro_partner_dealer" model="ir.ui.view">
+            <field name="name">view_metro_partner_dealer</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="customer" position="after">
+                	<field name="dealer"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_res_partner_filter_dealer" model="ir.ui.view">
+            <field name="name">view_res_partner_filter_dealer</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <filter name="customer" position="after">
+                   <filter string="Dealers" name="dealer" domain="[('dealer','=',1)]" help="Dealers"/>
+                </filter>
+            </field>
+        </record>
+        
+        
+    </data>
+</openerp>

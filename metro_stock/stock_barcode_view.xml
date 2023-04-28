@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>      
+        <record id="view_material_request_barcode_form" model="ir.ui.view">
+            <field name="name">material.request.barcode.form</field>
+            <field name="model">material.request</field>
+            <field name="inherit_id" ref="view_material_request_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//sheet/group" position="after">
+	            	<field name="show_barcode_info"/>
+            		<group attrs="{'invisible': [('show_barcode_info','=',False)]}" >
+	            		<field name="mr_emp_code" on_change="onchange_mr_emp_code(mr_emp_code)"/>
+	            		<field name="mr_emp_id" on_change="onchange_mr_emp_id(mr_emp_id)"/>
+	            		<field name="mr_sale_prod_id"/>
+            		</group>
+            	</xpath>
+                <xpath expr="//field[@name='move_lines']" position="replace">
+                    <field name="move_lines" context="{'form_view_ref':'metro_stock.view_mat_line_form', 'tree_view_ref':'metro_stock.view_mat_line_tree', 'req_type':type, 'set_emp_id':mr_emp_id,'set_sale_prod_id':mr_sale_prod_id}"/>
+                </xpath>                
+            </field>
+        </record>
+        
+        <record id="view_mat_line_tree_barcode" model="ir.ui.view">
+            <field name="name">view_mat_line_tree_barcode</field>
+            <field name="model">material.request.line</field>
+            <field name="inherit_id" ref="metro_stock.view_mat_line_tree"/>
+            <field name="arch" type="xml">
+            	<field name="product_id" position="before">
+            		<field name="bc_product_code" on_change="onchange_bc_product_code(bc_product_code,parent.mr_emp_id,parent.mr_sale_prod_id,product_id)"/>
+            	</field>
+            </field>
+        </record>        
+
+        
+    </data>
+</openerp>

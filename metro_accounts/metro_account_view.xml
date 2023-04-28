@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_account_form_ext">
+            <field name="name">view_account_form_ext</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+            	<field name="balance" position="after">
+            		<field name="bal_direct"/>
+            	</field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_list_ext">
+            <field name="name">view_account_list_ext</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+            	<field name="balance" position="after">
+            		<field name="bal_direct"/>
+            	</field>
+            	<!-- show the account user type -->
+            	<field name="user_type" position="attributes">
+            		<attribute name="invisible">0</attribute>
+            	</field>
+            </field>
+        </record>        
+        <record model="ir.ui.view" id="view_account_search_ext">
+            <field name="name">view_account_search_ext</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_search"/>
+            <field name="arch" type="xml">
+            	<field name="user_type" position="after">
+            		<separator/>
+            		<filter name="detail_account" string="Detail Accounts" domain="[('type','!=','view')]"/>
+            		<separator/>
+            		<filter name="income_expense" string="Asset" domain="[('user_type','in',('Check','Asset','Bank','Cash','Receivable'))]"/>
+            		<filter name="income_expense" string="Liability&amp;Equity" domain="[('user_type','in',('Equity','Liability','Payable','Tax'))]"/>
+            		<filter name="income_expense" string="Income&amp;Expense" domain="[('user_type','in',('Income','Expense'))]"/>
+            	</field>
+            </field>
+        </record>     
+        
+        <record id="view_account_type_tree_ext" model="ir.ui.view">
+            <field name="name">view_account_type_tree_ext</field>
+            <field name="model">account.account.type</field>
+            <field name="inherit_id" ref="account.view_account_type_tree"/>
+            <field name="arch" type="xml">
+            	<field name="code" position="after">
+                    <field name="close_method"/>
+                    <field name="report_type"/>
+            	</field>
+            </field>
+        </record>   
+        
+    </data>
+</openerp>

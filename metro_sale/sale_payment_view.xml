@@ -1,0 +1,239 @@
+<openerp>
+    <data>
+		<record id="metro_sales_orders_view_form" model="ir.ui.view">
+			<field name="name">metro.sales.orders.view.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_quick_payment.sale_order_view_form" />
+			<field name="arch" type="xml">				
+<!-- 				<xpath expr="//field[@name='state']" position="attributes">
+					<attribute name="statusbar_visible">draft,done</attribute>
+				</xpath> -->
+				<xpath expr="//button[@name='action_button_confirm'][1]" position="before">
+	                <button name="order_agree" states="draft" string="Sales Agreement" groups="base.group_user"/>
+	                <button name="order_agree" states="sent" string="Sales Agreement" class="oe_highlight" groups="base.group_user"/>
+	                <button name="action_button_confirm" states="agreed" string="Confirm Sale" class="oe_highlight" type="object" groups="base.group_user"/>					
+				</xpath>
+				<xpath expr="//button[@name='cancel']" position="after">
+					<button name="cancel_agree" states="agreed" string="Cancel Agreement" groups="base.group_user"/>
+                    <button name="set_agree" type='object' string="Set to Agreement" groups="base.group_system"/>
+				</xpath>
+				<xpath expr="//button[@string='Register Payments']" position="attributes">
+					<attribute name="string">Apply Payments</attribute>
+					<attribute name="states">agreed</attribute>
+				</xpath>
+				<xpath expr="//button[@string='Apply Payments']" position="after">
+					<button name="print_agreement" string="Print Agreement" type="object" states="agreed" groups="base.group_user"/>
+				</xpath>
+				<xpath expr="//field[@name='pricelist_id']" position="after">
+					<!-- <field name="state" readonly="0"/> -->
+				</xpath>
+                <!-- replace the  automation_information tab-->
+                <page name="automation_information" position="replace">
+                    <page name="sale_payments" string="Payments">
+                        <separator string="Advance Payments"/>                    
+                        <field name="payment_moves" widget="one2many_list">
+                            <tree string="Payment Moves" create="false" edit="false" delete="true">
+                                <field name="name"/>
+                                <field name="narration" string="Description"/>
+                                <field name="journal_id" string="Payment Method"/>
+                                <field name="amount" string="Paid Amount"/>
+                                <field name="date" string="Date"/>
+                                <!-- this field is required since the above fields defined the 'states' in the account_move field definition  -->
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                        <field name="payment_ids" string="Payment Detail" readonly="1">
+                            <tree string="Payment">
+                                <field name="name" string="Description"/>
+                                <field name="date"/>
+                                <field name="credit" string="Amount"/>
+                                <field name="currency_id" string="Currency"/>
+                                <field name="amount_currency" string="Currency Amount"/>
+                            </tree>
+                        </field>
+                        
+                        <separator string="Invoice Payments"/>           
+                        <field name="inv_pay_ids">
+                            <tree string="Invoice Payments">
+                                <field name="name" string="Description"/>
+                                <field name="date" string="Date"/>
+                                <field name="journal_id" string="Payment Method"/>
+                                <field name="credit" string="Amount"/>
+                                <field name="currency_id" string="Currency"/>
+                                <field name="amount_currency" string="Currency Amount"/>
+                            </tree>
+                        </field> 
+                        
+                    </page>
+                </page>
+               	<field name="amount_tax" position="after">
+               		<field name="amount_paid" widget='monetary' options="{'currency_field': 'currency_id'}" string="Total Paid"/>
+               	</field>
+               	<!-- make the balance field visible from sale_payment_method module -->
+               	<field name="residual" position="replace">
+                    <div class="oe_subtotal_footer_separator oe_inline">
+                        <label for="residual" string="Balance Due"/>
+                    </div>
+               		<field name="residual" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+               	</field>
+				<!-- remove the  button 'View Automatic Payment' from sale_payment_method-->
+                <button name="action_view_payments" position="replace">
+                </button>
+                <button name="button_dummy" position="attributes">
+                	<attribute name='states'>draft,sent,agreed</attribute>
+                </button>				
+			</field>
+		</record>  
+        <record id="metro_view_order_form_exception" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_exceptions.view_order_form"/>
+            <field name="arch" type="xml">
+				<!-- remove the exception list in sale_exceptions.view_order_form -->
+				<xpath expr="//group[@name='exception']" position="replace">
+				</xpath>				
+			</field>
+		</record>
+        <record id="metro_view_order_tree_exception" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_exceptions.view_order_tree"/>
+            <field name="arch" type="xml">
+            	<field name="main_exception_id" position="replace">
+            	</field>
+            </field>
+        </record>		
+		<!-- remove the useless fields and add the payment data to sale order tree from sale_payment_method-->
+        <record id="metro_view_order_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_payment_method.sale_order_view_tree"/>
+            <field name="arch" type="xml">
+            	<field name="payment_method_id" position="replace">
+            	</field>
+                <field name="state" position="before">
+                    <field name="amount_paid" string="Total Paid"/>
+                    <field name="residual" string="Balance Due"/>
+                </field>
+            </field>
+        </record>
+        <!-- remove the useless fields on the quotation tree from the sale_payment_method module -->
+        <record id="view_quotation_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_payment_method.view_quotation_tree"/>
+            <field name="arch" type="xml">
+            	<field name="amount_paid" position="replace">
+            	</field>
+            	<field name="payment_method_id" position="replace">
+            	</field>
+            </field>
+        </record>        
+        
+		<!-- the payment form from sale_quick_payment -->
+        <record model="ir.ui.view" id="metro_pay_sale_order_view">
+            <field name="name">pay.sale.order.view</field>
+            <field name="model">pay.sale.order</field>
+			<field name="inherit_id" ref="sale_quick_payment.pay_sale_order_view" />
+            <field name="arch" type="xml">
+            	<field name="description" position="attributes">
+            		<attribute name="required">1</attribute>
+            	</field>
+            	<field name="journal_id" position="attributes">
+            		<attribute name="required">1</attribute>
+            		<attribute name="domain">[('type','in',('bank','cash'))]</attribute>
+            		<attribute name="string">Payment Method</attribute>
+            	</field>
+            	<field name="date" position="attributes">
+            		<attribute name="widget">date</attribute>
+            	</field>
+            	<field name="date" position="after">
+                    <field name="attachment_name" invisible="1"/>
+                   <field name="attachment" filename="attachment_name"/>
+            	</field>
+				<xpath expr="//footer" position="replace">
+                    <footer>
+                        <button string="Pay" name="pay_sale_order" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+				</xpath>                    
+            </field>
+        </record>
+        	
+        <!-- Add 'Sales Agreement' filter -->
+        <record id="view_sales_order_filter_ext" model="ir.ui.view">
+            <field name="name">sale.order.list.select</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+            	<filter name="message_unread" position="replace">
+            	</filter>
+            	<filter name="sales" position="before">
+            		<filter icon="terp-document-new" string="Agreements" name="agreement" domain="[('state','=','agreed')]"/>
+            	</filter>
+            	<filter name="sales" position="attributes">
+            		<attribute name="string">Sales Orders</attribute>
+            		<attribute name="domain">[('state','not in',('draft','sent','cancel','agreed'))]</attribute>
+            	</filter>
+            	<filter name="sales" position="after">
+            		<separator/>
+            	</filter>
+            	<xpath expr="//filter[@string='Done']" position="after">
+            		<separator/>
+            		<filter icon="terp-document-new" string="Cancel" name="cancel" domain="[('state','=','cancel')]"/>
+            	</xpath>
+            	<field name="partner_id" position="after">
+            		<field name="state"/>
+            	</field>            	
+            </field>
+        </record>
+<!-- remove the domain and set the default filter for Quotations -->    
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="domain"></field>
+            <field name="context">{'show_address': 1, 'search_default_draft': 1}</field>
+        </record>        
+                
+<!-- remove the domain and set the default filter for Sales Order -->        
+        <record id="sale.action_orders" model="ir.actions.act_window">
+            <field name="domain"></field>
+            <field name="context">{'show_address': 1, 'search_default_sales': 1}</field>
+        </record>        
+        
+        <!-- new menu for sales agreement  -->
+<!--         <record id="view_sales_agreement_filter" model="ir.ui.view">
+            <field name="name">sale.order.list.select</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <search string="Search Sales Agreements">
+                    <field name="name" string="Sales Agreements" filter_domain="['|',('name','ilike',self),('client_order_ref','ilike',self)]"/>
+                    <filter icon="terp-mail-message-new" string="Unread Messages" name="message_unread" domain="[('message_unread','=',True)]"/>
+                    <separator/>
+                    <filter string="My Sales Agreements" domain="[('user_id','=',uid)]" help="My Sales Orders" icon="terp-personal" name="my_sale_orders_filter"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="project_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Customer" icon="terp-personal" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Salesperson" icon="terp-personal" domain="[]" context="{'group_by':'user_id'}"/>
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Order Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_order'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>     -->    
+        <record id="action_sale_agreements" model="ir.actions.act_window">
+            <field name="name">Sales Agreements</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="metro_view_order_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="search_view_id" ref="view_sales_order_filter_ext"/>
+            <field name="context">{'show_address': 1, 'search_default_agreement': 1}</field>
+        </record>  
+        <menuitem action="action_sale_agreements" id="menu_sale_agreement" parent="base.menu_sales" sequence="5" groups="base.group_sale_salesman,base.group_sale_manager"/>
+        <!-- change the sales order menu sequence -->              
+        <menuitem action="sale.action_orders" id="sale.menu_sale_order" parent="base.menu_sales" sequence="6" groups="base.group_sale_salesman,base.group_sale_manager"/>
+    </data>
+</openerp>

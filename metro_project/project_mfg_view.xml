@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>          
+<!-- Manufacture Tasks view and menu -->                
+        <record model="ir.ui.view" id="project_task_mfg_form_view">
+            <field name="name">project_task_mfg_form_view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="metro_project_task_simple_form_view"/>
+            <field name="arch" type="xml">
+            <!--+++ HoangTK - 12/03/2015: Only allow edit when state = draft add -->
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('state','!=','draft')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='private']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('state','!=','draft')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('state','!=','draft')]}</attribute>
+                </xpath>                                
+            <!--... HoangTK - 12/03/2015: Only allow edit when state = draft -->
+            <!-- Add team -->
+                <field name="user_id" position="after">
+                    <!--+++ HoangTK - 12/03/2015: Only allow edit when state = draft -->    
+                    <!-- <field name="dept_id" attrs="{'invisible':[('project_type','!=','mfg')],'readonly':[('state','in',['done', 'cancelled'])]}" on_change="onchange_dept_id(dept_id,context)"/> -->
+                    <field name="dept_id" attrs="{'invisible':[('project_type','!=','mfg')],'readonly':[('state','!=','draft')]}" on_change="onchange_dept_id(dept_id,context)"/>
+                    <!--+++ HoangTK - 12/03/2015: Only allow edit when state = draft -->
+                    <!--+++ HoangTK - 12/03/2015: Only allow edit when state = draft -->
+                    <!-- <field name="dept_mgr_id" attrs="{'invisible':[('project_type','!=','mfg')],'readonly':[('state','in',['done', 'cancelled'])]}"/> -->
+                    <field name="dept_mgr_id" attrs="{'invisible':[('project_type','!=','mfg')],'readonly':[('state','!=','draft')]}"/>
+                    <!--... HoangTK - 12/03/2015: Only allow edit when state = draft -->                      
+                </field>
+            <!-- add work order id -->
+                <field name="planned_hours" position="before">
+                    <field name="id" invisible="1"/>
+                    <!--+++ HoangTK - 12/03/2015: Only allow edit when state = draft -->
+                    <!-- 
+                    <field name="workorder_id"
+                        invisible="context.get('force_workorder')"
+                        attrs="{'invisible':[('project_type','!=','mfg')],'required':[('project_type','=','mfg')],'readonly':[('state','in',['done', 'cancelled'])]}"
+                        on_change="on_change_wo(workorder_id,context)"
+                        domain="[('state','=','startworking')]"/>
+                    -->
+                    <field name="workorder_id"
+                        invisible="context.get('force_workorder')"
+                        attrs="{'invisible':[('project_type','!=','mfg')],'required':[('project_type','=','mfg')],'readonly':[('state','!=','draft')]}"
+                        on_change="on_change_wo(workorder_id,context)"
+                        domain="[('state','=','startworking')]"/>
+                    <!--... HoangTK - 12/03/2015: Only allow edit when state = draft -->
+                    <field name="workcenter_id" attrs="{'invisible':[('project_type','!=','mfg')]}"/>
+                    <field name="production_id" attrs="{'invisible':[('project_type','!=','mfg')]}"/>
+                    <field name="mfg_ids" widget="many2many_tags" attrs="{'invisible':[('project_type','!=','mfg')]}"/>
+                    <field name="product" attrs="{'invisible':[('project_type','!=','mfg')]}"/>                 
+                </field>   
+            <!-- Add emp_ids/mfg_ids to task's work hours -->
+                <xpath expr="//field[@name='work_ids']/tree/field[@name='name']" position="after">
+                    <field name="emp_ids" widget="many2many_tags"/>
+                    <field name="mfg_ids" widget="many2many_tags"/>
+                </xpath>    
+            <!-- hide project_id for mfg task -->
+                <field name="project_id" position="attributes">
+                    <attribute name="attrs">{'invisible':[('project_type','=','mfg')]}</attribute>
+                </field>              
+            <!-- Add context parameter to task's work hours -->
+                <xpath expr="//field[@name='work_ids']" position="attributes">
+                    <attribute name="context">{'task_employee_ids':emp_ids,'workorder_id':workorder_id}</attribute>
+                </xpath>
+            </field>
+        </record> 
+        
+        <record id="view_mfg_task_tree" model="ir.ui.view">
+            <field name="name">project.task.tree</field>
+            <field name="model">project.task</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <tree colors="green:state == 'done';blue:state == 'pending';red:date_deadline and (date_deadline&lt;current_date) and (state in ('draft','pending','open'));grey:state == 'cancelled'" string="Tasks">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="id"/>
+                    <field name="sequence"/>
+                    <field name="priority"/>
+                    <field name="name"/>
+                    <field name="mfg_ids" widget="many2many_tags"/>
+                    <field name="dept_id" />
+                    <field name="project_id" invisible="1"/>
+                    <field name="project_type" invisible="1"/>
+                    <field name="workorder_id" />
+                    <field name="workcenter_id" />
+                    <field name="production_id" />
+                    <field name="product" />
+                    <field name="categ_ids" widget='many2many_tags'/>
+                    <field name="user_id" invisible="context.get('user_invisible', False)"/>
+                    <field name="delegated_user_id" invisible="context.get('show_delegated', True)"/>
+                    <field name="total_hours" invisible="1"/>
+                    <field name="planned_hours" invisible="context.get('set_visible',False)" groups="project.group_time_work_estimation_tasks"
+                        string="Planned Hours" widget="float_time"/>
+                    <field name="effective_hours" widget="float_time" sum="Spent Hours" string="Spent Hours"/>
+                    <field name="remaining_hours" widget="float_time" sum="Remaining Hours" on_change="onchange_remaining(remaining_hours,planned_hours)" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline" invisible="context.get('deadline_visible',True)"/>
+                    <field name="stage_id" invisible="context.get('set_visible',False)"/>
+                    <field name="state" invisible="1"/>
+                    <field name="date_deadline"/>
+                    <field name="date_start" widget="date"/>
+                    <field name="date_end" widget="date"/>
+                    <field name="progress" widget="progressbar" invisible="context.get('set_visible',False)"/>
+                </tree>
+            </field>
+        </record>
+                          
+        <record id="project_task_mfg_search_view" model="ir.ui.view">
+            <field name="name">project_task_mfg_search_view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="view_task_search_form_extend"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                    <field name="name" filter_domain="['|',('name','ilike',self),('workorder_id.name','ilike',self)]" string="Tasks"/>
+                </field>
+                <field name="project_type" position="after">
+                    <field name="dept_id"/>
+                    <field name="dept_mgr_id"/>
+                    <field name="workorder_id"/>
+                    <field name="workcenter_id"/>
+                    <field name="production_id"/>   
+                    <field name="mfg_ids" widget="many2many_tags"/>
+                    <field name="multi_mfg_ids_search"/>
+                    <field name="product"/>
+                </field>
+                <filter string="End Date" position="after">
+                    <separator/>
+                    <filter string="Team" name="group_dept_id" icon="terp-folder-violet" domain="[]" context="{'group_by':'dept_id'}"/>
+                    <filter string="Work Order" name="group_workorder_id" icon="terp-folder-violet" domain="[]" context="{'group_by':'workorder_id'}"/>
+                </filter>
+            </field>
+        </record> 
+<!-- MFG Task Kanban View -->
+        <record model="ir.ui.view" id="view_mfg_task_kanban">
+            <field name="name">project.mfg.task.kanban</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <!--+++ HoangTK - 12/08/2015: Disable drag and drop -->
+                <!-- <kanban default_group_by="dept_id" quick_create="0" > -->
+                <kanban default_group_by="dept_id" quick_create="0" edit="false">
+                <!--... HoangTK - 12/08/2015: Disable drag and drop -->
+                    <field name="stage_color"/>
+                    <field name="priority"/>
+                    <field name="stage_id"/>
+                    <field name="user_id"/>
+                    <field name="user_email"/>
+                    <field name="description"/>
+                    <field name="sequence"/>
+                    <field name="state" groups="base.group_no_one"/>
+                    <field name="kanban_state"/>
+                    <field name="remaining_hours" sum="Remaining Time" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline"/>
+                    <field name="message_summary"/>
+                    <field name="categ_ids"/>
+                    
+                    <field name="mfg_ids"/>
+                    <field name="product"/>
+                    <field name="dept_id"/>
+                    <field name="dept_mgr_id"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.stage_color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                <span class="oe_e">í</span>
+                                <ul class="oe_dropdown_menu">
+                                    <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+                                    <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                    <li>
+                                      <ul class="oe_kanban_project_times" groups="project.group_time_work_estimation_tasks">
+                                        <li><a name="set_remaining_time_1" type="object" class="oe_kanban_button">1</a></li>
+                                        <li><a name="set_remaining_time_2" type="object" class="oe_kanban_button">2</a></li>
+                                        <li><a name="set_remaining_time_5" type="object" class="oe_kanban_button">5</a></li>
+                                        <li><a name="set_remaining_time_10" type="object" class="oe_kanban_button">10</a></li>
+                                        <li><a name="do_open" states="draft" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="stage_color"/></li>
+                                </ul>
+                            </div>
+
+                            <div class="oe_kanban_content">
+                                <div><b><field name="mfg_ids"/></b></div>
+                                <!--+++ HoangTK - 11/19/2015: Remove name -->
+                                <!-- <div><b><field name="name"/></b></div> -->
+                                <!--... HoangTK - 11/19/2015 -->
+                                <div>
+                                    <field name="product"/><br/>
+                                    <field name="workorder_id"/><br/>
+                                    <field name="stage_id"/><br/>
+                                    <field name="date_deadline"/><br/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <t groups="base.group_user">
+                                        <a t-if="record.kanban_state.raw_value === 'normal'" type="object" string="In Progress" name="set_kanban_state_done" class="oe_kanban_status"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'done'" type="object" string="Ready for next stage" name="set_kanban_state_blocked" class="oe_kanban_status oe_kanban_status_green"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'blocked'" type="object" string="Blocked" name="set_kanban_state_normal" class="oe_kanban_status oe_kanban_status_red"> </a>
+                                        <a t-if="record.priority.raw_value > 0" type="object" string="Normal" name="set_high_priority" class="oe_e oe_star_off">7</a>
+                                        <a t-if="record.priority.raw_value == 0" type="object" string="Very Important" name="set_normal_priority" class="oe_e oe_star_on">7</a>
+                                    </t>
+                                    <img t-att-src="kanban_image('hr.employee', 'image_small', record.dept_mgr_id.raw_value)" t-att-title="record.dept_mgr_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <span groups="project.group_time_work_estimation_tasks" title="Remaining hours">
+                                        <span class="oe_e">N</span>
+                                        <t t-esc="Math.round(record.remaining_hours.raw_value)"/>
+                                    </span>
+                                    <input type="checkbox" t-att-data-id="record.id.raw_value" 
+                                        class="oe_kanban_record_selector oe_kanban_noaction" t-att-checked="checked" title="Select"/>
+                                </div>
+<!--                                 <div class="oe_kanban_footer_left" style="margin-top:5px;">
+                                    <t t-raw="record.message_summary.raw_value"/>
+                                    <field name="categ_ids"/>
+                                </div> -->
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
+        <record model="ir.ui.view" id="view_mfg_task_kanban_subgroup">
+            <field name="name">project.mfg.task.kanban.subgroup</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <kanban_subgrp version="7.0" default_group_by="dept_id" sub_group_by="production_id" quick_create="0">
+                    <field name="stage_color"/>
+                    <field name="priority"/>
+                    <field name="stage_id"/>
+                    <field name="user_id"/>
+                    <field name="user_email"/>
+                    <field name="description"/>
+                    <field name="sequence"/>
+                    <field name="state" groups="base.group_no_one"/>
+                    <field name="kanban_state"/>
+                    <field name="remaining_hours" avg="Remaining Time" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline"/>
+                    <field name="message_summary"/>
+                    <field name="categ_ids"/>
+                    
+                    <field name="mfg_ids"/>
+                    <field name="product"/>
+                    <field name="dept_id"/>
+                    <field name="dept_mgr_id"/>
+                    <field name="production_id"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.stage_color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                <span class="oe_e">í</span>
+                                <ul class="oe_dropdown_menu">
+                                    <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+                                    <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                    <li>
+                                      <ul class="oe_kanban_project_times" groups="project.group_time_work_estimation_tasks">
+                                        <li><a name="set_remaining_time_1" type="object" class="oe_kanban_button">1</a></li>
+                                        <li><a name="set_remaining_time_2" type="object" class="oe_kanban_button">2</a></li>
+                                        <li><a name="set_remaining_time_5" type="object" class="oe_kanban_button">5</a></li>
+                                        <li><a name="set_remaining_time_10" type="object" class="oe_kanban_button">10</a></li>
+                                        <li><a name="do_open" states="draft" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="stage_color"/></li>
+                                </ul>
+                            </div>
+
+                            <div class="oe_kanban_content">
+                                <div><b><field name="name"/></b></div>
+                                <div><b><field name="mfg_ids"/></b></div>
+                                <div>
+                                    <field name="product"/><br/>
+                                    <field name="workorder_id"/><br/>
+                                    <field name="stage_id"/><br/>
+                                    <field name="date_deadline"/><br/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <t groups="base.group_user">
+                                        <a t-if="record.kanban_state.raw_value === 'normal'" type="object" string="In Progress" name="set_kanban_state_done" class="oe_kanban_status"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'done'" type="object" string="Ready for next stage" name="set_kanban_state_blocked" class="oe_kanban_status oe_kanban_status_green"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'blocked'" type="object" string="Blocked" name="set_kanban_state_normal" class="oe_kanban_status oe_kanban_status_red"> </a>
+                                        <a t-if="record.priority.raw_value > 0" type="object" string="Normal" name="set_high_priority" class="oe_e oe_star_off">7</a>
+                                        <a t-if="record.priority.raw_value == 0" type="object" string="Very Important" name="set_normal_priority" class="oe_e oe_star_on">7</a>
+                                    </t>
+                                    <img t-att-src="kanban_image('hr.employee', 'image_small', record.dept_mgr_id.raw_value)" t-att-title="record.dept_mgr_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <span groups="project.group_time_work_estimation_tasks" title="Remaining hours">
+                                        <span class="oe_e">N</span>
+                                        <t t-esc="Math.round(record.remaining_hours.raw_value)"/>
+                                    </span>
+                                    <input type="checkbox" t-att-data-id="record.id.raw_value" 
+                                        class="oe_kanban_record_selector oe_kanban_noaction" t-att-checked="checked" title="Select"/>
+                                </div>
+<!--                                 <div class="oe_kanban_footer_left" style="margin-top:5px;">
+                                    <t t-raw="record.message_summary.raw_value"/>
+                                    <field name="categ_ids"/>
+                                </div> -->
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban_subgrp>
+            </field>
+         </record>              
+        <record id="action_view_task_mfg" model="ir.actions.act_window">
+            <field name="name">Manufacture Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,kanban_subgrp,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('project_type','=','mfg')]</field>
+            <field name="context">{'default_project_type':'mfg','search_default_not_done_cancelled': 1}</field>
+            <field name="auto_search" eval="True"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new task.
+              </p>
+            </field>
+        </record>
+        <record id="open_view_task_mfg_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_mfg_task_kanban"/>
+            <field name="act_window_id" ref="action_view_task_mfg"/>
+        </record>
+        <record id="open_view_task_mfg_list_kanban_subgroup" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">kanban_subgrp</field>
+            <field name="view_id" ref="view_mfg_task_kanban_subgroup"/>
+            <field name="act_window_id" ref="action_view_task_mfg"/>
+        </record>
+        <record id="open_view_task_mfg_list_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_mfg_task_tree"/>
+            <field name="act_window_id" ref="action_view_task_mfg"/>
+        </record>
+        <menuitem action="action_view_task_mfg" id="menu_action_view_task_mfg" parent="mrp.menu_mrp_manufacturing" sequence="10" groups="mrp.group_mrp_user"/>
+                
+<!-- My MFG Tasks -->        
+        <record id="action_view_task_mfg_my" model="ir.actions.act_window">
+            <field name="name">My Manufacture Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('user_id','=',uid),('project_type','=','mfg')]</field>
+            <field name="context">{'default_project_type':'mfg'}</field>
+        </record>       
+        <menuitem action="action_view_task_mfg_my" id="menu_action_view_task_mfg_my" parent="mrp.menu_mrp_manufacturing" sequence="11" groups="mrp.group_mrp_user"/>
+<!-- Add manufacture task list to work order page -->
+        <record id="mrp_production_workcenter_form_view_ext" model="ir.ui.view">
+            <field name="name">mrp_production_workcenter_form_view_ext</field>
+            <field name="model">mrp.production.workcenter.line</field>
+            <field name="inherit_id" ref="metro_mrp.metro_mrp_production_workcenter_form_view"/>
+            <field name="arch" type="xml">   
+                <page string="Information" position="after">
+                    <page string="Tasks">
+                        <field name="id" invisible="1"/>
+                        <field name="task_ids" context="{'default_project_type':'mfg','force_workorder':id,'tree_view_ref':'metro_project.view_mfg_task_tree','form_view_ref':'metro_project.project_task_mfg_form_view'}" 
+                            attrs="{'readonly':[('state','!=','startworking')]}"/>
+                    </page>
+                </page>
+            </field>
+         </record>
+        <record id="metro_mrp_production_form_view" model="ir.ui.view">
+            <field name="name">metro_mrp_production_form_view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='workcenter_lines']/form/group" position="after">
+                        <field name="task_ids" widget="one2many_list" colspan="4"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>         
+    </data>
+</openerp>

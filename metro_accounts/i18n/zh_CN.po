@@ -1,0 +1,2122 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* metro_accounts
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-12 06:50+0000\n"
+"PO-Revision-Date: 2014-11-12 14:53+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_accounts
+#: selection:cash.bank.trans,type:0
+msgid "Other Payments/Receipts"
+msgstr "其他收/付款"
+
+#. module: metro_accounts
+#: field:emp.reimburse,amount:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_amount
+msgid "Reimburse Amount"
+msgstr "金额"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_inventory_qty_action
+#: model:ir.actions.report.xml,name:metro_accounts.report_rpt_inventory_qty
+#: model:ir.ui.menu,name:metro_accounts.rpt_inventory_qty_menu
+msgid "Inventory Quantity Report"
+msgstr "物料出入库"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_save_pdf
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_save_pdf
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_save_pdf
+#: field:rpt.account.cn,save_pdf:0 field:rpt.account.partner,save_pdf:0
+#: field:rpt.inventory,save_pdf:0
+msgid "Can Save PDF"
+msgstr "可保存PDF"
+
+#. module: metro_accounts
+#: view:emp.borrow:0
+msgid "Search Employee Borrow Money"
+msgstr "查找借款单"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "类别:"
+msgstr "类别:"
+
+#. module: metro_accounts
+#: view:account.financial.report.account.item:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.partner.detail:0
+msgid "凭证号"
+msgstr "凭证号"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_show_counter
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_show_counter
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_show_counter
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_show_counter
+#: field:rpt.account.cn,show_counter:0
+#: field:rpt.account.cn.line,show_counter:0
+#: field:rpt.account.partner,show_counter:0
+#: field:rpt.account.partner.line,show_counter:0
+msgid "Show counterpart"
+msgstr "显示对方科目"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_outgo_price
+#: field:rpt.inventory.line,outgo_price:0
+msgid "Outgo Price"
+msgstr "出库价格"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_analytic_plan
+msgid "Analytic Plan"
+msgstr "辅助核算方案"
+
+#. module: metro_accounts
+#: field:emp.reimburse,amount_pay:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_amount_pay
+msgid "Pay Amount"
+msgstr "支付金额"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_emp_reimburse_line
+msgid "Employee Reimburse Line"
+msgstr "报销明细"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0
+msgid "明细账"
+msgstr "明细账"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Are you sure to cancel the selected acccount entries?"
+msgstr "你确认取消选择的凭证吗?"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_uom_id
+#: field:rpt.inventory.line,uom_id:0
+msgid "Unit of Measure"
+msgstr "单位"
+
+#. module: metro_accounts
+#: view:account.financial.report:0 view:cash.bank.trans:0 view:emp.borrow:0
+#: field:emp.borrow,move_lines:0 view:emp.reimburse:0
+#: field:emp.reimburse,move_lines:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_move_lines
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_move_lines
+msgid "Accounting Items"
+msgstr "凭证明细"
+
+#. module: metro_accounts
+#: sql_constraint:account.financial.report.account.item:0
+msgid "Account must be unique per report!"
+msgstr "报表下面不能重复添加科目"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.gl:0
+msgid "名称"
+msgstr "名称"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Other Receipts/Payments"
+msgstr "其他收/付款"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_title
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_title
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_title
+#: field:rpt.account.cn,title:0 field:rpt.account.partner,title:0
+#: field:rpt.inventory,title:0
+msgid "Report Title"
+msgstr "报表标题"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.account_financial_report_bscn_action
+#: model:ir.model.fields,field_description:metro_accounts.field_res_company_report_bscn_id
+#: model:ir.ui.menu,name:metro_accounts.account_financial_report_bscn_menu
+#: field:res.company,report_bscn_id:0
+msgid "Balance Sheet"
+msgstr "资产负债表"
+
+#. module: metro_accounts
+#: selection:rpt.account.partner,reconcile:0
+msgid "Partial Reconciled"
+msgstr "部分核销"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,company_id:0 field:emp.borrow,company_id:0
+#: field:emp.reimburse,company_id:0 field:emp.reimburse.reconcile,company_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_company_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_company_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_company_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_company_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_company_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_company_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_company_id
+#: field:rpt.account.cn,company_id:0 field:rpt.account.partner,company_id:0
+#: field:rpt.inventory,company_id:0
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_rpt_lines
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_rpt_lines
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_rpt_lines
+#: field:rpt.account.cn,rpt_lines:0 field:rpt.account.partner,rpt_lines:0
+#: field:rpt.inventory,rpt_lines:0
+msgid "Report Line"
+msgstr "报表行"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 view:emp.borrow:0 view:emp.reimburse:0
+msgid "Set to Draft"
+msgstr "设为草稿"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0
+msgid "存货出入库明细表"
+msgstr "存货出入库明细表"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0
+msgid "Reimbusement Lines"
+msgstr "报销明细"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.detail:0 report:rpt.account.partner.gl:0
+msgid "期间"
+msgstr "期间"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_begin_price
+#: field:rpt.inventory.line,begin_price:0
+msgid "Begin Price"
+msgstr "期初价格"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.detail:0 report:rpt.account.partner.gl:0
+msgid "贷方"
+msgstr "贷方"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Post account entries by batch"
+msgstr "凭证批量过账"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Bank Form"
+msgstr "转出行"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_counter_account
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_counter_account
+#: field:rpt.account.cn.line,counter_account:0
+#: field:rpt.account.partner.line,counter_account:0
+msgid "Counter Account"
+msgstr "对方科目"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Finance account"
+msgstr "会计科目"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_data_level
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_data_level
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_data_level
+#: field:rpt.account.cn.line,data_level:0
+#: field:rpt.account.partner.line,data_level:0
+#: field:rpt.inventory.line,data_level:0
+msgid "Data level code"
+msgstr "Data level code"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Bank From"
+msgstr "转出行"
+
+#. module: metro_accounts
+#: field:emp.reimburse.reconcile,reconcile:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_reconcile
+msgid "Full Reconcile"
+msgstr "完全核销"
+
+#. module: metro_accounts
+#: field:emp.reimburse.reconcile,date_due:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_date_due
+msgid "Due Date"
+msgstr "过期日期"
+
+#. module: metro_accounts
+#: view:account.invoice:0
+msgid "Sale Advance Payments"
+msgstr "销售预付款"
+
+#. module: metro_accounts
+#: field:emp.reimburse.reconcile,reconile_move_line_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_reconile_move_line_id
+msgid "Reconcile Journal Item"
+msgstr "核销凭证明细"
+
+#. module: metro_accounts
+#: model:ir.actions.report.xml,name:metro_accounts.report_rpt_account_partner_gl
+msgid "Parter General Ledger"
+msgstr "应收应付总账"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_notes
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_notes
+#: field:rpt.account.cn.line,notes:0 field:rpt.account.partner.line,notes:0
+msgid "Notes"
+msgstr "备注"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,message_ids:0 field:emp.borrow,message_ids:0
+#: field:emp.reimburse,message_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_message_ids
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_message_ids
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_message_ids
+msgid "Messages"
+msgstr "消息"
+
+#. module: metro_accounts
+#: field:emp.reimburse.reconcile,move_line_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_move_line_id
+msgid "Journal Item"
+msgstr "凭证明细"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.detail:0 report:rpt.account.partner.gl:0
+msgid "借方"
+msgstr "借方"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.account_financial_report_plcn_action
+#: model:ir.model.fields,field_description:metro_accounts.field_res_company_report_plcn_id
+#: model:ir.ui.menu,name:metro_accounts.account_financial_report_plcn_menu
+#: field:res.company,report_plcn_id:0
+msgid "Profit and Loss"
+msgstr "损益表"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,amount:0 field:emp.borrow,amount:0
+#: field:emp.reimburse.line,amount:0 field:emp.reimburse.reconcile,amount:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_amount
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_amount
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_amount
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_amount
+msgid "Amount"
+msgstr "金额"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,message_unread:0 field:emp.borrow,message_unread:0
+#: field:emp.reimburse,message_unread:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_message_unread
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_message_unread
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_message_unread
+msgid "Unread Messages"
+msgstr "未读消息"
+
+#. module: metro_accounts
+#: selection:account.financial.report,operator:0
+#: selection:account.financial.report.account.item,operator:0
+msgid "Plus"
+msgstr "加"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Note: Only unposted entries can be post!"
+msgstr "注意: 只有未过账的凭证可以过账!"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_inventory_amount_action
+#: model:ir.actions.report.xml,name:metro_accounts.report_rpt_inventory_amount
+#: model:ir.ui.menu,name:metro_accounts.rpt_inventory_amount_menu
+msgid "Inventory Amount Report"
+msgstr "存货出入库"
+
+#. module: metro_accounts
+#: field:emp.reimburse.line,name:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_name
+msgid "Reimburse Note"
+msgstr "说明"
+
+#. module: metro_accounts
+#: help:cash.bank.trans,message_unread:0 help:emp.borrow,message_unread:0
+#: help:emp.reimburse,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: metro_accounts
+#: constraint:rpt.account.cn:0 constraint:rpt.account.partner:0
+#: constraint:rpt.inventory:0
+msgid "The chosen periods have to belong to the same company."
+msgstr "选择的期间必须属于同一个公司"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_am_name
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_am_name
+#: field:rpt.account.cn.line,am_name:0
+#: field:rpt.account.partner.line,am_name:0
+msgid "Move Name"
+msgstr "凭证名称"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_res_company_report_cfcn_id
+#: field:res.company,report_cfcn_id:0
+msgid "Cash Flow"
+msgstr "现金流量表"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0
+#: model:ir.actions.act_window,name:metro_accounts.action_emp_reimburse
+#: model:ir.ui.menu,name:metro_accounts.menu_emp_reimburse
+msgid "Employee Reimburse"
+msgstr "员工报销/还款"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_partner_gl_customer_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_partner_gl_customer_menu
+msgid "Customer Receivable GL"
+msgstr "客户应收总账"
+
+#. module: metro_accounts
+#: selection:rpt.account.partner,partner_type:0
+msgid "Supplier"
+msgstr "供应商"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_cn_detail_predefine_cash_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_cn_detail_cash_menu
+msgid "Cash Account Detail"
+msgstr "现金日记账"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_outgo_qty
+#: field:rpt.inventory.line,outgo_qty:0
+msgid "Outgo Quantity"
+msgstr "出库数量"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0
+msgid "Total Reimbusement"
+msgstr "总报销金额"
+
+#. module: metro_accounts
+#: report:rpt.account.partner.detail:0
+msgid "核销"
+msgstr "核销"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_target_move
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_target_move
+#: field:rpt.account.cn,target_move:0 field:rpt.account.partner,target_move:0
+msgid "Target Moves"
+msgstr "凭证过账"
+
+#. module: metro_accounts
+#: help:account.voucher,receipt_number:0
+msgid "The reference of this invoice as provided by the partner."
+msgstr "The reference of this invoice as provided by the partner."
+
+#. module: metro_accounts
+#: selection:rpt.account.cn,target_move:0
+#: selection:rpt.account.partner,reconcile:0
+#: selection:rpt.account.partner,target_move:0
+msgid "All Entries"
+msgstr "所有"
+
+#. module: metro_accounts
+#: help:cash.bank.trans,message_summary:0 help:emp.borrow,message_summary:0
+#: help:emp.reimburse,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Note: Only posted entries can be review!"
+msgstr "注意: 只有已过账的凭证可以审查!"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_account_ids
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_account_ids
+#: field:rpt.account.cn,account_ids:0 field:rpt.account.partner,account_ids:0
+msgid "Accounts"
+msgstr "科目"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 selection:cash.bank.trans,type:0
+msgid "Bank Trans"
+msgstr "银行转账"
+
+#. module: metro_accounts
+#: field:account.financial.report,operator:0
+#: field:account.financial.report.account.item,operator:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_account_item_operator
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_operator
+msgid "Operator"
+msgstr "操作符"
+
+#. module: metro_accounts
+#: view:account.invoice:0
+msgid "Paid Amount"
+msgstr "金额"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_filter
+#: field:rpt.account.cn,filter:0
+msgid "Filter by"
+msgstr "查询条件"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.gl:0
+msgid "总分类账"
+msgstr "总分类账"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_partner_ids
+#: field:rpt.account.partner,partner_ids:0
+msgid "Partners"
+msgstr "合作伙伴"
+
+#. module: metro_accounts
+#: view:account.financial.report:0
+msgid ""
+"{'invisible': [('type','not in',['accounts','account_item','account_type'])]}"
+msgstr ""
+"{'invisible': [('type','not in',['accounts','account_item','account_type'])]}"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Search Receipts/Payments"
+msgstr "搜索其他收付款"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,move_id:0 field:emp.borrow,move_id:0
+#: field:emp.reimburse,move_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_move_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_move_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_move_id
+msgid "Accounting Entry"
+msgstr "会计凭证"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0
+msgid "金额"
+msgstr "金额"
+
+#. module: metro_accounts
+#: view:accounting.report:0
+msgid "Excel"
+msgstr "Excel"
+
+#. module: metro_accounts
+#: selection:account.financial.report,operator:0
+msgid "None"
+msgstr "None"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_aml_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_aml_id
+#: field:rpt.account.cn.line,aml_id:0 field:rpt.account.partner.line,aml_id:0
+msgid "Move Line"
+msgstr "凭证行"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_period_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_period_id
+#: field:rpt.account.cn.line,period_id:0
+#: field:rpt.account.partner.line,period_id:0
+msgid "Period"
+msgstr "期间"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 selection:cash.bank.trans,trans_type:0
+msgid "Withdraw"
+msgstr "取款"
+
+#. module: metro_accounts
+#: selection:account.financial.report.account.item,fetch_logic:0
+msgid "Credit Balance"
+msgstr "贷方余额"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Bank To"
+msgstr "转入行"
+
+#. module: metro_accounts
+#: field:account.invoice,auto_reconcile_purchase_pay:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_invoice_auto_reconcile_purchase_pay
+msgid "Auto Reconcile Purchase Payment"
+msgstr "自动核销预付款"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,message_follower_ids:0
+#: field:emp.borrow,message_follower_ids:0
+#: field:emp.reimburse,message_follower_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_message_follower_ids
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_message_follower_ids
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_message_follower_ids
+msgid "Followers"
+msgstr "Followers"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_begin_amount
+#: field:rpt.inventory.line,begin_amount:0
+msgid "Begin Amount"
+msgstr "期初金额"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0
+msgid "数量"
+msgstr "数量"
+
+#. module: metro_accounts
+#: selection:account.account,bal_direct:0
+#: selection:emp.reimburse.reconcile,type:0
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_debit
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_debit
+#: field:rpt.account.cn.line,debit:0 field:rpt.account.partner.line,debit:0
+msgid "Debit"
+msgstr "借方"
+
+#. module: metro_accounts
+#: field:emp.borrow,emp_id:0 field:emp.reimburse,emp_id:0
+#: field:emp.reimburse.line,emp_id:0 field:emp.reimburse.reconcile,emp_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_emp_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_emp_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_emp_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_emp_id
+msgid "Employee"
+msgstr "员工"
+
+#. module: metro_accounts
+#: report:rpt.account.partner.gl:0
+msgid "供应商应付总账"
+msgstr "供应商应付总账"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,trans_type:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_trans_type
+msgid "Type"
+msgstr "类型"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Cancel account entries by batch"
+msgstr "批量取消凭证"
+
+#. module: metro_accounts
+#: selection:account.financial.report.account.item,fetch_logic:0
+msgid "Debit Balance"
+msgstr "借方余额"
+
+#. module: metro_accounts
+#: view:account.move:0
+msgid "{'invisible':[('state','=','draft')]}"
+msgstr "{'invisible':[('state','=','draft')]}"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_rpt_account_cn
+#: model:ir.model,name:metro_accounts.model_rpt_account_partner
+msgid "China Account Report"
+msgstr "中国会计报表"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_seq
+#: field:rpt.inventory.line,seq:0
+msgid "Sequence"
+msgstr "序号"
+
+#. module: metro_accounts
+#: view:account.invoice:0
+msgid "Purchase Advance Payments"
+msgstr "采购预付款"
+
+#. module: metro_accounts
+#: field:account.financial.report.account.item,fetch_logic:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_account_item_fetch_logic
+msgid "Fetch Logic"
+msgstr "取数方式"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_partner_detail_supplier_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_partner_detail_supplier_menu
+msgid "Supplier Payable Detail"
+msgstr "供应商应付明细账"
+
+#. module: metro_accounts
+#: help:account.move.line,date_biz:0
+msgid ""
+"the business date for this entry, default is the account entry date, used "
+"when accountant input one account entry for many items at the end of the "
+"month."
+msgstr ""
+"the business date for this entry, default is the account entry date, used "
+"when accountant input one account entry for many items at the end of the "
+"month."
+
+#. module: metro_accounts
+#: view:rpt.account.cn:0
+msgid "Accounting General Ledger"
+msgstr "总分类账"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0
+msgid "单"
+msgstr "单"
+
+#. module: metro_accounts
+#: view:account.invoice:0
+msgid "Reconcile Advance Payments"
+msgstr "核销预付款"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_partner_gl_supplier_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_partner_gl_supplier_menu
+msgid "Supplier Payable GL"
+msgstr "供应商应付总账"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_cn_detail_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_cn_detail_menu
+msgid "Account Entry Detail"
+msgstr "明细账"
+
+#. module: metro_accounts
+#: view:account.financial.report.account.item:0
+#: field:account.financial.report.account.item,report_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_account_item_report_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_rpt_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_rpt_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_rpt_id
+#: view:rpt.account.cn:0 field:rpt.account.cn.line,rpt_id:0
+#: view:rpt.account.partner:0 field:rpt.account.partner.line,rpt_id:0
+#: view:rpt.inventory:0 field:rpt.inventory.line,rpt_id:0
+msgid "Report"
+msgstr "报表"
+
+#. module: metro_accounts
+#: report:rpt.account.partner.detail:0
+msgid "未核销余额"
+msgstr "未核销余额"
+
+#. module: metro_accounts
+#: field:account.financial.report.account.item,name:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_account_item_name
+msgid "Account Item Name"
+msgstr "科目项目名称"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.partner.detail:0
+msgid "日期"
+msgstr "日期"
+
+#. module: metro_accounts
+#: view:accounting.report:0
+msgid "Report Options"
+msgstr "保镖选项"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,state:0 field:emp.borrow,state:0
+#: field:emp.reimburse,state:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_state
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_state
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_state
+msgid "Status"
+msgstr "状态"
+
+#. module: metro_accounts
+#: view:rpt.account.cn:0 view:rpt.inventory:0
+msgid "Dates"
+msgstr "日期"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "期末结存"
+msgstr "期末结存"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+msgid "代码"
+msgstr "代码"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_income_price
+#: field:rpt.inventory.line,income_price:0
+msgid "Income Price"
+msgstr "入库价格"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_has_amount
+#: field:rpt.inventory,has_amount:0
+msgid "Has Amount"
+msgstr "Has Amount"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "仓库:"
+msgstr "仓库:"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_type
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_type
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_type
+#: field:rpt.account.cn,type:0 field:rpt.account.partner,type:0
+#: field:rpt.inventory,type:0
+msgid "Report Type"
+msgstr "报表类型"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0 field:emp.reimburse,line_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_ids
+msgid "Reimbursement Detail"
+msgstr "报销明细"
+
+#. module: metro_accounts
+#: model:ir.actions.report.xml,name:metro_accounts.report_rpt_account_cn_detail
+msgid "Accounting Entry Detail"
+msgstr "明细账"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_show_result
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_show_result
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_show_result
+#: field:rpt.account.cn,show_result:0 field:rpt.account.partner,show_result:0
+#: field:rpt.inventory,show_result:0
+msgid "Show Result"
+msgstr "显示结果"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_period_to
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_period_to
+#: field:rpt.account.cn,period_to:0 field:rpt.account.partner,period_to:0
+msgid "End Period"
+msgstr "截止期间"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0
+msgid "Search Employee Reimburse"
+msgstr "查找报销单"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 selection:cash.bank.trans,trans_type:0
+msgid "Deposit"
+msgstr "存款"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_res_partner
+msgid "Partner"
+msgstr "业务伙伴"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_income_qty
+#: field:rpt.inventory.line,income_qty:0
+msgid "Income Quantity"
+msgstr "入库数量"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Are you sure to post the selected acccount entries?"
+msgstr "确认过账选择的凭证吗?"
+
+#. module: metro_accounts
+#: field:emp.reimburse,amount_credit:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_amount_credit
+msgid "Credit Amount"
+msgstr "贷方金额"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_rpt_account_cn_line
+#: model:ir.model,name:metro_accounts.model_rpt_account_partner_line
+msgid "China Account Report Lines"
+msgstr "中国财务报表明细"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 view:emp.borrow:0 view:emp.reimburse:0
+msgid "Description..."
+msgstr "备注..."
+
+#. module: metro_accounts
+#: view:account.move.line:0 field:account.move.line,to_check:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_move_line_to_check
+msgid "To Review"
+msgstr "审查"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_rpt_inventory
+msgid "Inventory Report"
+msgstr "库存报表"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 selection:cash.bank.trans,type:0
+#: model:ir.actions.act_window,name:metro_accounts.action_cash_bank_trans
+#: model:ir.model,name:metro_accounts.model_cash_bank_trans
+#: model:ir.ui.menu,name:metro_accounts.menu_cash_bank_trans
+msgid "Withdraw/Deposit Order"
+msgstr "存取款单"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_rpt_inventory_line
+msgid "Inventory Report Lines"
+msgstr "库存报表行"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.detail:0 report:rpt.account.partner.gl:0
+msgid "余额"
+msgstr "余额"
+
+#. module: metro_accounts
+#: field:emp.reimburse,property_account_emp_reimburse:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_property_account_emp_reimburse
+msgid "Employee Reimburse Account"
+msgstr "报销科目"
+
+#. module: metro_accounts
+#: view:account.financial.report.account.item:0
+msgid "Account Report Account Items"
+msgstr "报表科目项目"
+
+#. module: metro_accounts
+#: field:account.move.line,date_biz:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_move_line_date_biz
+msgid "Biz Date"
+msgstr "业务日期"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_outgo_amount
+#: field:rpt.inventory.line,outgo_amount:0
+msgid "Outgo Amount"
+msgstr "出库金额"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_move_line
+msgid "Journal Items"
+msgstr "会计凭证明细"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_begin_qty
+#: field:rpt.inventory.line,begin_qty:0
+msgid "Begin Quantity"
+msgstr "期初数量"
+
+#. module: metro_accounts
+#: field:emp.reimburse,amount_debit:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_amount_debit
+msgid "Debit Amount"
+msgstr "贷方金额"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_date_from
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_date_from
+#: field:rpt.account.cn,date_from:0 field:rpt.inventory,date_from:0
+msgid "Start Date"
+msgstr "开始日期"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Payments/Receipts account"
+msgstr "收付款科目"
+
+#. module: metro_accounts
+#: view:account.move.batch:0 view:accounting.report:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_accounts
+#: field:account.account,bal_direct:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_account_bal_direct
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_bal_direct
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_bal_direct
+#: field:rpt.account.cn.line,bal_direct:0
+#: field:rpt.account.partner.line,bal_direct:0
+msgid "Balance Direction"
+msgstr "余额方向"
+
+#. module: metro_accounts
+#: report:rpt.inventory.qty:0
+msgid "单位"
+msgstr "单位"
+
+#. module: metro_accounts
+#: field:account.voucher,receipt_number:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_voucher_receipt_number
+msgid "Receipt Number"
+msgstr "发票号"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,journal_bank_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_journal_bank_id
+msgid "Bank Journal"
+msgstr "银行"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_product_categ_ids
+#: field:rpt.inventory,product_categ_ids:0
+msgid "Product Categories"
+msgstr "产品类别"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "序号"
+msgstr "序号"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_level
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_level
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_level
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_level
+#: field:rpt.account.cn,level:0 field:rpt.account.cn.line,level:0
+#: field:rpt.account.partner,level:0 field:rpt.account.partner.line,level:0
+msgid "Report Level"
+msgstr "报表级别"
+
+#. module: metro_accounts
+#: view:account.move:0 view:account.move.batch:0
+#: model:ir.actions.act_window,name:metro_accounts.action_view_account_move_review
+msgid "Review"
+msgstr "审查"
+
+#. module: metro_accounts
+#: selection:rpt.account.cn,level:0 selection:rpt.account.cn.line,level:0
+#: selection:rpt.account.partner,level:0
+#: selection:rpt.account.partner.line,level:0
+msgid "Detail"
+msgstr "明细"
+
+#. module: metro_accounts
+#: field:emp.borrow,reimbursed:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_reimbursed
+msgid "Reimbursed"
+msgstr "已还"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "物料名称"
+msgstr "物料名称"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_emp_reimburse_reconcile
+msgid "Reconcile Lines"
+msgstr "可核销借款"
+
+#. module: metro_accounts
+#: selection:cash.bank.trans,state:0 selection:emp.borrow,state:0
+#: selection:emp.reimburse,state:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: metro_accounts
+#: report:rpt.account.partner.gl:0
+msgid "客户应收总账"
+msgstr "客户应收总账"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_partner_detail_customer_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_partner_detail_customer_menu
+msgid "Customer Receivable Detail"
+msgstr "客户应收明细账"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Search Withdraw/Deposit Order"
+msgstr "搜索存取款单"
+
+#. module: metro_accounts
+#: field:account.financial.report,excel_template_file:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_excel_template_file
+msgid "User Excel Template"
+msgstr "用户Excel模版"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "辅助核算明细"
+
+#. module: metro_accounts
+#: field:emp.reimburse.line,order_id:0
+#: field:emp.reimburse.reconcile,order_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_order_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_order_id
+msgid "Reimburse"
+msgstr "报销"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 view:emp.borrow:0 view:emp.reimburse:0
+msgid "Confirm"
+msgstr "确认"
+
+#. module: metro_accounts
+#: view:emp.borrow:0 view:emp.reimburse:0
+#: model:ir.actions.act_window,name:metro_accounts.action_emp_borrow
+#: model:ir.model,name:metro_accounts.model_emp_borrow
+#: model:ir.ui.menu,name:metro_accounts.menu_emp_borrow
+msgid "Employee Borrow Money"
+msgstr "员工借款"
+
+#. module: metro_accounts
+#: view:account.move:0
+msgid "{'line_id': line_id , 'journal_id': journal_id, 'move_date':date }"
+msgstr "{'line_id': line_id , 'journal_id': journal_id, 'move_date':date }"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_date
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_date
+#: field:rpt.account.cn.line,date:0 field:rpt.account.partner.line,date:0
+msgid "Move Date"
+msgstr "凭证日期"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_end_amount
+#: field:rpt.inventory.line,end_amount:0
+msgid "End Amount"
+msgstr "期末金额"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,message_is_follower:0
+#: field:emp.borrow,message_is_follower:0
+#: field:emp.reimburse,message_is_follower:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_message_is_follower
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_message_is_follower
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_message_is_follower
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: metro_accounts
+#: sql_constraint:account.financial.report:0
+msgid "The code of the report must be unique !"
+msgstr "The code of the report must be unique !"
+
+#. module: metro_accounts
+#: view:account.invoice:0
+msgid "account.group_account_invoice"
+msgstr "account.group_account_invoice"
+
+#. module: metro_accounts
+#: view:account.invoice:0 field:cash.bank.trans,date:0 field:emp.borrow,date:0
+#: field:emp.reimburse,date:0 field:emp.reimburse.line,date_value:0
+#: field:emp.reimburse.reconcile,date_original:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_date
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_date
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_date
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_date_value
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_date_original
+msgid "Date"
+msgstr "日期"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "日期:"
+msgstr "日期:"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+#: model:ir.actions.act_window,name:metro_accounts.action_view_account_move_post
+msgid "Post"
+msgstr "过账"
+
+#. module: metro_accounts
+#: selection:account.financial.report,operator:0
+#: selection:account.financial.report.account.item,operator:0
+msgid "Subtract"
+msgstr "减"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Are you sure to review the selected acccount entries?"
+msgstr "确认审查选择的凭证吗?"
+
+#. module: metro_accounts
+#: view:rpt.account.cn:0 view:rpt.account.partner:0 view:rpt.inventory:0
+msgid "Search"
+msgstr "搜索"
+
+#. module: metro_accounts
+#: field:emp.reimburse.reconcile,type:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_type
+msgid "Dr/Cr"
+msgstr "借贷"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Receipt/Payment Method"
+msgstr "收付款方式"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+#: model:ir.actions.act_window,name:metro_accounts.action_bank_trans
+#: model:ir.ui.menu,name:metro_accounts.menu_bank_trans
+msgid "Bank Transfer"
+msgstr "银行转账"
+
+#. module: metro_accounts
+#: selection:rpt.account.cn,target_move:0
+#: selection:rpt.account.partner,target_move:0
+msgid "All Posted Entries"
+msgstr "已过账"
+
+#. module: metro_accounts
+#: field:emp.reimburse,has_cr:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_has_cr
+msgid "Has dedits"
+msgstr "Has dedits"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Review account entries by batch"
+msgstr "凭证批量审查"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: metro_accounts
+#: selection:account.financial.report.account.item,fetch_logic:0
+msgid "Debit Total"
+msgstr "借方发生额"
+
+#. module: metro_accounts
+#: selection:account.account,bal_direct:0
+#: selection:emp.reimburse.reconcile,type:0
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_credit
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_credit
+#: field:rpt.account.cn.line,credit:0 field:rpt.account.partner.line,credit:0
+msgid "Credit"
+msgstr "贷方"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.detail:0 report:rpt.account.partner.gl:0
+msgid "摘要"
+msgstr "摘要"
+
+#. module: metro_accounts
+#: field:emp.borrow,property_account_emp_borrow:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_property_account_emp_borrow
+msgid "Employee Borrow Account"
+msgstr "借款科目"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_financial_report_account_item
+msgid "Account Report Account Item"
+msgstr "报表科目项目"
+
+#. module: metro_accounts
+#: report:rpt.inventory.qty:0
+msgid "物料出入库明细表"
+msgstr "物料出入库明细表"
+
+#. module: metro_accounts
+#: view:accounting.report:0 view:rpt.account.cn:0 view:rpt.account.partner:0
+#: view:rpt.inventory:0
+msgid "PDF"
+msgstr "PDF"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_balance
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_balance
+#: field:rpt.account.cn.line,balance:0
+#: field:rpt.account.partner.line,balance:0
+msgid "Balance"
+msgstr "余额"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_reconcile
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_reconcile
+#: field:rpt.account.partner,reconcile:0
+#: field:rpt.account.partner.line,reconcile:0
+msgid "Reconcile"
+msgstr "核销"
+
+#. module: metro_accounts
+#: field:account.financial.report,default_excel_template_file:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_default_excel_template_file
+msgid "Default Excel Template"
+msgstr "默认Excel模版"
+
+#. module: metro_accounts
+#: selection:rpt.account.cn,target_move:0
+#: selection:rpt.account.partner,target_move:0
+msgid "All Unposted Entries"
+msgstr "未过账"
+
+#. module: metro_accounts
+#: selection:account.financial.report.account.item,fetch_logic:0
+msgid "Credit Total"
+msgstr "贷方发生额"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,message_summary:0 field:emp.borrow,message_summary:0
+#: field:emp.reimburse,message_summary:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_message_summary
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_message_summary
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_message_summary
+msgid "Summary"
+msgstr "总计"
+
+#. module: metro_accounts
+#: field:account.financial.report,code:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_code
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_code
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_code
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_code
+#: field:rpt.account.cn.line,code:0 field:rpt.account.partner.line,code:0
+#: field:rpt.inventory.line,code:0
+msgid "Code"
+msgstr "代码"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_emp_reimburse
+msgid "Employee Reimburse Money"
+msgstr "报销单"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "本期入库"
+msgstr "本期入库"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_seq
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_seq
+#: field:rpt.account.cn.line,seq:0 field:rpt.account.partner.line,seq:0
+msgid "Seq"
+msgstr "序列号"
+
+#. module: metro_accounts
+#: model:ir.actions.report.xml,name:metro_accounts.report_rpt_account_cn_gl
+msgid "Accounting Entry GL"
+msgstr "总分类账"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_voucher
+msgid "Accounting Voucher"
+msgstr "手工凭证"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_location_ids
+#: field:rpt.inventory,location_ids:0
+msgid "Locations"
+msgstr "库位"
+
+#. module: metro_accounts
+#: selection:rpt.account.cn,level:0 selection:rpt.account.cn.line,level:0
+#: selection:rpt.account.partner,level:0
+#: selection:rpt.account.partner.line,level:0
+msgid "General"
+msgstr "General"
+
+#. module: metro_accounts
+#: view:account.move.batch:0
+msgid "Note: Only posted entries will be cancel!"
+msgstr "注意:只有过账的凭证可以取消"
+
+#. module: metro_accounts
+#: selection:cash.bank.trans,state:0 selection:emp.borrow,state:0
+#: selection:emp.reimburse,state:0
+msgid "Done"
+msgstr "完成"
+
+#. module: metro_accounts
+#: view:rpt.account.cn:0 selection:rpt.account.cn,filter:0
+#: view:rpt.account.partner:0
+msgid "Periods"
+msgstr "期间"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_invoice
+msgid "Invoice"
+msgstr "发票"
+
+#. module: metro_accounts
+#: field:account.invoice,purchase_payment_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_invoice_purchase_payment_ids
+msgid "Purchase Payments"
+msgstr "采购预付款"
+
+#. module: metro_accounts
+#: view:account.move.batch:0 view:accounting.report:0 view:cash.bank.trans:0
+#: selection:cash.bank.trans,state:0 view:emp.borrow:0
+#: selection:emp.borrow,state:0 view:emp.reimburse:0
+#: selection:emp.reimburse,state:0
+#: model:ir.actions.act_window,name:metro_accounts.action_view_account_move_batch_cancel
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_accounts
+#: model:ir.actions.report.xml,name:metro_accounts.report_rpt_account_partner_detail
+msgid "Partner Entry Detail"
+msgstr "应收应付明细账"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,type:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_type
+msgid "Order Type"
+msgstr "Order Type"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0
+msgid "Total Allocation"
+msgstr "Total Allocation"
+
+#. module: metro_accounts
+#: field:emp.reimburse,has_dr:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_has_dr
+msgid "Has credits"
+msgstr "Has credits"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,account_to_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_account_to_id
+msgid "To account"
+msgstr "To account"
+
+#. module: metro_accounts
+#: report:rpt.inventory.qty:0
+msgid "期初数量"
+msgstr "期初数量"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_end_qty
+#: field:rpt.inventory.line,end_qty:0
+msgid "End Quantity"
+msgstr "期末数量"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_income_amount
+#: field:rpt.inventory.line,income_amount:0
+msgid "Income Amount"
+msgstr "入库金额"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_stock_picking
+msgid "Picking List"
+msgstr "分拣单"
+
+#. module: metro_accounts
+#: view:account.financial.report.account.item:0
+#: field:account.financial.report.account.item,account_id:0
+#: field:emp.reimburse.reconcile,account_id:0
+#: model:ir.model,name:metro_accounts.model_account_account
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_account_item_account_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_account_id
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_account_id
+#: field:rpt.account.partner.line,account_id:0
+msgid "Account"
+msgstr "科目"
+
+#. module: metro_accounts
+#: report:rpt.account.partner.detail:0
+msgid "供应商应付明细账"
+msgstr "供应商应付明细账"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0 field:emp.reimburse,line_dr_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_dr_ids
+msgid "Debits"
+msgstr "借方"
+
+#. module: metro_accounts
+#: constraint:cash.bank.trans:0 constraint:emp.borrow:0
+msgid "Amount only must be greater than zero."
+msgstr "金额必须大于零"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_accounting_report
+msgid "Accounting Report"
+msgstr "会计报表"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_amount_residual
+#: field:rpt.account.partner.line,amount_residual:0
+msgid "Residual Amount"
+msgstr "核销余额"
+
+#. module: metro_accounts
+#: report:rpt.account.partner.detail:0
+msgid "科目"
+msgstr "科目"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_cn_gl_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_cn_gl_menu
+msgid "Account Entry GL"
+msgstr "总分类账"
+
+#. module: metro_accounts
+#: field:account.financial.report,excel_template_file_name:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_excel_template_file_name
+msgid "User Excel Template File Name"
+msgstr "用户Excel模版文件名"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_product_id
+#: field:rpt.inventory.line,product_id:0
+msgid "Product"
+msgstr "产品"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.action_other_rec
+#: model:ir.ui.menu,name:metro_accounts.menu_other_rec
+msgid "Other Receipts"
+msgstr "其他收款"
+
+#. module: metro_accounts
+#: field:emp.reimburse,deduct_salary:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_deduct_salary
+msgid "Deduct Salary"
+msgstr "工资抵扣"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0 field:cash.bank.trans,description:0
+#: view:emp.borrow:0 field:emp.borrow,description:0 view:emp.reimburse:0
+#: field:emp.reimburse,description:0 field:emp.reimburse.reconcile,name:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_description
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_description
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_description
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_name
+msgid "Description"
+msgstr "描述"
+
+#. module: metro_accounts
+#: field:account.analytic.plan,instance_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_analytic_plan_instance_ids
+msgid "Instances"
+msgstr "Instances"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_move_batch
+msgid "Batch action on the account move"
+msgstr "凭证明细批量操作"
+
+#. module: metro_accounts
+#: help:emp.borrow,reimbursed:0
+msgid "The Voucher has been totally paid."
+msgstr "The Voucher has been totally paid."
+
+#. module: metro_accounts
+#: field:account.financial.report,default_excel_template_file_name:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_default_excel_template_file_name
+msgid "Default Excel Template File Name"
+msgstr "默认Excel模版文件名"
+
+#. module: metro_accounts
+#: selection:rpt.account.partner,reconcile:0
+msgid "UnReconciled"
+msgstr "未核销"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0 field:emp.reimburse,line_cr_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_line_cr_ids
+msgid "Credits"
+msgstr "贷方"
+
+#. module: metro_accounts
+#: view:cash.bank.trans:0
+msgid "Search Bank Transfer"
+msgstr "搜索银行转账"
+
+#. module: metro_accounts
+#: field:emp.reimburse.reconcile,amount_original:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_amount_original
+msgid "Original Amount"
+msgstr "原金额"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.action_other_pay
+#: model:ir.ui.menu,name:metro_accounts.menu_other_pay
+msgid "Other Payments"
+msgstr "其他付款"
+
+#. module: metro_accounts
+#: view:emp.reimburse:0
+msgid "Retrieve Borrow"
+msgstr "检索借款"
+
+#. module: metro_accounts
+#: view:account.invoice:0
+msgid "Payment"
+msgstr "付款"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_no_zero_balance
+#: field:rpt.account.partner,no_zero_balance:0
+msgid "Hide data with zero final balance"
+msgstr "隐藏无余额数据"
+
+#. module: metro_accounts
+#: selection:rpt.account.partner,partner_type:0
+msgid "Customer"
+msgstr "客户"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_date_to
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_date_to
+#: field:rpt.account.cn,date_to:0 field:rpt.inventory,date_to:0
+msgid "End Date"
+msgstr "截止日期"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_period_from
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_period_from
+#: field:rpt.account.cn,period_from:0 field:rpt.account.partner,period_from:0
+msgid "Start Period"
+msgstr "开始期间"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_name
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_name
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_name
+#: field:rpt.account.cn,name:0 field:rpt.account.partner,name:0
+#: field:rpt.inventory,name:0
+msgid "Report Name"
+msgstr "报表名称"
+
+#. module: metro_accounts
+#: field:account.financial.report,complete_name:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_complete_name
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_line_name
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_line_name
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_name
+#: field:rpt.account.cn.line,name:0 field:rpt.account.partner.line,name:0
+#: field:rpt.inventory.line,name:0
+msgid "Name"
+msgstr "名称"
+
+#. module: metro_accounts
+#: report:rpt.account.partner.detail:0
+msgid "客户应收明细账"
+msgstr "客户应收明细账"
+
+#. module: metro_accounts
+#: selection:rpt.account.partner,reconcile:0
+msgid "Full Reconciled"
+msgstr "核销完毕"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.action_account_financial_report_account_item_tree
+#: model:ir.ui.menu,name:metro_accounts.menu_account_financial_report_account_item_tree
+msgid "Financial Report Account Items"
+msgstr "财务报表会计项目"
+
+#. module: metro_accounts
+#: view:rpt.account.cn:0
+msgid "Accounting Detail"
+msgstr "明细账"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.detail:0 report:rpt.account.partner.gl:0
+msgid "会计期间:"
+msgstr "会计期间:"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "本期出库"
+msgstr "本期出库"
+
+#. module: metro_accounts
+#: view:account.invoice:0
+msgid "Payment Method"
+msgstr "付款方式"
+
+#. module: metro_accounts
+#: field:emp.reimburse,property_account_salary:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_property_account_salary
+msgid "Employee Salary Account"
+msgstr "工资科目"
+
+#. module: metro_accounts
+#: field:account.invoice,purchase_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_invoice_purchase_ids
+msgid "Purchase Orders"
+msgstr "采购订单"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_partner_type
+#: field:rpt.account.partner,partner_type:0
+msgid "Partner Type"
+msgstr "合作伙伴类型"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_cn_detail_predefine_bank_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_cn_detail_bank_menu
+msgid "Bank Account Detail"
+msgstr "银行日记账"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,move_lines:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_move_lines
+msgid "Entry Items"
+msgstr "凭证明细"
+
+#. module: metro_accounts
+#: help:cash.bank.trans,message_ids:0 help:emp.borrow,message_ids:0
+#: help:emp.reimburse,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: metro_accounts
+#: field:account.move,line_partner_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_move_line_partner_id_5360
+msgid "Move Partner"
+msgstr "凭证合作伙伴"
+
+#. module: metro_accounts
+#: field:account.financial.report,account_item_ids:0
+#: model:ir.model.fields,field_description:metro_accounts.field_account_financial_report_account_item_ids
+msgid "Account Items"
+msgstr "科目项目"
+
+#. module: metro_accounts
+#: report:rpt.account.cn.detail:0 report:rpt.account.cn.gl:0
+#: report:rpt.account.partner.detail:0 report:rpt.account.partner.gl:0
+#: report:rpt.inventory.amount:0 report:rpt.inventory.qty:0
+msgid "–"
+msgstr "–"
+
+#. module: metro_accounts
+#: model:ir.model,name:metro_accounts.model_account_move
+msgid "Account Entry"
+msgstr "凭证"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_line_end_price
+#: field:rpt.inventory.line,end_price:0
+msgid "End Price"
+msgstr "期末价格"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_cn_show_search
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_account_partner_show_search
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_show_search
+#: field:rpt.account.cn,show_search:0 field:rpt.account.partner,show_search:0
+#: field:rpt.inventory,show_search:0
+msgid "Show Searching"
+msgstr "显示查询"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0
+msgid "期初"
+msgstr "期初"
+
+#. module: metro_accounts
+#: model:ir.ui.menu,name:metro_accounts.menu_rpt_account_cn
+msgid "Account CN"
+msgstr "中国财务"
+
+#. module: metro_accounts
+#: view:account.financial.report:0
+#: model:ir.model,name:metro_accounts.model_account_financial_report
+msgid "Account Report"
+msgstr "科目报表"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,journal_cash_id:0 field:emp.borrow,journal_cash_id:0
+#: field:emp.reimburse,journal_cash_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_journal_cash_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_borrow_journal_cash_id
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_journal_cash_id
+msgid "Cash Journal"
+msgstr "现金账"
+
+#. module: metro_accounts
+#: view:account.financial.report.account.item:0
+msgid "Report Account Items"
+msgstr "报表科目项目"
+
+#. module: metro_accounts
+#: help:account.invoice,auto_reconcile_purchase_pay:0
+msgid "Auto reconcile the purchase order payments when valid the invoice"
+msgstr "当验证发票时自动核销采购预付款"
+
+#. module: metro_accounts
+#: field:emp.reimburse.reconcile,amount_unreconciled:0
+#: model:ir.model.fields,field_description:metro_accounts.field_emp_reimburse_reconcile_amount_unreconciled
+msgid "Open Balance"
+msgstr "余额"
+
+#. module: metro_accounts
+#: model:ir.model.fields,field_description:metro_accounts.field_rpt_inventory_product_ids
+#: field:rpt.inventory,product_ids:0
+msgid "Products"
+msgstr "产品"
+
+#. module: metro_accounts
+#: report:rpt.inventory.amount:0
+msgid "位"
+msgstr "位"
+
+#. module: metro_accounts
+#: model:ir.actions.act_window,name:metro_accounts.rpt_account_cn_detail_money_action
+#: model:ir.ui.menu,name:metro_accounts.rpt_account_cn_detail_money_menu
+#: report:rpt.account.cn:0
+msgid "Liquidity Detail"
+msgstr "资金流动明细"
+
+#. module: metro_accounts
+#: field:rpt.account.cn.line,aml_account_id:0
+msgid "Account"
+msgstr "科目"
+
+#. module: metro_accounts
+#: field:rpt.account.cn.line,aml_partner_id:0
+msgid "Partner"
+msgstr "合作伙伴"
+
+#. module: metro_accounts
+#: field:rpt.account.cn.line,aml_source_id:0
+msgid "Source"
+msgstr "来源"
+
+#. module: metro_accounts
+#: view:rpt.account.cn:0
+msgid "View Account Move"
+msgstr "查看会计凭证"
+
+#. module: metro_accounts
+#: view:rpt.account.cn:0
+msgid "View Source Order"
+msgstr "查看源单据"
+
+#. module: metro_accounts
+#: view:res.partner:0
+msgid "Receivables & Payables"
+msgstr "应收&应付"
+
+#. module: metro_accounts
+#: view:accounting.report:0
+msgid "Period"
+msgstr "期间"
+
+#. module: metro_accounts
+#: view:account.move:0
+msgid "Print"
+msgstr "打印"
+
+#. module: metro_accounts
+#: model:ir.actions.report.xml,name:metro_accounts.account_move_print
+msgid "Account Move"
+msgstr "会计凭证"
+
+#. module: metro_accounts
+#: field:account.move,report_item_ids:0
+msgid "Report Items"
+msgstr "报表项目"
+
+#. module: metro_accounts
+#: field:account.account,parent_report_item_ids:0
+msgid "Parent Report Items"
+msgstr "所属报表项目"
+              
+########################manual########################
+#. module: account_voucher
+#: model:ir.actions.act_window,name:account_voucher.action_vendor_payment
+msgid "Supplier Payments"
+msgstr "供应商付款"
+
+#. module: account
+#: view:account.move:0
+msgid "Cancel Entry"
+msgstr "取消过账"
+
+#. module: account
+#: selection:account.account.type,report_type:0
+#: code:addons/account/account.py:188
+#, python-format
+msgid "Profit & Loss (Income account)"
+msgstr "损益表(收入科目)"
+
+#. module: account
+#: selection:account.account.type,report_type:0
+#: code:addons/account/account.py:191
+#, python-format
+msgid "Balance Sheet (Liability account)"
+msgstr "资产负债表(负债科目)"
+
+
+#. module: metro_account
+#: code:addons/account/account_rptcn.py:0
+#, python-format
+msgid "Initial balance"
+msgstr "期初余额"
+
+#. module: metro_account
+#: code:addons/metro_accounts/wizard/rpt_account_cn.py:0
+#, python-format
+msgid "Period total"
+msgstr "本期合计"
+
+#. module: metro_account
+#: code:addons/metro_accounts/wizard/rpt_account_cn.py:0
+#, python-format
+msgid "Year total"
+msgstr "本年累计"
+                            
+#. module: metro_account
+#: code:addons/metro_accounts/wizard/rpt_account_cn.py:0
+#, python-format
+msgid "Debit"
+msgstr "借"
+
+#. module: metro_account
+#: code:addons/metro_accounts/wizard/rpt_account_cn.py:0
+#, python-format
+msgid "Credit"
+msgstr "贷"
+
+#. module: metro_account
+#: code:addons/metro_accounts/wizard/rpt_account_cn.py:0
+#, python-format
+msgid "Balanced"
+msgstr "平"
+
+#. module: metro_account
+#: code:addons/metro_accounts/wizard/rpt_account_cn.py:0
+#, python-format
+msgid "Balanced"
+msgstr "平"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:81
+#: code:addons/metro_accounts/emp_borrow.py:0
+#: code:addons/metro_accounts/emp_reimburse.py:0
+#, python-format
+msgid "The accounting entry to the order was posted, can not be deleted!"
+msgstr "会计凭证已经过账，此存取款单不能删除！"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:96
+#: code:addons/metro_accounts/emp_borrow.py:0
+#: code:addons/metro_accounts/emp_reimburse.py:0
+#, python-format
+msgid "Only order under Draft or Cancel can be delete!"
+msgstr "只有草稿和取消的单据可以删除！"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:84
+#, python-format
+msgid "Withdraw/Deposit Order"
+msgstr "存取款单"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:84
+#, python-format
+msgid "Other Payments"
+msgstr "其他付款"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:84
+#, python-format
+msgid "Other Receipts"
+msgstr "其他收款"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:84
+#, python-format
+msgid "Bank Trans"
+msgstr "银行转账"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:195
+#, python-format
+msgid "Withdraw"
+msgstr "取款"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:195
+#, python-format
+msgid "Deposit"
+msgstr "存款"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:199
+#, python-format
+msgid "In"
+msgstr "转入"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:200
+#, python-format
+msgid "Out"
+msgstr "转出"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:160
+#, python-format
+msgid "CashBankTrans[%s]"
+msgstr "存取款[%s]"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:162
+#, python-format
+msgid "BankTrans[%s]"
+msgstr "转账[%s]"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:164
+#, python-format
+msgid "OtherPayments[%s]"
+msgstr "其他付款[%s]"
+
+#. module: metro_account
+#: code:addons/metro_accounts/cash_bank_trans.py:164
+#, python-format
+msgid "OtherReceipts[%s]"
+msgstr "其他收款[%s]"
+ 
+#. module: metro_account
+#: code:addons/metro_accounts/emp_borrow.py:0
+#, python-format
+msgid "Employee Borrow Money"
+msgstr "借款单"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_borrow.py:182
+#, python-format
+msgid "Employee Borrow Money, %s\n%s"
+msgstr "员工借款, %s\n%s"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_borrow.py:182
+#, python-format
+msgid "Borrow[%s]"
+msgstr "借款[%s]"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_borrow.py:0
+#, python-format
+msgid "EBM[%s]"
+msgstr "借款[%s]"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_reimburse.py:0
+#, python-format
+msgid "Employee Reimburse Money"
+msgstr "报销单"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_reimburse.py:338
+#, python-format
+msgid "Employee Reimburse Money, %s\n%s"
+msgstr "员工报销借款, %s\n%s"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_reimburse.py:362
+#: code:addons/metro_accounts/emp_reimburse.py:401
+#, python-format
+msgid "%s, reimburse reconcile"
+msgstr "%s, 报销核销"
+msgid "Reimburse reconcile[%s]"
+msgstr "报销核销[%s]"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_reimburse.py:384
+#, python-format
+msgid "Reimburse[%s]"
+msgstr "报销[%s]"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_reimburse.py:0
+#, python-format
+msgid "The reconcile amount can not be greater than the balance %s!"
+msgstr "核销金额不能大于余额%s!"
+
+#. module: metro_account
+#: code:addons/metro_accounts/emp_reimburse.py:0
+#, python-format
+msgid "ERM[%s]"
+msgstr "报销[%s]"
+
+###i18n for the report title, defined in the action by 'default_title':%title% in xml, did the i18n in rpt_base.default_get()###
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Liquidity Detail"
+msgstr "资金流动明细"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Cash Account Detail"
+msgstr "现金日记账"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Bank Account Detail"
+msgstr "银行日记账"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Inventory Amount Report"
+msgstr "存货出入库"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Inventory Quantity Report"
+msgstr "物料出入库"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Supplier Payable GL"
+msgstr "供应商应付总账"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Customer Receivable GL"
+msgstr "客户应收总账"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Supplier Payable Detail"
+msgstr "供应商应付明细账"
+
+#. module: metro_account
+#: code:addons/metro_accounts/rpt_base.py:63
+#, python-format
+msgid "Customer Receivable Detail"
+msgstr "客户应收明细账"
+
+#. module: account_voucher
+#: view:account.voucher:0
+msgid "Payment Ref"
+msgstr "单号"
+
+#. module: metro_accounts
+#: field:cash.bank.trans,employee_id:0
+#: model:ir.model.fields,field_description:metro_accounts.field_cash_bank_trans_employee_id
+msgid "Employee"
+msgstr "经手人"

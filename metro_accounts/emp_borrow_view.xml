@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <record model="ir.ui.view" id="view_emp_borrow_form">
+    	<field name="name">view_emp_borrow_form</field>
+    	<field name="model">emp.borrow</field>
+    	<field name="arch" type="xml">
+    		<form string="Employee Borrow Money" version="7.0">
+    			<header>
+    				<button name="action_done" string="Confirm" states="draft" class="oe_highlight" type="object" groups="account.group_account_invoice"/>
+    				<button name="action_cancel" string="Cancel" states="done" type="object" groups="account.group_account_manager"/>
+    				<button name="action_to_draft" string="Set to Draft" states="cancelled" type="object" groups="account.group_account_manager"/>
+    				<field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+    			</header>
+                <group>
+	                <group>
+	                    <field name="emp_id"/>
+	                    <field name="date"/>
+	                    <field name="amount"/>
+	                    <field name="reimbursed"/>
+	                </group>
+	                <group>
+	                    <field name="journal_cash_id" domain="[('type','=','cash')]"/>
+	                    <field name="property_account_emp_borrow"/>
+	                    <field name="move_id" readonly="1"/>
+	                    <field name="move_state"/>
+	            		<field name="company_id" groups="base.group_multi_company"/>
+	                </group>
+                </group>
+                <separator string='Description'/>
+                <field name="description" placeholder='Description...'/>
+                <separator string='Accounting Items'  attrs="{'invisible':[('state','!=','done')]}"/>
+                <field name="move_lines" attrs="{'invisible':[('state','!=','done')]}"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_emp_borrow_tree">
+    	<field name="name">view_emp_borrow_tree</field>
+    	<field name="model">emp.borrow</field>
+    	<field name="arch" type="xml">
+            <tree string="Employee Borrow Money">
+                    <field name="id"/>
+	                <field name="emp_id"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+	                <field name="reimbursed"/>
+                    <field name="journal_cash_id" domain="[('type','in',('cash','bank'))]"/>
+                    <field name="property_account_emp_borrow"/>
+                    <field name="description"/>
+    				<field name="state"/>
+                    <field name="move_id"/>
+	                <field name="move_state"/>
+            		<field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_emp_borrow_search">
+            <field name="name">view_emp_borrow_search</field>
+            <field name="model">emp.borrow</field>
+            <field name="arch" type="xml">
+                <search string="Search Employee Borrow Money">
+                    <field name="id"/>
+	                <field name="emp_id"/>
+                    <field name="date"/>
+                    <field name="journal_cash_id"/>
+                    <field name="property_account_emp_borrow"/>
+                    <field name="description"/>
+                </search>
+            </field>
+    </record>    
+
+    <record model="ir.actions.act_window" id="action_emp_borrow">
+        <field name="name">Employee Borrow Money</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">emp.borrow</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_emp_borrow_search"/>
+    </record>  
+		
+    <menuitem
+        id="menu_emp_borrow"
+        sequence="3"
+        parent="account.menu_finance_bank_and_cash"
+        action="action_emp_borrow"
+        groups="account.group_account_invoice"/>        
+    </data>
+</openerp>

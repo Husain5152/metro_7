@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <act_window name="Create DO Structure"
+            res_model="mo.select.do.wizard"
+            src_model="mrp.production"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="act_mo_select_do_wizard"/>
+        <record id="view_mo_select_do_wizard" model="ir.ui.view">
+            <field name="name">view_mo_select_do_wizard</field>
+            <field name="model">mo.select.do.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create DO Structure Wizard" version="7.0">
+                    <separator string="Please select the big sub assembly you want to add into MO"/>
+                    <group>
+                        <field name="mo_id" invisible="1"/>
+                        <field name="mo_big_subassembly_ids" invisible="1"/>
+                        <field name="selected_big_subassembly_ids" colspan="4" nolabel="1" domain="[('id','in',mo_big_subassembly_ids)]">
+                            <tree string="Big Sub Assembly" editable="bottom">
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="do_generate" string="Generate DO" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

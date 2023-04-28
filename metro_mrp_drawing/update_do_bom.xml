@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_update_do_bom" model="ir.ui.view">
+            <field name="name">view_update_do_bom</field>
+            <field name="model">update.do.bom</field>
+            <field name="arch" type="xml">
+                <form string="PO and SO Generator" version="7.0">
+                    <group>
+                        <field name="do_id"/>
+                        <field name="bom_file_name" invisible="1"/>
+                        <field name="bom_file" filename="bom_file_name"/>
+                    </group>
+                    <footer>
+                        <button name="do_update" string="Update" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_update_do_bom">
+            <field name="name">Update DO BOM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.do.bom</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_update_do_bom"/>
+        </record>
+
+        <menuitem
+            id="menu_update_do_bom"
+            sequence="104"
+            parent="mrp.menu_mrp_manufacturing"
+            action="action_update_do_bom"
+            groups="mrp.group_mrp_manager"/>
+    </data>
+</openerp>
+

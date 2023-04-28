@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_account_period_form_period">
+            <field name="name">view_account_period_form_period</field>
+            <field name="inherit_id" ref="account.view_account_period_form"/>
+            <field name="model">account.period</field>
+            <field name="arch" type="xml">
+	            <field name="special" position="after">
+	                <field name="close_journal_period_id" invisible="1"/>
+	                <field name="close_move_id"/>
+	                <field name="close_entry_done"/>
+	            </field>
+            	<button string="Close Period" position="replace">
+            		<button string="Cancel Period Closing Entry" name="cancel_close_entry" 
+            			confirm="Are you sure to cancel the closing entry?"
+            			type="object" attrs="{'invisible':['|',('state','=','done'),('close_entry_done','!=',True)]}"
+            			 groups="account.group_account_manager"/>
+            		<button string="Close Period" name="%(account.action_account_period_close)d" 
+            			type="action" attrs="{'invisible':['|',('state','=','done'),('close_entry_done','!=',True)]}"
+            			 groups="account.group_account_manager"/>
+            	</button>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_account_period_tree_period">
+            <field name="name">view_account_period_tree_period</field>
+            <field name="inherit_id" ref="account.view_account_period_tree"/>
+            <field name="model">account.period</field>
+            <field name="arch" type="xml">
+	            <field name="special" position="after">
+	                <field name="close_journal_period_id" invisible="1"/>
+	                <field name="close_move_id"/>
+	                <field name="close_entry_done"/>
+	            </field>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_account_period_search_period">
+            <field name="name">view_account_period_search_period</field>
+            <field name="inherit_id" ref="account.view_account_period_search"/>
+            <field name="model">account.period</field>
+            <field name="arch" type="xml">
+                <!-- <filter name="draft" position="attributes">
+                	add the 'close_entry_done' for the period that can be close
+                	<attribute name="domain">[('state','!=','done'),('close_entry_done','=',True)]</attribute>
+                </filter> -->
+                <!-- Add 'Closed' filter -->
+                <filter name="draft" position="after">
+                	<filter string="Closed" name="done" domain="[('state','=','done')]" icon="terp-dialog-close"/>
+                	<filter string="In Closing" name="closing" domain="[('state','=','draft'),('close_entry_done','=',True)]" icon="terp-dialog-close"/>
+                </filter>
+            </field>
+        </record>         
+        
+<!-- remove the  '{'search_default_draft': 1}' in context in the period menu in configure menu: Configuration / Periods / Periods-->
+<!--         <record id="account.action_account_period" model="ir.actions.act_window">
+            <field name="res_model">account.period</field>
+            <field name="context">{}</field>
+        </record> -->
+        
+<!-- 'Cancel Period Closing Entries'-->
+        <record id="action_account_period_close_entry_cancel" model="ir.actions.act_window">
+            <field name="name">Cancel Period Closing Entries</field>
+            <field name="res_model">account.period</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="account.view_account_period_tree"/>
+            <field name="context">{'search_default_closing': 1}</field>
+        </record>
+
+        <menuitem action="action_account_period_close_entry_cancel"
+            id="menu_account_period_close_entry_cancel"
+            parent="menu_account_period_cn" 
+            sequence="2"/>     
+                  
+<!-- Close a Period -->           
+        <record id="account.action_account_period_tree" model="ir.actions.act_window">
+            <field name="res_model">account.period</field>
+            <!-- <field name="context">{'search_default_draft': 1}</field> -->
+            <field name="context">{'search_default_closing': 1}</field>
+        </record>                            
+        <!-- 'Close a Period' menu
+        same with the menu under period for CN to close a period
+        use account.action_account_period_tree in account_end_fy.xml -->
+        <menuitem
+            action="account.action_account_period_tree"
+            id="menu_action_account_period_close_period"
+            parent="menu_account_period_cn"
+            sequence="3"/>
+            
+<!-- 'Open Closed Period'-->
+        <record id="action_account_period_open_close" model="ir.actions.act_window">
+            <field name="name">Open a Closed Period</field>
+            <field name="res_model">account.period</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="account.view_account_period_tree"/>
+            <field name="context">{'search_default_done': 1}</field>
+        </record>
+        <menuitem
+            action="action_account_period_open_close"
+            id="menu_action_account_period_open_close"
+            parent="menu_account_period_cn"
+            sequence="4"/>
+            
+    </data>
+</openerp>

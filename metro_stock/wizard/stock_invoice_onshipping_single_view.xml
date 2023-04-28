@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_stock_invoice_onshipping_single" model="ir.ui.view">
+            <field name="name">Stock Invoice Onshipping</field>
+            <field name="model">stock.invoice.onshipping.single</field>
+            <field name="arch" type="xml">
+              <form string="Stock invoice" version="7.0">
+                  <group string="Create Invoice">
+                      <field name="journal_id"/>
+                      <field name="group"/>
+                      <field name="invoice_date" />
+                  </group>
+                  <separator string="Please confirm the unit price to record the account payable, and you can pay direct if you want"/>
+                  <field name="move_lines">
+                  	<tree  editable="bottom" create="0" delete="0">
+                  		<field name="move_id" invisible="1"/>
+                  		<field name="product_id"/>
+                  		<field name="product_qty"/>
+                  		<field name="product_uom"/>
+                  		<field name="price_unit"/>
+                  	</tree>
+                  </field>
+                  <footer>
+                      <button name="open_invoice" string="Create" type="object"/>
+                      <button name="open_invoice_valid" string="Create&amp;Validate" type="object" class="oe_highlight"/>
+                      <button name="open_invoice_valid_pay" string="Create&amp;Validate&amp;Pay" type="object"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel"/>
+                  </footer>
+             </form>
+            </field>
+        </record>
+        <record id="action_stock_invoice_onshipping_single" model="ir.actions.act_window">
+            <field name="name">Stock Invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.invoice.onshipping.single</field>
+            <field name="src_model">stock.picking.in</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_stock_invoice_onshipping_single"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

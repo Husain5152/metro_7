@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!-- add one transition to the workflow in account/account_invoice_workflow.xml -->    	
+        <record id="inv_paid2cancel" model="workflow.transition">
+            <field name="act_from" ref="account.act_paid"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel</field>
+        </record>
+    </data>
+</openerp>

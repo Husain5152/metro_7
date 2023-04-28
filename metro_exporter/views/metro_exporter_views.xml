@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_metro_exporter_tree" model="ir.ui.view">
+            <field name="name">view_metro_exporter_tree</field>
+            <field name="model">metro.exporter</field>
+            <field name="arch" type="xml">
+                <tree string="Exporter">
+                    <field name="name"/>
+                    <field name="export_type"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_metro_exporter_form" model="ir.ui.view">
+            <field name="name">view_metro_exporter_form</field>
+            <field name="model">metro.exporter</field>
+            <field name="arch" type="xml">
+                <form string="Exporter" version="7.0">
+                    <header>
+                        <button name="action_export" string="Export" class="oe_highlight" type="object"/>
+                    </header>
+                    <sheet>
+                        <group colspan="4">
+                            <group>
+                                <field name="name"/>
+                                <field name="export_type"/>
+                            </group>
+                            <group>
+                                <field name="result_file" filename="result_file_name"/>
+                                <field name="result_file_name" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_metro_exporter">
+            <field name="name">Export Data</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">metro.exporter</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+                id="menu_metro_exporter"
+                sequence="4"
+                parent="metro_cleanup.menu_cleanup_warehouse"
+                action="action_metro_exporter"
+                groups="stock.group_stock_manager"/>
+    </data>
+</openerp>

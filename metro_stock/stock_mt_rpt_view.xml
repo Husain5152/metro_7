@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>              	        
+<!-- material request line -->        
+        <record id="view_stock_mt_rpt_tree" model="ir.ui.view">
+            <field name="name">view_stock_mt_rpt_tree</field>
+            <field name="model">stock.mt.rpt</field>
+            <field name="arch" type="xml">
+                <tree colors="grey:state == 'cancel';green:state == 'done'" string="Moves">
+                    <field name="picking_id"/>
+                    <field name="mr_date_order"/>
+                    <field name="mr_dept_id"/>
+                    <field name="prod_categ_id"/>
+                    
+                    <field name="product_id"/>
+                    <field name="product_qty" sum='Total'/>
+                    <field name="product_uom"/>
+					<field name="price_unit" avg='Avg'/> 
+					<field name="price_subtotal" sum='Total'/>
+					
+                    <field name="mr_emp_id"/>
+                    <field name="mr_sale_prod_id"/>
+                    <field name="mr_notes"/>
+                    
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    
+                    <field name="create_date"/>
+                    <field name="state"/>             
+                </tree>
+            </field>
+        </record>
+                        
+        <record id="view_stock_mt_rpt_form" model="ir.ui.view">
+            <field name="name">view_stock_mt_rpt_form</field>
+            <field name="model">stock.mt.rpt</field>
+            <field name="arch" type="xml">
+	            <form string="Stock Moves" version="7.0">
+	            	<group col="4">
+	                    <field name="picking_id"/>
+	                    <field name="mr_date_order"/>
+	                    <field name="mr_dept_id"/>
+	                    <field name="prod_categ_id"/>
+	                    
+	                    <field name="product_id"/>
+	                    <field name="product_qty"/>
+	                    <field name="product_uom"/>
+						<field name="price_unit"/> 
+						<field name="price_subtotal"/>
+						
+	                    <field name="mr_emp_id"/>
+	                    <field name="mr_sale_prod_id"/>
+	                    <field name="mr_notes"/>
+	                    
+	                    <field name="location_id"/>
+	                    <field name="location_dest_id"/>
+	                    
+	                    <field name="create_date"/>
+	                    <field name="state"/>
+	            	</group>
+	            </form>
+            </field>
+        </record>   
+        <record id="view_stock_mt_rpt_search" model="ir.ui.view">
+            <field name="name">view_stock_mt_rpt_search</field>
+            <field name="model">stock.mt.rpt</field>
+            <field name="arch" type="xml">
+                <search string="Material Req/Ret Products">
+                    <field name="name"/>
+                    <field name="mr_date_order" string="Date"/>
+                    <field name="date_from" string="From Date"/>
+                    <field name="date_to" string="To Date"/>
+                    <field name="product_id" domain="['|',('active','=',True),('active','=',False)]"/>
+                    <field name="prod_categ_id"/>
+                    <field name="mr_dept_id"/>
+                    <field name="mr_emp_id"/>
+                    <field name="mr_sale_prod_id"/>
+
+					<filter icon="terp-stock" string="Request" name="data_mr" domain="[('type','=','mr')]"/>
+					<filter icon="terp-stock" string="Return" name="data_mr" domain="[('type','=','mrr')]"/>
+                    <filter icon="terp-camera_test" string="Ready" name="ready" domain="[('state','=','assigned')]" help="Stock moves that are Available (Ready to process)"/>
+                    <filter icon="terp-stock" string="To Do" name="future" domain="[('state','in',('assigned','confirmed','waiting'))]" help="Stock moves that are Confirmed, Available or Waiting"/>
+                    <filter icon="terp-dialog-close" string="Done" name="done" domain="[('state','=','done')]" help="Stock moves that have been processed"/>
+                    <separator/>
+                    <filter icon="terp-go-today" string="Today" domain="[('mr_date_order','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),('mr_date_order','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]" help="Orders processed Today or planned for Today"/>
+                    
+                    <!-- 
+                    Change the prodcut_id to allow to remove the default active=True restriction                    
+                     -->
+                    <!-- <field name="product_id"/> -->
+
+                    <group expand="0" string="Group By...">
+                    	<filter string="MFG ID" name="by_id" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'mr_sale_prod_id'}"/>
+                        <filter string="Department" name="by_dept" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'mr_dept_id'}"/>                        
+                        <filter string="Employee" name="by_emp" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'mr_emp_id'}"/>                        
+                        <filter string="Product" name="by_product" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'product_id'}"/>
+                        <filter string="Product Category" name="by_product_categ" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'prod_categ_id'}"/>
+                        <filter string="Material Request" name="groupby_picking_id" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'picking_id'}"/>
+                        <filter icon="terp-stock_effects-object-colorize" string="Status" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Date" name="groupby_date" icon="terp-go-month" domain="[]" context="{'group_by':'mr_date_order'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_stock_mt_rpt" model="ir.actions.act_window">
+            <field name="name">Material Req/Ret Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.mt.rpt</field>
+            <field name="view_type">form</field>
+        	<field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_stock_mt_rpt_tree"/>
+            <field name="search_view_id" ref="view_stock_mt_rpt_search"/>
+        </record>
+        <menuitem action="action_stock_mt_rpt" id="menu_action_stock_mt_rpt" 
+        	parent="stock.menu_stock_products_moves" sequence="3" groups="stock.group_stock_user"/>
+
+    </data>
+</openerp>

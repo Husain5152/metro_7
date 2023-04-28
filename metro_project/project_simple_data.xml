@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+<!-- purchase order email template -->
+        <record id="project_task_assignee" model="email.template">
+            <field name="name">project_task_assignee</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="email_from"><![CDATA[${object.project_id.user_id.email}]]></field>
+            <field name="email_to"><![CDATA[${object.user_id.email}]]></field>
+            <field name="subject"><![CDATA[Task ${object.name} of Project ${object.project_id.name} was assigned to you]]></field>
+            <field name="body_html"><![CDATA[
+<h3>Task ${object.name} of Project ${object.project_id.name} was assigned to you.</h3>
+<p/>
+<div>
+<a href="http://erp:8069/?db=metro_production">Metro OpenERP System</a> &nbsp;&nbsp;
+Contact: <a href="mailto:ncoad@metrospv.com">Nicholas Coad</a> &nbsp;&nbsp;<a href="mailto:john.wang@metrospv.cn">John Wang</a>
+</div>
+<div><a href="http://www.metrotowtrucks.com" target="_blank">http://www.metrotowtrucks.com</a></div>            
+]]>
+			</field>
+        </record>    
+    </data>
+</openerp>

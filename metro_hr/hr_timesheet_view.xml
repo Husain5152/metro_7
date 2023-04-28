@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!-- Add hourly rate to employee -->    
+        <record id="hr_timesheet_employee_extd_form_ext" model="ir.ui.view">
+            <field name="name">hr_timesheet_employee_extd_form_ext</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_employee_extd_form"/>
+            <field name="arch" type="xml">
+            	<field name="product_id" position="after">
+            		<field name="hourly_rate"/>
+            	</field>
+            </field>
+        </record>
+<!-- Add employee_id to hr timesheet -->        
+        <record id="hr_timesheet_line_tree_ext" model="ir.ui.view">
+            <field name="name">hr_timesheet_line_tree_ext</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="arch" type="xml">
+            	<field name="user_id" position="after">
+            		<field name="employee_id"/>
+            	</field>
+            	<field name="unit_amount" position="attributes">
+            		<attribute name="context">{'employee_id':employee_id}</attribute>
+            	</field>
+            	<field name="product_uom_id" position="attributes">
+            		<attribute name="context">{'employee_id':employee_id}</attribute>
+            	</field>
+            	<field name="product_id" position="attributes">
+            		<attribute name="context">{'employee_id':employee_id}</attribute>
+            	</field>
+            	<field name="journal_id" position="attributes">
+            		<attribute name="invisible">0</attribute>
+            	</field>
+            	<field name="amount" position="attributes">
+            		<attribute name="invisible">0</attribute>
+            	</field>
+            	<field name="general_account_id" position="attributes">
+            		<attribute name="invisible">0</attribute>
+            	</field>
+            </field>
+        </record>      
+        <record id="hr_timesheet_line_form_ext" model="ir.ui.view">
+            <field name="name">hr_timesheet_line_form_ext</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+            <field name="arch" type="xml">
+            	<field name="user_id" position="after">
+            		<field name="employee_id" options='{"no_open": True}'/>
+            	</field>
+            	<field name="unit_amount" position="attributes">
+            		<attribute name="on_change">on_change_unit_amount(product_id, unit_amount, False, product_uom_id,journal_id,employee_id)</attribute>
+            	</field>
+            	<field name="product_uom_id" position="attributes">
+            		<attribute name="on_change">on_change_unit_amount(product_id, unit_amount, False, product_uom_id,journal_id,employee_id)</attribute>
+            	</field>
+            	<field name="product_id" position="attributes">
+            		<attribute name="on_change">on_change_unit_amount(product_id, unit_amount, False, product_uom_id,journal_id,employee_id)</attribute>
+            	</field>
+            </field>
+        </record>               
+    </data>
+</openerp>

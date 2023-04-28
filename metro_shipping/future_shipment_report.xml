@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="False" id="report_future_shipment_briefreport" model="future.shipment" name="future.shipment.briefreport"
+               rml="metro_shipping/report/future_shipment_notice_print.rml" string="Future Shipment Report"/>
+               
+		<record id="report_future_shipment_briefreport" model="ir.actions.report.xml">
+			<field name="download_filename">FutureShipment</field>
+		</record>
+		
+    </data>
+</openerp>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_hr_clock_form" model="ir.ui.view">
+            <field name="name">hr.clock.form</field>
+            <field name="model">hr.clock</field>
+            <field name="arch" type="xml">
+                <form string="HR Clocks attendances" version="7.0">
+                    <header>
+                        <button name="download_log" string="Download Attendance Log" type="object"/>
+                        <button name="refresh_clock_info" string="Refresh Clock Info" type="object"/>
+                        <!-- use the datetime_set field, when do saving then set the clock datetime -->
+                        <!-- <button name="set_clock_time" string="Sync Time" type="object"/> -->
+                        <button name="%(action_hr_clock_emp_sync)d" string="Sync from Server to Clock" 
+                        	type="action" context="{'default_sync_direction':'server2clock'}"/>
+                        <button name="%(action_hr_clock_emp_sync)d" string="Sync from Clock to Server"
+                        	type="action" context="{'default_sync_direction':'clock2server'}"/>
+                        <button name="%(action_hr_clock_emp_sync)d" string="Delete Employees on Clock"
+                        	type="action" context="{'default_sync_direction':'user2delete'}"
+                        	confirm="Delete employees will erase all user data, including base info, finger print, password and the attendance log. Are you sure to continue? "/>
+                        <!-- 
+                        ClearSLog()
+                        ClearData()
+                         -->
+                        <!-- <button name="clear_clock_log" string="Clear Logs on Clock"
+                        	type="object" confirm="Are you sure to clear all of the attendance log data of the clock?"/> -->
+                	</header>
+                    <sheet>
+                    <group colspan="4">
+                    	<group>
+	                        <field name="name"/>
+	                        <field name="date_conn_last"/>
+                        	<field name="active"/>
+                    	</group>
+                    	<group>
+	                        <field name="ip"/>
+	                        <field name="port"/>
+	                        <field name="datetime_set"/>
+                    	</group>
+                    </group>
+                    <label for="clock_info"/>
+                    <field name="clock_info"/>
+                    </sheet>
+                    <label for="message_ids"/>
+                    <field name="message_ids"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_clock_tree" model="ir.ui.view">
+            <field name="name">hr.clock.tree</field>
+            <field name="model">hr.clock</field>
+            <field name="arch" type="xml">
+                <tree string="HR Clocks">
+                        <field name="name"/>
+                        <field name="ip"/>
+                        <field name="port"/>
+                        <field name="date_conn_last"/>
+                        <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_hr_clock_filter">
+            <field name="name">view_hr_clock_filter</field>
+            <field name="model">hr.clock</field>
+            <field name="arch" type="xml">
+                <search string="HR Clocks Search">
+                    <field name="name" filter_domain="['|',('name','ilike',self),('ip','ilike',self)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_clock" model="ir.actions.act_window">
+            <field name="name">HR Clocks</field>
+            <field name="res_model">hr.clock</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_hr_clock_filter" />
+        </record>
+
+        <menuitem action="action_hr_clock" 
+        id="menu_open_view_attendance" 
+        parent="hr_attendance.menu_hr_attendance" 
+        sequence="30" 
+        groups="base.group_hr_manager"/>
+        
+<!-- Add the clock related fields -->        
+        <record model="ir.ui.view" id="view_employee_form_clock">
+            <field name="name">view_employee_form_clock</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <page string="HR Settings" groups="base.group_hr_user" position="after">
+	                <page string="Clock Settings" groups="base.group_hr_user">
+	                    <group>
+		                	<field name="clock_role"/>
+		                	<field name="clock_pwd"/>
+		                	
+		                	<field name="clock_fp1"/>
+		                	<field name="clock_fp2"/>
+		                	<field name="clock_fp3"/>
+		                	<field name="clock_fp4"/>
+		                	<field name="clock_fp5"/>
+		                	
+		                	<field name="clock_fp6"/>
+		                	<field name="clock_fp7"/>
+		                	<field name="clock_fp8"/>
+		                	<field name="clock_fp9"/>
+		                	<field name="clock_fp10"/>
+	                    </group>
+	                </page>                    
+                </page>
+            </field>
+        </record>        
+        
+    </data>
+</openerp>
+
+

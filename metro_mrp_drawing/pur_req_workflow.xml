@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="metro_purchase.act_done" model="workflow.activity">
+            <field name="wkf_id" ref="metro_purchase.pur_req"/>
+            <field name="name">done</field>
+            <field name="kind">function</field>
+            <field name="action">action_done()
+</field>
+            <field name="flow_stop">True</field>
+            <field name="join_mode">AND</field>
+        </record>
+    </data>
+</openerp>

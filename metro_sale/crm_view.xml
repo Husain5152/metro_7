@@ -1,0 +1,119 @@
+<openerp>
+    <data>
+		<record id="metro_crm_lean_view_form" model="ir.ui.view">
+			<field name="name">metro_crm_lean_view_form</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+			<field name="arch" type="xml">	
+				<xpath expr="//page[@string='Internal Notes']" position="after">
+					<page name="calls" string="Calling">
+						<field name="phonecall_ids" readonly="1"/>
+					</page>
+					<page name="contact_log" string="Contacts Log">
+						<field name="contact_log_ids" widget="one2many_list" context="{'op_name':name,'op_contact_name':contact_name}"/>
+					</page>
+				</xpath>
+				<field name='categ_ids' position="after">
+					<field name="channel_id" />
+				</field>		
+			</field>
+		</record>  
+		<record id="metro_crm_oppor_view_form" model="ir.ui.view">
+			<field name="name">metro_crm_oppor_view_form</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+			<field name="arch" type="xml">	
+				<xpath expr="//page[@string='Internal Notes']" position="after">
+					<page name="calls" string="Calling">
+						<field name="phonecall_ids" readonly="1"/>
+					</page>
+					<page name="contact_log" string="Contacts Log">
+						<field name="contact_log_ids" widget="one2many_list" context="{'op_name':name,'op_contact_name':contact_name}"/>
+					</page>
+				</xpath>		
+				<field name='categ_ids' position="after">
+					<field name="channel_id" />
+				</field>		
+			</field>
+		</record>
+		
+        <!-- contact.log -->
+        <record id="contact_log_view_tree" model="ir.ui.view">
+            <field name="name">contact.tree</field>
+            <field name="model">contact.log</field>
+            <field name="arch" type="xml">
+                <tree string="Channels">
+                    <field name="type_id" widget="selection"/>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="person"/>
+                    <field name="duration" widget="float_time"/>
+                    <field name="mto_design_wiz_id"/>
+		            <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record id="contact_log_view_form" model="ir.ui.view">
+            <field name="name">contact.form</field>
+            <field name="model">contact.log</field>
+            <field name="arch" type="xml">
+                <form string="Channel" version="7.0">
+                    <group>
+	                    <group>
+		                    <field name="type_id" widget="selection"/>
+		                    <field name="name"/>
+		                    <field name="person"/>
+	                    </group>
+	                    <group>
+		                    <field name="date"/>
+		                    <field name="duration" widget="float_time"/>
+                    		<field name="mto_design_wiz_id"/>
+	                    </group>
+                    </group>
+		            <field name="description" placeholder="Description..."/>
+                </form>
+            </field>
+        </record>
+        <record id="contact_log_action" model="ir.actions.act_window">
+            <field name="name">Contact Log</field>
+            <field name="res_model">contact.log</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="contact_log_action" id="menu_contact_log" parent="crm.menu_crm_case_phone" sequence="4"/>     
+        		
+        <!-- contact.log.type -->
+        <record id="contact_log_type_view_tree" model="ir.ui.view">
+            <field name="name">contact.log.type.tree</field>
+            <field name="model">contact.log.type</field>
+            <field name="arch" type="xml">
+                <tree string="Channels" editable="bottom">
+                    <field name="name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record id="contact_log_type_view_form" model="ir.ui.view">
+            <field name="name">contact.log.type.form</field>
+            <field name="model">contact.log.type</field>
+            <field name="arch" type="xml">
+                <form string="Channel" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="contact_log_type_action" model="ir.actions.act_window">
+            <field name="name">Contact Log Types</field>
+            <field name="res_model">contact.log.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="contact_log_type_action" id="menu_contact_log_type" parent="base.menu_crm_config_lead" sequence="4"/>
+		
+    </data>
+</openerp>

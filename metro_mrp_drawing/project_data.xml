@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="mfg_waiting_on_parts" model="project.task.type">
+            <field name="name">Waiting On Parts</field>
+            <field name="project_type">mfg</field>
+            <field name="color">1</field>
+            <field name="case_default">True</field>
+            <field name="state">draft</field>
+        </record>
+        <record id="mfg_in_progress" model="project.task.type">
+            <field name="name">In Progress</field>
+            <field name="project_type">mfg</field>
+            <field name="color">6</field>
+            <field name="state">open</field>
+        </record>    
+        <record id="mfg_waitting" model="project.task.type">
+            <field name="name">Pending</field>
+            <field name="project_type">mfg</field>
+            <field name="color">0</field>
+            <field name="state">open</field>
+        </record>
+        <record id="mfg_miss_deadline" model="project.task.type">
+            <field name="name">Missed Deadline</field>
+            <field name="project_type">mfg</field>
+            <field name="color">2</field>
+            <field name="state">open</field>
+        </record>                
+    </data>
+</openerp>

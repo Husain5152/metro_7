@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <act_window name="Generate All Purchase Orders"
+            res_model="pr.line.generate.po.wizard"
+            src_model="pur.req.line"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="act_pur_req_line_po_all"/>
+
+        <record id="view_pr_line_generate_po_wizard" model="ir.ui.view">
+            <field name="name">view_pr_line_generate_po_wizard</field>
+            <field name="model">pr.line.generate.po.wizard</field>
+            <field name="arch" type="xml">
+                <form string="PR Line Generate PO Wizard" version="7.0">
+                    <separator string="Please review the purchase orders before creation"/>
+                    <group>
+                        <field name="req_id"/>
+                        <field name="req_line_ids" invisible="1"/>
+                        <field name="supplier_id" domain="[('supplier','=',True),('is_company','=',True)]"/>
+                        <!--<field name="generation_rule" on_change="onchange_generation_rule(req_id, req_line_ids, generation_rule)"/>-->
+                        <field name="date_required"/>
+                        <separator string="Purchase Order Lines" colspan="4"/>
+                        <field name="line_ids" colspan="4" nolabel="1">
+                            <tree string="Purchase Order Lines" editable="bottom">
+                                <field name="product_id" readonly="1"/>
+                                <!--<field name="generation_rule" on_change="onchange_generation_rule(req_line_id, generation_rule)"/>-->
+                                <field name="reserved_qty"/>
+                                <button name="reserved_infor" attrs="{'invisible':[('reserved_qty', '=', False)]}"
+                                    string="Infor" type="object"
+                                    icon="terp-camera_test"/>
+                                <field name="quantity"/>
+                                <field name="uom_id" readonly="1"/>
+                                <field name="price"/>
+                                <field name="supplier_prod_id" invisible="1"/>
+                                <field name="supplier_prod_name"/>
+                                <field name="supplier_prod_code"/>
+                                <field name="supplier_delay"/>
+                                <field name="req_line_id"/>
+                                <!--<field name="date_required"/>-->
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right">
+                            <field name="amount_total" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="do_generate" string="Generate PO" type="object" class="oe_highlight"/>
+                        <button name="do_generate_view" string="Generate and view PO" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

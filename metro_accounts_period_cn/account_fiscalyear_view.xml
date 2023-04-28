@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record model="ir.ui.view" id="view_account_fiscalyear_form_period">
+            <field name="name">view_account_fiscalyear_form_period</field>
+            <field name="inherit_id" ref="account.view_account_fiscalyear_form"/>
+            <field name="model">account.fiscalyear</field>
+            <field name="arch" type="xml">
+            	<field name="date_stop" position="after">
+            		<field name="need_open_period"/>
+	                <field name="close_journal_period_id" invisible="1"/>
+	                <field name="close_move_id"/>
+	                <field name="close_entry_done"/>
+	            </field>
+	            <button name="create_period3" position="attributes">
+	            	<attribute name="attrs">{'invisible':['|',('state','=','done'),('close_entry_done','=',True)]}</attribute>
+	            </button>
+	            <button name="create_period" position="attributes">
+	            	<attribute name="attrs">{'invisible':['|',('state','=','done'),('close_entry_done','=',True)]}</attribute>
+	            </button>
+	            <button name="create_period3" position="after">
+            		<button string="Cancel Year Closing Entry" name="cancel_close_entry" 
+            			type="object" attrs="{'invisible':['|',('state','=','done'),('close_entry_done','!=',True)]}"
+            			confirm="Are you sure to cancel the closing entry?"
+            			 groups="account.group_account_manager"/>
+            			 
+            		<button string="Close Year" name="action_close" 
+            			type="object" attrs="{'invisible':['|',('state','=','done'),('close_entry_done','!=',True)]}"
+            			confirm="Are you sure to close this year?"
+            			 groups="account.group_account_manager"/>
+            			 
+            		<button name="action_draft" states="done" string="Re-Open Year" type="object" 
+            			confirm="Are you sure to Re-Open this year?" groups="account.group_account_manager"/>
+	            </button>
+            </field>
+        </record>        
+        
+        <record model="ir.ui.view" id="view_account_fiscalyear_tree_period">
+            <field name="name">view_account_fiscalyear_tree_period</field>
+            <field name="inherit_id" ref="account.view_account_fiscalyear_tree"/>
+            <field name="model">account.fiscalyear</field>
+            <field name="arch" type="xml">
+	            <field name="state" position="after">
+	                <field name="close_journal_period_id" invisible="1"/>
+	                <field name="close_move_id"/>
+	                <field name="close_entry_done"/>
+	            </field>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_account_fiscalyear_search_period">
+            <field name="name">view_account_fiscalyear_search_period</field>
+            <field name="inherit_id" ref="account.view_account_fiscalyear_search"/>
+            <field name="model">account.fiscalyear</field>
+            <field name="arch" type="xml">     
+                <!-- Add 'Closed' filter -->
+                <filter string="Closed" position="replace">
+                	<filter string="In Closing" name="closing" domain="[('state','=','draft'),('close_entry_done','=',True)]" icon="terp-dialog-close"/>
+                	<filter string="Closed" name="done" domain="[('state','=','done')]" icon="terp-dialog-close"/>
+                </filter>
+            </field>
+        </record>         
+        
+<!-- 'Cancel Year Closing Entries'-->
+        <record id="action_account_year_close_entry_cancel" model="ir.actions.act_window">
+            <field name="name">Cancel Year Closing Entries</field>
+            <field name="res_model">account.fiscalyear</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_closing': 1}</field>
+        </record>
+
+        <menuitem action="action_account_year_close_entry_cancel"
+            id="menu_account_year_close_entry_cancel"
+            parent="menu_account_period_cn" 
+            sequence="6"/>     
+                  
+<!-- Close a Year -->           
+                
+        <!-- 'Close a Year' menu -->
+        <record id="action_account_year_close" model="ir.actions.act_window">
+            <field name="name">Close a Year</field>
+            <field name="res_model">account.fiscalyear</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_closing': 1}</field>
+        </record>
+
+        <menuitem action="action_account_year_close"
+            id="menu_account_year_close"
+            parent="menu_account_period_cn" 
+            sequence="7"/>  
+            
+<!-- 'Open Closed Year'-->
+        <record id="action_account_year_open_close" model="ir.actions.act_window">
+            <field name="name">Open a Closed Year</field>
+            <field name="res_model">account.fiscalyear</field>
+            <field name="view_type">form</field>
+            <field name="context">{'search_default_done': 1}</field>
+        </record>
+        <menuitem
+            action="action_account_year_open_close"
+            id="menu_action_account_year_open_close"
+            parent="menu_account_period_cn"
+            sequence="8"/>
+            
+    </data>
+</openerp>

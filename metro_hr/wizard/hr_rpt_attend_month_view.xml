@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="hr_rpt_attend_month_view" model="ir.ui.view">
+            <field name="name">HR Attendance Monthly Report</field>
+            <field name="model">hr.rpt.attend.month</field>
+            <field name="arch" type="xml">
+            <form string="Report" version="7.0">
+                <field name="name" invisible="1"/>
+                <field name="type" invisible="1"/>
+                <field name="title" invisible="1"/>
+                <header>
+                   	<button name="run_report" string="Generate Attendance" type="object" states="draft,rejected" class="oe_highlight" confirm="Are you sure to continue to generate attendance report?"/>
+                   	
+                   	<button name="confirm" string="Confirm" states="draft,rejected" class="oe_highlight"/>
+                   	
+                   	<button name="approve" string="Approve" states="confirmed" groups="base.group_hr_manager" class="oe_highlight"/>
+                   	<button name="reject" string="Reject" states="confirmed" groups="base.group_hr_manager"/>
+                   	
+                   	<button name="cancel" string="Cancel" states="draft,rejected"/>
+                   	<button name="cancel" string="Cancel" states="confirmed" groups="base.group_hr_manager"/>
+                   	<button name="action_done_cancel" string="Cancel" states="done" type="object"
+                   		groups="base.group_hr_manager" confirm="Are you sure to candel this done order?"/>
+                   	
+                   	<button name="action_cancel_draft" string="Set to Draft" type="object" states="cancel"/>
+                   	
+                   	<button name="pdf_general" string="Print" type="object"/>
+                   	<button name="pdf_notification" string="Print Notification" type="object"/>
+                   	<button name="pdf_inspection" string="Print Inpsection" type="object"/>
+                   	<button name="pdf_attend_emp" string="Print With Attendance by Employee" type="object" attrs="{'invisible':[('attend_day_id','=',False)]}"/>
+                   	
+                   	<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                </header>          
+                <group name="options">
+	                <group col="4" name="options">
+	                	<field name="name"/>
+                        <label for="date_from" string="Dates"/>
+                        <div>
+						    <field name="date_from" domain="[('company_id', '=', company_id)]" 
+						    	class="oe_inline" widget="date" attrs="{'readonly':[('state','not in',('draft','rejected'))]}"/> -
+						    <field name="date_to" domain="[('company_id', '=', company_id)]" 
+						    	class="oe_inline" widget="date" attrs="{'readonly':[('state','not in',('draft','rejected'))]}"/>  
+                        </div>	        
+                        <field name="attend_day_id" attrs="{'readonly':[('state','not in',('draft','rejected'))]}"/>
+						<field name="company_id" groups="base.group_multi_company" widget="selection"
+							 attrs="{'readonly':[('state','not in',('draft','rejected'))]}"/>   
+						<field name="note"/>
+	                </group>
+                </group>
+                <notebook>
+                	<page name="data" string="Attendance">
+						<!-- 3.Report lines -->
+						<field name="rpt_lines" attrs="{'readonly':[('state','not in',('draft','rejected'))]}">
+							<tree editable="bottom">
+									<field name="seq"/>
+									<field name="emp_id"/>
+									<!-- <field name="emp_code"/> -->
+									<field name="days_work"/>
+									<field name="days_attend"/>
+									<field name="hours_ot" widget="float_time"/>
+									<field name="days_work2"/>
+									<field name="days_attend2_real"/>
+									<field name="days_attend2"/>
+									<field name="hours_ot2_nonwe" widget="float_time"/>
+									<field name="hours_ot2_we" widget="float_time"/>
+									
+									<field name="hours_ot_law_holiday" widget="float_time"/>
+									<field name="days_work_injury_holiday"/>
+									<field name="alw_hightemp"/>
+									<field name="alw_house"/>
+									<field name="alw_other"/>
+									<field name="ded_meal"/>
+									<field name="ded_utilities"/>
+									<field name="ded_other"/>     
+									
+									<field name="note"/>           
+							</tree>
+						</field>
+                	</page>
+                	<page name="employee" string="Selected Employees" attrs="{'invisible':[('attend_day_id','!=',False)]}">
+                		<field name="emp_ids" attrs="{'readonly':[('state','not in',('draft','rejected'))]}"/>
+                	</page>
+					<page string="Messages">
+					    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+					    <field name="message_ids" widget="mail_thread"/>
+					</page>      
+                </notebook>
+            </form>
+            </field>
+        </record>   
+        
+        <record id="view_hr_rpt_attend_month_tree" model="ir.ui.view">
+            <field name="name">view_hr_rpt_attend_month_tree</field>
+            <field name="model">hr.rpt.attend.month</field>
+            <field name="arch" type="xml">
+                <tree string="Attendances Monthly Report">
+                        <field name="name"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="state"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+                
+
+        <record id="view_hr_rpt_attend_month_filter" model="ir.ui.view">
+            <field name="name">hr_rpt_attend_month_filter</field>
+            <field name="model">hr.rpt.attend.month</field>
+            <field name="arch" type="xml">
+                <search string="Search Attendances">
+                    <field name="name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="attend_day_id"/>
+                    <filter icon="terp-document-new" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter name="done_filter" icon="terp-camera_test" string="Done" domain="[('state','=','done')]"/>
+                </search>
+            </field>
+        </record>
+                        
+        <record id="hr_rpt_attend_month_action" model="ir.actions.act_window">
+            <field name="name">Attendances Monthly Report</field>
+            <field name="res_model">hr.rpt.attend.month</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="view_hr_rpt_attend_month_tree"/>
+            <field name="search_view_id" ref="view_hr_rpt_attend_month_filter"/>
+            <field name="context">{'default_title':'Attendance Monthly Report'}</field>
+            <field name="target">current</field>
+        </record>  
+		
+        <menuitem
+            id="hr_rpt_attend_month_menu"
+            action="hr_rpt_attend_month_action"
+            groups="base.group_hr_manager"
+            parent="hr_attendance.menu_hr_attendance"
+            sequence="29"
+           />   
+    </data>
+</openerp>

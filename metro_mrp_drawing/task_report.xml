@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+        <report auto="False" id="report_task_group_by_assignee_full" model="task.group" header="True"
+                name="task.group.by_assignee_full" rml="metro_mrp_drawing/report/task_group_by_assignee_full.rml"
+                usage="default" string="Tasks Done by Assignee Full"/>
+        <report auto="False" id="report_task_group_by_employee_full" model="task.group" header="True"
+                name="task.group.by_employee_full" rml="metro_mrp_drawing/report/task_group_by_employee_full.rml"
+                usage="default" string="Tasks Done by Employee Full"/>
+        <report auto="False" id="report_task_group_by_team_full" model="task.group" header="True"
+                name="task.group.by_team_full" rml="metro_mrp_drawing/report/task_group_by_team_full.rml"
+                usage="default" string="Tasks Done by Team Full"/>      
+
+        <report auto="False" id="report_task_group_by_assignee_brief" model="task.group" header="True"
+                name="task.group.by_assignee_brief" rml="metro_mrp_drawing/report/task_group_by_assignee_brief.rml"
+                usage="default" string="Tasks Done by Assignee Brief"/>
+        <report auto="False" id="report_task_group_by_employee_brief" model="task.group" header="True"
+                name="task.group.by_employee_brief" rml="metro_mrp_drawing/report/task_group_by_employee_brief.rml"
+                usage="default" string="Tasks Done by Employee Brief"/>
+        <report auto="False" id="report_task_group_by_team_brief" model="task.group" header="True"
+                name="task.group.by_team_brief" rml="metro_mrp_drawing/report/task_group_by_team_brief.rml"
+                usage="default" string="Tasks Done by Team Brief"/>      
+                                                                      
+    </data>
+</openerp>

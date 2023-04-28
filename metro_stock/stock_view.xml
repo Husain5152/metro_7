@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>      
+        <record id="metro_view_picking_in_tree" model="ir.ui.view">
+            <field name="name">metro.stock.picking.in.tree</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_in_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="/tree" position="attributes">
+                    <attribute name="colors"><![CDATA[red:state not in ('cancel', 'done') and current_date > min_date;blue:state == 'draft';grey:state == 'cancel']]></attribute>
+                    <attribute name="fonts"><![CDATA[bold:state not in ('cancel', 'done') and current_date > min_date]]></attribute>
+                </xpath>
+            	<field name="min_date" position="attributes">
+            		<attribute name="widget">date</attribute>
+            	</field>
+            	<field name="min_date" position="after">
+            		<field name="date_done" string="Date of Reception"/>
+            	</field>
+            	<field name="origin" position="after">
+            		<field name="deliver_ticket_no"/>
+            	</field>
+            </field>
+        </record>   
+<!-- Material Request -->    
+        <record id="view_material_request_tree" model="ir.ui.view">
+            <field name="name">material.request.tree</field>
+            <field name="model">material.request</field>
+            <field name="arch" type="xml">
+                <tree colors="blue:state == 'draft';grey:state == 'cancel';red:state not in ('cancel', 'done')" string="Material Request">
+                    <field name="name" string="MR#"/>
+                    <field name="mr_dept_id"/>
+                    <field name="date" string="Order Date"/>
+                    <field name="mr_ticket_no"/>
+                    <field name="stock_journal_id" groups="account.group_account_user"/>
+                    <field name="create_uid"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_material_request_form" model="ir.ui.view">
+            <field name="name">material.request.form</field>
+            <field name="model">material.request</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+				<xpath expr="//sheet" position="attributes">
+				    <attribute name="class">oe_form_sheet_width_wider</attribute>
+				</xpath>            
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="mr_dept_id" required="1"/>
+                </xpath>
+                <xpath expr="//field[@name='date']" position="attributes">
+                    <attribute name="string">Order Date</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="mr_ticket_no" attrs="{'readonly':[('state','!=','done')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='move_lines']" position="replace">
+                    <field name="move_lines" context="{'form_view_ref':'metro_stock.view_mat_line_form', 'tree_view_ref':'metro_stock.view_mat_line_tree', 'req_type':type}"/>
+                </xpath>
+                <xpath expr="//field[@name='min_date']" position="replace">
+                	<field name="type" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="replace">
+                </xpath>
+                <xpath expr="//button[@string='Reverse Transfer']" position="after">
+                    <button name="action_revert_done" string="Reopen" states="done,cancel" type="object" groups="stock.group_stock_manager" confirm="Are you sure you want to reopen this stock picking?"/>
+                </xpath>
+                <xpath expr="//button[@string='Reverse Transfer']" position="replace">
+                </xpath>   
+                <!-- Remove the 'Confirm and Transfter' button for the forcing assign under 'draft' state, and replace with the checking available button -->
+                <xpath expr="//button[@name='draft_validate']" position="replace">
+                    <button name="action_assign" states="confirmed" string="Check Availability" type="object" class="oe_highlight"/>
+                </xpath>
+                <!-- Remove the 'Force Assign' button when there are not available inventory under 'confirmed' state -->
+                <xpath expr="//button[@name='force_assign']" position="replace">
+                </xpath>
+                <!-- Rename the transfer button title -->                
+                <xpath expr="/form/header//button[@name='action_process']" position="replace">
+                    <button name="action_process" states="assigned" string="Deliver" type="object" class="oe_highlight"/>
+                </xpath>
+                                
+ 				<notebook position="inside">
+ 					<page string="Account Moves" groups="account.group_account_user">
+ 						<field name='account_move_ids' attrs="{'readonly': [('state','!=','done')]}"/>
+ 					</page>
+ 				</notebook>
+	            <xpath expr="/form/sheet" position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </xpath>  				
+            </field>
+        </record>
+        <record id="view_material_request_search" model="ir.ui.view">
+            <field name="name">stock.material.request.search</field>
+            <field name="model">material.request</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='name']" position="attributes">
+            		<attribute name="string">MR#</attribute>
+            	</xpath>
+            	<xpath expr="//field[@name='name']" position="after">
+            		<field name="mr_ticket_no"/>
+            	</xpath>            	
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="mr_dept_id"/>
+                    <field name="date" string="Order Date"/>
+                </xpath>
+                <xpath expr="//group/filter[@string='Expected Date']" position="replace">
+                    <filter string="Department" icon="terp-gtk-jump-to-rtl" domain="[]" context="{'group_by':'mr_dept_id'}"/>
+                </xpath>                
+                <xpath expr="//group/filter[@string='Origin']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_material_request_tree" model="ir.actions.act_window">
+            <field name="name">Material Request</field>
+            <field name="res_model">material.request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','mr')]</field>
+            <field name="context">{'default_type':'mr'}</field>
+            <field name="search_view_id" ref="view_material_request_search"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="action_material_request_tree_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_material_request_tree"/>
+            <field name="act_window_id" ref="action_material_request_tree"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_material_request_tree__form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_material_request_form"/>
+        	<field name="act_window_id" ref="action_material_request_tree"/>
+        </record>        
+        <menuitem action="action_material_request_tree" id="menu_action_material_request_tree" 
+        	parent="stock.menu_stock_warehouse_mgmt" sequence="10" groups="stock.group_stock_user"/>
+
+        <record id="action_material_request_return_tree" model="ir.actions.act_window">
+            <field name="name">Material Return</field>
+            <field name="res_model">material.request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','mrr')]</field>
+            <field name="context">{'default_type':'mrr'}</field>
+            <field name="search_view_id" ref="view_material_request_search"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="action_material_request_return_tree_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_material_request_tree"/>
+            <field name="act_window_id" ref="action_material_request_return_tree"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_material_request_return_tree__form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_material_request_form"/>
+        	<field name="act_window_id" ref="action_material_request_return_tree"/>
+        </record>        
+        <menuitem action="action_material_request_return_tree" id="menu_action_material_request_return_tree" 
+        	parent="stock.menu_stock_warehouse_mgmt" sequence="10" groups="stock.group_stock_user"/>
+        	
+        
+<!-- material return -->
+<!--         <record id="action_material_return_tree" model="ir.actions.act_window">
+            <field name="name">Material Return</field>
+            <field name="res_model">material.request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','mrr')]</field>
+            <field name="search_view_id" ref="view_material_request_search"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="action_material_return_tree_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_material_request_tree"/>
+            <field name="act_window_id" ref="action_material_return_tree"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_material_return_tree__form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_material_request_form"/>
+        	<field name="act_window_id" ref="action_material_return_tree"/>
+        </record>        
+        <menuitem action="action_material_return_tree" id="menu_action_material_return_tree" 
+        	parent="stock.menu_stock_warehouse_mgmt" sequence="11" groups="stock.group_stock_user"/> -->
+        	        
+<!-- material request line -->
+		<record id="view_mat_line_tree" model="ir.ui.view">
+		    <field name="name">req.line.req.tree</field>
+		    <field name="model">material.request.line</field>
+		    <field name="arch" type="xml">	
+                <tree string="Stock Moves" editable="bottom">
+	                <field name="name" invisible="1"/>
+                    <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id)"/>
+                    <field name="product_qty"/>
+                    <field name="product_uom" readonly="1" string="Unit of Measure" groups="product.group_uom"/>
+                    <field name="product_uos_qty"  invisible="1"/>
+                    <field name="product_uos"  invisible="1"/>     
+					<field name="price_unit" groups="account.group_account_invoice"/> 
+					<field name="price_subtotal"/>
+					<field name="price_currency_id" invisible="1"/>	                                       
+		            <field name="mr_emp_id"/>
+		            <field name="mr_sale_prod_id"/>
+		            <field name="mr_notes"/>
+                    <field name="location_id" groups="stock.group_locations"/>
+                    <field name="location_dest_id" groups="stock.group_locations"/>
+                    <field name="create_uid" invisible="1"/>
+                    <field name="create_date" invisible="1"/>
+                    <field name="state"/>        
+               </tree>
+		    </field>
+		</record>
+                		
+        <record id="view_mat_line_form" model="ir.ui.view">
+            <field name="name">req.line.req.form</field>
+            <field name="model">material.request.line</field>
+            <field name="arch" type="xml">
+	            <form string="Stock Moves" version="7.0">
+	                <header>
+	                        <button name="force_assign" states="confirmed" string="Force Availability" type="object" groups="base.group_user"/>
+	                        <button name="action_confirm" states="draft" string="Confirm" type="object" groups="base.group_user"/>
+	                        <button name="cancel_assign" states="assigned" string="Cancel Availability" type="object" groups="base.group_user"/>
+	                        <field name="state" widget="statusbar" statusbar_visible="draft,assigned,done"/>
+	                </header>
+					<group>
+	                        <field name="name" invisible="1"/>
+	                        <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id)"/>
+					</group>
+                    <group>
+	                    <group>
+	                        <field name="type" invisible="1"/>
+	                        <label for="product_qty"/>
+	                        <div>
+	                            <field name="product_qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" class="oe_inline"/>
+	                            <field name="product_uom" readonly="1" string="Unit Of Measure" groups="product.group_uom" class="oe_inline"/>
+	                        </div>
+	                        <field name="product_uos_qty" invisible="1" on_change="onchange_uos_quantity(product_id, product_uos_qty, product_uos, product_uom)" class="oe_inline"/>
+	                        <field name="product_uos" invisible="1" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" class="oe_inline"/>
+							<field name="price_unit" groups="account.group_account_invoice"/>
+							<field name="price_currency_id" invisible="1"/>
+							<field name="mr_emp_id"/>
+							<field name="mr_sale_prod_id"/>                       
+	                    </group>
+						<group>
+							<field name="location_id" domain="[('usage','&lt;&gt;','view')]"/>
+							<field name="location_dest_id" domain="[('usage','&lt;&gt;','view')]"/>                       
+							<field name="create_date"  readonly="1"/>
+						</group>
+					</group>
+					<group>
+							<field name="mr_notes"/>
+					</group>
+				</form>
+            </field>
+        </record>
+<!-- use stock_mt_rpt replace the mr line view and action, johnw, 01/09/2015 -->        
+<!--         
+        <record id="view_material_request_line_tree" model="ir.ui.view">
+            <field name="name">req.line.tree</field>
+            <field name="model">material.request.line</field>
+            <field name="arch" type="xml">
+                <tree colors="grey:state == 'cancel';green:state == 'done'" string="Moves">
+                    <field name="picking_id"/>
+                    <field name="mr_date_order"/>
+                    <field name="mr_dept_id"/>
+                    <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id, False)"/>
+                    <field name="product_qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)"/>
+                    <field name="product_uom" string="Unit of Measure" groups="product.group_uom"/>
+					<field name="price_unit" groups="account.group_account_invoice"/> 
+					<field name="price_subtotal"/>
+					<field name="price_currency_id" invisible="1"/>	 
+                    <field name="mr_emp_id"/>
+                    <field name="mr_sale_prod_id"/>
+                    <field name="mr_notes"/>
+                    <field name="name"/>
+                    <field name="location_id" groups="stock.group_locations"/>
+                    <field name="location_dest_id" groups="stock.group_locations"/>
+                    <field name="create_date"/>
+                    <field name="state"/>             
+                </tree>
+            </field>
+        </record>
+                        
+        <record id="view_material_request_line_form" model="ir.ui.view">
+            <field name="name">req.line.form</field>
+            <field name="model">material.request.line</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+				<xpath expr="/form/sheet" position="replace">	                
+					<group>
+	                        <field name="name" invisible="1"/>
+	                        <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id)"/>
+					</group>
+                    <group>
+	                    <group>
+	                        <field name="type" invisible="1"/>
+	                        <label for="product_qty"/>
+	                        <div>
+	                            <field name="product_qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" class="oe_inline"/>
+	                            <field name="product_uom" string="Unit Of Measure" groups="product.group_uom" class="oe_inline"/>
+	                        </div>
+	                        <field name="product_uos_qty" invisible="1" on_change="onchange_uos_quantity(product_id, product_uos_qty, product_uos, product_uom)" class="oe_inline"/>
+	                        <field name="product_uos" invisible="1" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" class="oe_inline"/>
+							<field name="price_unit" groups="account.group_account_invoice"/>
+							<field name="price_currency_id" invisible="1"/>	                        
+							<field name="mr_emp_id"/>
+							<field name="mr_sale_prod_id"/>                       
+	                    </group>
+						<group>
+							<field name="location_id" domain="[('usage','&lt;&gt;','view')]"/>
+							<field name="location_dest_id" domain="[('usage','&lt;&gt;','view')]"/>                       
+							<field name="create_date"  readonly="1"/>
+						</group>
+					</group>
+                    <group>
+	                    <group>
+		                    <field name="mr_dept_id" readonly="1"/>                   
+	                    </group>
+						<group>
+		                    <field name="mr_date_order" readonly="1"/>
+						</group>
+					</group>
+					<group>
+							<field name="mr_notes"/>
+					</group>
+				</xpath>
+            </field>
+        </record>   
+        <record id="view_material_request_line_search" model="ir.ui.view">
+            <field name="name">material.request.line.search</field>
+            <field name="model">material.request.line</field>
+            <field name="arch" type="xml">
+                <search string="Material Req/Ret Products">
+                    <field name="name"/>
+                    <field name="date" string="Order Date"/>
+					<filter icon="terp-stock" string="Request" name="data_mr" domain="[('type','=','mr')]"/>
+					<filter icon="terp-stock" string="Return" name="data_mr" domain="[('type','=','mrr')]"/>
+                    <filter icon="terp-camera_test" string="Ready" name="ready" domain="[('state','=','assigned')]" help="Stock moves that are Available (Ready to process)"/>
+                    <filter icon="terp-stock" string="To Do" name="future" domain="[('state','in',('assigned','confirmed','waiting'))]" help="Stock moves that are Confirmed, Available or Waiting"/>
+                    <filter icon="terp-dialog-close" string="Done" name="done" domain="[('state','=','done')]" help="Stock moves that have been processed"/>
+                    <separator/>
+                    <filter icon="terp-go-today" string="Today" domain="[('date','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),('date','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]" help="Orders processed Today or planned for Today"/>
+                    
+                    
+                    Change the prodcut_id to allow to remove the default active=True restriction                    
+                    
+                    <field name="product_id"/>
+                    <field name="product_id" domain="['|',('active','=',True),('active','=',False)]"/>
+                    <field name="prod_categ_id"/>
+                    <field name="mr_dept_id"/>
+                    <field name="mr_emp_id"/>
+                    <field name="mr_sale_prod_id"/>
+                    <group expand="0" string="Group By...">
+                    	<filter string="ID" name="by_id" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'mr_sale_prod_id'}"/>
+                        <filter string="Department" name="by_dept" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'mr_dept_id'}"/>
+                        <filter string="Employee" name="by_emp" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'mr_emp_id'}"/>                        
+                        <filter string="Product" name="by_product" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'product_id'}"/>
+                        <filter string="Product Category" name="by_product_categ" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'prod_categ_id'}"/>
+                        <filter string="Material Request" name="groupby_picking_id" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'picking_id'}"/>
+                        <filter icon="terp-stock_effects-object-colorize" string="Status" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Date" name="groupby_date" icon="terp-go-month" domain="[]" context="{'group_by':'mr_date_order'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_material_request_line" model="ir.actions.act_window">
+            <field name="name">Material Req/Ret Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">material.request.line</field>
+            <field name="view_type">form</field>
+        	<field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_material_request_line_tree"/>
+            <field name="search_view_id" ref="view_material_request_line_search"/>
+            <field name="domain">['|',('picking_id.type','=','mr'),('picking_id.type','=','mrr')]</field>
+        </record>
+        
+        <record model="ir.actions.act_window.view" id="action_material_request_line_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_material_request_line_tree"/>
+            <field name="act_window_id" ref="action_material_request_line"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_material_request_line_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_material_request_line_form"/>
+        	<field name="act_window_id" ref="action_material_request_line"/>
+        </record>
+        <menuitem action="action_material_request_line" id="menu_action_material_request_line" 
+        	parent="stock.menu_stock_products_moves" sequence="3" groups="stock.group_stock_user"/> -->
+        	
+<!-- add the order date filter -->      
+        <record id="view_picking_internal_search" model="ir.ui.view">
+            <field name="name">metro.stock.picking.search</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <field name="stock_journal_id" position="before">
+                	<field name="date"/>
+                	<field name="date_done"/>
+                </field>
+            </field>
+        </record>   
+        <record id="view_picking_out_search" model="ir.ui.view">
+            <field name="name">metro.stock.picking.out.search</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_out_search"/>
+            <field name="arch" type="xml">
+                <field name="stock_journal_id" position="before">
+                	<field name="date"/>
+                	<field name="date_done" string="Date of Deliver"/>
+                	<field name="partner_id"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_picking_in_search" model="ir.ui.view">
+            <field name="name">metro.stock.picking.in.search</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_in_search"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="after">
+            		<field name='deliver_ticket_no'/>
+            	</field>	
+                <field name="stock_journal_id" position="before">
+                	<field name="date"/>
+                	<field name="date_done" string="Date of Reception"/>
+                	<field name="partner_id"/>
+                </field>
+            </field>
+        </record>
+
+<!-- stock physical inventory -->        
+
+        <record id="metro_view_inventory_form" model="ir.ui.view">
+            <field name="name">metro.stock.inventory.form</field>
+            <field name="model">stock.inventory</field>
+            <field name="inherit_id" ref="stock.view_inventory_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@string='Fill Inventory']" position="attributes">
+            		<attribute name="states">draft</attribute>           	
+            	</xpath>
+                <xpath expr="//button[@name='action_done']" position="attributes">
+                    <attribute name="groups">stock.group_stock_manager</attribute>
+                </xpath>
+            	<xpath expr="//button[@string='Fill Inventory']" position="after">
+					<button name="%(action_view_stock_import_inventory)d" string="Import Inventory" states="draft" type="action" />           	
+            	    <button string="Export Lines" type="object" name="export_lines"/>
+                    <button string="Export All Products" type="object" name="export_all_productS"/>
+                    <button string="Change Inventory Date" type="object" name="change_inventory_date" states="confirm"/>
+                    <button string="Move Inventory" type="action" name="%(action_view_stock_move_inventory)d"/>
+                </xpath>
+            	<xpath expr="//page[@string='Posted Inventory']//field[@name='state']" position="attributes">
+            		<attribute name="invisible">False</attribute>            	
+            	</xpath>
+            	<field name="move_ids" position="attributes">
+            		<attribute name="readonly">True</attribute>
+            	</field>
+            	<xpath expr="//page[@string='General Information']//tree/field[@name='product_id']" position="after">
+            		<!-- <field name="image_medium" widget="image"/> -->            	
+            	</xpath>
+            	<field name="date" position="after">
+                    <field name="inventory_date"/>
+            		<field name="create_uid"/>
+            	</field>
+            	<field name="name" position="after">
+					<field name="comments" placeholder="Comments..."/>   
+            	</field>
+<!--             	<xpath expr="//sheet/group" position="after">
+                	<label for="comments"/>         	
+            	</xpath> -->
+            	<xpath expr="//field[@name='inventory_line_id']/tree/field[@name='product_uom']" position="before">
+            		<field name="uom_categ_id" invisible="1"/>
+            	</xpath>
+            	<xpath expr="//field[@name='inventory_line_id']/tree/field[@name='product_uom']" position="attributes">
+            		<attribute name="domain">[('category_id','=',uom_categ_id)]</attribute>
+            	</xpath>
+            </field>
+        </record>
+         <record id="metro_view_inventory_filter" model="ir.ui.view">
+            <field name="name">metro.stock.inventory.filter</field>
+            <field name="model">stock.inventory</field>
+            <field name="inherit_id" ref="stock.view_inventory_filter"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+	                 <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+	                 <filter icon="terp-document-new" name="confirm" string="Confirmed" domain="[('state','=','confirm')]"/>
+	                 <filter icon="terp-document-new" name="done" string="Done" domain="[('state','=','done')]"/>
+                </field>
+            </field>
+        </record>        
+		<!-- inventory line -->
+        <record id="metro_stock_inventory_line_tree" model="ir.ui.view">
+            <field name="name">metro.stock.inventory.line.tree</field>
+            <field name="model">stock.inventory.line</field>
+            <field name="inherit_id" ref="stock.stock_inventory_line_tree"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/tree" position="replace">
+                <tree string="Stock Inventory Lines" editable="bottom">
+                	<field name="inventory_id" readonly="1"/>
+                    <field name="product_id" readonly="1"/>
+                    <field name="product_qty"  attrs="{'readonly': [('state','!=','draft')]}"/>
+                    <field name="product_uom" groups="product.group_uom"  readonly="1"/>
+                    <field name="prod_lot_id" groups="stock.group_production_lot"  readonly="1"/>
+                    <field name="location_id" groups="stock.group_locations"  readonly="1"/>
+                    <field name="state"/>
+                </tree> 
+                </xpath>
+            </field>
+        </record>
+         <record id="metro_view_inventory_line_filter" model="ir.ui.view">
+            <field name="name">stock.inventory.line.filter</field>
+            <field name="model">stock.inventory.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Inventory">
+                    <field name="product_id" string="Product"/>
+                    <field name="inventory_id" string="Inventory Reference"/>
+                    <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter icon="terp-document-new" name="confirm" string="Confirmed" domain="[('state','=','confirm')]"/>
+                    <filter icon="terp-document-new" name="done" string="Done" domain="[('state','=','done')]"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Inventory Reference" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'inventory_id'}"/>
+                    </group>
+                </search>
+
+            </field>
+        </record>        
+        <record id="action_inventory_line_tree" model="ir.actions.act_window">
+            <field name="name">Physical Inventory Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.inventory.line</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="metro_stock_inventory_line_tree"/>
+            <field name="search_view_id" ref="metro_view_inventory_line_filter"/>
+        </record>
+        <menuitem action="action_inventory_line_tree" id="menu_action_inventory_line" parent="stock.menu_stock_inventory_control" sequence="31"/>
+<!-- physical inventory move line -->
+<!-- 
+        <record id="stock_inventory_move_tree" model="ir.ui.view">
+            <field name="name">stock.inventory.move.tree</field>
+            <field name="model">stock.inventory.move</field>
+            <field name="arch" type="xml">
+                <tree string="Stock Inventory Moves" editable="bottom">
+                	<field name="inventory_id"/>
+                	<field name="inventory_state"/>
+                    <field name="product_id"/>
+                    <field name="product_qty"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <field name="state"/>
+                </tree> 
+            </field>
+        </record>
+         <record id="stock_inventory_move_filter" model="ir.ui.view">
+            <field name="name">stock.inventory.move.filter</field>
+            <field name="model">stock.inventory.move</field>
+            <field name="arch" type="xml">
+                <search string="Search Inventory Moves">
+                    <field name="product_id" string="Product"/>
+                    <field name="inventory_id" string="Inventory Reference"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Inventory Reference" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'inventory_id'}"/>
+                        <filter string="State" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+
+            </field>
+        </record>        
+        <record id="action_inventory_move_tree" model="ir.actions.act_window">
+            <field name="name">Physical Inventory Moves</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.inventory.move</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="stock_inventory_move_tree"/>
+            <field name="search_view_id" ref="stock_inventory_move_filter"/>
+        </record>
+        <menuitem action="action_inventory_move_tree" id="menu_inventory_move_tree" parent="stock.menu_stock_inventory_control" sequence="32"/>
+	-->
+<!-- add the messages to internal move -->	
+        <record id="metro_view_picking_form" model="ir.ui.view">
+            <field name="name">metro.stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>	
+            <field name="arch" type="xml">
+	            <xpath expr="/form/sheet" position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </xpath> 
+ 				<notebook position="inside">
+ 					<page string="Account Moves" groups="account.group_account_user">
+ 						<field name='account_move_ids' attrs="{'readonly': [('state','!=','done')]}"/>
+ 					</page>
+ 				</notebook>
+            	<!-- Only warehouse user can do stcoking actions -->
+	            <xpath expr="/form/header" position="attributes">
+                	<attribute name="groups">stock.group_stock_user</attribute>
+                </xpath>
+                <!-- Remove the 'Confirm and Transfter' button for the forcing assign under 'draft' state, and replace with the checking available button -->
+                <xpath expr="//button[@name='draft_validate']" position="replace">
+                    <button name="action_assign" states="confirmed" string="Check Availability" type="object" class="oe_highlight"/>
+                </xpath>
+                <!-- Remove the 'Force Assign' button when there are not available inventory under 'confirmed' state -->
+                <xpath expr="//button[@name='force_assign']" position="replace">
+                </xpath>                    
+        	</field>        
+		</record>
+<!-- adjust  the stock in -->	
+        <record id="metro_view_picking_in_form" model="ir.ui.view">
+            <field name="name">metro.stock.picking.in.form</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_in_form"/>	
+            <field name="arch" type="xml">
+            	<!-- Only warehouse user can do stcoking actions -->
+	            <xpath expr="/form/header" position="attributes">
+                	<attribute name="groups">stock.group_stock_user</attribute>
+                </xpath>    
+            	<field name="date" position="attributes">
+            		<attribute name="widget">date</attribute>>
+            	</field>
+            	<field name="date" position="before">
+            		<field name="create_date"/>
+            	</field> 
+            	<field name="date_done" position="replace">
+            	</field>            	
+            	<field name="origin" position="replace">
+            		<field name="date_done" string="Date of Reception"/>
+            		<field name="deliver_ticket_no" attrs="{'readonly':[('state','!=','done')]}"/>
+            	</field>          
+            	<field name="stock_journal_id" position="after">
+            		<field name="origin" placeholder="e.g. PO0032" class="oe_inline"/>
+            	</field>          
+            	
+            	<field name="min_date" position="attributes">
+            		<attribute name="widget">date</attribute>
+            	</field>
+                <xpath expr="//field[@name='move_lines']" position="replace">
+                    <field name="move_lines" context="{'address_in_id': partner_id, 'picking_type': 'in', 'form_view_ref':'stock.view_move_picking_form', 'tree_view_ref':'stock.view_move_picking_tree'}"/>
+                </xpath>
+ 				<notebook position="inside">
+ 					<page string="Account Moves" groups="account.group_account_user">
+ 						<field name='account_move_ids' attrs="{'readonly': [('state','!=','done')]}"/>
+ 					</page>
+ 				</notebook>       
+ 				<!-- change price and create invoice wizard
+ 				 
+ 				-->
+                <xpath expr="//button[@string='Create Invoice/Refund']" position="attributes">
+                	<attribute name="name">%(action_stock_invoice_onshipping_single)d</attribute>
+                	<attribute name="groups">account.group_account_user</attribute>
+                </xpath> 				                             	
+        	</field>        
+		</record>	
+<!-- adjust the stock out -->		
+        <record id="metro_view_picking_out_form" model="ir.ui.view">
+            <field name="name">metro.stock.picking.out.form</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_out_form"/>	
+            <field name="arch" type="xml">
+            	<!-- Only warehouse user can do stcoking actions -->
+	            <xpath expr="/form/header" position="attributes">
+                	<attribute name="groups">stock.group_stock_user</attribute>
+                </xpath>            
+ 				<notebook position="inside">
+ 					<page string="Account Moves" groups="account.group_account_user">
+ 						<field name='account_move_ids' attrs="{'readonly': [('state','!=','done')]}"/>
+ 					</page>
+ 				</notebook>           
+                <xpath expr="//button[@string='Create Invoice/Refund']" position="attributes">
+                	<attribute name="name">%(action_stock_invoice_onshipping_single)d</attribute>
+                	<attribute name="groups">account.group_account_user</attribute>
+                </xpath> 	
+                <!-- Remove the 'Confirm and Transfter' button for the forcing assign under 'draft' state -->
+                <xpath expr="//button[@name='draft_validate']" position="replace">
+                </xpath>
+                <!-- Remove the 'Force Assign' button when there are not available inventory under 'confirmed' state -->
+                <xpath expr="//button[@name='force_assign']" position="replace">
+                </xpath>                			                        	
+        	</field>        
+		</record>		
+<!-- add the supplier product name -->		
+        <record id="metro_view_move_picking_tree" model="ir.ui.view">
+            <field name="name">metro.stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>	
+            <field name="arch" type="xml">
+            	<field name="product_id" position="after">
+            		<field name="supplier_prod_name"/>
+            	</field>
+            	<field name="product_qty" position="after">
+            		<field name="return_qty"/>
+            		<field name="price_unit" groups="account.group_account_invoice"/>
+            	</field>
+            	<field name="product_uom" position="after">
+            		<field name="product_uom_base_qty"/>
+            		<field name="product_uom_base"/>
+            	</field>
+            	<field name="state" position="before">
+            		<field name="date"/>
+            		<field name="mfg_ids"/>
+            	</field>
+        	</field>        
+		</record>
+				
+        <record id="metro_view_move_picking_form" model="ir.ui.view">
+            <field name="name">metro.stock.move.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>	
+            <field name="arch" type="xml">
+				<field name="create_date" position="attributes">
+					<attribute name="invisible">0</attribute>
+				</field>
+            	<field name="product_id" position="after">
+            		<field name="supplier_prod_name"/>
+            	</field>
+            	<field name="product_qty" position="after">
+            		<field name="return_qty"/>
+            		<field name="price_unit" groups="account.group_account_invoice"/>
+            	</field>
+            	<field name="product_uom" position="after">
+            		<field name="product_uom_base_qty"/>
+            		<field name="product_uom_base"/>
+            	</field>
+            	<field name="date_expected" position="after">
+            		<field name="purchase_line_id"/>
+            	</field>
+            	<field name="date_expected" position="attributes">
+            		<attribute name="widget">date</attribute>
+            	</field>
+            	<field name="partner_id" position="attributes">
+					<attribute name="string">Supplier</attribute>
+				</field>
+            </field>
+        </record>		
+        <!--  for the incoming and deliver products -->
+        <record id="metro_view_move_tree_reception_picking" model="ir.ui.view">
+            <field name="name">metro.stock.move.tree2</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree_reception_picking"/>	
+            <field name="arch" type="xml">
+            	<field name="product_id" position="after">
+            		<field name="supplier_prod_name"/>
+            	</field>
+            	<field name="product_qty" position="after">
+            		<field name="return_qty"/>
+            		<field name="price_unit" groups="account.group_account_invoice"/>
+            	</field>
+            	<field name="product_uom" position="after">
+            		<field name="product_uom_base_qty"/>
+            		<field name="product_uom_base"/>
+            		<field name="mfg_ids"/>
+            	</field>
+            	<field name="picking_id" position="attributes">
+            		<attribute name="invisible">0</attribute>
+				</field>
+            </field>
+        </record>		
+                
+        <record id="metro_view_move_tree" model="ir.ui.view">
+            <field name="name">metro.stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>	
+            <field name="arch" type="xml">
+            	<field name="location_dest_id" position="after">
+            		<field name="create_date"/>
+            	</field>
+            	<field name="date" position="replace">
+            		<field name="date"/>
+            	</field>
+            	<field name="date_expected" position="attributes">
+            		<attribute name="widget">date</attribute>
+            	</field>
+            	<field name="product_qty" position="after">
+            		<field name="return_qty"/>
+            		<field name="price_unit" groups="account.group_account_invoice"/>
+            	</field>
+            	<field name="product_uom" position="after">
+            		<field name="product_uom_base_qty"/>
+            		<field name="product_uom_base"/>
+            	</field>
+            	<field name="origin" position="after">
+            		<field name="date"/>
+            	</field>
+            </field>
+        </record>                 
+                
+        <record id="metro_view_move_form" model="ir.ui.view">
+            <field name="name">metro.stock.move.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>	
+            <field name="arch" type="xml">
+            	<field name="product_id" position="after">
+            		<field name="supplier_prod_name"/>
+            	</field>
+            	<field name="product_qty" position="after">
+            		<field name="return_qty"/>
+            		<field name="price_unit" groups="account.group_account_invoice"/>
+            	</field>
+            	<field name="product_uom" position="after">
+            		<field name="product_uom_base_qty"/>
+            		<field name="product_uom_base"/>
+            	</field>
+            	<field name="date" position="replace">
+            		<field name="date"/>
+            	</field>
+            </field>
+        </record> 
+        
+        <record id="metro_view_move_search" model="ir.ui.view">
+            <field name="name">metro.stock.move.search</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>	
+            <field name="arch" type="xml">
+            	<field name="product_id" position="replace">
+                    <!-- 
+                    Change the prodcut_id to allow to remove the default active=True restriction                    
+                     -->
+                    <field name="product_id" domain="['|',('active','=',True),('active','=',False)]"/>
+            	</field>
+            	<field name="product_id" position="after">
+            		<field name="supplier_prod_name"/>
+            		<field name="origin"/>
+            	</field>
+            	<!-- remove the  groups="base.group_no_one" -->
+            	<field name="date" position='replace'>
+            		 <field name="date"/>
+            		 <field name="type"/>
+            		 <field name="mfg_ids"/>
+            	</field>
+            	<filter string="Today"  position='after'>
+            		 <separator/>
+            		 <filter string="Getting Goods" name="move_incoming" domain="[('type','=','in')]"/>
+            		 <filter string="Sending Goods" name="move_incoming" domain="[('type','=','out')]"/>
+            		 <filter string="Internal" name="move_incoming" domain="[('type','=','internal')]"/>
+            		 <filter string="Material Request" name="move_incoming" domain="[('type','=','mr')]"/>
+            		 <filter string="Material Return" name="move_incoming" domain="[('type','=','mrr')]"/>
+            	</filter>
+            </field>
+        </record> 
+        
+        <record id="view_category_property_form_ext" model="ir.ui.view">
+            <field name="name">view_category_property_form_ext</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="stock.view_category_property_form"/>
+            <field name="arch" type="xml">
+            	<field name="property_stock_valuation_account_id" position="after">
+            		<field name="prop_use_value_act_as_invoice"/>
+            	</field>
+            </field>
+        </record>
+        
+<!-- Add the monthly report -->
+	<menuitem id="menu_stock_report" name="Reports" parent="stock.menu_stock_root" sequence="5"/>
+	
+    <menuitem
+        id="menu_stock_inventory_rpt"
+        name="Inventory Quanlity Report"
+        action="metro_accounts.rpt_inventory_qty_action"
+        groups="stock.group_stock_user"
+        parent="menu_stock_report"
+        sequence="5"
+       />   
+
+    </data>
+</openerp>

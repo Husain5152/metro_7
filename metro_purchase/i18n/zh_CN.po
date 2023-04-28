@@ -1,0 +1,2052 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* metro_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-15 09:37+0000\n"
+"PO-Revision-Date: 2016-08-15 09:37+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_product_product_product_qty_req
+#: field:product.product,product_qty_req:0
+msgid "Requesting Quantities"
+msgstr "请购中"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Reference"
+msgstr "引用"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.metro_po_line_full_action
+#: view:pur.invoice:0
+msgid "Purchase Products"
+msgstr "采购产品"
+
+#. module: metro_purchase
+#: view:purchase.history.supplier.change:0
+msgid "Supplier Change Report"
+msgstr "Supplier Change Report"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Invoices"
+msgstr "凭据"
+
+#. module: metro_purchase
+#: constraint:purchase.order:0
+msgid "Error ! You can not add duplicated products!"
+msgstr "错误!产品不能重复添加"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines which are cancelled"
+msgstr "取消的采购产品明细"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Payments"
+msgstr "付款"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Taxes :"
+msgstr "税:"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: view:pay.po:0
+#: view:pur.invoice:0
+#: view:pur.req:0
+#: view:pur.req.po:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_mfg_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_mfg_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_mfg_ids
+msgid "MFG IDs"
+msgstr "生产ID"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_payment_ids
+#: view:purchase.order:0
+#: field:purchase.order,payment_ids:0
+msgid "Advance Payments"
+msgstr "预付款"
+
+#. module: metro_purchase
+#: view:pur.req.line:0
+msgid "Search Purchase Requisition Lines"
+msgstr "搜索采购申请行"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Reject Changing"
+msgstr "拒绝变更"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_pur_req_line_full
+msgid "PR by Products"
+msgstr "PR by Products"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Changing Waiting Approval"
+msgstr "变更等待审批"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_procurement_order
+msgid "Procurement"
+msgstr "需求单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_po_line_id
+#: field:pur.invoice.line,po_line_id:0
+msgid "PO Order Line ID"
+msgstr "采购单行ID"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_receipt_number
+#: field:purchase.order,receipt_number:0
+msgid "Receipt Number"
+msgstr "发票号"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_pur_invoice
+msgid "Create Purchase Invoice"
+msgstr "创建采购凭据"
+
+#. module: metro_purchase
+#: view:pur.req.line:0
+msgid "Purducts"
+msgstr "产品"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Are you sure you want to make this purchase order done manually?"
+msgstr "确认手动完成此采购单吗?"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_pur_req
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_req_line_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_req_line_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_req_id
+#: model:ir.module.category,name:metro_purchase.module_category_pur_req
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: field:pur.req.line,req_id:0
+#: field:pur.req.po.line,req_line_id:0
+#: field:purchase.order,req_id:0
+#: field:purchase.order.line,req_line_id:0
+msgid "Purchase Requisition"
+msgstr "采购申请"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Date Ordered"
+msgstr "下单日期"
+
+#. module: metro_purchase
+#: view:pur.invoice:0
+msgid "Select the prodcuts and change quantity that you want to create invoice."
+msgstr "选择需创建凭据的产品并修改数量"
+
+#. module: metro_purchase
+#: constraint:pay.po:0
+msgid "Pay amount only can be between zero and the balance."
+msgstr "付款金额只能介于零和余额之间."
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "No."
+msgstr "No."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_product_uom_base_qty
+#: field:purchase.order.line,product_uom_base_qty:0
+msgid "Base Quantity"
+msgstr "基本数量"
+
+#. module: metro_purchase
+#: field:confirm.msg,message:0
+#: model:ir.model.fields,field_description:metro_purchase.field_confirm_msg_message
+msgid "Rejection reason"
+msgstr "拒绝原因"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_invoice_line
+msgid "pur.invoice.line"
+msgstr "pur.invoice.line"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Changing Rejected"
+msgstr "变更被拒绝"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_amount_freight
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_amount_freight
+#: field:purchase.order,amount_freight:0
+#: field:purchase.order.line,amount_freight:0
+msgid "Freight"
+msgstr "运费"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_journal_id
+#: field:pay.po,journal_id:0
+#: view:purchase.order:0
+msgid "Payment Method"
+msgstr "付款方式"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_amount_max
+#: field:pay.po,amount_max:0
+msgid "Max Amount"
+msgstr "最大金额"
+
+#. module: metro_purchase
+#: field:change.log.po.line,po_line_id:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_po_line_id
+msgid "PO Line"
+msgstr "采购单行"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Requisition lines"
+msgstr "申请行"
+
+#. module: metro_purchase
+#: model:res.groups,name:metro_purchase.group_pur_req_checker
+msgid "Checker"
+msgstr "检查者"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_product_uom_base
+#: field:purchase.order.line,product_uom_base:0
+msgid "Base UOM"
+msgstr "基本单位"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "red:state in ('except_invoice','except_picking','rejected') or (not shipped and state not in ('cancel', 'done', 'cancel_except') and current_date > minimum_planned_date);grey:state=='cancel';blue:state in ('wait','confirmed');green:state=='done'"
+msgstr "red:state in ('except_invoice','except_picking','rejected') or (not shipped and state not in ('cancel', 'done', 'cancel_except') and current_date > minimum_planned_date);grey:state=='cancel';blue:state in ('wait','confirmed');green:state=='done'"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Purchase orders which are cancelled"
+msgstr "取消的采购订单"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+#: view:purchase.history.supplier.change:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Fax:"
+msgstr "传真:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_amount
+#: field:pay.po,amount:0
+msgid "Amount"
+msgstr "金额"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Net Total :"
+msgstr "净合计:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_generated_po
+#: field:pur.req.line,generated_po:0
+msgid "PO Generated"
+msgstr "已生成PO"
+
+#. module: metro_purchase
+#: field:pur.req.line,mfg_ids:0
+#: field:pur.req.po.line,mfg_ids:0
+#: field:purchase.order.line,mfg_ids:0
+msgid "MFG IDs"
+msgstr "MFG IDs"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Incoming Shipments"
+msgstr "入库"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "approved,except_picking,except_invoice,rejected,changing,changing_rejected"
+msgstr "approved,except_picking,except_invoice,rejected,changing,changing_rejected"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Change Log"
+msgstr "更改记录"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Shipping address :"
+msgstr "送货地址:"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Expected"
+msgstr "预计日期"
+
+#. module: metro_purchase
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Part Number"
+msgstr "Part Number"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_uom_id
+#: field:pur.req.line,product_uom_id:0
+msgid "Product UOM"
+msgstr "单位"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_wizard_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_wizard_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_wizard_id
+#: field:pur.history.line,wizard_id:0
+#: field:pur.invoice.line,wizard_id:0
+#: field:pur.req.po.line,wizard_id:0
+msgid "Wizard"
+msgstr "向导"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_inform_type
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_inform_type
+#: field:purchase.order,inform_type:0
+#: field:purchase.order.line,inform_type:0
+msgid "Informer Type"
+msgstr "通知类型"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Comments..."
+msgstr "备注..."
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "PR #"
+msgstr "PR #"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_po_notes
+#: field:purchase.order.line,po_notes:0
+msgid "Terms and Conditions"
+msgstr "合同条款"
+
+#. module: metro_purchase
+#: view:purchase.history.price.change:0
+msgid "Price Change Report"
+msgstr "Price Change Report"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Apply Advance Payments"
+msgstr "登记预付款"
+
+#. module: metro_purchase
+#: view:pay.po:0
+msgid "Pay"
+msgstr "付款"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Purchase for Requisitions"
+msgstr "采购请购"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_description
+#: field:pay.po,description:0
+#: view:purchase.order:0
+msgid "Description"
+msgstr "描述"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Total Paid"
+msgstr "已付"
+
+#. module: metro_purchase
+#: report:purchase.history.new.product:0
+msgid "PRODUCT UPDATES"
+msgstr "PRODUCT UPDATES"
+
+#. module: metro_purchase
+#: help:pur.req,full_gen_po:0
+msgid "It indicates that this requsition's all lines generated PO"
+msgstr "是否所有请购的产品已经生成PO"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_residual
+#: field:purchase.order,residual:0
+msgid "Balance"
+msgstr "余额"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Product Detail"
+msgstr "产品明细"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_partner_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_partner_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier
+#: field:pur.history.line,partner_id:0
+#: report:pur.req:0
+#: field:pur.req.po,partner_id:0
+#: view:purchase.order.line:0
+msgid "Supplier"
+msgstr "供应商"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_history_supplier_change
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_change_group_supplier_change_ids
+#: field:purchase.history.supplier.change.group,supplier_change_ids:0
+msgid "Supplier Changes"
+msgstr "Supplier Changes"
+
+#. module: metro_purchase
+#: view:purchase.history:0
+#: field:purchase.history,product_id:0
+#: field:purchase.history.supplier.change,product_id:0
+msgid "Product"
+msgstr "Product"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_res_partner_bank_account
+#: field:res.partner,bank_account:0
+msgid "Bank Account Number"
+msgstr "帐号"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines been rejected"
+msgstr "被拒绝的采购产品明细"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+msgid "Rejection chaning reason..."
+msgstr "拒绝变更原因:"
+
+#. module: metro_purchase
+#: help:purchase.order,receipt_number:0
+msgid "The reference of this invoice as provided by the partner."
+msgstr "The reference of this invoice as provided by the partner."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_date_order
+#: field:pur.history.line,date_order:0
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Order Date"
+msgstr "订单日期"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_is_sent_supplier
+#: view:purchase.order:0
+#: field:purchase.order,is_sent_supplier:0
+msgid "Sent to Supplier"
+msgstr "已发送"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_product_template
+msgid "Product Template"
+msgstr "产品模板"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Invoices and Receptions"
+msgstr "发票和入库单"
+
+#. module: metro_purchase
+#: view:pur.invoice:0
+msgid "Create Invoice"
+msgstr "创建凭据"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "{'po_taxes_id':taxes_id}"
+msgstr "{'po_taxes_id':taxes_id}"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Create&View PO"
+msgstr "创建并查看采购单"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.purchase_history_action
+#: model:ir.model,name:metro_purchase.model_purchase_history
+#: model:ir.model.fields,field_description:metro_purchase.field_product_product_purchase_history
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_purchase_history
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_purchase_history
+#: view:product.product:0
+#: field:product.product,purchase_history:0
+#: view:purchase.history:0
+#: view:purchase.order:0
+#: field:purchase.order,purchase_history:0
+msgid "Purchase History"
+msgstr "采购历史"
+
+#. module: metro_purchase
+#: report:purchase.history.price.change:0
+msgid "PRICE CHANGES"
+msgstr "PRICE CHANGES"
+
+#. module: metro_purchase
+#: help:pur.req.line,generated_po:0
+msgid "It indicates that this products has PO generated"
+msgstr "表示产品已经生成采购单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_procurement_order_pur_req_id
+#: field:procurement.order,pur_req_id:0
+msgid "Purchase Requsition"
+msgstr "采购申请"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "[('supplier','=',True),('is_company','=',True)]"
+msgstr "[('supplier','=',True),('is_company','=',True)]"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Purchase Requisition "
+msgstr "采购申请"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_pur_req_line_full
+msgid "Purchase Requisition Products"
+msgstr "采购申请产品"
+
+#. module: metro_purchase
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+msgid "New"
+msgstr "草稿"
+
+#. module: metro_purchase
+#: view:pur.history:0
+msgid "History"
+msgstr "历史"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_pur_req
+msgid "Warehouse PR"
+msgstr "Warehouse PR"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Requester:"
+msgstr "申请人:"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Confirm Changing"
+msgstr "Confirm Changing"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Select supplier and the products that you want to generate PO."
+msgstr "Select supplier and the products that you want to generate PO."
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "oe_form_sheet_width_wider"
+msgstr "oe_form_sheet_width_wider"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines waitting approval"
+msgstr "等待审批的采购产品明细"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_summary
+#: field:pur.req,message_summary:0
+msgid "Summary"
+msgstr "总计"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_report_oversight
+msgid "Oversight"
+msgstr "Oversight"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Incoming Shipments & Invoices"
+msgstr "收货发货及开票"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Approve"
+msgstr "审核"
+
+#. module: metro_purchase
+#: field:purchase.history,po_id:0
+msgid "Purchase Order"
+msgstr "Purchase Order"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_new_product_group_product_ids
+#: view:pur.invoice:0
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: view:pur.req.po:0
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Products"
+msgstr "产品"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_has_freight
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_has_freight
+#: field:purchase.order,has_freight:0
+#: field:purchase.order.line,has_freight:0
+msgid "Has Freight"
+msgstr "含运费"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_inv_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_inv_qty
+#: report:pur.req:0
+#: field:pur.req.line,inv_qty:0
+#: field:pur.req.po.line,inv_qty:0
+msgid "Inventory"
+msgstr "库存"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+msgid "Please select days you want to show?"
+msgstr "Please select days you want to show?"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_bank_account
+#: field:purchase.order,bank_account:0
+msgid "Bank Account Name"
+msgstr "帐号"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_ids
+#: field:pur.history,line_ids:0
+#: view:purchase.order.line:0
+msgid "PO Lines"
+msgstr "采购产品明细"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+#: view:purchase.history.supplier.change:0
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_receive_qty
+#: field:purchase.order.line,receive_qty:0
+msgid "Received Quantity"
+msgstr "已收"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Confirm"
+msgstr "确认"
+
+#. module: metro_purchase
+#: help:pur.req,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Search Purchase Requisition"
+msgstr "搜索请购单"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'supplier_prod_id':supplier_prod_id,'supplier_prod_name':supplier_prod_name,'supplier_prod_code':supplier_prod_code,'supplier_delay':supplier_delay}"
+msgstr "{'supplier_prod_id':supplier_prod_id,'supplier_prod_name':supplier_prod_name,'supplier_prod_code':supplier_prod_code,'supplier_delay':supplier_delay}"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_remark
+#: view:pur.req:0
+#: field:pur.req,remark:0
+msgid "Remark"
+msgstr "备注"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_prod_code
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_prod_code
+#: field:pur.req.po.line,supplier_prod_code:0
+#: field:purchase.order.line,supplier_prod_code:0
+msgid "Supplier Product Code"
+msgstr "供应商产品代码"
+
+#. module: metro_purchase
+#: field:change.log.po.line,field_name:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_field_name
+msgid "Field Name"
+msgstr "字段名"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_mfg_id
+#: field:purchase.order.line,mfg_id:0
+msgid "MFG ID"
+msgstr "生产ID"
+
+#. module: metro_purchase
+#: field:change.log.po.line,create_date:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_create_date
+msgid "Time"
+msgstr "时间"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_po_id
+#: field:pur.invoice,po_id:0
+msgid "PO Order ID"
+msgstr "采购单ID"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_factor
+#: field:pur.req.po.line,uom_po_factor:0
+msgid "UOM Ratio"
+msgstr "单位比率"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_price_change_group
+msgid "Purchase History Price Change Group"
+msgstr "采购历史 Price Change Group"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "核准(Approved):"
+msgstr "核准(Approved):"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_bank_name
+#: model:ir.model.fields,field_description:metro_purchase.field_res_partner_bank_name_5952
+#: field:purchase.order,bank_name:0
+#: field:res.partner,bank_name:0
+msgid "Bank Name"
+msgstr "银行"
+
+#. module: metro_purchase
+#: view:pur.invoice:0
+msgid "Create&View Invoice"
+msgstr "创建&查看凭据"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_inv_uom_id
+#: field:pur.req.line,inv_uom_id:0
+msgid "Inventory UOM"
+msgstr "库存单位"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Scheduled Date"
+msgstr "预期日期"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_purchase_history_price_change
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_history_price_change
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price_change_group_price_change_ids
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_history_price_change
+#: field:purchase.history.price.change.group,price_change_ids:0
+msgid "Price Changes"
+msgstr "Price Changes"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Waiting Approval"
+msgstr "等待审批"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: view:pur.req.line:0
+msgid "Done"
+msgstr "完成"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Cancel With Exception"
+msgstr "异常取消"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Cancelled with Exception"
+msgstr "异常取消"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_inv_pay_ids
+#: view:purchase.order:0
+#: field:purchase.order,inv_pay_ids:0
+msgid "Invoice Payments"
+msgstr "凭据付款"
+
+#. module: metro_purchase
+#: report:purchase.quotation.metro:0
+msgid "Purchase Quotation"
+msgstr "询价单"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_res_partner
+msgid "Partner"
+msgstr "业务伙伴"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "日期(Date):"
+msgstr "日期(Date):"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_purchase_history_supplier_change
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_history_supplier_change
+msgid "Product Updates"
+msgstr "Product Updates"
+
+#. module: metro_purchase
+#: help:pur.req,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_ids
+#: field:pur.req,po_ids:0
+msgid "Related PO"
+msgstr "相关采购单"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Reject Order"
+msgstr "拒绝订单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_name
+#: field:pur.req,name:0
+msgid "Requisition#"
+msgstr "请购单号"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_amount_paid
+#: field:purchase.order,amount_paid:0
+msgid "Amount Paid"
+msgstr "已付"
+
+#. module: metro_purchase
+#: view:purchase.history:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_new_product
+msgid "Purchase History New Product"
+msgstr "采购历史 New Product"
+
+#. module: metro_purchase
+#: model:res.groups,name:metro_purchase.group_pur_req_buyer
+msgid "Buyer"
+msgstr "采购员"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_procurement_ids
+#: field:pur.req.line,procurement_ids:0
+msgid "Procurements"
+msgstr "需求"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_product_uom
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_uom_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_uom_id
+#: field:pur.history.line,product_uom:0
+#: field:pur.invoice.line,product_uom_id:0
+#: field:pur.req.po.line,product_uom_id:0
+msgid "Product Unit of Measure"
+msgstr "单位"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_ids
+#: field:pur.req,message_ids:0
+msgid "Messages"
+msgstr "消息"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_follower_ids
+#: field:pur.req,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines which are in draft state"
+msgstr "草稿状态的采购产品明细"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "{'readonly':[('state','not in',('draft','sent','rejected','changing','changing_rejected'))]}"
+msgstr "{'readonly':[('state','not in',('draft','sent','rejected','changing','changing_rejected'))]}"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Set to Draft"
+msgstr "设为草稿"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "采购(Purchaser):"
+msgstr "采购(Purchaser):"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_qty_remain
+#: field:pur.req.po.line,product_qty_remain:0
+msgid "Quantity Remain"
+msgstr "剩余数量"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Terms and conditions..."
+msgstr "合同条款"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+#: view:purchase.history.supplier.change:0
+msgid "Print"
+msgstr "Print"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_payment_moves
+#: field:purchase.order,payment_moves:0
+msgid "Payment Moves"
+msgstr "付款会计凭证明细"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_order_informer
+msgid "order.informer"
+msgstr "order.informer"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_price_change
+msgid "Purchase History Price Change"
+msgstr "采购历史 Price Change"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_req_po_line
+msgid "pur.req.po.line"
+msgstr "pur.req.po.line"
+
+#. module: metro_purchase
+#: view:pur.req.line:0
+msgid "Purchase Requisition Lines"
+msgstr "采购申请行"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Done With Exception"
+msgstr "异常完成"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.open_pay_po
+msgid "Advance Purchase Payment"
+msgstr "采购预付款"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price_changed
+#: field:purchase.history,price_changed:0
+msgid "Price Changed"
+msgstr "Price Changed"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_create_uid
+#: field:purchase.order.line,create_uid:0
+msgid "Creator"
+msgstr "创建人"
+
+#. module: metro_purchase
+#: field:change.log.po.line,create_uid:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_create_uid
+msgid "User"
+msgstr "用户"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_ticket_no
+#: field:pur.req.line,req_ticket_no:0
+msgid "Requisition Ticket#"
+msgstr "纸质请购单号"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_company_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_uom_categ_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_image_medium
+#: field:pur.req.line,company_id:0
+#: field:purchase.order.line,image_medium:0
+msgid "unknown"
+msgstr "未知"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_reason
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_req_reason
+#: field:pur.req.line,req_reason:0
+#: field:pur.req.po.line,req_reason:0
+msgid "Reason and use"
+msgstr "原因和用途"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:pur.req.line:0
+msgid "Canceled  Requisition"
+msgstr "取消申请"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_prod_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_prod_id
+#: field:pur.req.po.line,supplier_prod_id:0
+#: field:purchase.order.line,supplier_prod_id:0
+msgid "Supplier Product ID"
+msgstr "供应商产品"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: view:pur.req.line:0
+#: selection:pur.req.line,order_state:0
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Cancelled"
+msgstr "已取消"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Manual Done"
+msgstr "完成"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_dept_id
+#: field:pur.req.line,req_dept_id:0
+msgid "Department"
+msgstr "部门"
+
+#. module: metro_purchase
+#: field:pur.req.po.line,supplier_id:0
+#: view:purchase.history:0
+#: field:purchase.history,supplier:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Supplier"
+msgstr "Supplier"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_taxes_id
+#: field:purchase.order,taxes_id:0
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Taxes"
+msgstr "税"
+
+#. module: metro_purchase
+#: field:pur.req.line,uom_categ_id:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_price_unit
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_price_unit
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_price_unit
+#: field:pur.history.line,price_unit:0
+#: field:pur.invoice.line,price_unit:0
+#: field:pur.req.po.line,price_unit:0
+#: report:purchase.order.metro:0
+msgid "Unit Price"
+msgstr "单价"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_pur_req_po
+msgid "Generate Purchase Order"
+msgstr "生成采购单"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_req_line
+msgid "Purchase Requisition Line"
+msgstr "采购申请明细"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "供应商(Seller)签收:"
+msgstr "供应商(Seller)签收:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_po_lines_ids
+#: field:pur.req.line,po_lines_ids:0
+msgid "Purchase Order Lines"
+msgstr "采购单行"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Quotations"
+msgstr "询价单"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "盖章(Stamp):"
+msgstr "盖章(Stamp):"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_prod_name
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_prod_name
+#: field:pur.req.po.line,supplier_prod_name:0
+#: field:purchase.order.line,supplier_prod_name:0
+msgid "Supplier Product Name"
+msgstr "供应商产品名称"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_new_product_group
+msgid "Purchase History New Product Group"
+msgstr "采购历史 New Product Group"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_change_log_po_line
+msgid "change.log.po.line"
+msgstr "change.log.po.line"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_order_metro
+#: model:ir.model,name:metro_purchase.model_purchase_order
+#: view:pur.req:0
+#: report:purchase.order.metro:0
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_pur_history
+msgid "Product's Purchasing History"
+msgstr "产品采购历史"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Approve Changing"
+msgstr "批准变更"
+
+#. module: metro_purchase
+#: field:account.move,purchase_ids:0
+#: field:account.move.line,purchase_ids:0
+#: model:ir.model.fields,field_description:metro_purchase.field_account_move_line_purchase_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_account_move_purchase_ids
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Purchase Orders"
+msgstr "采购订单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_max_qty
+#: field:pur.invoice.line,product_max_qty:0
+msgid "Max Quantity"
+msgstr "最大数量"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Purchase orders waitting approval"
+msgstr "等待审批的采购单"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_purchase_history_new_product
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_history_new_product
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_history_new_product
+msgid "New Products"
+msgstr "New Products"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_price
+#: field:pur.req.po.line,uom_po_price:0
+msgid "PO Unit Price"
+msgstr "采购单价"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Generate PO"
+msgstr "生成采购单"
+
+#. module: metro_purchase
+#: report:purchase.history.new.product:0
+msgid "Create Date"
+msgstr "Create Date"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Has Freight:"
+msgstr "含运费:"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_supplier_change
+msgid "Purchase History Supplier Change"
+msgstr "采购历史 Supplier Change"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_emp_id
+#: field:pur.req.line,req_emp_id:0
+msgid "Employee"
+msgstr "员工"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Reques Date:"
+msgstr "请购日期:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_user_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_user_id
+#: view:pur.req:0
+#: field:pur.req,user_id:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_user_id:0
+#: model:res.groups,name:metro_purchase.group_pur_req_requester
+msgid "Requester"
+msgstr "请购人"
+
+#. module: metro_purchase
+#: view:purchase.history:0
+#: field:purchase.history,date:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Date"
+msgstr "Date"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: model:ir.actions.act_window,name:metro_purchase.act_purchase_changing_reject
+msgid "Confirm Purchase Order Changing Rejection"
+msgstr "拒绝采购单变更"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Receive Products"
+msgstr "收货"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_procurement_order_pur_req_line_id
+#: field:procurement.order,pur_req_line_id:0
+msgid "Purchase Requsition Line"
+msgstr "采购申请行"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: view:purchase.order.line:0
+msgid "Group By..."
+msgstr "分组..."
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'readonly':[('can_change_price','=',False)]}"
+msgstr "{'readonly':[('can_change_price','=',False)]}"
+
+#. module: metro_purchase
+#: model:res.groups,name:metro_purchase.group_pur_req_manager
+msgid "Manager"
+msgstr "经理"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Update UOM"
+msgstr "更新单位"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: view:pur.req.line:0
+#: selection:pur.req.line,order_state:0
+msgid "Confirmed"
+msgstr "已确认"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Paid Amount"
+msgstr "已付"
+
+#. module: metro_purchase
+#: model:mail.message.subtype,name:metro_purchase.mt_rfq_rejected
+msgid "RFQ Rejected"
+msgstr "采购单被拒绝"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_return_qty
+#: field:purchase.order.line,return_qty:0
+msgid "Returned Quantity"
+msgstr "退货"
+
+#. module: metro_purchase
+#: view:purchase.history.supplier.change:0
+msgid "Please select the product and number of days you want to show?"
+msgstr "Please select the product and number of days you want to show?"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_ap_checked
+#: field:purchase.order,ap_checked:0
+msgid "Payable Checked"
+msgstr "已对账"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_invoice
+msgid "Purchase Orders Invoice Creation"
+msgstr "采购单创建发票"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+msgid "Rejection reason..."
+msgstr "拒绝原因..."
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'readonly':[('can_change_product','=',False)]}"
+msgstr "{'readonly':[('can_change_product','=',False)]}"
+
+#. module: metro_purchase
+#: field:purchase.history.new.product,days:0
+#: field:purchase.history.price.change,days:0
+#: field:purchase.history.supplier.change,days:0
+msgid "Days"
+msgstr "Days"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_id
+#: field:pur.req.po.line,uom_po_id:0
+msgid "PO Unit of Measure"
+msgstr "采购单位"
+
+#. module: metro_purchase
+#: sql_constraint:pur.req:0
+msgid "Order Reference must be unique!"
+msgstr "订单编码必须唯一!"
+
+#. module: metro_purchase
+#: field:change.log.po.line,value_new:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_value_new
+msgid "New Value"
+msgstr "新值"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pay_po
+msgid "Wizard to generate a payment from the purchase order"
+msgstr "Wizard to generate a payment from the purchase order"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Taxes:"
+msgstr "税:"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_account_move_line
+msgid "Journal Items"
+msgstr "会计凭证明细"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Remark..."
+msgstr "备注k..."
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'readonly':1}"
+msgstr "{'readonly':1}"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Done with Exception"
+msgstr "异常完成"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_po_line_full
+msgid "PO by Products"
+msgstr "PO by Products"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_paid_done
+#: field:purchase.order,paid_done:0
+msgid "Paid Done"
+msgstr "已付"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_pur_req
+#: model:ir.model,name:metro_purchase.model_pur_req
+msgid "Purchase Requisitions"
+msgstr "采购申请"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Search Purchase Order Line"
+msgstr "查找采购产品明细"
+
+#. module: metro_purchase
+#: help:purchase.order,payment_exists:0
+msgid "It indicates that purchase order has at least one payment."
+msgstr "It indicates that purchase order has at least one payment."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_company_id
+#: field:pur.req,company_id:0
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Reject"
+msgstr "拒绝"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Receive Invoice"
+msgstr "收到的凭据"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_reject_msg
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_reject_msg
+#: field:purchase.order,reject_msg:0
+#: field:purchase.order.line,reject_msg:0
+msgid "Rejection Message"
+msgstr "拒绝信息"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "onchange_lead('date_planned',date_planned,parent.date_order,context)"
+msgstr "onchange_lead('date_planned',date_planned,parent.date_order,context)"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_supplier_change_group
+msgid "Purchase History Supplier Change Group"
+msgstr "采购历史 Supplier Change Group"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Quotation Detail"
+msgstr "询价单明细"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_purchase_line_reject
+msgid "Confirm Purchase Order Line Rejection"
+msgstr "确认拒绝采购产品明细"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "In Changing"
+msgstr "变更中"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_can_change_product
+#: field:purchase.order.line,can_change_product:0
+msgid "Can Change Product"
+msgstr "产品可修改"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_unread
+#: field:pur.req,message_unread:0
+msgid "Unread Messages"
+msgstr "未读消息"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "metro_purchase.group_pur_req_manager"
+msgstr "metro_purchase.group_pur_req_manager"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Total :"
+msgstr "合计:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_order_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_order_line_id
+#: field:pur.history.line,order_id:0
+#: field:pur.history.line,order_line_id:0
+#: report:pur.req:0
+msgid "Order Reference"
+msgstr "引用单号"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Warehouse:"
+msgstr "仓库:"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Line Change Log"
+msgstr "产品修改记录"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_is_follower
+#: field:pur.req,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "UoM"
+msgstr "单位"
+
+#. module: metro_purchase
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+msgid "Purchase Done"
+msgstr "采购完毕"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "bold:state=='done' or (not shipped and state not in ('cancel', 'done') and current_date > minimum_planned_date)"
+msgstr "bold:state=='done' or (not shipped and state not in ('cancel', 'done') and current_date > minimum_planned_date)"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Order Date:"
+msgstr "订单日期:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_create_date
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_create_date
+#: field:purchase.order,create_date:0
+#: field:purchase.order.line,create_date:0
+msgid "Creation Date"
+msgstr "创建日期"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Create PO"
+msgstr "创建采购单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_changed
+#: field:purchase.history,supplier_changed:0
+msgid "Supplier Changed"
+msgstr "Supplier Changed"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Waitting Approval"
+msgstr "等待审批"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Order"
+msgstr "订单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_qty_remain
+#: field:pur.req.line,product_qty_remain:0
+msgid "Qty Remaining"
+msgstr "剩余数量"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_confirm_msg
+msgid "Action Confirming Message"
+msgstr "确认操作消息"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "{'readonly':[('state','not in',('draft','sent','rejected'))]}"
+msgstr "{'readonly':[('state','not in',('draft','sent','rejected'))]}"
+
+#. module: metro_purchase
+#: view:pur.history:0
+#: view:purchase.order.line:0
+msgid "Purchasing History"
+msgstr "采购历史"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_payment_term_id
+#: field:purchase.order.line,payment_term_id:0
+msgid "Payment Term"
+msgstr "支付条款"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: view:pay.po:0
+#: view:pur.invoice:0
+#: view:pur.req.po:0
+msgid "or"
+msgstr "或"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_quotation_metro
+msgid "Request for Quotation"
+msgstr "询价单"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: view:pur.req.line:0
+#: selection:pur.req.line,order_state:0
+msgid "In Purchasing"
+msgstr "采购中"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_state
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_state
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_state
+#: field:pur.history.line,state:0
+#: view:pur.req:0
+#: field:pur.req,state:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_state:0
+#: view:purchase.order.line:0
+msgid "Status"
+msgstr "状态"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_qty_remain
+#: field:pur.req.po.line,uom_po_qty_remain:0
+msgid "PO Quantity Remain"
+msgstr "未采购"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_history
+msgid "Product's purchasing history"
+msgstr "产品采购历史"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Tel.:"
+msgstr "电话:"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Purchase orders been rejected"
+msgstr "采购单被拒绝"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+msgid "New Product Report"
+msgstr "New Product Report"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_history_line
+msgid "Product's purchasing history line"
+msgstr "产品采购历史明细"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_uom
+#: field:purchase.history,uom:0
+msgid "UOM"
+msgstr "UOM"
+
+#. module: metro_purchase
+#: view:purchase.history:0
+msgid "Search Purchase Order Line"
+msgstr "Search Purchase Order Line"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_comments
+#: field:purchase.order,comments:0
+msgid "Comments"
+msgstr "备注"
+
+#. module: metro_purchase
+#: field:purchase.history,price:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Price"
+msgstr "Price"
+
+#. module: metro_purchase
+#: constraint:pur.req.po.line:0
+msgid "Product quantity exceeds the remaining quantity"
+msgstr "产品数量超过了剩余数量!"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Payment Term:"
+msgstr "支付条款:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_change_log_line
+#: field:purchase.order,change_log_line:0
+msgid "Line Changing Log"
+msgstr "产品修改记录"
+
+#. module: metro_purchase
+#: field:change.log.po.line,po_id:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_po_id
+msgid "PO"
+msgstr "采购单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_new_product_days
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price_change_days
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_change_days
+msgid "Days"
+msgstr "应出勤"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_date
+#: view:purchase.order:0
+msgid "Date"
+msgstr "日期"
+
+#. module: metro_purchase
+#: view:purchase.history:0
+msgid "Order"
+msgstr "Order"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Approved purchase order lines"
+msgstr "批准的采购订单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_date
+#: field:pay.po,date:0
+msgid "Payment Date"
+msgstr "付款日期"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Not Sent to Supplier"
+msgstr "未发送"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_ids
+#: field:pur.req,line_ids:0
+msgid "Products to Purchase"
+msgstr "需采购产品"
+
+#. module: metro_purchase
+#: field:change.log.po.line,product_id:0
+#: model:ir.model,name:metro_purchase.model_product_product
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_change_product_id
+#: field:pur.history,product_id:0
+#: field:pur.invoice.line,product_id:0
+#: report:pur.req:0
+#: field:pur.req.line,product_id:0
+#: field:pur.req.po.line,product_id:0
+#: view:purchase.order.line:0
+msgid "Product"
+msgstr "产品"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_date_required
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_date_required
+#: report:pur.req:0
+#: field:pur.req.line,date_required:0
+#: field:pur.req.po.line,date_required:0
+msgid "Date Required"
+msgstr "需求日期"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_payment_exists
+#: field:purchase.order,payment_exists:0
+msgid "Has payments"
+msgstr "有付款"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_req_po
+msgid "Requisition's Purchase Order"
+msgstr "请购单相关采购单"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Freight:"
+msgstr "运费:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_warehouse_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_warehouse_id
+#: view:pur.req:0
+#: field:pur.req,warehouse_id:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_warehouse_id:0
+msgid "Warehouse"
+msgstr "仓库"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_date_request
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_date_request:0
+msgid "Requisition Date"
+msgstr "请购日期"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_po_id
+msgid "Purchase Order"
+msgstr "采购单"
+
+#. module: metro_purchase
+#: report:purchase.history.supplier.change:0
+msgid "SUPPLIER CHANGES"
+msgstr "SUPPLIER CHANGES"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Are you sure you want to finish this purchase order with exception?"
+msgstr "确认异常完成此采购单吗?"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: view:pur.req.line:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_can_change_price
+#: field:purchase.order.line,can_change_price:0
+msgid "Can Change Price"
+msgstr "价格可修改"
+
+#. module: metro_purchase
+#: field:pur.req.po,line_ids:0
+#: field:purchase.history.new.product.group,product_ids:0
+msgid "Products"
+msgstr "Products"
+
+#. module: metro_purchase
+#: help:pur.req,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: metro_purchase
+#: report:purchase.history.new.product:0
+msgid "Name"
+msgstr "Name"
+
+#. module: metro_purchase
+#: report:pur.req:0
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Qty"
+msgstr "数量"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_ids
+#: field:pur.invoice,line_ids:0
+msgid "Prodcuts"
+msgstr "产品"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_cron_job
+msgid "cron.job"
+msgstr "cron.job"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_order_line
+#: view:purchase.order.line:0
+msgid "Purchase Order Line"
+msgstr "采购订单明细"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_price_subtotal
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_price_subtotal_withtax
+#: field:pur.history.line,price_subtotal:0
+#: field:purchase.order.line,price_subtotal_withtax:0
+msgid "Subtotal"
+msgstr "小计"
+
+#. module: metro_purchase
+#: field:change.log.po.line,value_old:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_value_old
+msgid "Old Value"
+msgstr "旧值"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price
+msgid "Price"
+msgstr "价格"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Rejected"
+msgstr "已拒绝"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Purchase Reason"
+msgstr "采购原因"
+
+#. module: metro_purchase
+#: view:change.log.po.line:0
+msgid "Change Log of PO Lines"
+msgstr "采购产品明细的修改记录"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Net Price"
+msgstr "净价"
+
+#. module: metro_purchase
+#: view:pay.po:0
+msgid "Purchase Order Prepayment"
+msgstr "采购预付"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_full_gen_po
+#: field:pur.req,full_gen_po:0
+msgid "All products generated PO"
+msgstr "生成PO完毕"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_quantity
+#: field:pur.history.line,product_qty:0
+#: field:pur.invoice.line,product_qty:0
+#: field:pur.req.line,product_qty:0
+#: field:pur.req.po.line,product_qty:0
+msgid "Quantity"
+msgstr "数量"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_po_info
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_qty
+#: field:pur.req.line,po_info:0
+#: field:pur.req.po.line,uom_po_qty:0
+msgid "PO Quantity"
+msgstr "采购数量"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Approved purchase orders"
+msgstr "已核准的采购单"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Are you sure you want to cancel this purchase order with exception?"
+msgstr "确认异常取消此采购单吗?"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Date Req."
+msgstr "要求日期"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Requisition #"
+msgstr "Requisition #"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: model:ir.actions.act_window,name:metro_purchase.act_purchase_reject
+msgid "Confirm Purchase Order Rejection"
+msgstr "确认拒绝采购单"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+msgid "Approved"
+msgstr "已批准"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_sequence
+#: field:purchase.order.line,sequence:0
+msgid "Sequence"
+msgstr "序号"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_delay
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_delay
+#: field:pur.req.po.line,supplier_delay:0
+#: field:purchase.order.line,supplier_delay:0
+msgid "Supplier Lead Time"
+msgstr "供应商送货周期"
+
+#. module: metro_purchase
+#: field:pur.req,date_request:0
+msgid "Request Date"
+msgstr "Request Date"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Confirm Order"
+msgstr "确认订单"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_invoice_qty
+#: field:purchase.order.line,invoice_qty:0
+msgid "Invoice Quantity"
+msgstr "凭据数量"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_account_move
+msgid "Account Entry"
+msgstr "凭证"
+
+#. module: metro_purchase
+#: help:purchase.order.line,sequence:0
+msgid "Gives the sequence order when displaying a list of sales order lines."
+msgstr "Gives the sequence order when displaying a list of sales order lines."
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Change"
+msgstr "变更"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_change_log
+#: field:purchase.order.line,change_log:0
+msgid "Changing Log"
+msgstr "更改记录"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_order_group
+msgid "Purchase Order Merge"
+msgstr "采购订单合并"
+
+#. module: metro_purchase
+#: field:purchase.history,quantity:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Quantity"
+msgstr "Quantity"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_date_request
+msgid "Request Date"
+msgstr "申请日期"
+

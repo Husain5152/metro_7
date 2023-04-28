@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  base_custom_attributes for OpenERP
+  Copyright (C) 2011-2013 Akretion (http://www.akretion.com/)
+  @author: Benoît GUILLOT <benoit.guillot@akretion.com>
+  The licence is in the file __openerp__.py
+-->
+
+<openerp>
+    <data>
+        <menuitem
+            id="menu_mto_design" name="Product Configuration"
+            parent="base.menu_product" sequence="22"/>            
+            
+
+    <!-- Design Template VIEW -->
+
+        <record id="design_template_form_view" model="ir.ui.view">
+            <field name="name">mto.attribute.set.form</field>
+            <field name="model">attribute.set</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <form string="Configuration Template">
+                	<group>
+                		<group>
+		                    <field name="name"/>
+		                    <field name="model_id" invisible="context.get('force_model')"/>
+		                    <field name="weight_standard" />
+	                    </group>
+	                    <group>
+		                    <field name="price_standard" />
+		                    <field name="currency_id" />
+	                    </group>
+                		<group colspan="4">
+		                    <field name="attribute_group_ids"  colspan="4" string="Parameter Groups"
+		                           context="{'default_model_id': model_id, 'from_attribute_set':True, 'form_view_ref':'metro_mto.parameter_group_form_view', 'tree_view_ref':'metro_mto.parameter_group_tree_view'}">
+		                    </field>
+		                    <field name="notes" colspan="4" />
+	                    </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="design_template_tree_view" model="ir.ui.view">
+            <field name="name">mto.attribute.set.tree</field>
+            <field name="model">attribute.set</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <tree string="Configuration Template" >
+                    <field name="name" />
+                    <field name="price_standard" />
+                    <field name="currency_id" />
+                    <field name="weight_standard" />                    
+                    <field name="notes" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="design_template_search_view" model="ir.ui.view">
+            <field name="name">mto.attribute.set.search</field>
+            <field name="model">attribute.set</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <search string="Search Configuration Templates">
+                    <field name="name"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="design_template_form_action" model="ir.actions.act_window">
+            <field name="name">Configuration Template</field>
+            <field name="res_model">attribute.set</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="design_template_search_view"/>
+            <field name="context">{"force_model": 'mto.design', 'default_type':'design'}</field>
+            <field name="domain">[('model_id.name','=','mto.design')]</field>
+        </record>
+        <record id="design_template_form_action_tree" model="ir.actions.act_window.view">
+        	<field name="sequence">1</field> 
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="design_template_tree_view"/>
+        	<field name="act_window_id" ref="design_template_form_action"/>
+        </record> 
+        <record id="design_template_form_action_form" model="ir.actions.act_window.view"> 
+        	<field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="design_template_form_view"/>
+        	<field name="act_window_id" ref="design_template_form_action"/>
+        </record> 
+        
+        <menuitem
+             action="design_template_form_action" id="menu_design_template_form"
+             parent="menu_mto_design" sequence="11"/>
+             
+    <!-- Design Group VIEW -->
+    
+        <record id="parameter_group_form_view" model="ir.ui.view">
+            <field name="name">mto.attribute.group.form</field>
+            <field name="model">attribute.group</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <form string="Parameter Group">
+                	<!-- <sheet string="para group"> -->
+	                    <field name="name" />
+	                    <field name="sequence" />
+	                    <field name="model_id" invisible="context.get('from_attribute_set') or context.get('force_model')"/>
+	                    <field name="attribute_set_id" invisible="context.get('from_attribute_set')" domain="[('model_id.name','=','mto.design')]"/>
+	                    <field name="attribute_ids" colspan="4" nolabel="1">
+	                        <tree string="Attribute Location" editable="top">
+	                            <field name="sequence" />
+	                            <field name="attribute_id" string="Parameter"
+	                            context="{'default_model_id': parent.model_id}" domain="[('model_id.name','=','mto.design')]"/>
+	                        </tree>
+	                    </field>
+	                    <field name="notes" colspan="4"/>
+                    <!-- </sheet> -->
+                </form>
+            </field>
+        </record>
+
+        <record id="parameter_group_tree_view" model="ir.ui.view">
+            <field name="name">mto.attribute.group.tree</field>
+            <field name="model">attribute.group</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <tree string="Parameter Group">
+                    <field name="name" />
+                    <field name="sequence" />
+                    <field name="attribute_set_id" invisible="context.get('from_attribute_set')"/>
+                    <field name="model_id" invisible="context.get('from_attribute_set')  or context.get('force_model')"/>
+                    <field name="notes" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="parameter_group_search_view" model="ir.ui.view">
+            <field name="name">mto.attribute.group.search</field>
+            <field name="model">attribute.group</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <search string="Search Parameter Groups">
+                    <field name="name"/>
+                    <field name="attribute_set_id"/>
+               </search>
+            </field>
+        </record>
+
+
+        <record id="parameter_group_form_action" model="ir.actions.act_window">
+            <field name="name">Parameter Groups</field>
+            <field name="res_model">attribute.group</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="parameter_group_search_view"/>
+            <field name="context">{"force_model": 'mto.design', 'default_type':'design'}</field>
+            <field name="domain">[('model_id.name','=','mto.design')]</field>
+        </record>
+        <record id="parameter_group_form_action_tree" model="ir.actions.act_window.view"> 
+        	<field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="parameter_group_tree_view"/>
+        	<field name="act_window_id" ref="parameter_group_form_action"/>
+        </record>
+        <record id="parameter_group_form_action_form" model="ir.actions.act_window.view"> 
+        	<field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="parameter_group_form_view"/>
+        	<field name="act_window_id" ref="parameter_group_form_action"/>
+        </record>           
+             
+         <menuitem
+             action="parameter_group_form_action" id="menu_parameter_group_form"
+             parent="menu_mto_design" sequence="12" groups="base.group_no_one"/>    
+    
+    <!-- Parameter VIEW -->
+
+        <record id="parameter_form_view" model="ir.ui.view">
+            <field name="name">mto.attribute.attribute.form</field>
+            <field name="model">attribute.attribute</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <form string="Parameter">
+                	<!-- <sheet> -->
+	                    <field name="field_description" on_change="onchange_field_description(field_description, context)"/>
+	                    <field name="name" attrs="{'readonly':[('create_date', '!=', False)]}" on_change="onchange_name(name, context)"/>
+	                    <field name="attribute_type" />
+	                    <field name="model_id" invisible="context.get('force_model')"/>
+	                    <field name="serialized" attrs="{'invisible':[('attribute_type', '=', 'multiselect')]}"/>
+	                    <field name="m2m_tags" attrs="{'invisible':[('attribute_type', '!=', 'multiselect')]}"/>
+	                    
+	                    <field name="size" attrs="{'invisible':[('attribute_type', '!=', 'char')]}"/>
+	                    <field name="translate" attrs="{'invisible':[('attribute_type', 'not in', ('char', 'text'))]}"/>
+	                    <field name="standard_option_id" attrs="{'invisible':[('attribute_type', '!=', 'select')]}"/>
+	                    <!--  on_change="onchange_standard_option(standard_option_id, context)"/> -->
+	                    <!-- <field name="price_standard" /> -->
+                    	<field name="currency_id" />
+	                    <!-- <field name="weight_standard" /> -->
+	                    <newline />
+	                    <group colspan="4" attrs="{'invisible':[('attribute_type', 'not in', ['select', 'multiselect'])]}">
+	                        <group groups="base.group_advanced_attribute">
+	                            <field name="relation_model_id" on_change="relation_model_id_change(relation_model_id, option_ids, context)"/>
+	                            <field name="domain" attrs="{'invisible':[('relation_model_id', '=', False)]}"/>
+	                            <button name="button_add_options" attrs="{'invisible':[('relation_model_id', '=', False), ('domain', '!=', False)]}" type="object" string="Load Options"/>
+	                        </group>
+	                        <field name="option_ids" colspan="4" nolabel="1">
+	                            <tree string="Attribute Options" editable="top">
+	                                <field name="sequence"/>
+	                                <field name="name" on_change="name_change(name, parent.relation_model_id, context)"/>
+	                                <field name="price"/>
+	                                <field name="weight"/>
+	                            </tree>
+	                        </field>
+	                    </group>
+	                    <field name="create_date" invisible="1"/>
+	                    <field name="notes" colspan="4"/>
+                    <!-- </sheet> -->
+                </form>
+            </field>
+        </record>
+        
+        <record id="parameter_tree_view" model="ir.ui.view">
+            <field name="name">mto.attribute.attribute.tree</field>
+            <field name="model">attribute.attribute</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <tree string="Parameter">
+                    <field name="name" />
+                    <field name="attribute_type" />
+                    <field name="model_id" invisible="context.get('force_model')"/>
+                    <field name="standard_option_id"/>
+                    <!-- <field name="price_standard" /> -->
+                    <field name="currency_id" />
+                    <!-- <field name="weight_standard" /> -->
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_parameter_search" model="ir.ui.view">
+            <field name="name">mto.attribute.attribute.list</field>
+            <field name="model">attribute.attribute</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <search string="Search Parameters">
+                    <field name="name"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="parameter_form_action" model="ir.actions.act_window">
+            <field name="name">Parameters</field>
+            <field name="res_model">attribute.attribute</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_parameter_search"/>
+            <field name="context">{"force_model": 'mto.design', 'default_type':'design'}</field>
+            <field name="domain">[('model_id.name','=','mto.design')]</field>
+            <field name="help"></field>
+        </record>
+        <record id="parameter_form_action_tree" model="ir.actions.act_window.view"> 
+        	<field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="parameter_tree_view"/>
+        	<field name="act_window_id" ref="parameter_form_action"/>
+        </record> 
+        <record id="parameter_form_action_form" model="ir.actions.act_window.view"> 
+        	<field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="parameter_form_view"/>
+        	<field name="act_window_id" ref="parameter_form_action"/>
+        </record>   
+                
+         <menuitem
+             action="parameter_form_action" id="menu_parameter_form"
+             parent="menu_mto_design" sequence="13"/>    
+                 
+
+    </data>
+</openerp>

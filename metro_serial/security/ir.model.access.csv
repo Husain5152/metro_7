@@ -1,0 +1,19 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_metro_config_models_manager,mttl.models manager,model_mttl_models,group_metro_serial_manager,1,1,1,1
+access_metro_config_years_manager,mttl.years manager,model_mttl_years,group_metro_serial_manager,1,1,1,1
+access_metro_config_locations_manager,mttl.locations manager,model_mttl_locations,group_metro_serial_manager,1,1,1,1
+access_metro_config_countries_manager,mttl.countries manager,model_mttl_countries,group_metro_serial_manager,1,1,1,1
+access_metro_config_chassis_manager,mttl.chassis manager,model_mttl_chassis,group_metro_serial_manager,1,1,1,1
+access_metro_config_warranty_history_manager,mttl.warranty.history manager,model_mttl_warranty_history,group_metro_serial_manager,1,1,1,1
+access_metro_config_serials_manager,mttl.serials manager,model_mttl_serials,group_metro_serial_manager,1,1,1,1
+access_metro_config_warranty_history_user,mttl.warranty.history user,model_mttl_warranty_history,group_metro_serial_user,1,0,0,0
+access_metro_config_serials_user,mttl.serials user,model_mttl_serials,group_metro_serial_user,1,0,0,0
+access_metro_config_models_user,mttl.models user,model_mttl_models,group_metro_serial_user,1,0,0,0
+access_metro_config_years_user,mttl.years user,model_mttl_years,group_metro_serial_user,1,0,0,0
+access_metro_config_locations_user,mttl.locations user,model_mttl_locations,group_metro_serial_user,1,0,0,0
+access_metro_config_countries_user,mttl.countries user,model_mttl_countries,group_metro_serial_user,1,0,0,0
+access_metro_config_chassis_user,mttl.chassis user,model_mttl_chassis,group_metro_serial_user,1,0,0,0
+access_metro_serial_vehicle_make_user,mttl.vehicle.make,model_mttl_vehicle_make,group_metro_serial_user,1,0,0,0
+access_metro_serial_vehicle_make_manager,mttl.vehicle.make,model_mttl_vehicle_make,group_metro_serial_manager,1,1,1,0
+access_metro_serial_vehicle_model_user,mttl.vehicle.model,model_mttl_vehicle_model,group_metro_serial_user,1,0,0,0
+access_metro_serial_vehicle_model_manager,mttl.vehicle.model,model_mttl_vehicle_model,group_metro_serial_manager,1,1,1,0

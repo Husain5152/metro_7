@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_work_order_cnc_form">
+            <field name="name">view_work_order_cnc_form</field>
+            <field name="model">work.order.cnc</field>
+            <field name="arch" type="xml">
+                <form string="CNC Work Order" version="7.0">
+                    <header>
+                        <button name="action_prepare" string="Prepare CNC" states="draft" class="oe_highlight"
+                                type="object"/>
+                        <button name="action_ready" string="Ready" states="prepare,rejected" class="oe_highlight"
+                                type="object"/>
+                        <button name="action_confirm" string="Confirm" states="ready" class="oe_highlight" type="object"
+                                groups="metro_mrp.group_mrp_supervisor"/>
+                        <button name="action_approve" string="Approve" states="confirmed" class="oe_highlight"
+                                type="object" groups="mrp.group_mrp_manager"/>
+                        <button name="action_reject" string="Reject" states="confirmed" type="object"
+                                groups="mrp.group_mrp_manager"/>
+                        <button name="action_draft" string="Set to Draft" states="ready" type="object"
+                                groups="metro_mrp.group_mrp_supervisor"/>
+                        <button name="action_draft" string="Set to Draft" states="confirmed,cancel" type="object"
+                                groups="metro_mrp.group_mrp_supervisor"/>
+                        <button name="action_draft" string="Set to Draft" states="done" type="object"
+                                groups="base.group_system"/>
+                        <button name="action_draft" string="Set to Draft" states="approved,in_progress" type="object"
+                                groups="mrp.group_mrp_manager"/>
+                        <button name="action_done" string="Done" states="approved,in_progress" type="object"
+                                groups="metro_mrp.group_mrp_cnc_manager,mrp.group_mrp_manager"/>
+                        <button name="action_cancel" confirm="Are you sure you want to cancel this CNC ?" string="Cancel" states="draft,rejected" type="object"
+                                groups="metro_mrp.group_mrp_supervisor, mrp.group_mrp_manager"/>
+                        <button name="action_cancel" string="Cancel" states="confirmed" type="object"
+                                groups="metro_mrp.group_mrp_supervisor"/>
+                        <button name="action_force_cancel" confirm="Are you sure you want to cancel this CNC ?" string="Force Cancel" states="approved,in_progress,done" type="object"
+                                groups="mrp.group_mrp_manager"/>
+                        <button name="print_pdf" string="Print PDF" type="object"/>
+                        <button name="zip_cnc_file" string="CNC Zip File" type="object"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,prepare,ready,confirmed,approved,in_progress,done"/>
+                    </header>
+                    <!-- <sheet> -->
+                    <group>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </group>
+                    <group style="color:red">
+                        <field name="reject_message" states="rejected" readonly="1"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="can_change_ids" invisible="1"/>
+                            <!-- <field name="sale_product_ids" widget="many2many_tags" required="1" attrs="{'readonly':[('can_change_ids','=',False)]}"/> -->
+                            <field name="sale_product_ids" widget="many2many_tags" required="1"
+                                   domain="[('state','in',('confirmed','engineer','manufacture'))]"/>
+                            <field name="mfg_task_id" context="{'tree_view_ref':'metro_project.view_mfg_task_tree'}"/>
+                            <field name="partlist_file_name" invisible="1"/>
+                            <field name="partlist_file" filename="partlist_file_name"/>
+                            <field name="create_uid"/>
+                            <field name="create_date"/>
+                            <field name="date_finished"/>
+                            <field name="id"/>
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                        </group>
+                        <group>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="General">
+                            <field name="wo_cnc_lines">
+                                <tree string="Work Items">
+                                    <!-- #TODO, for the feature connecting with the MR
+                                    <tree string="Work Items"> -->
+                                    <field name="file_name"/>
+                                    <field name="cnc_file_name"/>
+                                    <field name="cnc_create_date"/>
+                                    <field name="drawing_file_name"/>
+                                    <field name="drawing_create_date"/>
+                                    <field name="plate_height"/>
+                                    <field name="plate_length"/>
+                                    <field name="plate_width"/>
+                                    <field name="percent_usage_theory"/>
+                                    <field name="percent_usage"/>
+                                    <field name="date_finished"/>
+                                    <field name="product_id"/>
+                                    <field name="is_whole_plate"/>
+                                    <field name="state"/>
+                                    <button name="%(metro_mrp.action_view_cnc_line_done)d" string="Done"
+                                            type="action" states="approved" icon="terp-check"
+                                            groups="metro_mrp.group_mrp_cnc_manager"/>
+                                    <field name="mr_id"/>
+                                </tree>
+                                <form string="Work Items" version="7.0">
+                                    <group>
+                                        <group>
+                                            <field name="file_name"/>
+                                            <label string="Size"/>
+                                            <div>
+                                                <field name="plate_length" class="oe_inline"/>
+                                                <label string="*"/>
+                                                <field name="plate_width" class="oe_inline"/>
+                                                <label string="*"/>
+                                                <field name="plate_height" class="oe_inline"/>
+                                            </div>
+                                            <field name="percent_usage_theory"/>
+                                            <field name="percent_usage"/>
+                                            <field name="number_of_incision_point"/>
+                                            <field name="total_cutting_length"/>
+                                            <field name="cnc_file_name" invisible="1"/>
+                                            <field name="cnc_file" filename="cnc_file_name"/>
+                                            <field name="cnc_create_date"/>
+                                            <field name="drawing_file_name" invisible="1"/>
+                                            <field name="drawing_file" filename="drawing_file_name"/>
+                                            <field name="drawing_create_date"/>
+                                            <field name="doc_file_name" invisible="1"/>
+                                            <field name="doc_file" filename="doc_file_name"/>
+                                        </group>
+                                        <group>
+                                            <field name="date_finished"/>
+                                            <field name="product_id"/>
+                                            <field name="is_whole_plate"/>
+                                            <field name="state"/>
+                                            <field name="mr_id"/>
+                                            <button name="%(metro_mrp.action_view_cnc_line_done)d" string="Done"
+                                                    type="action" states="approved" icon="terp-check"
+                                                    groups="metro_mrp.group_mrp_cnc_manager"/>
+                                        </group>
+                                        <!-- 	                        	<group colspan="4">
+                                                                            <field name="wo_comp_ids"/>
+                                                                        </group> -->
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                    <!-- </sheet> -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_work_order_cnc_tree">
+            <field name="name">view_work_order_cnc_tree</field>
+            <field name="model">work.order.cnc</field>
+            <field name="arch" type="xml">
+                <tree fonts="bold:message_unread==True"
+                      colors="blue:state == 'confirmed';#FF9900:state == 'approved';green:state == 'done';grey:state == 'cancel';"
+                      string="CNC Work Orders">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="sale_product_ids" widget="many2many_tags"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="state"/>
+                    <field name="date_finished"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_work_order_cnc_filter">
+            <field name="name">view_work_order_cnc_filter</field>
+            <field name="model">work.order.cnc</field>
+            <field name="arch" type="xml">
+                <search string="Search CNC Work Orders">
+                    <field name="id"/>
+                    <field name="name" string="CNC Work Orders"/>
+                    <field name="sale_product_ids"/>
+                    <field name="product_id"/>
+                    <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter icon="terp-camera_test" name="confirmed" string="Confirmed"
+                            domain="[('state','=','confirmed')]"/>
+                    <filter icon="terp-camera_test" name="approved" string="Approved"
+                            domain="[('state','=','approved')]"/>
+                    <filter icon="terp-camera_test" name="rejected" string="Rejected"
+                            domain="[('state','=','rejected')]"/>
+                    <!-- <filter icon="terp-camera_test" name="in_progress" string="In Progress" domain="[('state','=','in_progress')]"/> -->
+                    <filter icon="terp-camera_test" name="done" string="Done" domain="[('state','=','done')]"/>
+                    <separator/>
+                    <filter icon="terp-personal-" string="Cancelled" domain="[('state','=', 'cancel')]"
+                            help="Canceled"/>
+                    <field name="create_uid"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_work_order_cnc">
+            <field name="name">CNC Work Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">work.order.cnc</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_work_order_cnc_filter"/>
+        </record>
+
+        <menuitem
+                id="menu_work_order_cnc"
+                sequence="101"
+                parent="mrp.menu_mrp_manufacturing"
+                action="action_work_order_cnc"
+                groups="mrp.group_mrp_user"/>
+
+    </data>
+</openerp>

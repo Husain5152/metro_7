@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_print_pr_mfg_wizard" model="ir.ui.view">
+            <field name="name">view_print_pr_mfg_wizard</field>
+            <field name="model">print.pr.mfg.wizard</field>
+            <field name="arch" type="xml">
+               <form string="Print PR MFG Wizard" version="7.0">
+                   <group>
+                       <field name="type"/>
+                   </group>
+                    <footer>
+                        <button name="do_print" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

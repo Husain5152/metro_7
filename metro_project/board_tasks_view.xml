@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="tasks_opening_mfg_action" model="ir.actions.act_window">
+            <field name="name">Manufacture Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban</field>
+            <field name="context">{'default_project_type':'mfg'}</field>
+            <!-- <field name="domain">[('project_type','=','mfg'),('state','not in',('cancelled','done'))]</field> -->
+            <field name="domain">[('project_type','=','mfg')]</field>
+        </record>
+        <record id="tasks_opening_simple_action" model="ir.actions.act_window">
+            <field name="name">Simple Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban</field>
+            <field name="context">{'default_project_type':'simple'}</field>
+            <field name="domain">[('project_type','=','simple')]</field>
+        </record> 
+        <record id="tasks_opening_erp_action" model="ir.actions.act_window">
+            <field name="name">ERP Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban</field>
+            <field name="context">{'default_project_type':'software'}</field>
+            <field name="domain">[('project_type','=','software'),('state','not in',('cancelled','done'))]</field>
+            <field name="domain">[('project_type','=','software')]</field>
+        </record>               
+        <record id="tasks_opening_eng_action" model="ir.actions.act_window">
+            <field name="name">Engineer Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban</field>
+            <field name="context">{'default_project_type':'engineer'}</field>
+            <field name="domain">[('project_type','=','engineer')]</field>
+            <field name="domain"></field>
+        </record>
+        <record id="board_task_form" model="ir.ui.view">
+            <field name="name">board.task.form</field>
+            <field name="model">board.board</field>
+            <field name="arch" type="xml">
+                <form string="Tasks Dashboard" version="7.0">
+                    <board style="2-1">
+                        <column>
+                            <action name="%(tasks_opening_mfg_action)d" string="Manufacture Tasks" creatable='true'/>
+                            <action name="%(tasks_opening_simple_action)d" string="Simple Tasks"/>
+                            <action name="%(tasks_opening_simple_action)d" string="ERP Tasks"/>
+                            <action name="%(tasks_opening_eng_action)d" string="Engineer Tasks"/>
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_board_task" model="ir.actions.act_window">
+            <field name="name">Task Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="board_task_form"/>
+        </record>
+
+        <menuitem id="menu_task_dashboard"
+                  sequence="0"
+                  parent="project.menu_project_management"
+                  action="open_board_task"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_wo_material_request" model="ir.ui.view">
+            <field name="name">view_wo_material_request</field>
+            <field name="model">wo.material.request</field>
+            <field name="arch" type="xml">
+               <form string="Make Material Request" version="7.0">
+    				<group>
+    					<field name="name"/>
+    				</group>
+    				<group>
+    					<group><field name="mr_dept_id"/></group>
+    					<group><field name="mr_emp_id"/></group>
+    				</group>
+    				<field name="mr_lines"/>
+                    <footer>
+                        <button name="action_done" string="Done" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Make Material Request"
+            res_model="wo.material.request"
+            src_model="mrp.production.workcenter.line"
+            view_mode="form"
+            target="new"
+            id="action_wo_material_request"/>
+    </data>
+</openerp>
+

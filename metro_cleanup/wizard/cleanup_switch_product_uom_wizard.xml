@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_cleanup_switch_product_uom_wizard" model="ir.ui.view">
+            <field name="name">view_cleanup_switch_product_uom_wizard</field>
+            <field name="model">cleanup.switch.product.uom.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Product UOM Switch Wizard" version="7.0">
+                    <separator string="Please select old uom, new uom and product list to switch:"/>
+                    <group>
+                        <field name="old_uom_id" options="{'no_create': True}" on_change="onchange_old_uom_id(old_uom_id)" domain="[('category_id','not like','MSP_')]"/>
+                        <field name="categ_id" invisible="1"/>
+                        <field name="new_uom_id" options="{'no_create': True}" domain="[('category_id','=',categ_id)]"/>
+                        <field name="product_ids" domain="['|','|',('uom_id','=',old_uom_id),
+                        ('uos_id','=',old_uom_id),
+                        ('uom_po_id','=',old_uom_id)]" attrs="{'readonly':[('old_uom_id','=',False)]}">
+                            <tree string="Products">
+                                <field name="default_code"/>
+                                <field name="name"/>
+                                <field name="cn_name"/>
+                                <field name="uom_id"/>
+                                <field name="uos_id"/>
+                                <field name="uom_po_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="do_switch" string="Do Switch" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

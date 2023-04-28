@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_confirm_set_pr_line_supplier_wizard" model="ir.ui.view">
+            <field name="name">view_confirm_set_pr_line_supplier_wizard</field>
+            <field name="model">confirm.set.pr.line.supplier.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Confirm Set Supplier for PR Line" version="7.0">
+                    <label string="Some lines already have suppliers, OK to continue?"/>
+                    <footer>
+                        <button name="do_ok" string="OK" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

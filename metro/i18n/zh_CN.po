@@ -1,0 +1,29 @@
+#. module: metro
+#. openerp-web
+#: code:addons/metro/static/src/js/metro.js:31
+#, python-format
+msgid "Switch to English"
+msgstr "切换到英语"
+
+#==================i18n fixing ==================#
+#. module: mrp
+#: help:mrp.product.produce,mode:0
+msgid ""
+"'Consume only' mode will only consume the products with the quantity "
+"selected.\n"
+"'Consume & Produce' mode will consume as well as produce the products with "
+"the quantity selected and it will finish the production order when total "
+"ordered quantities are produced."
+msgstr ""
+"'只投料' 模式会仅消耗对应成品数量的原材料而无产成品产出。\n"
+"'投料并生产' 模式会消耗对应成品数量的原材料而且产出对应数量的产成品。"
+
+#. module: mrp
+#: selection:mrp.product.produce,mode:0
+msgid "Consume Only"
+msgstr "只投料"
+
+#. module: mrp
+#: selection:mrp.product.produce,mode:0
+msgid "Consume & Produce"
+msgstr "投料并生产"

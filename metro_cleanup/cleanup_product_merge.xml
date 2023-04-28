@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_cleanup_product_merge_form">
+            <field name="name">view_cleanup_product_merge_form</field>
+            <field name="model">cleanup.product.merge</field>
+            <field name="arch" type="xml">
+                <form string="Product Merge" version="7.0">
+                    <header>
+                        <button name="search_similar" string="Search Similar" type="object" class="oe_highlight" states="draft"/>
+                        <button name="run_merge" string="Run Merge" type="object" class="oe_highlight" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="location_id" domain="[('usage','=','internal')]"/>
+                            </group>
+                            <group>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </group>
+                            <group colspan="4">
+                                <field name="line_ids" colspan="4" nolabel="1">
+                                    <tree string="Merged Products" editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="active"/>
+                                        <field name="quantity"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                      <field name="message_follower_ids" widget="mail_followers"/>
+                      <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_cleanup_product_merge_tree">
+            <field name="name">view_cleanup_product_merge_tree</field>
+            <field name="model">cleanup.product.merge</field>
+            <field name="arch" type="xml">
+                <tree string="Product Merge">
+                    <field name="name"/>
+                    <field name="location_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_cleanup_product_merge_filter">
+            <field name="name">view_cleanup_product_merge_filter</field>
+            <field name="model">cleanup.product.merge</field>
+            <field name="arch" type="xml">
+                <search string="Search Merge Products">
+                    <field name="name"/>
+                    <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter icon="terp-camera_test" name="done" string="Done" domain="[('state','=','done')]"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_cleanup_product_merge">
+            <field name="name">Products Merge</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cleanup.product.merge</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_cleanup_product_merge_filter"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_cleanup_uom_clean">
+            <field name="name">Product UOM Clean</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cleanup.product.uom.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_cleanup_product_uom_wizard"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_cleanup_uom_switch">
+            <field name="name">Product UOM Switch</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cleanup.switch.product.uom.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_cleanup_switch_product_uom_wizard"/>
+        </record>
+        <record model="ir.actions.act_window" id="action_cleanup_uom_import">
+            <field name="name">Product UOM Import</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cleanup.import.product.uom.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_cleanup_import_product_uom_wizard"/>
+        </record>
+
+        <menuitem
+            id="menu_cleanup_warehouse"
+            sequence="50"
+            parent="stock.menu_stock_configuration"
+            groups="stock.group_stock_manager" name="Clean up"/>
+
+        <menuitem
+            id="menu_cleanup_product_merge"
+            sequence="1"
+            parent="menu_cleanup_warehouse"
+            action="action_cleanup_product_merge"
+            groups="stock.group_stock_manager"/>
+
+        <menuitem
+            id="menu_cleanup_uom_clean"
+            sequence="2"
+            parent="menu_cleanup_warehouse"
+            action="action_cleanup_uom_clean"
+            groups="stock.group_stock_manager"/>
+
+        <menuitem
+            id="menu_cleanup_uom_switch"
+            sequence="3"
+            parent="menu_cleanup_warehouse"
+            action="action_cleanup_uom_switch"
+            groups="stock.group_stock_manager"/>
+        <menuitem
+            id="menu_cleanup_uom_import"
+            sequence="3"
+            parent="menu_cleanup_warehouse"
+            action="action_cleanup_uom_import"
+            groups="stock.group_stock_manager"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="view_upload_multi_drawings" model="ir.ui.view">
+            <field name="name">Upload multi drawings</field>
+            <field name="model">upload.multi.drawings</field>
+            <field name="arch" type="xml">
+              <form string="Upload multi drawings" version="7.0">
+                  <group style="color:red">
+                        <field name="note" readonly="1" attrs="{'invisible':[('note','=',False)]}"/>
+                  </group>
+                  <separator string="Select drawing files to upload"/>
+                  <group>
+                        <!--+++ HoangTK 11/19/2015: Remove product_id, step_ids -->
+                        <!-- <field name="product_id"/> -->
+                        <!-- <field name="step_ids"/> -->
+	                    <field name="attachment_ids" widget='many2many_binary'/>
+                  </group>
+                  <footer>
+                      <button name="do_add" string="Finish" type="object" class="oe_highlight"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel" />
+                  </footer>
+              </form>
+            </field>
+        </record>  
+        
+        <record id="action_upload_multi_drawings" model="ir.actions.act_window">
+            <field name="name">Upload multi drawings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">upload.multi.drawings</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_upload_multi_drawings"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

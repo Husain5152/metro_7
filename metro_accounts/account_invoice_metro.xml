@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <report
+            id="account.account_invoices"
+            model="account.invoice"
+            name="account.invoice.metro"
+            rml="metro_accounts/account_invoice_metro.rml" 
+            string="Invoice (Metro)"
+            header="True"
+            attachment=""
+            attachment_use="False"
+            />                     
+     </data>
+</openerp>
+                

@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="metro_purchase.view_pur_req_tree">
+            <field name="name">pur.req.tree</field>
+            <field name="model">pur.req</field>
+            <field name="arch" type="xml">
+                <tree fonts="bold:message_unread==True" colors="blue:state == 'confirmed';green:state == 'in_purchase';grey:state == 'cancel';" string="Purchase Requisition">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="id" string="PR #"/>
+                    <field name="name" string="Requisition #"/>
+                    <!--<field name="rfq_sent"/>-->
+                    <field name="brief_name" invisible="context.get('pr_type',True) != 'all'"/>
+                    <field name="urgent"/>
+                    <field name="mo_id" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                    <field name="sale_product_ids" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'" widget="many2many_tags"/>
+                    <field name="unit" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                    <field name="bigsubassembly_id" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                    <field name="good_need_ordered" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                    <field name="po_need_generated" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                    <field name="user_id"/>
+                    <field name="date_create"/>
+                    <field name="date_request"/>
+                    <field name="delivery_date"/>
+                    <field name="amount_total" sum="Total Amount"/>
+                    <!--<field name="company_id" groups="base.group_multi_company" widget="selection"/>-->
+                    <field name="state"/>
+                </tree>
+          </field>
+        </record>
+        <record id="view_pur_req_form" model="ir.ui.view">
+            <field name="name">pur.req.form</field>
+            <field name="model">pur.req</field>
+            <field name="inherit_id" ref="metro_purchase.view_pur_req_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='pur_req_confirm']" position="before">
+                    <!--<button name="pr_email_wizard" states="draft" string="Send by Email" type="object" class="oe_highlight"/>
+                    <button name="pr_email_wizard" states="confirmed" string="Send by Email" type="object"/>-->
+                    <button name="open_pr_lines" string="PR by Products" type="object" states='draft,confirmed,approved,in_purchase' class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//button[@string='Generate PO']" position="after">
+                    <button name="%(act_pur_req_po_all)d" string="Generate All PO" type="action" groups="metro_purchase.group_pur_req_buyer"
+                            attrs="{'invisible': ['&amp;',('state','!=','approved'),'|',('state','!=','in_purchase'),('full_gen_po','=',True)]}" class="oe_highlight"/>
+
+                    <button name="manual_act_done" type="object" string="Manually Done" states="draft,confirmed,approved,in_purchase" groups="metro_purchase.group_pur_req_manager" class="oe_highlight"/>
+                    <button name="action_create_grand_pr" string="Generate Grand PO" type="object" groups="metro_purchase.group_pur_req_buyer"
+                            attrs="{'invisible': ['&amp;',('state','!=','approved'),'|',('state','!=','in_purchase'),('full_gen_po','=',True)]}" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <div class="oe_right">
+                        <!--<button name="action_reserved_products" type="object" string="Reserved Products" states="approved,in_purchase" groups="metro_purchase.group_pur_req_buyer" />
+                        <button name="action_unreserved_products" type="object" string="Unreserved Products" states="approved,in_purchase" groups="metro_purchase.group_pur_req_buyer" /> -->
+                        <button name="action_set_supplier" type="object" string="Set Supplier" states="draft,confirmed,approved,in_purchase" groups="metro_purchase.group_pur_req_buyer" />
+                        <button name="action_view_purchase" type="object" string="View Purchase" states="in_purchase,done" groups="metro_purchase.group_pur_req_buyer" />
+                        <button name="update_pdf" string="Update PDF" type="object" class="oe_inline" states="draft"/>
+                        <button name="update_product_price" string="Update Price" type="object" class="oe_inline" states="draft,confirmed,approved,in_purchase"/>
+                        <button name="print_pdf_zip" string="Download PDF Zip" type="object" class="oe_inline" />
+                        <button name="print_dxf" string="Download DXF" type="object" class="oe_inline" />
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='full_gen_po']" position="after">
+                    <label for="available_qty_rule" string="Quantity rule" class="oe_inline"/>
+                    <div>
+                        <field name="available_qty_rule"/>
+                        <button name="calculate_available_qty" type="object" string="Change PR Rule" states="confirmed,approved,in_purchase" class="oe_hightlight oe_inline"/>
+                    </div>
+                    <field name="mo_id" string="Manufacturer Order" attrs="{'invisible':[('pr_type','!=','mfg'),('pr_type','!=','mfg_o')]}"/>
+                    <field name="unit" string="Unit" attrs="{'invisible':[('pr_type','!=','mfg'),('pr_type','!=','mfg_o')]}"/>
+                    <field name="sale_product_ids" widget="many2many_tags" readonly="1" attrs="{'invisible':[('pr_type','!=','mfg'),('pr_type','!=','mfg_o')]}"/>
+                    <field name="drawing_order_id" attrs="{'invisible':[('pr_type','!=','mfg'),('pr_type','!=','mfg_o')]}"/>
+                    <field name="bigsubassembly_id" attrs="{'invisible':[('pr_type','!=','mfg'),('pr_type','!=','mfg_o')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='date_request']" position="before">
+                    <field name="date_create"/>
+                </xpath>
+                <xpath expr="//field[@name='date_request']" position="after">
+                    <field name="delivery_date"/>
+                    <field name="days_progress"/>
+                    <field name="urgent"/>
+                    <field name="progress" widget="progressbar"/>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="pr_type"/>
+                    <field name="engineer" attrs="{'invisible':[('pr_type','!=','mfg'),('pr_type','!=','mfg_o')]}"/>
+                    <field name="assigned_to"/>
+                    <field name="rfq_sent"/>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']" position="replace"></xpath>
+                <xpath expr="//field[@name='po_ids']" position="replace"></xpath>
+                <xpath expr="//field[@name='remark']" position="replace"></xpath>
+                <xpath expr="//group[1]" position="after">
+                    <group colspan="4">
+                        <label for="remark" string="Description/Notes"/>
+                        <field name="remark" nolabel="1" colspan="4" placeholder="Description/Notes..."/>
+                    </group>
+                </xpath>
+                <xpath expr="//separator[@string='Products']" position="after">
+                    <notebook>
+                        <page string="Products">
+                            <button name="print_pr_mfg" string="Print List" type="object" class="oe_inline"/>
+                            <div>
+                                Total: <span id="pr_total_line">0</span> (lines),
+                                <input type="checkbox" id="hide_existing_erpno"/> Hide existing erpno
+                                <input type="checkbox" id="hide_supplier_line" groups="base.group_erp_manager,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer,metro_purchase.group_pur_req_manager"/>
+                                    <span groups="base.group_erp_manager,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer,metro_purchase.group_pur_req_manager">Hide lines already have supplier</span>
+                            <input type="checkbox" id="hide_no_need_to_order_line"/> Hide lines with positive inventory (no need to order)
+                                 <select id="supplier_selectpr">
+                                    <option value="ALL" selected="selected">ALL SUPPLIERS</option>
+                                 </select>
+                                <select id="part_type_selectpr">
+                                    <option value="ALL" selected="selected">ALL PART TYPES</option>
+                                    <option value="PS">PS</option>
+                                    <option value="POEM">POEM</option>
+                                    <option value="MATERIALS">MATERIALS</option>
+                                    <option value="PMC">PMC</option>
+                                    <option value="PMS">PMS</option>
+                                    <option value="PML">PML</option>
+                                    <option value="CD">CD</option>
+                                </select>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="supplier_count"/>
+                                    <field name="in_stock_count"/>
+                                </group>
+                                <group>
+                                    <field name="need_to_order_count"/>
+                                    <field name="po_need_count"/>
+                                </group>
+                            </group>
+                            <field name="line_ids" widget="one2many_list" mode="tree" context="{'default_order_state':'draft','pr_state':state}">
+                                <tree string="Products">
+                                    <field name="sequence"/>
+                                    <field name="erp_no" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="product_id" on_change="onchange_product_id(product_id,context)"/>
+                                    <field name="supplier_id" groups="base.group_erp_manager,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer,metro_purchase.group_pur_req_manager"/>
+                                    <field name="part_number" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="description" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="part_type" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="drawing_file_name" invisible="1"/>
+                                    <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'" attrs="{'invisible':['|',('part_type','=','PML'),('drawing_file_name', '==', False)]}"/>
+                                    <field name="dxf_file_name" invisible="1"/>
+                                    <field name="dxf_download" widget="drawing_url" filename="dxf_file_name" invisible="context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'" attrs="{'invisible':['|',('part_type','!=','PMS'),('dxf_file_name', '==', False)]}"/>
+                                    <field name="material" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="thickness" string="Thickness/Length" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="standard" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="bom_qty" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'" attrs="{'invisible':[('order_state','=','done')]}"/>
+                                    <field name="product_qty" string="Need Quantity" sum="Total Need Quantity"/>
+                                    <field name="product_qty_req" attrs="{'invisible':[('product_qty_req','=',False)]}"/>
+                                    <button name="view_requesting_pr" attrs="{'invisible':[('product_qty_req', '=', False)]}"
+                                                string="View Requesting PR" type="object"
+                                                icon="terp-stock_zoom"/>
+                                    <field name="product_onhand_qty"/>
+                                    <field name="product_available_qty"  attrs="{'invisible': [('product_available_qty','=','0.0')]}"/>
+                                    <!--<field name="product_current_reserved_qty" attrs="{'invisible': ['|',('product_current_reserved_qty','=','0.0'),('order_state','=','done')]}"/>-->
+                                    <field name="product_other_reserved_qty" attrs="{'invisible': [('product_other_reserved_qty','=','0.0')]}"/>
+                                    <!--<field name="product_reserved_qty"/>-->
+                                    <button name="reserved_infor" attrs="{'invisible':[('product_other_reserved_qty', '=', False)]}"
+                                                string="View PR Reserved" type="object"
+                                                icon="terp-stock_zoom"/>
+                                    <field name="product_generated_qty" attrs="{'invisible': [('product_generated_qty','=','0.0')]}"/>
+                                    <field name="product_incoming_qty"/>
+                                    <button name="view_incoming_shipment" attrs="{'invisible':[('product_incoming_qty', '=', False)]}"
+                                                string="View Incoming Products" type="object"
+                                                icon="terp-stock_zoom"/>
+                                    <field name="product_qty_remain"  attrs="{'invisible': [('product_qty_remain','=','0.0')]}"/>
+                                    <field name="product_grand_qty_remain"  attrs="{'invisible': [('product_grand_qty_remain','=','0.0')]}"/>
+                                    <!--<field name="available_qty_rule" invisible="1"/>-->
+                                    <field name="product_uom_id"
+                                           on_change="onchange_product_uom(product_id,product_uom_id,context)"/>
+                                    <field name="inv_uom_id" invisible="1"/>
+                                    <field name="note" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                    <field name="po_info"/>
+                                    <!--<field name="expected_date"/>-->
+                                    <!--<field name="product_qty_remain" readonly="1" sum="Total Need to Order" invisible="context.get('pr_state',True)=='draft'"/>
+                                    <field name="estimate_qty_remain" invisible="context.get('pr_state',True)!='draft'"/>-->
+                                    <field name="price" groups="base.group_erp_manager,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer,metro_purchase.group_pur_req_manager"/>
+                                    <field name="amount_total" sum="Total Amount" groups="base.group_erp_manager" attrs="{'invisible': [('order_state','=','done')]}"/>
+                                    <!--<button name="action_set_supplier" string="Set Suppliers" icon="gtk-go-forward" type="object"/>-->
+                                    <!--<field name="req_ticket_no"/>-->
+                                    <!--<field name="generated_po"/>-->
+                                    <field name="order_state" invisible="1"/>
+                                </tree>
+                                <form string="Products" version="7.0">
+                                    <group colspan="4" col="6">
+                                        <group col="2">
+                                            <field name="sequence"/>
+                                            <field name="erp_no"/>
+                                            <field name="product_id" on_change="onchange_product_id(product_id)"/>
+                                            <field name="product_uom_id"
+                                                   on_change="onchange_product_uom(product_id,product_uom_id,context)"
+                                                   domain="[('category_id','=',uom_categ_id)]"/>
+                                            <field name="inv_uom_id" />
+                                            <field name="uom_categ_id" invisible="1"/>
+                                            <field name="thickness" string="Thickness/Length" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                            <field name="material" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                            <field name="standard" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                            <field name="mfg_ids" widget="many2many_tags"  readonly="1"/>
+                                        </group>
+                                        <group col="2">
+                                            <field name="supplier_id"/>
+                                            <field name="product_qty"/>
+                                            <label for="product_qty_req" string="Requesting Qty" class="oe_inline"/>
+                                            <div>
+                                                <field name="product_qty_req"/>
+                                                <button name="view_requesting_pr" attrs="{'invisible':[('product_qty_req', '=', False)]}"
+                                                    string="View Requesting PR" type="object"
+                                                    icon="terp-stock_zoom"/>
+                                            </div>
+                                            <field name="product_onhand_qty"/>
+                                            <field name="product_available_qty"/>
+                                            <!--<label for="product_current_reserved_qty" string="Reserved Qty" class="oe_inline"/>-->
+                                            <label for="product_other_reserved_qty" string="Reserved Qty" class="oe_inline"/>
+                                            <div>
+                                                <!--<field name="product_current_reserved_qty"/>-->
+                                                <field name="product_other_reserved_qty"/>
+                                                <!--<field name="product_reserved_qty"/>-->
+                                                <button name="reserved_infor" attrs="{'invisible':[('product_other_reserved_qty', '=', False)]}"
+                                                        string="View PR Reserved" type="object"
+                                                        icon="terp-stock_zoom" class="oe_inline"/>
+                                            </div>
+                                            <field name="product_generated_qty"/>
+                                            <label for="product_incoming_qty" string="Incoming Qty" class="oe_inline"/>
+                                            <div>
+                                                <field name="product_incoming_qty"/>
+                                                <button name="view_incoming_shipment" attrs="{'invisible':[('product_incoming_qty', '=', False)]}"
+                                                string="View Incoming Products" type="object"
+                                                icon="terp-stock_zoom" class="oe_inline"/>
+                                            </div>
+                                            <field name="product_qty_remain"/>
+                                            <field name="product_grand_qty_remain"/>
+                                            <!--<field name="available_qty_rule" invisible="1"/>-->
+                                            <field name="price" groups="base.group_erp_manager" attrs="{'readonly':[('order_state','!=','draft')]}"/>
+                                            <field name="amount_total" groups="base.group_erp_manager"/>
+                                        </group>
+                                        <group col="2">
+                                            <field name="note" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'"/>
+                                            <field name="generated_po"/>
+                                            <field name="po_info" />
+                                            <field name="date_required"  readonly="1"/>
+                                            <!--<field name="expected_date"/>-->
+                                            <field name="order_date_request"/>
+                                            <field name="order_state"/>
+                                            <field name="order_warehouse_id"/>
+                                            <field name="order_user_id"/>
+                                            <field name="req_emp_id"/>
+                                            <field name="req_dept_id"/>
+                                            <field name="req_reason"/>
+                                            <field name="req_ticket_no"/>
+                                        </group>
+                                    </group>
+                                    <field name="po_lines_ids"
+                                           context="{'form_view_ref': 'metro_purchase.metro_po_line_full_form', 'tree_view_ref': 'metro_purchase.metro_po_line_full_tree'}"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="PO Created">
+                            <field name="po_ids" readonly="1">
+                                <tree string="Purchase Order">
+                                    <field name="name" string="Reference"/>
+                                    <field name="date_order" string="Order Date"/>
+                                    <field name="partner_id"/>
+                                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                                    <field name="location_id" groups="stock.group_locations"/>
+                                    <field name="minimum_planned_date"/>
+                                    <field name="origin"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Progress" invisible="1">
+                            <group>
+                                <field name="good_need_ordered" />
+                                <field name="po_need_generated" />
+                            </group>
+                            <group coslpan="4" col="6">
+                                <group col="2">
+                                    <separator colspan="2" string="Created Not Ordered"/>
+                                    <field name="move1_lines" nolabel="1">
+                                        <tree string="Created Not Ordered">
+                                            <field name="erp_no"/>
+                                            <field name="product_id"/>
+                                            <field name="quantity" sum="Total Quantity"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group col="2">
+                                    <separator colspan="2" string="Ordered Not Approved"/>
+                                    <field name="move2_lines" nolabel="1">
+                                        <tree string="Ordered Not Approved">
+                                            <field name="erp_no"/>
+                                            <field name="product_id"/>
+                                            <field name="quantity" sum="Total Quantity"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group col="2">
+                                    <separator colspan="2" string="Approved Waiting Delivery"/>
+                                    <field name="move3_lines" nolabel="1" colspan="2">
+                                        <tree string="Approved Waiting Delivery">
+                                            <field name="erp_no"/>
+                                            <field name="product_id"/>
+                                            <field name="quantity" sum="Total Quantity"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Merged DOs" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'">
+                            <field name="merged_drawing_order_ids" nolabel="1" colspan="4" readonly="1"/>
+                        </page>
+                        <page string="Merged PRs" invisible="context.get('pr_type',True)!='mfg' and context.get('pr_type',True)!='mfg_o' and context.get('pr_type',True) != 'all'">
+                            <field name="merged_req_ids" nolabel="1" colspan="4" readonly="1"/>
+                        </page>
+                    </notebook>
+
+                </xpath>
+                <xpath expr="//separator[@string='Products']" position="replace"/>
+                <xpath expr="//separator[@string='Quotations']" position="replace"/>
+                <xpath expr="//separator[@string='Remark']" position="replace"/>
+            </field>
+        </record>
+        <record id="view_pur_req_filter" model="ir.ui.view">
+            <field name="name">pur.req.list.select</field>
+            <field name="model">pur.req</field>
+            <field name="inherit_id" ref="metro_purchase.view_pur_req_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="mo_id"/>
+                    <field name="unit"/>
+                    <field name="sale_product_ids"/>
+                    <field name="bigsubassembly_id"/>
+                    <field name="product_id"/>
+                    <field name="supplier_id"/>
+                </xpath>
+                <xpath expr="//filter[@name='done']" position="after">
+                    <separator/>
+                    <filter icon="terp-camera_test" name="normal_pr" string="Normal PR"
+                            domain="[('pr_type','=','normal')]"/>
+                    <filter icon="terp-camera_test" name="sourcing_pr" string="Sourcing PR"
+                            domain="[('pr_type','=','sourcing')]"/>
+                    <filter icon="terp-camera_test" name="procurement_pr" string="Procurement PR"
+                            domain="[('pr_type','=','procurement')]"/>
+                    <filter icon="terp-camera_test" name="mfg_pr" string="MFG PR"
+                            domain="[('pr_type','=','mfg')]"/>
+                    <filter icon="terp-camera_test" name="canada_pr" string="Canada PR"
+                            domain="[('pr_type','=','canada')]"/>
+                </xpath>
+                <xpath expr="//filter[@string='Cancelled']" position="after">
+                    <separator/>
+                    <filter icon="terp-camera_test" name="yesterday" string="Yesterday"  domain="[('date_request','&gt;=',(context_today()-datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 00:00:00')),('date_request','&lt;',time.strftime('%%Y-%%m-%%d 00:00:00'))]"/>
+                </xpath>
+                <xpath expr="//filter[@string='Requester']" position="after">
+                    <filter string="Unit" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'unit'}"/>
+                    <filter string="Big Sub Assembly" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'bigsubassembly_id'}"/>
+                    <filter string="MO" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'mo_id'}"/>
+                    <filter string="Request Date" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'date_request'}"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- Add 'Archive' to pur req list page -->
+        <record id="action_server_pur_req_archive" model="ir.actions.server">
+            <field name="name">Archive</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_pur_req" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.action_archive(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_pur_req_archive">
+            <field name="name">action_pur_req_archive</field>
+            <field name="action_id" ref="action_server_pur_req_archive" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_pur_req_archive'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_pur_req" />
+            <field name="model">pur.req</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+        <!-- Add 'Manual Done' to pur req list page -->
+        <record id="action_server_pur_req_manually_done" model="ir.actions.server">
+            <field name="name">Manually Done</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_pur_req" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.manual_act_done(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_pur_req_manually_done">
+            <field name="name">action_pur_req_manually_done</field>
+            <field name="action_id" ref="action_server_pur_req_manually_done" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_pur_req_manually_done'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_pur_req" />
+            <field name="model">pur.req</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+         <!-- Add 'Unreserved' to pur req list page -->
+        <record id="action_server_pur_req_unreserve" model="ir.actions.server">
+            <field name="name">Unreserve</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_pur_req" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.action_unreserved_products(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_pur_req_unreserve">
+            <field name="name">action_pur_req_unreserve</field>
+            <field name="action_id" ref="action_server_pur_req_unreserve" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_pur_req_unreserve'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_pur_req" />
+            <field name="model">pur.req</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_pur_req_line_full_tree">
+            <field name="name">pur.req.line.tree</field>
+            <field name="model">pur.req.line</field>
+            <field name="inherit_id" ref="metro_purchase.view_pur_req_line_full_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="mo_id"/>
+                    <field name="unit"/>
+                    <field name="drawing_order_id"/>
+                </xpath>
+                <xpath expr="//field[@name='mfg_ids']" position="replace">
+                    <field name="sale_product_ids" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_pur_req_line_full_form">
+            <field name="name">pur.req.line.form</field>
+            <field name="model">pur.req.line</field>
+            <field name="inherit_id" ref="metro_purchase.view_pur_req_line_full_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="thickness" string="Thickness/Length/Grade"/>
+                    <field name="standard" string="Standard"/>
+                </xpath>
+                <xpath expr="//field[@name='mfg_ids']" position="replace">
+                    <field name="sale_product_ids" widget="many2many_tags" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_pur_req_line_full_filter" model="ir.ui.view">
+            <field name="name">pur.req.list.select</field>
+            <field name="model">pur.req.line</field>
+            <field name="inherit_id" ref="metro_purchase.view_pur_req_line_full_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='done']" position="after">
+                    <separator/>
+                    <filter icon="terp-camera_test" name="poem" string="POEM Part Type"
+                            domain="[('part_type','=','POEM')]"/>
+                    <separator/>
+                    <filter icon="terp-camera_test" name="normal_pr" string="Normal PR"
+                            domain="[('pr_type','=','normal')]"/>
+                    <filter icon="terp-camera_test" name="sourcing_pr" string="Sourcing PR"
+                            domain="[('pr_type','=','sourcing')]"/>
+                    <filter icon="terp-camera_test" name="procurement_pr" string="Procurement PR"
+                            domain="[('pr_type','=','procurement')]"/>
+                    <filter icon="terp-camera_test" name="mfg_pr" string="MFG PR"
+                            domain="[('pr_type','=','mfg')]"/>
+                    <filter icon="terp-camera_test" name="canada_pr" string="Canada PR"
+                            domain="[('pr_type','=','canada')]"/>
+                    <separator/>
+                    <filter icon="terp-camera_test" name="not_ordered" string="Not Ordered"
+                            domain="[('product_qty_remain','=','0')]"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- Add 'Send Email' to pur req line list page -->
+        <record id="action_server_pur_req_line_email" model="ir.actions.server">
+            <field name="name">Send Email</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_pur_req_line" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.send_pr_email(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_pur_req_line_print">
+            <field name="name">action_pur_req_line_print</field>
+            <field name="groups" eval="[(6,0,[ref('purchase.group_purchase_user')])]"/>
+            <field name="action_id" ref="action_server_pur_req_line_email" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_pur_req_line_email'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_pur_req_line" />
+            <field name="model">pur.req.line</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+        <!-- Add 'Set supplier' to pur req line list page -->
+        <record id="action_server_pur_req_line_set_supplier" model="ir.actions.server">
+            <field name="name">Set Supplier</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_pur_req_line" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.action_set_supplier(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_pur_req_line_set_supplier">
+            <field name="name">action_pur_req_line_set_supplier</field>
+            <field name="groups" eval="[(6,0,[ref('purchase.group_purchase_user')])]"/>
+            <field name="action_id" ref="action_server_pur_req_line_email" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_pur_req_line_set_supplier'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_pur_req_line" />
+            <field name="model">pur.req.line</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_pur_req_all">
+            <field name="name">Purchase Requisitions - All</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'pr_type':'all'}</field>
+            <field name="search_view_id" ref="view_pur_req_filter"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_pur_req_mfg">
+            <field name="name">Purchase Requisitions - MFG</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pr_type','=','mfg')]</field>
+            <field name="context">{'default_pr_type':'mfg','pr_type':'mfg'}</field>
+            <field name="search_view_id" ref="view_pur_req_filter"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_pur_req_mfg_o">
+            <field name="name">Purchase Requisitions - MFG-O</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pr_type','=','mfg_o')]</field>
+            <field name="context">{'default_pr_type':'mfg_o','pr_type':'mfg_o'}</field>
+            <field name="search_view_id" ref="view_pur_req_filter"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="metro_purchase.action_pur_req">
+            <field name="name">Purchase Requisitions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pr_type','=','normal')]</field>
+             <field name="context">{'default_pr_type':'normal','pr_type':'normal'}</field>
+            <field name="search_view_id" ref="view_pur_req_filter"/>
+        </record>
+        <!--
+        <record model="ir.actions.act_window" id="action_pur_req_sourcing">
+            <field name="name">Purchase Requisitions - Outsourcing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pr_type','=','sourcing')]</field>
+             <field name="context">{'default_pr_type':'sourcing','pr_type':'sourcing'}</field>
+            <field name="search_view_id" ref="view_pur_req_filter"/>
+        </record>
+          -->
+        <record model="ir.actions.act_window" id="action_pur_req_procurement">
+            <field name="name">Purchase Requisitions - Procurement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pr_type','=','procurement')]</field>
+            <field name="context">{'default_pr_type':'procurement','pr_type':'procurement'}</field>
+            <field name="search_view_id" ref="view_pur_req_filter"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_pur_req_canada">
+            <field name="name">Purchase Requisitions - Canada</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('pr_type','=','canada')]</field>
+            <field name="context">{'default_pr_type':'canada','pr_type':'canada'}</field>
+            <field name="search_view_id" ref="view_pur_req_filter"/>
+        </record>
+
+
+        <menuitem id="metro_purchase_pr" name="PR"
+            parent="base.menu_purchase_root" sequence="0"
+            groups="metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+       <menuitem
+            id="menu_pur_req_all"
+            sequence="0"
+            name = "PR All"
+            parent="metro_purchase_pr"
+            action="action_pur_req_all"
+            groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+        <menuitem
+            id="menu_pur_req_mfg"
+            sequence="1"
+            name = "MFG PR"
+            parent="metro_purchase_pr"
+            action="action_pur_req_mfg"
+            groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+        <menuitem
+            id="menu_pur_req_mfg_o"
+            sequence="2"
+            name = "MFG-O PR"
+            parent="metro_purchase_pr"
+            action="action_pur_req_mfg_o"
+            groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+        <!--<menuitem
+            id="menu_pur_req_sourcing"
+            sequence="3"
+            name = "Outsourcing PR"
+            parent="metro_purchase_pr"
+            action="action_pur_req_sourcing"
+            groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+        -->
+        <menuitem
+        id="metro_purchase.menu_pur_req"
+        sequence="4"
+        name="Warehouse PR"
+        parent="metro_purchase_pr"
+        action="metro_purchase.action_pur_req"
+        groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+        <menuitem
+            id="menu_pur_req_procurement"
+            sequence="5"
+            name = "Procurement PR"
+            parent="metro_purchase_pr"
+            action="action_pur_req_procurement"
+            groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+        <menuitem
+            id="menu_pur_req_canada"
+            sequence="6"
+            name = "Canada PR"
+            parent="metro_purchase_pr"
+            action="action_pur_req_canada"
+            groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+        <menuitem
+        id="metro_purchase.menu_pur_req_line_full"
+        sequence="7"
+        name="PR by Products"
+        parent="metro_purchase_pr"
+        action="metro_purchase.action_pur_req_line_full"
+        groups="metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+        <menuitem
+        id="menu_pur_generate_pr_xls_wizard"
+        sequence="8"
+        parent="metro_purchase_pr"
+        action="action_generate_pr_xls_wizard"
+        groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+    </data>
+</openerp>

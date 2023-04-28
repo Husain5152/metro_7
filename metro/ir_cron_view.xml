@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="metro_ir_cron_view" model="ir.ui.view">
+            <field name="name">metro_ir_cron_view</field>
+            <field name="model">ir.cron</field>
+            <field name="inherit_id" ref="base.ir_cron_view"/>
+            <field name="arch" type="xml">
+	            <data>     
+	            	<xpath expr="//sheet" position="before">	
+			            <header>
+							<button name="manual_run" string="Manual Run" class="oe_highlight" type="object"/>	
+			            </header>
+	            	</xpath>
+                    <page string="Technical Data" position="after">
+	                    <page string="Running Logs">
+	                        <field name="message_ids"/>
+	                    </page>
+                    </page>	   
+	            </data>
+        	</field>
+       	</record>
+	</data>	  
+</openerp>

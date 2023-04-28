@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_simple" model="project.project">
+            <field name="name">Simple Project(Reserved)</field>
+            <field name="project_type">simple</field>
+            <field name="company_id"></field>
+        </record>
+        <record id="project_gtd" model="project.project">
+            <field name="name">GTD Project(Reserved)</field>
+            <field name="project_type">gtd</field>
+            <field name="company_id"></field>
+        </record>
+        <record id="project_mfg" model="project.project">
+            <field name="name">Manufacture Project(Reserved)</field>
+            <field name="project_type">mfg</field>
+            <field name="company_id"></field>
+        </record>
+        <record id="project_software" model="project.project">
+            <field name="name">Software Project(Reserved)</field>
+            <field name="project_type">software</field>
+            <field name="company_id"></field>
+        </record>
+    </data>
+</openerp>

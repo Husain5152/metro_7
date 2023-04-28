@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>    
+         <act_window name="Create Purchase Invoice"
+            res_model="pur.invoice"
+            src_model="purchase.order"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="act_pur_invoice"/>
+           
+        <record id="view_pur_invoice_form" model="ir.ui.view">
+            <field name="name">Purchase Products</field>
+            <field name="model">pur.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Products" version="7.0">
+                    <separator string="Select the prodcuts and change quantity that you want to create invoice."/>
+                    <field name="line_ids">
+                      <tree string="Products" editable="bottom">
+	                      <!-- <field name="po_line_id"/> -->
+	                      <field name="product_id"/>
+	                      <field name="product_qty"/>
+	                      <field name="product_max_qty"/>
+	                      <field name="price_unit"/>
+	                      <field name="product_uom_id"/>
+	                      <field name="price_unit"/>
+                      </tree>
+                    </field>  
+                    <footer>
+                        <button name="create_invoice" string="Create Invoice" type="object" class="oe_highlight"/>
+                        <button name="create_view_invoice" string="Create&amp;View Invoice" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

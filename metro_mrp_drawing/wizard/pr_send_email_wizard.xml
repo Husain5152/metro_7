@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_pr_send_email_wizard" model="ir.ui.view">
+            <field name="name">view_pr_send_email_wizard</field>
+            <field name="model">pr.send.email.wizard</field>
+            <field name="arch" type="xml">
+               <form string="Send PR Email Wizard" version="7.0">
+                   <group>
+                       <group>
+                            <field name="pr_id"/>
+                       </group>
+                       <group>
+                            <field name="attach_pdf"/>
+                           <field name="attach_dxf"/>
+                       </group>
+                       <separator string="PR lines to email" colspan="4" />
+                       <field name="pr_lines" colspan="4" nolabel="1" domain="[('req_id','=',pr_id)]">
+                           <tree>
+                                <field name="sequence"/>
+                                <field name="erp_no" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="product_id" on_change="onchange_product_id(product_id,context)"/>
+                                <field name="part_number" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="description" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="part_type" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="supplier_id" groups="base.group_erp_manager,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer,metro_purchase.group_pur_req_manager"/>
+                                <field name="drawing_file_name" invisible="1"/>
+                                <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" invisible="context.get('pr_type',True)!='mfg'" attrs="{'invisible':['|',('part_type','in',['PML','PMS']),('drawing_file_name', '==', False)]}"/>
+                                <field name="material" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="thickness" string="Thickness/Length" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="standard" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="inv_uom_id" invisible="1"/>
+                                <field name="product_uom_id"
+                                       on_change="onchange_product_uom(product_id,product_uom_id,context)"/>
+                                <field name="product_qty" string="Total Quantity" sum="Total Quantity"/>
+                                <!--<field name="inv_qty" string="Stock Quantity"/>-->
+                                <field name="product_reserved_qty"/>
+                                <field name="note" invisible="context.get('pr_type',True)!='mfg'"/>
+                                <field name="po_info"/>
+                                <field name="product_qty_remain" readonly="1" sum="Total Need to Order"/>
+                                <field name="price" groups="base.group_erp_manager,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer,metro_purchase.group_pur_req_manager"/>
+                                <field name="amount_total" sum="Total Amount" groups="base.group_erp_manager"/>
+                           </tree>
+                       </field>
+                   </group>
+                    <footer>
+                        <button name="do_compose" string="Compose" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+	<!-- Add ready status for the WO -->
+    <record model="workflow.activity" id="prod_act_wc_ready">
+        <field name="wkf_id" ref="mrp_operations.wkf_prod_workcenter"/>
+        <field name="name">ready</field>
+        <field name="kind">function</field>
+        <field name="action">write({'state':'ready'})</field>
+    </record>
+    
+	<!-- Transition -->
+    <record model="workflow.transition" id="prod_trans_wc_draft_ready">
+        <field name="act_from" ref="mrp_operations.prod_act_wc_draft"/>
+        <field name="act_to" ref="prod_act_wc_ready"/>
+        <field name="signal">ready_to_start</field>
+        <field name="condition">is_ready()</field>
+    </record>
+    <record model="workflow.transition" id="prod_trans_wc_ready_start">
+        <field name="act_from" ref="prod_act_wc_ready"/>
+        <field name="act_to" ref="mrp_operations.prod_act_wc_start"/>
+        <field name="signal">button_start_working</field>
+    </record>
+    <record model="workflow.transition" id="prod_trans_wc_ready_cancel">
+        <field name="act_from" ref="prod_act_wc_ready"/>
+        <field name="act_to" ref="mrp_operations.prod_act_wc_cancel"/>
+        <field name="signal">button_cancel</field>
+    </record>
+    
+</data>
+</openerp>

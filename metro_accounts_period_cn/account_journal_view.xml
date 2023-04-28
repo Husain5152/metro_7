@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_account_journal_form_period">
+            <field name="name">view_account_journal_form_period</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="model">account.journal</field>
+            <field name="arch" type="xml">
+	            <field name="centralisation" position="after">
+	                <field name="period_close"/>
+	                <field name="year_close"/>
+	            </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

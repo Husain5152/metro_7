@@ -1,0 +1,738 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(595.0,842.0)" title="Test" author="Martin Simon" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="34.0" y1="28.0" width="530" height="786"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockTopPadding value="0"/>
+      <blockBottomPadding value="0"/>
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="5,0" stop="5,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="6,0" stop="6,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="7,0" stop="7,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="7,-1" stop="7,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="8,0" stop="8,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="8,-1" stop="8,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="9,0" stop="9,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="9,0" stop="9,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="9,-1" stop="9,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="10,0" stop="10,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="10,-1" stop="10,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="11,0" stop="11,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="11,-1" stop="11,-1"/>      
+    </blockTableStyle>
+    <blockTableStyle id="Table4">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="5,0" stop="5,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="6,0" stop="6,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="7,0" stop="7,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="7,-1" stop="7,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="8,0" stop="8,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="8,-1" stop="8,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="9,0" stop="9,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="9,0" stop="9,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="9,-1" stop="9,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="10,0" stop="10,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="10,-1" stop="10,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="11,0" stop="11,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="11,-1" stop="11,-1"/>
+      
+    </blockTableStyle>
+    <blockTableStyle id="Table6">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="4,0" stop="4,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="5,0" stop="5,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="6,0" stop="6,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="7,0" stop="7,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="7,-1" stop="7,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="8,0" stop="8,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="8,-1" stop="8,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="9,0" stop="9,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="9,0" stop="9,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="9,0" stop="9,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="9,-1" stop="9,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="10,0" stop="10,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="10,-1" stop="10,-1"/>             
+    </blockTableStyle>
+    <blockTableStyle id="Table5">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,1" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,1" stop="1,1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,1" stop="2,1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,1" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,2" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,2" stop="1,2"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,2" stop="2,2"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,2" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,3" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,3" stop="1,3"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,3" stop="2,3"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,3" stop="3,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,4" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,4" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,4" stop="2,4"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,4" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,4" stop="3,4"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,5" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,5" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,5" stop="2,5"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,5" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,5" stop="3,5"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1" fontName="Helvetica" fontSize="9.0" leading="11"/>
+    <paraStyle name="P2" fontName="Helvetica" fontSize="9.0" leading="11" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P3" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P4" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P5" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P6" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P7" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P8" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P8R" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P9" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P10" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P11" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica-Bold" fontSize="18.0" leading="22" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P12" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P13" fontName="Helvetica" fontSize="9.0" leading="11"/>
+    <paraStyle name="P14" fontName="Helvetica" fontSize="9.0" leading="11"/>
+    <paraStyle name="P15" fontName="Helvetica" fontSize="9.0" leading="11" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="ODD" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" backColor="gray"/>
+    <paraStyle name="EVEN" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" backColor="white"/>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_8" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <images>
+      <image name="10000000000000AD000000236185D48C.jpg">/9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAjAK0DASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3uWRI
+onkc4RFLMfQCvmLXPEmpa7qVxeXF7cFHdjHGJCERM8AAcdK94+Iep/2V4H1KVW2ySp5Ef1c4/lmv
+BvDOit4g8RWOlqDslcGUj+GMcsfy4/GvUy+MYxlVkcWKk3JQR0EHw58W3VjHeW7RSQyxiSMrdnLK
+RkcGuUthd3V5FapcSLLLII13yMBuJwAfxr6oiWONVhjCqsagBB/COg/lXjXgDwwt38QtUvHUNaaX
+cyBCOQ0hY7fyGT+VXRxrlGcp9CamHScVHqZU3wz8ZQQSTMIysaliFvCTgelcWLmcjIuJv+/h/wAa
++qbxlk024KMGBifBByOhr5QU4QE9hW2CxEq3Nz9DPEUlTtynsHwXsZHj1TVJXkYFlt49zE9Pmbr9
+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
+R//Z
+</image>
+    </images>
+  </stylesheet>
+  <story>
+
+    <para style="P1">[[ repeatIn(objects,'group') ]]</para>
+    <section>
+    <para style="P12">
+      <font face="Helvetica">Tasks left on:</font>
+      <font face="Helvetica"> [[formatLang(get_today(),date='True')]]</font>
+    </para>
+        <para style="P11">Daily Report by Parts Done 每日零部件完成情况报表</para>
+    <para style="P2">[[ repeatIn(group.task_ids,'task') ]]</para>
+      <blockTable colWidths="104.0,150.0,105.0,170.0" style="Table3">
+        <tr>
+          <td>
+            <para style="P8R">TEAM NAME 组别:</para>
+          </td>
+          <td>
+            <para style="P8">[[group.name]] </para>
+          </td>
+          <td>
+            <para style="P8R">TEAM LEADER 组长:</para>
+          </td>
+          <td>
+            <para style="P8">[[group.team_leader]]</para>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <para style="P8R">APPROVED BY 由审批:</para>
+          </td>
+          <td>
+            <para style="P8">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P8R">MEMBERS 组员</para>
+          </td>
+          <td>
+            <para style="P8">[[group.team_members]]</para>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <para style="P8R">MFG ID 产品ID号:</para>
+          </td>
+          <td>
+            <para style="P8">[[get_mfg_ids(task.mfg_ids)]]</para>
+          </td>
+          <td>
+            <para style="P8R">ISSUED AT 下发于:</para>
+          </td>
+          <td>
+            <para style="P8">[[formatLang(task.date_issued,date='True')]]</para>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <para style="P8R">UNITS Q-TY 单位数量:</para>
+          </td>
+          <td>
+            <para style="P8">[[formatLang(task.production_id.product_qty,digits=0)]]</para>
+          </td>
+          <td>
+            <para style="P8R">START DATE 开始日期:</para>
+          </td>
+          <td>
+            <para style="P8">[[formatLang(task.date_start,date='True')]]</para>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <para style="P8R">UNIT 型号: </para>
+          </td>
+          <td>
+            <para style="P8">[[task.product.name]]</para>
+          </td>
+          <td>
+            <para style="P8R">DEADLINE 截止日期:</para>
+          </td>
+          <td>
+            <para style="P8">[[formatLang(task.date_deadline,date='True')]]</para>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <para style="P8R">PROJECT 项目名称: </para>
+          </td>
+          <td>
+            <para style="P8">[[task.big_subassembly_id.name]]</para>
+          </td>
+          <td>
+            <para style="P8">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P8">
+              <font color="white"> </font>
+            </para>
+          </td>
+        </tr>
+      </blockTable>
+      <para style="Standard">
+        <font color="white"> </font>
+      </para>
+         <pto>
+        <pto_header>
+<blockTable colWidths="21.0,101.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0" repeatRows="1" style="Table2">
+        <tr>
+          <td>
+            <para style="P3">
+              <font color="white">#</font>
+            </para>
+          </td>
+          <td>
+            <para style="P5">Part Number 零件编号</para>
+          </td>
+          <td>
+            <para style="P5">Q-ty 1 Unit 1台所含数量</para>
+          </td>
+          <td>
+            <para style="P5">Q-ty Need 总数量</para>
+          </td>
+          <td>
+            <para style="P5">Q-ty Done 完成数量</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[0]['name'] ]] 一</para>
+            <para style="P7">[[ get_weekdays()[0]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[1]['name'] ]] 二</para>
+            <para style="P7">[[ get_weekdays()[1]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[2]['name'] ]] 三</para>
+            <para style="P7">[[ get_weekdays()[2]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[3]['name'] ]] 四</para>
+            <para style="P7">[[ get_weekdays()[3]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[4]['name'] ]] 五</para>
+            <para style="P7">[[ get_weekdays()[4]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[5]['name'] ]] 六</para>
+            <para style="P7">[[ get_weekdays()[5]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[6]['name'] ]] 日</para>
+            <para style="P7">[[ get_weekdays()[6]['date'] ]]</para>
+          </td>
+        </tr>
+      </blockTable>
+        </pto_header>
+      <blockTable colWidths="21.0,101.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0" repeatRows="1" style="Table2">
+        <tr>
+          <td>
+            <para style="P3">
+              <font color="white">#</font>
+            </para>
+          </td>
+          <td>
+            <para style="P5">Part Number 零件编号</para>
+          </td>
+          <td>
+            <para style="P5">Q-ty 1 Unit 1台所含数量</para>
+          </td>
+          <td>
+            <para style="P5">Q-ty Need 总数量</para>
+          </td>
+          <td>
+            <para style="P5">Q-ty Done 完成数量</para>
+          </td>          
+          <td>
+            <para style="P5">[[ get_weekdays()[0]['name'] ]] 一</para>
+            <para style="P7">[[ get_weekdays()[0]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[1]['name'] ]] 二</para>
+            <para style="P7">[[ get_weekdays()[1]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[2]['name'] ]] 三</para>
+            <para style="P7">[[ get_weekdays()[2]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[3]['name'] ]] 四</para>
+            <para style="P7">[[ get_weekdays()[3]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[4]['name'] ]] 五</para>
+            <para style="P7">[[ get_weekdays()[4]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[5]['name'] ]] 六</para>
+            <para style="P7">[[ get_weekdays()[5]['date'] ]]</para>
+          </td>
+          <td>
+            <para style="P5">[[ get_weekdays()[6]['name'] ]] 日</para>
+            <para style="P7">[[ get_weekdays()[6]['date'] ]]</para>
+          </td>
+        </tr>
+      </blockTable>
+      <section>
+      <para style="P1">[[ repeatIn(get_task_quantities(task),'line') ]]</para>
+      <blockTable colWidths="21.0,101.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0" repeatRows="1" style="Table4">
+        <tr>
+          <td>
+            <para style="P6">[[ line['id'] ]]</para>
+          </td>
+          <td>
+            <para style="P6">[[ line['name'] ]]</para>
+          </td>
+          <td>
+            <para style="P6">[[ line['bom_qty'] ]]</para>
+          </td>
+          <td>
+            <para style="P6">[[ line['need_qty'] ]]</para>
+          </td>
+          <td>
+            <para style="P6">[[ line['done_qty'] ]]</para>
+          </td>          
+          <td>
+            <para style="P6">[[ line['done_qty'] ]]</para>
+          </td>
+          <td>
+            <para style="P6">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P6">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P6">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P6">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P6">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P6">
+              <font color="white"> </font>
+            </para>
+          </td>
+        </tr>
+      </blockTable>
+    </section>
+<blockTable colWidths="122.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0,41.0" repeatRows="1" style="Table6">
+      <tr>
+        <td>
+          <para style="P10">TOTAL 合</para>
+        </td>
+        <td>
+            <para style="P4">[[ get_sum_bom_qty(task) ]]</para>
+        </td>
+        <td>
+          <para style="P4">[[ task.need_qty ]]</para>
+        </td>
+        <td>
+            <para style="P4">[[ task.done_qty ]]</para>
+        </td>
+        <td>
+          <para style="P4">[[ task.done_qty ]]</para>
+        </td>
+        <td>
+          <para style="P4">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P4">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P4">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P4">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P4">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P4">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+    </blockTable>
+        </pto>
+    <para style="P1">
+      <font color="white"> </font>
+    </para>    
+    <blockTable colWidths="49.0,257.0,174.0,50.0" style="Table5">
+      <tr>
+        <td>
+          <para style="P15">Note:</para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P14">
+            <font face="Helvetica">Created by </font>
+            <font face="Helvetica">制表人</font>
+            <font face="Helvetica">:</font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P15">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+    </blockTable>
+    <pageBreak/>
+    </section>
+
+  </story>
+</document>
+

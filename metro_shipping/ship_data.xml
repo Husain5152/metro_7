@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<!-- Sequences for future shipment --> 
+        <record id="seq_type_future_shipment" model="ir.sequence.type">
+            <field name="name">Future Shipment Seq</field>
+            <field name="code">future.shipment</field>
+        </record>
+        <record id="seq_future_shipment_tracking" model="ir.sequence">
+            <field name="name">Future Shipment Sequence</field>
+            <field name="code">future.shipment</field>
+            <field name="padding">4</field>
+            <field name="prefix">FS</field>
+        </record>                                   
+    </data>
+</openerp>

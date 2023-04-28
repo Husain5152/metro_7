@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!-- 
+set employee Payroll Info in batch
+1.select multi employess, and in 'more...' execute this action, this will search  the selected employee's contract, and set those contract's payroll data
+1.select multi contracts, and in 'more...' execute this action, this will set the selected contract's payroll data
+2.go menu 'Set Contract Payroll Info'
+ -->
+         <act_window name="Set Payroll Info"
+            res_model="hr.contract.emppay.batchset"
+            src_model="hr.employee"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="action_hr_employee_emppay_batchset"
+            groups="base.group_hr_user,account.group_account_invoice"/>
+            
+         <act_window name="Set Payroll Info"
+            res_model="hr.contract.emppay.batchset"
+            src_model="hr.contract"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="action_hr_contract_emppay_batchset"
+            groups="base.group_hr_user,account.group_account_invoice"/>    
+           
+        <menuitem 
+        action="action_hr_contract_emppay_batchset" 
+        id="menu_hr_contract_emppay_batch"
+        parent="menu_hr_root_emppay" sequence="3"
+        name="Set Contract Payroll Info"/>              
+                   
+        <record id="view_hr_contract_emppay_batchset_form" model="ir.ui.view">
+            <field name="name">view_hr_contract_emppay_batchset_form</field>
+            <field name="model">hr.contract.emppay.batchset</field>
+            <field name="arch" type="xml">
+                <form string="Set Contract Payroll Info" version="7.0">
+
+	                <separator string="Select data you want to set"/>
+                	<div>
+                		<field name="wage2_set" class="oe_inline"/><label for="wage2_set"/>
+	                   <field name="wage2" attrs="{'invisible':[('wage2_set','=',False)]}"/>
+                	</div>
+                	<div>
+                		<field name="pit_base_set" class="oe_inline"/><label for="pit_base_set"/>
+	                    <field name="pit_base" attrs="{'invisible':[('pit_base_set','=',False)]}"/>
+                	</div>
+                	<div>
+                		<field name="wage_currency_set" class="oe_inline"/><label for="wage_currency_set"/>
+	                    <field name="wage_currency_id" attrs="{'invisible':[('wage_currency_set','=',False)]}"/>
+                	</div>
+                	<div>
+                		<field name="ot_pay_set" class="oe_inline"/><label for="ot_pay_set"/>
+	                    <group name="ot_pay_options" attrs="{'invisible':[('ot_pay_set','=',False)]}">
+	                    	<label for="ot_pay_normal"/>
+		                    <div>                    	
+		                    	<field name="ot_pay_normal" class="oe_inline"/>
+		                    	<label string="*" attrs="{'invisible':[('ot_pay_normal','=','fixed')]}"/>
+		                    	<field name="ot_pay_normal_multi" class="oe_inline"/>
+		                    </div>
+<!-- 		                    <label for="ot_pay_weekend"/>
+		                    <div>                    	
+		                    	<field name="ot_pay_weekend" class="oe_inline"/>
+		                    	<label string="*" attrs="{'invisible':[('ot_pay_weekend','=','fixed')]}"/>
+		                    	<field name="ot_pay_weekend_multi" class="oe_inline"/>
+		                    </div>
+		                    <label for="ot_pay_holiday"/>
+		                    <div>                    	
+		                    	<field name="ot_pay_holiday" class="oe_inline"/>
+		                    	<label string="*" attrs="{'invisible':[('ot_pay_holiday','=','fixed')]}"/>
+		                    	<field name="ot_pay_holiday_multi" class="oe_inline"/>
+		                    </div> -->
+		                    
+		                    <label for="ot_pay_normal2"/>
+		                    <div>                    	
+		                    	<field name="ot_pay_normal2" class="oe_inline"/>
+		                    	<label string="*" attrs="{'invisible':[('ot_pay_normal2','=','fixed')]}"/>
+		                    	<field name="ot_pay_normal2_multi" class="oe_inline"/>
+		                    </div>
+		                    <label for="ot_pay_weekend2"/>
+		                    <div>                    	
+		                    	<field name="ot_pay_weekend2" class="oe_inline"/>
+		                    	<label string="*" attrs="{'invisible':[('ot_pay_weekend2','=','fixed')]}"/>
+		                    	<field name="ot_pay_weekend2_multi" class="oe_inline"/>
+		                    </div>
+<!-- 		                    <label for="ot_pay_holiday2"/>
+		                    <div>                    	
+		                    	<field name="ot_pay_holiday2" class="oe_inline"/>
+		                    	<label string="*" attrs="{'invisible':[('ot_pay_holiday2','=','fixed')]}"/>
+		                    	<field name="ot_pay_holiday2_multi" class="oe_inline"/>
+		                    </div>	 -->
+		            	</group>                    
+                	</div>
+                	<div>
+	                	<field name="alwded_ids_set" class="oe_inline"/><label for="alwded_ids_set"/>
+		               	<field name="alwded_ids" attrs="{'invisible':[('alwded_ids_set','=',False)]}">
+		                       <tree string="Allowance and Deduction" editable="bottom">
+			                    <field name="alwded_id" on_change="onchange_alwded_id(alwded_id,context)"/>
+			                    <field name="sequence"/>
+			                    <field name="type"/>
+			                    <field name="type_calc"/>
+			                    <field name="amount"/>
+			                    <field name="currency_id"/>
+			                    <field name="attend_field"/>
+		                       </tree>
+		               	</field>
+                	</div>
+                	<div>
+		                <field name="si_ids_set" class="oe_inline"/><label for="si_ids_set" />
+		               	<field name="si_ids" attrs="{'invisible':[('si_ids_set','=',False)]}">
+		                       <tree string="Allowance and Deduction" editable="bottom">
+			                    <field name="si_id" on_change="onchange_si_id(si_id,context)"/>
+			                    <field name="sequence"/>
+			                    <field name="amount_base"/>
+			                    <field name="rate_company"/>
+			                    <field name="rate_personal"/>
+			                    <field name="amount_company" sum="Company Total"/>
+			                    <field name="amount_personal" sum="Employee Total"/>
+		                       </tree>
+		               	</field>
+                	</div>
+                	
+	                <separator string="Select contracts to set"/>
+	                <field name="contract_ids"/>
+	                
+	                <footer>
+			            <button name="set_data" string="Set" type="object" class="oe_highlight" 
+			            	confirm="Are you sure to set the contract data to the selected employees?"
+			            	help="This will keep the original Allowance&amp;Deduction, Social Insurance, and add the new"/>
+			            <button name="clear_set_data" string="Clear and Set" type="object" class="oe_highlight" 
+			            	confirm="Are you sure to set the contract data to the selected employees?"
+			            	help="This will clear the original Allowance&amp;Deduction, Social Insurance, and add the new"/>
+	                    or
+	                    <button string="Cancel" class="oe_link" special="cancel" />
+	                </footer>
+	                
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

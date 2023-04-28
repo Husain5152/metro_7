@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>                
+        <record id="view_project_form_attachments" model="ir.ui.view">
+            <field name="name">project.project.form.attachments</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Documents">
+                        <field name="attachment_lines" nolabel="1" colspan="4"
+                                context="{'o2m_attach': True}">
+                           <tree string="Attachment">
+                                <field name="name"/>
+                                <field name="attach_type_id"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="metro_project_task_form_attachments">
+            <field name="name">metro_project_task_form_attachments</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Documents">
+                        <field name="attachment_lines" nolabel="1" colspan="4"
+                                context="{'o2m_attach': True}">
+                           <tree string="Attachment">
+                                <field name="name"/>
+                                <field name="attach_type_id"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>  
+            </field>
+        </record>   
+    </data>
+</openerp>

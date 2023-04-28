@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<!-- 
+    	1.with same 'string' value, will make the report 'report_purchase_order' defined in  purchase/purchase_report.xml to be invisible
+    	Once we change the 'string' to other value then the original 'Purchase Order' will appear in the 'Print' DDLB
+    	2.Add code in metro_purchae/purchase.py: report_sxw.report_sxw...
+    	-->
+        <report auto="False" id="report_purchase_order_metro" model="purchase.order"
+                name="purchase.order.metro" rml="metro_purchase/report/purchase_order.rml"
+                usage="default" string="Purchase Order"/>
+        <report auto="False" id="report_purchase_quotation_metro" model="purchase.order" 
+                name="purchase.quotation.metro" rml="metro_purchase/report/purchase_quotation.rml"
+                string="Request for Quotation"/>     
+        <!--
+        Oversight reports
+        -->      
+        <report auto="False" id="report_purchase_history_new_product" model="purchase.history.new.product.group" header="True"
+        name="purchase.history.new.product" rml="metro_purchase/report/purchase_history_new_product.rml"
+        usage="default" string="New Products"/>
+        <report auto="False" id="report_purchase_history_supplier_change" model="purchase.history.supplier.change.group" header="True"
+        name="purchase.history.supplier.change" rml="metro_purchase/report/purchase_history_supplier_change.rml"
+        usage="default" string="Supplier Changes"/>
+        <report auto="False" id="report_purchase_history_price_change" model="purchase.history.price.change.group" header="True"
+        name="purchase.history.price.change" rml="metro_purchase/report/purchase_history_price_change.rml"
+        usage="default" string="Price Changes"/>        
+    </data>
+</openerp>

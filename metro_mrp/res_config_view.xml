@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <record id="view_mrp_config_ext" model="ir.ui.view">
+             <field name="name">mrp settings</field>
+             <field name="model">mrp.config.settings</field>
+             <field name="inherit_id" ref="mrp.view_mrp_config"/>
+             <field name="arch" type="xml">
+             		<xpath expr="//form/group[3]" position="after">
+	                    <separator string="Metro"/>
+	                    <group >
+	                        <label for="id" string="CNC"/>
+	                        <div>
+	                            <div>
+	                                <field name="cnc_task_required" class="oe_inline"/>
+	                                <label for="cnc_task_required"/>
+	                            </div>
+	                            <div>
+	                                <field name="mrp_cnc_wo_group_confirm" class="oe_inline"/>
+	                                <label for="mrp_cnc_wo_group_confirm"/>
+	                            </div>
+	                            <div>
+	                                <field name="mrp_cnc_wo_group_approve" class="oe_inline"/>
+	                                <label for="mrp_cnc_wo_group_approve"/>
+	                            </div>
+	                            <div>
+	                                <field name="mrp_cnc_wo_group_cnc_mgr" class="oe_inline"/>
+	                                <label for="mrp_cnc_wo_group_cnc_mgr"/>
+	                            </div>
+	                        </div>
+	                    </group>
+             		</xpath>
+             </field>
+          </record>
+	</data>          
+</openerp>

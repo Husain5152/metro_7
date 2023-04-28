@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<menuitem name="Online Help" id="menu_help" parent="knowledge.menu_document" sequence="1" />
+        <menuitem id="menu_help_purchase" parent="menu_help" name="Purchase" sequence="1"/>
+</data>
+</openerp>

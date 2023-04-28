@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_product,sale.product,model_sale_product,base.group_user,1,0,0,0
+access_contact_log,contact.log,model_contact_log,base.group_user,1,1,1,1
+access_contact_log_type,contact.log.type,model_contact_log_type,base.group_user,1,1,1,1
+access_sale_payinfo,access_sale_payinfo,model_sale_payinfo,base.group_user,1,1,1,1

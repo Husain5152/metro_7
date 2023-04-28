@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Sequence -->
+        <record id="metro_view_product_sequence_form" model="ir.ui.view">
+            <field name="name">product.sequence.form</field>
+            <field name="model">product.sequence</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Product Sequence">
+                    <field name="prefix" select="1"/>
+                    <field name="suffix" select="1"/>
+                    <field name="separator" select="1"/>
+                    <field name="active" select="1"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="metro_view_product_sequence_tree" model="ir.ui.view">
+            <field name="name">product.sequence.tree</field>
+            <field name="model">product.sequence</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Product Sequence">
+                    <field name="prefix"/>
+                    <field name="suffix"/>
+                    <field name="separator"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="metro_action_product_sequence" model="ir.actions.act_window">
+            <field name="name">Product Sequence</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.sequence</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="metro_view_product_sequence_tree"/>
+        </record>
+
+
+        <!-- Attribute -->
+        <record id="metro_view_product_attribute_form" model="ir.ui.view">
+            <field name="name">product.attribute.form</field>
+            <field name="model">product.attribute</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Attribute">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="metro_view_product_attribute_tree" model="ir.ui.view">
+            <field name="name">product.attribute.tree</field>
+            <field name="model">product.attribute</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Attribute">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="metro_action_product_attribute" model="ir.actions.act_window">
+            <field name="name">Product Attribute</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.attribute</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="metro_view_product_attribute_tree"/>
+        </record>
+
+
+        <!-- Attribute Line  -->
+        <record id="metro_view_product_attribute_line_form" model="ir.ui.view">
+            <field name="name">product.attribute.line.form</field>
+            <field name="model">product.attribute.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Attributes">
+                    <field name="attribute_id"/>
+                    <field name="attr_value"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="metro_view_product_attribute_line_tree" model="ir.ui.view">
+            <field name="name">product.attribute.line.tree</field>
+            <field name="model">product.attribute.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Attributes">
+                    <field name="attribute_id" string="Attribute"/>
+                    <field name="attr_value" string="Value"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--
+            <record id="metro_view_product_attribute_category_tree" model="ir.ui.view">
+                 <field name="name">product.attribute.category.tree</field>
+                 <field name="model">product.category</field>
+                 <field name="type">tree</field>
+                 <field name="arch" type="xml">
+                     <tree string="Attributes">
+                         <field name="attribute" string="Attribute"/>
+                     </tree>
+               </field>
+             </record>
+
+         -->
+
+        <record id="metro_view_product_attribute_category_form1" model="ir.ui.view">
+            <field name="name">product.attribute.category.form1</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@name='parent']" position="inside">
+                        <group name="Attribute" string="Attributes" colspan="2" groups="stock.group_stock_manager">
+                            <field name="attribute" string="Attribute" widget="many2many_tags"
+                                   groups="stock.group_stock_manager"/>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+
+        <!-- Product  -->
+        <record id="metro_product_product_tree_view" model="ir.ui.view">
+            <field name="name">metro.product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="cn_name" string="中国名"/>
+                </field>
+                <field name="state" position="after">
+                    <field name="sale_ok"/>
+                    <field name="purchase_ok"/>
+                    <field name="is_print_barcode"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                </field>
+                <!-- hide the function qty fields, display the fields stored in database -->
+                <field name="qty_available" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="qty_available" position="before">
+                    <field name="qty_onhand"/>
+                </field>
+                <field name="virtual_available" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="virtual_available" position="before">
+                    <field name="qty_in"/>
+                    <field name="qty_out"/>
+                    <field name="qty_virtual"/>
+                    <!-- <field name="qty_out_assigned"/>
+                    <field name="qty_out_available"/> -->
+                </field>
+                <field name="lst_price" position="attributes">
+                    <attribute name="groups">
+                        metro_purchase.group_pur_req_buyer,
+                        metro_purchase.group_pur_req_checker,
+                        metro_purchase.group_pur_req_manager,
+                        metro_purchase.group_pur_req_requester,
+                        purchase.group_analytic_accounting,
+                        purchase.group_purchase_manager,
+                        purchase.group_purchase_user,
+                        sale_stock.group_invoice_deli_orders,
+                        sale.group_analytic_accounting,
+                        sale.group_delivery_invoice_address,
+                        sale.group_discount_per_so_line,
+                        sale.group_invoice_so_lines,
+                        sale.group_mrp_properties
+                    </attribute>
+                </field>
+                <field name="virtual_available" position="after">
+                    <field name="safe_qty"/>
+                    <field name="safe_warn"/>
+                </field>
+                <field name='lst_price' position="replace">
+                </field>
+                <field name='standard_price' position="replace">
+                    <field name="standard_price" groups="metro_purchase.group_pur_req_buyer,
+                        metro_purchase.group_pur_req_checker,
+                        metro_purchase.group_pur_req_manager,
+                        metro_purchase.group_pur_req_requester,
+                        purchase.group_analytic_accounting,
+                        purchase.group_purchase_manager,
+                        purchase.group_purchase_user,
+                        sale_stock.group_invoice_deli_orders,
+                        sale.group_analytic_accounting,
+                        sale.group_delivery_invoice_address,
+                        sale.group_discount_per_so_line,
+                        sale.group_invoice_so_lines,
+                        sale.group_mrp_properties"/>
+                    <field name="loc_pos_code"/>
+                </field>
+                <xpath expr="//tree[@string='Products']" position="attributes">
+                    <attribute name="colors">
+                        red:(virtual_available and virtual_available&lt;0);blue:virtual_available&gt;=0 and state in
+                        ('draft', 'end', 'obsolete');black:virtual_available&gt;=0 and state not in ('draft', 'end',
+                        'obsolete')
+                    </attribute>
+                </xpath>
+                <field name='company_id' position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </field>
+                <field name="purchase_ok" position="after">
+                    <field name="checked"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="metro_product_manufacturer_form_view" model="ir.ui.view">
+            <field name="name">metro.product.manufacturer.normal.form</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product_manufacturer.view_product_form_expiry"/>
+            <field name="arch" type="xml">
+                <data>
+                    <group string="Attributes" position="replace">
+                    </group>
+                </data>
+            </field>
+        </record>
+
+        <record id="metro_product_normal_form_view" model="ir.ui.view">
+            <field name="name">metro.product.normal.form</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="list_price" position="attributes">
+                        <attribute name="groups">
+                            metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties
+                        </attribute>
+                    </field>
+                    <field name="standard_price" position="attributes">
+                        <attribute name="groups">
+                            metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties
+                        </attribute>
+                    </field>
+                    <field name="categ_id" position="replace">
+                        <field name="categ_id"/>
+                    </field>
+
+                    <notebook position="inside">
+                        <page string="Attributes">
+                            <field name="attribute_line" colspan="4" nolabel="1">
+                                <tree string="Attributes" editable="bottom">
+                                    <field name="attribute_id" domain="[('category_ids','in',parent.categ_id)]"/>
+                                    <field name="attr_value"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <!--+++ HoangTK - 01/12/2016 : Add purchase history -->
+                    <xpath expr="//page[@string='Information']" position="after">
+                        <page string="Marketplace" groups="metro.group_metro_oversight">
+                            <field name="marketplaces" colspan="4" nolabel="1" context="{'default_product_id':id}"
+                                   widget="one2many_list">
+                                <tree string="Marketplace" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="url" widget="url"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="History" groups="metro.group_metro_product_oversight">
+                            <field name="history_ids" colspan="4" nolabel="1" readonly="1">
+                                <tree string="History" >
+                                    <field name="date"/>
+                                    <field name="user_id"/>
+                                    <field name="name"/>
+                                    <field name="cn_name"/>
+                                    <field name="part_number"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+                    <!--... HoangTK - 01/12/2016 : Add purchase history -->
+                    <field name="default_code" position="replace" readonly="1">
+                        <label for="default_code"/>
+                        <div>
+                            <field name="default_code" class="oe_inline"/>
+                            <button type="object" icon="gtk-execute" name="get_sequence" string=""
+                                    help="Only press this button to create a new part number! 只有按这个按钮来创建一个新的零件编号！"
+                                    groups="metro.group_metro_base_manager" invisible="1"/>
+                        </div>
+                        <field name="part_no_external"/>
+                    </field>
+                    <xpath expr="//page[@string='Information']/group/group[3]" position="after">
+                        <group>
+                            <field name="checked"/>
+                            <field name="create_uid"/>
+                            <field name="create_date"/>
+                        </group>
+                    </xpath>
+
+                    <!-- Creating a new title block -->
+                    <xpath expr="//h1" position="after">
+                        <label for="cn_name" help="您必须包括所有部件的英文名称为！"/>
+                        <field name="cn_name" colspan="4" placeholder="中国名"/>
+                    </xpath>
+
+                    <div name="buttons" position="inside">
+                        <button name="print_barcode" string="Set Print Flag" type="object"
+                                context="{'print_flag':True}"/>
+                        <button name="print_barcode" string="Clear Print Flag" type="object"
+                                context="{'print_flag':False}"/>
+                    </div>
+                    <xpath expr="//div[@name='options']/label[@for='sale_ok']" position="attributes">
+                        <attribute name="groups">metro.group_data_maintain_manager</attribute>
+                    </xpath>
+                    <field name="sale_ok" position="attributes">
+                        <attribute name="groups">metro.group_data_maintain_manager</attribute>
+                    </field>
+                    <field name="state" position="replace">
+                    </field>
+                    <xpath expr="//form/sheet" position="before">
+                        <header>
+                            <button name="button_approve" states="draft" string="Approve" type="object"
+                                    class="oe_highlight" groups="metro.group_data_maintain_manager"/>
+                            <button name="button_eol" states="sellable" string="End of Life" type="object"
+                                    groups="metro.group_data_maintain_manager"/>
+                            <button name="button_obsolete" states="sellable" string="Obsolete" type="object"
+                                    groups="metro.group_data_maintain_manager"/>
+                            <button name="button_draft" states="end,obsolete" string="Restart" type="object"
+                                    class="oe_highlight" groups="metro.group_data_maintain_manager"/>
+                            <field name="state" widget="statusbar" statusbar_visible="draft,sellable,end"
+                                   statusbar_colors='{"end":"red","obsolete":"red"}' readonly="1"/>
+                        </header>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+         <record id="metro_product_template_form_view" model="ir.ui.view">
+            <field name="name">metro.product.template.product.form</field>
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="standard_price" position="attributes">
+                        <attribute name="groups">
+                            metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties
+                        </attribute>
+                    </field>
+                <field name="list_price" position="attributes">
+                        <attribute name="groups">
+                            metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties
+                        </attribute>
+                    </field>
+            </field>
+         </record>
+        <record model="ir.ui.view" id="product_marketplace_tree_view">
+            <field name="name">product.marketplace.tree</field>
+            <field name="model">product.marketplace</field>
+            <field name="arch" type="xml">
+                <tree string="Product Marketplace" editable="bottom">
+                    <field name="name"/>
+                    <field name="url" widget="url"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_marketplace_form_view">
+            <field name="name">product.marketplace.form</field>
+            <field name="model">product.marketplace</field>
+            <field name="arch" type="xml">
+                <form string="Product Marketplace" version="7.0">
+                    <group>
+                        <field name="product_id"/>
+                        <field name="name"/>
+                        <field name="url" widget="url"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_history_tree_view">
+            <field name="name">product.history.tree</field>
+            <field name="model">product.history</field>
+            <field name="arch" type="xml">
+                <tree string="Product History">
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="content"/>
+                    <field name="name"/>
+                    <field name="cn_name"/>
+                    <field name="part_number"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_history_form_view">
+            <field name="name">product.history.form</field>
+            <field name="model">product.history</field>
+            <field name="arch" type="xml">
+                <form string="Product History" version="7.0">
+                    <group>
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="content"/>
+                    <field name="name"/>
+                    <field name="cn_name"/>
+                    <field name="part_number"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- <record id="metro_product_normal_form_view_qty_out" model="ir.ui.view">
+            <field name="name">metro.product.normal.form</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_normal_procurement_locations_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="virtual_available" position="after">
+                        <field name="qty_out_assigned"/>
+                        <field name="qty_out_available"/>
+                    </field>
+                </data>
+            </field>
+       </record> -->
+
+        <record id="metro_product_mfg_view" model="ir.ui.view">
+            <field name="name">metro_product_mfg_view</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product_manufacturer.view_product_form_expiry"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="manufacturer" position="before">
+                        <field name="mfg_standard"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+        <record id="metro_product_purchase_view" model="ir.ui.view">
+            <field name="name">metro_product_purchase_view</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="purchase.view_product_supplier_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='options']/label[@for='purchase_ok']" position="attributes">
+                        <attribute name="groups">metro.group_data_maintain_manager</attribute>
+                    </xpath>
+                    <field name="purchase_ok" position="attributes">
+                        <attribute name="groups">metro.group_data_maintain_manager</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+        <record id="metro_product_procurement_view" model="ir.ui.view">
+            <field name="name">metro_product_procurement_view</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_normal_procurement_locations_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="active" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="metro_product_stock_view" model="ir.ui.view">
+            <field name="name">metro.product.stock.normal.form</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_normal_procurement_locations_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <!-- hide the function qty fields, display the fields stored in database -->
+                    <xpath expr="//label[@for='qty_available']" position="replace">
+                        <label for="qty_onhand"/>
+                    </xpath>
+                    <field name="qty_available" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="qty_available" position="before">
+                        <field name="qty_onhand" class="oe_inline"/>
+                        <button name="view_qty_onhand_detail" string="Qty by Location" type="object" icon="terp-stock_zoom"/>
+                    </field>
+
+                    <field name="incoming_qty" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="incoming_qty" position="before">
+                        <field name="qty_in" class="oe_inline"/>
+                    </field>
+
+                    <field name="outgoing_qty" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="outgoing_qty" position="before">
+                        <field name="qty_out" class="oe_inline"/>
+                    </field>
+
+                    <field name="virtual_available" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="virtual_available" position="before">
+                        <field name="qty_virtual" class="oe_inline"/>
+                    </field>
+
+                    <!-- add the safe qty columns -->
+                    <field name="virtual_available" position="after">
+                        <field name="safe_qty"/>
+                        <field name="safe_warn"/>
+                        <field name="max_qty"/>
+                        <field name="property_prod_loc"/>
+                    </field>
+
+                    <group name="store" position="replace">
+                        <group name="store" string="Storage Location">
+                            <field name="loc_pos_code"/>
+                            <field name="is_print_barcode"/>
+                        </group>
+                    </group>
+                </data>
+            </field>
+        </record>
+
+
+        <record id="metro_product_search_form_view" model="ir.ui.view">
+            <field name="name">metro.product.search.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                    <field name="name" string="Product"
+                           filter_domain="['|','|',('name','ilike',self),('default_code','ilike',self),('cn_name','ilike',self)]"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="default_code" filter_domain="[('default_code','in',self)]" string="Multi Part#"/>
+                </field>
+                <!--            move to product_product.search to deal the 'child_of', use the view xml. the category name will be passed to search(), we need the category ID
+                                <field name="categ_id" position="attributes">
+                                    <attribute name="filter_domain">[('categ_id','child_of',self.id)]</attribute>
+                                </field> -->
+                <filter name="filter_to_sell" position="after">
+                    <separator/>
+                    <filter string="Print Barcode" icon="terp-accessories-archiver"
+                            domain="[('is_print_barcode','=',True)]"/>
+                    <filter string="No Print Barcode" icon="terp-accessories-archiver"
+                            domain="[('is_print_barcode','=',False)]"/>
+                    <separator/>
+                    <filter string="No Onhand" icon="terp-accessories-archiver" domain="[('qty_onhand','&lt;=',0)]"/>
+                    <filter string="Negative Onhand" icon="terp-accessories-archiver"
+                            domain="[('qty_onhand','&lt;',0)]"/>
+                    <separator/>
+                    <filter string="No Cost Price" icon="terp-accessories-archiver" domain="[('standard_price','=',0)]"/>
+                    <filter string="No Purchase Price" icon="terp-accessories-archiver" domain="[('uom_po_price','=',0)]"/>
+                    <separator/>
+                    <filter string="Checked" icon="terp-accessories-archiver" domain="[('checked','=',True)]"/>
+                    <filter string="Not Checked" icon="terp-accessories-archiver" domain="[('checked','=',False)]"/>
+                </filter>
+            </field>
+        </record>
+        <!-- add cn name to kanban view -->
+        <record model="ir.ui.view" id="metro_product_kanban_view">
+            <field name="name">Product Kanban</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="stock.product_kanban_stock_view"/>
+            <field name="arch" type="xml">
+                <field name="lst_price" position="attributes">
+                        <attribute name="groups">
+                            metro_purchase.group_pur_req_buyer,
+                            metro_purchase.group_pur_req_checker,
+                            metro_purchase.group_pur_req_manager,
+                            metro_purchase.group_pur_req_requester,
+                            purchase.group_analytic_accounting,
+                            purchase.group_purchase_manager,
+                            purchase.group_purchase_user,
+                            sale_stock.group_invoice_deli_orders,
+                            sale.group_analytic_accounting,
+                            sale.group_delivery_invoice_address,
+                            sale.group_discount_per_so_line,
+                            sale.group_invoice_so_lines,
+                            sale.group_mrp_properties
+                        </attribute>
+                    </field>
+                <field name="name" position="after">
+                    <field name="cn_name"/>
+                </field>
+                <field name="qty_available" position="replace">
+                    <field name="qty_onhand"/>
+                </field>
+                <field name="virtual_available" position="replace">
+                    <field name="qty_virtual"/>
+                </field>
+
+            </field>
+        </record>
+
+        <menuitem id="metro_menu_product" name="Products" parent="metro.menu_mttl_config"
+                  groups="metro.group_metro_base_manager"/>
+        <menuitem id="metro_menu_product_sequence" action="metro_action_product_sequence" name="Product Sequence"
+                  parent="metro_menu_product"/>
+        <menuitem id="metro_menu_product_attribute_metro" action="metro_action_product_attribute"
+                  name="Product Attribute" parent="metro_menu_product"/>
+        <menuitem id="metro_menu_product_attribute_product" action="metro_action_product_attribute"
+                  name="Product Attribute" parent="stock.menu_product_in_config_stock"/>
+        <menuitem id="metro_menu_product_attribute_category_metro" action="metro_action_product_attribute"
+                  name="Product Attribute Category" parent="metro_menu_product"/>
+        <!--  <menuitem id="metro_menu_product_attribute_category_product" action="metro_action_product_attribute_category" name="Product Attribute Category" parent="stock.menu_product_in_config_stock"/>
+  -->
+
+        <!--  add supplier product name and code to the supplier product info tree list -->
+        <record model="ir.ui.view" id="product_supplierinfo_tree_view">
+            <field name="name">product.supplierinfo.tree.view</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="product_name"/>
+                    <field name="product_code"/>
+                </field>
+            </field>
+        </record>
+        <!-- inventory warning -->
+        <record id="action_product_inventory_warning" model="ir.actions.act_window">
+            <field name="name">Inventory Warning</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'inv_warn_restrict':True}</field>
+            <field name="domain">[('purchase_ok','=',True),('safe_warn','=',True)]</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+        </record>
+        <menuitem
+                id="menu_product_inventory_warning"
+                sequence="12"
+                parent="purchase.menu_procurement_management"
+                action="action_product_inventory_warning"/>
+    </data>
+</openerp>	

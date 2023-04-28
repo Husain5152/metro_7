@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="False" id="report_hr_emppay_slip" model="hr.emppay" header="True"
+                name="hr.emppay.slip" rml="metro_hr/emppay/hr_emppay_slip.rml"
+                usage="default" string="Payslip"/>    
+        <report auto="False" id="report_hr_emppay_slip_dimission" model="hr.emppay" header="True"
+                name="hr.emppay.slip.dimission" rml="metro_hr/emppay/hr_emppay_slip_dimission.rml"
+                usage="default" string="Payslip for Dimission"/>                     
+    </data>
+</openerp>

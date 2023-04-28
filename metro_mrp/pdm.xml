@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <!-- Add resource data -->
+    <record model="ir.ui.view" id="metro_view_document_file_tree">
+        <field name="name">metro_view_document_file_tree</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="document.view_document_file_tree"/>
+        <field name="arch" type="xml">
+        	<field name="name" position="after">
+                <field name="res_model" />
+                <field name="res_name" />
+                <field name="attach_type_id"/>
+        	</field>
+        	<field name="create_date" position="attributes">
+                <attribute name="groups" />
+        	</field>
+        	<field name="write_date" position="attributes">
+                <attribute name="groups" />
+        	</field>
+        	<field name="company_id" position="attributes">
+                <attribute name="groups">base.group_multi_company"</attribute>
+        	</field>
+        </field>
+    </record>
+    <!-- Add resource data search -->
+    <record model="ir.ui.view" id="metro_view_attachment_search" >
+            <field name="name">metro_view_attachment_search</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_search"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="after">
+            		<field name="res_model"/>
+            		<field name="res_name"/>
+            		<field name="attach_type_id"/>
+            	</field>
+            </field>
+    </record>
+    <!-- MRP resource data search -->
+    <record id="metro_mrp_documents_search" model="ir.ui.view">
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <search string="Attachments">
+                <field name="name" filter_domain="['|', ('name','ilike',self), ('datas_fname','ilike',self)]" string="Attachment"/>
+          		<field name="res_model"/>
+          		<field name="res_name"/>
+          		<field name="attach_type_id"/>
+                <field name="user_id"/>
+                <field name="create_date"/>
+                <field name="type"/>
+                
+                <filter icon="terp-stage" string="ID" domain="[('res_model','=','sale.product')]"/>
+                <filter icon="terp-stage" string="BOM" domain="[('res_model','=','mrp.bom')]"/>
+                <filter icon="terp-stage" string="Project" domain="[('res_model','=','project.project')]"/>
+                <filter icon="terp-stage" string="Task" domain="[('res_model','=','project.task')]"/>
+                <separator/>
+				<filter name="my_documents_filter" string="My Document(s)" icon="terp-personal" 
+					domain="[('user_id','=',uid)]" help="Filter on my documents"/>
+
+                <group expand="0" string="Group By...">
+                    <filter string="Resource Model" icon="terp-personal" domain="[]" context="{'group_by':'res_model'}"/>
+                    <filter string="Resource Name" icon="terp-personal" domain="[]" context="{'group_by':'res_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>    
+    <!-- For the MRP related model's documents query -->
+    <record id="action_mrp_document" model="ir.actions.act_window">
+        <field name="name">MRP Documents</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="metro_mrp_documents_search"/>
+        <field name="domain">['|','|',('res_model', '=', 'sale.product'),('res_model', '=', 'mrp.bom'),'|',('res_model', '=', 'project.project'),('res_model', '=', 'project.task')]</field>
+    </record>
+    
+	<menuitem
+	    action="action_mrp_document"
+	    id="menu_mrp_document"
+	    parent="mrp.menu_mrp_bom"
+	    sequence="101"/> 
+	</data>	  
+</openerp>

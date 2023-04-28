@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+ <data>
+       <record id="wkf_metro_warranty" model="workflow">
+            <field name="name">warranty.basic</field>
+            <field name="osv">warranty.cases</field>
+            <field name="on_create">True</field>
+       </record>
+        
+       <record id="act_warranty_open" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_metro_warranty"/>
+            <field name="flow_start">True</field>
+            <field name="name">Open</field>
+            <field name="kind">function</field>
+            <field name="action">previous_state()</field>
+       </record>
+
+       <record id="act_warranty_close" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_metro_warranty"/>
+            <field name="name">Close</field>
+            <field name="kind">function</field>
+            <field name="action">next_state()</field>
+       </record>
+       
+       <record id="trans_metro_warranty_open" model="workflow.transition">
+            <field name="act_from" ref="act_warranty_open"/>
+            <field name="act_to" ref="act_warranty_close"/>
+            <field name="signal">metro_warranty_close_signal</field>
+       </record>
+        
+       <record id="trans_metro_warranty_close" model="workflow.transition">
+            <field name="act_from" ref="act_warranty_close"/>
+            <field name="act_to" ref="act_warranty_open"/>
+            <field name="signal">metro_warranty_open_signal</field>
+       </record>
+       
+ </data>
+</openerp>

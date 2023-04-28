@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+            
+    <!-- Purchase approve -->
+        <record id="purchase.trans_confirmed_router" model="workflow.transition">
+            <field name="act_from" ref="purchase.act_confirmed"/>
+            <field name="act_to" ref="purchase.act_router"/>
+            <field name="signal">purchase_approve</field>
+        </record>
+        
+    <!-- Purchase done -->
+        <record id="purchase.act_done" model="workflow.activity">
+            <field name="action">wkf_done()</field>
+        </record>
+        
+    <!-- Purchase reject -->
+        <record id="act_reject" model="workflow.activity">
+            <field name="wkf_id" ref="purchase.purchase_order"/>
+            <field name="name">reject</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'rejected'})</field>
+        </record>
+
+        <record id="trans_confirmed_router" model="workflow.transition">
+            <field name="act_from" ref="purchase.act_confirmed"/>
+            <field name="act_to" ref="act_reject"/>
+            <field name="signal">purchase_reject</field>
+        </record>        
+
+        <record id="trans_rejected_confirmed" model="workflow.transition">
+            <field name="act_from" ref="act_reject"/>
+            <field name="act_to" ref="purchase.act_confirmed"/>
+            <field name="signal">purchase_confirm</field>
+        </record>  
+        
+    <!-- Purchase changing request -->
+                  
+    </data>
+</openerp>

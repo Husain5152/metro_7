@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  sale_quick_payment for OpenERP
+  Copyright (C) 2011 Akretion Sébastien BEAU <sebastien.beau@akretion.com>
+  The licence is in the file __openerp__.py
+-->
+
+<openerp>
+    <data>
+    	<!-- purchase payment -->
+        <record id="purchase_order_payment_form" model="ir.ui.view">
+            <field name="name">purchase.payment.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">            	            
+                <button name="purchase_approve" position="after">
+                  <button name="%(open_pay_po)d"
+                      string="Apply Advance Payments"
+                      type="action" states="approved" groups="account.group_account_invoice"/>
+                </button>
+                <page string="Incoming Shipments &amp; Invoices" position="after">
+                	<page string="Payments"> 
+                		<group name="advance_payments" string="Advance Payments" colspan="4">
+	                        <field name="payment_moves" nolabel="1" widget="one2many_list">
+	                            <tree string="Advance Payments">
+	                                <field name="name"/>
+	                                <field name="narration" string="Description"/>
+	                                <field name="journal_id" string="Payment Method"/>
+	                                <field name="amount" string="Paid Amount"/>
+	                                <field name="date" string="Date"/>
+	                                <field name="state"/>
+	                            </tree>
+	                        </field>
+                        </group>
+                		<group name="invoice_payments" string="Invoice Payments" colspan="4">
+	                        <field name="inv_pay_ids" nolabel="1">
+	                            <tree string="Invoice Payments">
+	                                <field name="name" string="Description"/>
+	                                <field name="journal_id" string="Payment Method"/>
+	                                <field name="debit" string="Paid Amount"/>
+	                                <field name="date" string="Date"/>
+	                            </tree>
+	                        </field>
+                        </group>
+                    </page>
+                </page>
+               	<field name="amount_tax" position="after">
+               		<field name="amount_paid" widget='monetary' options="{'currency_field': 'currency_id'}" string="Total Paid"/>
+               	</field>                    
+               	<field name="amount_total" position="after">
+                    <div class="oe_subtotal_footer_separator oe_inline">
+                        <label for="residual"/>
+                    </div>
+               		<field name="residual" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+               	</field>     
+            </field>
+        </record>
+    </data>
+</openerp>

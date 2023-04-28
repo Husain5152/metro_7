@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="view_bom_import" model="ir.ui.view">
+            <field name="name">Import BOM</field>
+            <field name="model">bom.import</field>
+            <field name="arch" type="xml">
+              <form string="Import BOM" version="7.0">
+                  <!-- <separator string="Import BOM from Excel"/> -->
+                  <group>
+                      <field name="mrp_bom_id" attrs="{'invisible':[('mrp_bom_id','=',False)]}"/>
+                      <field name="import_file"/>
+                      <field name="file_template_name" invisible="1"/>
+                      <field name="file_template" filename="file_template_name"/>
+                  </group>
+                  <footer>
+                      <button name="import_data" string="Import BOM" type="object" class="oe_highlight"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel" />
+                  </footer>
+              </form>
+            </field>
+        </record>  
+        
+        <record id="action_view_bom_import" model="ir.actions.act_window">
+            <field name="name">Import BOM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bom.import</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_bom_import"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem
+            action="action_view_bom_import"
+            id="menu_mrp_bom_import_action"
+            parent="mrp.menu_mrp_bom"
+            sequence="11"/>    
+       	<menuitem name="Products" 
+            id="mrp.menu_mrp_product_form" 
+            action="mrp.product_supply_method_produce"
+            parent="mrp.menu_mrp_bom"
+            sequence="12"/>  
+              
+        <record id="mrp_bom_import_form_view" model="ir.ui.view">
+            <field name="name">mrp_bom_import_form_view</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="metro_mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+            	<div name="buttons" position="inside">
+            		<button string="Import BOM" name="%(action_view_bom_import)d" type="action" attrs="{'invisible':[('bom_id','!=',False)]}"/>
+            	</div>
+            </field>
+        </record>  
+    </data>
+</openerp>

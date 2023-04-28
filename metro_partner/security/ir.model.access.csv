@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_manager_inquiry,access_hr_manager_inquiry,model_metro_partner_inquiry,metro.group_metro_base_user,1,1,1,1

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- Exhibition Calendar -->
+         <record model="ir.ui.view" id="exhibit_calendar_calendar">
+            <field name="name">exhibit_calendar_calendar</field>
+            <field name="model">exhibit.calendar</field>
+            <field name="arch" type="xml">
+                <calendar string="Exhibition Calendar" color="exhibit_type_id" date_start="date_start" date_stop="date_stop">
+                    <field name="name"/>
+                    <field name="exhibit_type_id"/>
+                </calendar>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="exhibit_calendar_tree">
+            <field name="name">exhibit_calendar_tree</field>
+            <field name="model">exhibit.calendar</field>
+            <field name="arch" type="xml">
+                <tree string="Calendar">
+                    <field name="name"/>
+                    <field name="exhibit_type_id"/>
+                    <field name="date_start" />
+                    <field name="date_stop"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="exhibit_calendar_form">
+            <field name="name">exhibit_calendar_form</field>
+            <field name="model">exhibit.calendar</field>
+            <field name="arch" type="xml">
+                <form string="Create a New Exhibition">
+                	<group>
+	                    <field name="name"/>
+	                    <field name="exhibit_type_id" />
+	                    <field name="date_start" />
+	                    <field name="date_stop" />
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="exhibition_calendar_action">
+            <field name="name">Exhibitions</field>
+            <field name="res_model">exhibit.calendar</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,tree,form</field>
+            <field name="view_id" ref="exhibit_calendar_calendar"/>
+        </record>
+        
+        <menuitem id="menu_exhibition_calendar_action" parent="menu_metro_holiday_calendar_main_action" action="exhibition_calendar_action" sequence="2"/>        
+	</data>
+</openerp>	

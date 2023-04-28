@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="product_measure_form_view" model="ir.ui.view">
+            <field name="name">product_measure_form_view</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="mes_type" position="replace">
+                </field>
+                <field name="uom_id" position="before">
+                    <label for="measure_type"/>
+                    <div>
+                        <field name="measure_type" class="oe_inline" on_change="onchange_measure_type(default_code,measure_type)"/> 
+                        <button name="open_msp_uom_list" type="object" icon="gtk-unindent" 
+                        	context="{'default_category_id':uom_categ_id,'force_categ':True}"
+                        	attrs="{'invisible': ['|',('measure_type','!=','msp'),'|',('uom_categ_id','=', False),('uom_categ_id','=',  %(uom_categ_msp_dummy)d)]}"
+                            help="Open to view or edit the prodcut's unit of measure list! 查看维护产品相关的单位列表!"/>
+                    </div>
+                    <!--<field name="uom_categ_id" attrs="{'invisible': [('measure_type','!=','mmp')]}"/>-->
+                    <field name="uom_categ_id" attrs="{'invisible': [('measure_type','=','msp')]}" domain="[('name','not like','MSP_')]"/>
+                </field>
+                <field name="uom_po_id" position="after">
+                	<field name = "uom_po_price"/>
+                	<field name = "uom_po_factor"/>
+                </field>
+                <field name="uom_id" position="attributes">
+                    <attribute name="domain">[('category_id','=',uom_categ_id)]</attribute>
+                    <attribute name="help">Default Unit of Measure used for all stock operation. For the new product, please save it first, and then you can define the units.</attribute>
+                </field>
+                <field name="uom_po_id" position="attributes">
+                	<attribute name="domain">[('category_id','=',uom_categ_id)]</attribute>
+                </field>              
+            </data>
+            </field>
+		</record>
+		<record id="product_uom_measure_tree_view" model="ir.ui.view">
+            <field name="name">product_uom_measure_tree_view</field>
+            <field name="model">product.uom</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="product.product_uom_tree_view"/>
+            <field name="arch" type="xml">
+            <data>
+
+                <field name="category_id" position="attributes">
+                    <attribute name="invisible">context.get('force_categ')</attribute>
+                </field>
+                <field name="name" position="after">
+                    <field name="cn_name"/>
+                    <field name="code"/>
+                </field>
+                <field name="category_id" position="after">
+                    <field name="uom_type"/>
+                    <field name="factor_display"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                </field>
+            </data>
+            </field>
+		</record>			
+		<record id="product_uom_measure_form_view" model="ir.ui.view">
+            <field name="name">product_uom_measure_form_view</field>
+            <field name="model">product.uom</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_uom_form_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <form position="inside">
+                    <div class="oe_chatter">
+                      <field name="message_follower_ids" widget="mail_followers"/>
+                      <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>>
+                <field name="name" position="after">
+                    <field name="code"/>
+                    <field name="cn_name"/>
+                </field>
+                <field name="category_id" position="attributes">
+                    <attribute name="invisible">context.get('force_categ')</attribute>
+                </field>
+                <field name="rounding" position="after">
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="note" placeholder="Description/Notes..."/>
+                </field>
+            </data>
+            </field>
+		</record>
+
+        <record id="product_uom_category_form_view" model="ir.ui.view">
+            <field name="name">product_uom_category_form_view</field>
+            <field name="model">product.uom.categ</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_uom_categ_form_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="name" position="after">
+                    <field name="cn_name"/>
+                    <field name="id" invisible="1"/>
+                    <field name="uom_ids" colspan="4" nolabel="1" context="{'default_category_id': id}"/>
+                </field>
+            </data>
+            </field>
+		</record>
+
+        <record id="product_uom_category_search_view" model="ir.ui.view">
+            <field name="name">product_uom_category_search_view</field>
+            <field name="model">product.uom.categ</field>
+            <field name="arch" type="xml">
+                <search string="Product UOM Category">
+                    <field name="name"/>
+                    <field name="cn_name"/>
+                    <separator/>
+                    <filter icon="terp-stock" string="Normal UOM Category" name="normal_uom_category" domain="[('name','not like','MSP_')]"/>
+                    <filter icon="terp-stock" string="Interchange UOM Category" name="interchange_uom_category" domain="[('name','like','MSP_')]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="product.product_uom_categ_form_action" model="ir.actions.act_window">
+            <field name="context">{'search_default_normal_uom_category': 1}</field>
+        	<field name="search_view_id" ref="product_uom_category_search_view"/>
+        </record>
+
+        <record id="product_uom_measure_search_view" model="ir.ui.view">
+            <field name="name">product_uom_measure_search_view</field>
+            <field name="model">product.uom</field>
+            <field name="arch" type="xml">
+                <search string="Product UOM">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <separator/>
+                    <filter icon="terp-stock" string="Normal UOM" name="normal_uom" domain="[('category_id','not like','MSP_')]"/>
+                    <filter icon="terp-stock" string="Interchange UOM" name="interchange_uom" domain="[('category_id','like','MSP_')]"/>
+                </search>
+            </field>
+        </record>
+        		
+        <record id="product.product_uom_form_action" model="ir.actions.act_window">
+            <field name="context">{'search_default_normal_uom': 1}</field>
+        	<field name="search_view_id" ref="product_uom_measure_search_view"/>
+        </record>
+        		
+	</data>		    
+</openerp>	

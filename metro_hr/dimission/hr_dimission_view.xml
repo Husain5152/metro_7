@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_hr_root_dimission" parent="hr.menu_hr_root" name="Dimission" groups="base.group_hr_user" sequence="40"/>
+<!-- Employee Dimission Item template-->
+        <record id="view_hr_dimission_item_template_filter" model="ir.ui.view">
+            <field name="name">view_hr_dimission_item_template_filter</field>
+            <field name="model">hr.dimission.item.template</field>
+            <field name="arch" type="xml">
+                <search string="Search Dimission Item Template">
+                    <field name="name" filter_domain="['|',('name','ilike',self),('note','ilike',self)]"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_hr_dimission_item_template_tree" model="ir.ui.view">
+            <field name="name">view_hr_dimission_item_template_tree</field>
+            <field name="model">hr.dimission.item.template</field>
+            <field name="arch" type="xml">
+                <tree string="Dimission Item templated" editable="bottom">
+                    <field name="type"/>
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="note"/>
+                    <field name="department_id"/>
+                    <field name="done_required"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+        
+
+        <record id="action_hr_dimission_item_template" model="ir.actions.act_window">
+            <field name="name">Dimission item template</field>
+            <field name="res_model">hr.dimission.item.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_hr_dimission_item_template_tree"/>
+            <field name="search_view_id" ref="view_hr_dimission_item_template_filter"/>
+        </record>
+                        
+        <menuitem action="action_hr_dimission_item_template" id="menu_hr_dimission_item_template" parent="menu_hr_root_dimission" sequence="10"/>
+                
+<!-- Employee Dimission -->
+        <record id="view_hr_dimission_filter" model="ir.ui.view">
+            <field name="name">view_hr_dimission_filter</field>
+            <field name="model">hr.dimission</field>
+            <field name="arch" type="xml">
+                <search string="Search Dimission">
+                    <field name="employee_id" string="Employee" domain="[('active','=',False)]"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_hr_dimission_tree" model="ir.ui.view">
+            <field name="name">view_hr_dimission_tree</field>
+            <field name="model">hr.dimission</field>
+            <field name="arch" type="xml">
+                <tree string="Dimission">
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="date_request"/>
+                    <field name="date_done"/>
+                    <field name="state"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_hr_dimission_form" model="ir.ui.view">
+            <field name="name">view_hr_dimission_form</field>
+            <field name="model">hr.dimission</field>
+            <field name="arch" type="xml">
+                <form string="Dimission" version="7.0">
+                <header>     
+                    <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight" groups="base.group_hr_user"/>
+                    <button name="action_done" type="object" string="Done" states='in_progress' groups="base.group_hr_user"/>
+                    <button name="action_cancel" type="object" string="Cancel" states='in_progress' groups="base.group_hr_user" confirm="Are you sure canel this dimission order?"/>
+                    
+                    <button name="action_rehire" type="object" string="Rehire" states='done' groups="base.group_hr_manager" confirm="Are you sure rehire this employee?"/>
+                    <button name="action_cancel" type="object" string="Cancel" states='done' groups="base.group_hr_manager" confirm="Are you sure canel this done dimission order?"/>
+
+                    <button name="action_cancel2draft" type="object" string="Set to Draft" states='cancel' groups="base.group_hr_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                	<group col="4">
+                		<field name="employee_id" on_change="onchange_employee(employee_id)"/>
+                		<field name="department_id"/>
+                		<field name="job_id"/>
+                		<field name="mobile_phone"/>
+                		<field name="date_request"/>
+                		<field name="date_done"/>
+                	</group>
+                	<label for="dimmission_reason"/>
+              		<field name="dimmission_reason"/>
+              		<label for="advice_to_company"/>
+              		<field name="advice_to_company"/>                	
+                	<group col="4">
+                		<label for="attrpt_ids"/>
+                		<div>
+                			<field name="attrpt_ids" widget="many2many_tags" class="oe_inline"/>
+		            		<button name="print_attendance" type="object" help="Print Attendance Detail" icon="gtk-print"/>
+                		</div>
+                		
+                		<label for="hr_clock_ids"/>
+                		<div>
+                			<field name="hr_clock_ids" widget="many2many_tags" class="oe_inline"/>
+		            		<button name="remove_from_clock" type="object" help="Remove from HR Clocks" icon="gtk-clear" groups="base.group_hr_user" confirm="Are you sure to remove this employee on the HR clocks?"/>
+                		</div>
+                		
+                		<label for="payslip_id"/>
+                		<div>
+                			<field name="payslip_id" widget="many2many_tags" domain="[('employee_id','=',employee_id)]" class="oe_inline"/>
+		            		<button name="print_payslip" type="object" help="Print Slips" icon="gtk-print"/>
+                		</div>
+
+                		<field name="borrow_money_residual"/>
+                		<field name="company_id" groups="base.group_multi_company"/>
+                	</group>
+                	<notebook>
+                		<page string="Approvals">
+                			<field name="approve_ids">
+                				<tree string="Items" create="0" delete="0" editable="bottom"> 
+                					<field name="template_id" invisible="1"/>                					
+                					<field name="type" invisible="1"/>
+                					<field name="sequence"/>
+                					<field name="name"/>
+                					<field name="note"/>
+                					<field name="department_id" on_change="onchange_department(department_id)"/>
+                					<field name="process_emp_id"/>
+                					<field name="process_date"/>                					
+                					<field name="state_approve"/>
+                					
+                					<field name="doc_file_name" invisible="1"/>
+                					<field name="doc_file" filename="doc_file_name"/>   
+                					<field name="done_required"/>             					
+                				</tree>
+                			</field>
+                		</page>
+                		<page string="Transfers">
+                			<field name="transfer_ids">
+                				<tree string="Items" create="0" delete="0" editable="bottom"> 
+                					<field name="template_id" invisible="1"/>       
+                					<field name="type" invisible="1"/>         					
+                					<field name="sequence"/>
+                					<field name="name"/>
+                					<field name="note"/>
+                					<field name="department_id" on_change="onchange_department(department_id)"/>
+                					<field name="process_emp_id"/>
+                					<field name="process_date"/>                					
+                					<field name="state_transfer"/>
+                					
+                					<field name="doc_file_name" invisible="1"/>
+                					<field name="doc_file" filename="doc_file_name"/>       
+                					<field name="done_required"/>         					
+                				</tree>              			
+                			</field>
+                		</page>
+                		<page string="Attachments">
+                			<field name="attachment_lines"/>	
+                		</page>
+                	</notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_dimission" model="ir.actions.act_window">
+            <field name="name">Dimission</field>
+            <field name="res_model">hr.dimission</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_dimission_tree"/>
+            <field name="search_view_id" ref="view_hr_dimission_filter"/>
+        </record>
+                        
+        <menuitem action="action_hr_dimission" id="menu_hr_dimission" parent="menu_hr_root_dimission" sequence="1"/>
+        
+<!-- Company View, add the dimission item templates configuration -->
+        <record model="ir.ui.view" id="view_company_form_dimission">
+            <field name="name">view_company_form_dimission</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+				<xpath expr="//group[@name='account_grp']" position="after">
+                    <group name="hr_dimission" string="Dimission">
+                        <field name="approve_ids" widget="many2many_tags"/>
+                        <field name="transfer_ids" widget="many2many_tags"/>          
+                    </group>
+                </xpath>
+            </field>
+        </record>
+<!-- Employees with active=False -->
+        <record id="open_view_employee_list_dimission" model="ir.actions.act_window">
+            <field name="name">Dimission Employees</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('active','=',False)]</field>
+            <field name="search_view_id" ref="hr.view_employee_filter"/>
+        </record>
+        <menuitem action="open_view_employee_list_dimission" id="menu_hr_dimission_employee" parent="menu_hr_root_dimission" sequence="2"/>
+<!-- Employee contracts with employee_id.active=False -->
+        <record id="action_hr_contract_dimission" model="ir.actions.act_window">
+            <field name="name">Dimission Contracts</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('employee_id.active','=',False)]</field>
+            <field name="search_view_id" ref="hr_contract.hr_contract_view_search"/>
+        </record>
+        <menuitem action="action_hr_contract_dimission" id="menu_hr_dimission_contract" parent="menu_hr_root_dimission" sequence="3"/>
+
+<!-- Original contracts action only show the contracts employee_id.active=True -->
+        <record id="hr_contract.action_hr_contract" model="ir.actions.act_window">
+            <field name="res_model">hr.contract</field>
+            <field name="domain">[('employee_id.active','=',True)]</field>
+        </record>
+                       
+    </data>
+</openerp>
+

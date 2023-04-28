@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>      
+<!-- since the product_product_consultant' was changed by users to use as other usage
+so use this product for employee's product by default -->        
+        <record id="product_employee_cost" model="product.product">
+            <field name="list_price">0.0</field>
+            <field name="standard_price">0.0</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="name">Employee Cost(Reserved)</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+            <field name="measure_type">mmp</field>
+            <field name="uom_categ_id" ref="product.uom_categ_wtime"/>
+            <field name="default_code">RESERVED_001</field>
+            <field name="company_id"></field>
+        </record>     
+    </data>    
+
+    <data noupdate="1">        
+<!-- Clock sync data cron -->         
+        <record id="ir_cron_scheduler_hr_clock_download" model="ir.cron">
+            <field name="name">HR Clock log data download</field>
+            <field name="interval_number">30</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model">hr.clock</field>
+            <field name="function">download_log</field>
+            <field name="args">()</field>
+        </record>
+<!-- Work Hours -->        
+        <record forcecreate="True" id="decimal_work_hours" model="decimal.precision">
+            <field name="name">HR Attend Hours</field>
+            <field name="digits">2</field>
+        </record> 
+<!-- Work Days -->        
+        <record forcecreate="True" id="decimal_work_days" model="decimal.precision">
+            <field name="name">HR Attend Days</field>
+            <field name="digits">2</field>
+        </record>       
+    </data>
+</openerp>

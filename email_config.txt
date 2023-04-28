@@ -1,0 +1,19 @@
+email_from = metro_erp_uat@163.com
+smtp_server = smtp.163.com
+smtp_user = metro_erp_uat@163.com
+smtp_password = 3metro!!
+smtp_port = 25
+smtp_ssl = True
+
+email_from = metroerp@metrospv.cn
+smtp_server = mspv-exc1
+smtp_user = False
+smtp_password = False
+smtp_port = 25
+smtp_ssl = False
+
+Username:  metroerp
+Password:  asdJK&56!!
+Email:  metroerp@metrospv.cn
+Server Name:  mspv-exc1
+Port:  25 (probably)

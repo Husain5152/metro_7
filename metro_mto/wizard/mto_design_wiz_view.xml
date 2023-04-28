@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_mto_design_wiz" model="ir.ui.view">
+            <field name="name">view_mto_design_wiz</field>
+            <field name="model">mto.design.wiz</field>
+            <field name="arch" type="xml">
+               <form string="Product Configuration Wizard" version="7.0">
+               		<separator string='Please select configuration template'/>
+    				<field name="design_tmpl_id"/>
+                    <footer>
+                        <button name="act_config" string="Config" type="object" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+                
+        <record id="mto_design_form_view_wiz" model="ir.ui.view">
+            <field name="name">mto_design_form_view_wiz</field>
+            <field name="model">mto.design</field>
+            <field name="inherit_id" ref="metro_mto.mto_design_form_view"/>
+            <field name="arch" type="xml">
+            	<notebook position="after">
+                    <footer invisible="not context.get('wizard')">
+                        <button name="act_pdf_only" string="PDF" type="object"/>
+                        <button name="act_pdf_log" string="PDF&amp;Save Log" type="object"/>
+                        <button name="act_pdf_configuration" string="PDF&amp;Save Configuration" type="object"/>
+                        <button name="act_pdf_log_configuration" string="PDF&amp;Save Log&amp;Configuration" type="object"/>
+                        or
+                        <button name="act_cancel" string="Cancel" type="object"/>                        
+                    </footer>
+            	</notebook>
+            </field>
+        </record>
+                
+        <record id="action_mto_design_wiz" model="ir.actions.act_window">
+            <field name="name">Configuration Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mto.design.wiz</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id"  ref="view_mto_design_wiz" />
+            <field name="target">new</field>
+        </record>
+        <menuitem action="action_mto_design_wiz" id="menu_mto_design_wiz" parent="metro_mto.menu_mto_design" sequence="5"/>
+                    
+<!-- Configuration Log -->
+        <record id="view_mto_design_wiz_log_form" model="ir.ui.view">
+            <field name="name">view_mto_design_wiz_log_form</field>
+            <field name="model">mto.design.wiz</field>
+            <field name="arch" type="xml">
+               <form string="Product Configuration Log" version="7.0" edit="false" create="false">
+               		<group>
+	               		<group>
+		    				<field name="name" string="Name"/>
+		    				<field name="design_tmpl_id"/>
+		    				<field name="design_id"/> 
+	    				</group>  
+	               		<group>
+		                    <field name="datas" filename="datas_fname"/>
+		                    <field name="datas_fname" invisible="1"/> 
+		    				<field name="store"/>     
+		    				<field name="create_uid"/>    
+		    				<field name="create_date"/>
+	    				</group>
+		                <group string="Indexed Content" colspan="4">
+		                    <field name="index_content" nolabel="1"/>
+		                </group>
+    				</group>
+                </form>
+            </field>
+        </record>
+        <record id="view_mto_design_wiz_log_tree" model="ir.ui.view">
+            <field name="name">view_mto_design_wiz_log_tree</field>
+            <field name="model">mto.design.wiz</field>
+            <field name="arch" type="xml">
+               <tree string="Product Configuration Log" version="7.0" create="false">
+    				<field name="name"/>
+    				<field name="design_tmpl_id"/>
+    				<field name="design_id"/>  
+<!--                     <field name="datas" filename="datas_fname"/>
+                    <field name="datas_fname" invisible="1"/> --> 
+    				<field name="store"/>      
+    				<field name="create_uid"/>    
+    				<field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_mto_design_wiz_log_search" model="ir.ui.view">
+            <field name="name">view_mto_design_wiz_log_search</field>
+            <field name="model">mto.design.wiz</field>
+            <field name="arch" type="xml">
+                <search string="Configuration Log">
+                    <field name="name" filter_domain="['|', ('name','ilike',self), ('datas_fname','ilike',self)]" string="Configuration Log"/>
+                    <field name="index_content"/>
+                    <separator/>
+                    <field name="design_tmpl_id"/>
+                    <field name="design_id"/>
+                    <field name="create_date"/>
+                    <field name="create_uid"/>
+                    <separator/>                    
+                    <filter name="no_store" string="No Store" icon="terp-personal" domain="[('store','=',False)]"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Template" icon="terp-personal" domain="[]" context="{'group_by':'design_tmpl_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>        
+        <record id="action_mto_design_wiz_log" model="ir.actions.act_window">
+            <field name="name">Configuration Log</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mto.design.wiz</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="auto_search" eval="True"/>
+            <field name="view_id" ref="view_mto_design_wiz_log_tree"/>
+            <field name="search_view_id" ref="view_mto_design_wiz_log_search"/>
+        </record>
+        <record id="action_mto_design_wiz_log_tree" model="ir.actions.act_window.view"> 
+        	<field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_mto_design_wiz_log_tree"/>
+        	<field name="act_window_id" ref="action_mto_design_wiz_log"/>
+        </record> 
+        <record id="action_mto_design_wiz_log_form" model="ir.actions.act_window.view"> 
+        	<field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_mto_design_wiz_log_form"/>
+        	<field name="act_window_id" ref="action_mto_design_wiz_log"/>
+        </record>          
+        <menuitem action="action_mto_design_wiz_log" id="menu_mto_design_wiz_log" parent="metro_mto.menu_mto_design" sequence="6"/>                                       
+    </data>
+</openerp>
+

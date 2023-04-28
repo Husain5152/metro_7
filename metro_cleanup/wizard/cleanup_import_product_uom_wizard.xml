@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_cleanup_import_product_uom_wizard" model="ir.ui.view">
+            <field name="name">view_cleanup_import_product_uom_wizard</field>
+            <field name="model">cleanup.import.product.uom.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Import Product UOM Wizard" version="7.0">
+                    <separator string="Upload file to import the UOM (only based on chinese uom name):"/>
+                   <group>
+                        <field name="import_file"/>
+                   </group>
+                    <footer>
+                        <button name="do_import" string="Do Import" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

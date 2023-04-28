@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_company_form_period">
+            <field name="name">view_company_form_period</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+	            <field name="currency_id" position="after">
+	                <field name="period_close_type"/>
+	                <field name="income_account_types" widget='many2many_tags'/>
+	                <field name="expense_account_types" widget='many2many_tags'/>
+	            </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

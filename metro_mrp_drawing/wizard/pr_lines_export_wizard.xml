@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_pr_lines_export_wizard" model="ir.ui.view">
+            <field name="name">view_pr_lines_export_wizard</field>
+            <field name="model">pr.lines.export.wizard</field>
+            <field name="arch" type="xml">
+                <form string="PR Lines Export Wizard" version="7.0">
+                    <separator string="Choose date to export lines"/>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <footer>
+                        <button name="do_export" string="Export Lines" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    <record model="ir.actions.act_window" id="action_pr_lines_export_wizard">
+            <field name="name">PR Lines Export</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pr.lines.export.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_pr_lines_export_wizard"/>
+        </record>
+
+        <menuitem
+        id="menu_pr_lines_export_wizard"
+        sequence="9"
+        parent="metro_purchase_pr"
+        action="action_pr_lines_export_wizard"
+        groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+    </data>
+</openerp>

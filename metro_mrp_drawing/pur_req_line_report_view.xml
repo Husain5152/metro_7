@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_pur_req_line_report_tree">
+            <field name="name">pur.req.line.report.tree</field>
+            <field name="model">pur.req.line.report</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Requisition Lines">
+                    <field name="erp_no"/>
+                    <field name="product_id"/>
+                    <field name="product_uom_id"/>
+                    <field name="supplier_id"/>
+                    <field name="part_number"/>
+                    <field name="description"/>
+                    <field name="part_type"/>
+                    <field name="material"/>
+                    <field name="thickness"/>
+                    <field name="standard"/>
+                    <field name="source"/>
+                    <field name="unit"/>
+                    <field name="unit_id"/>
+                    <field name="product_onhand_qty"/>
+                    <field name="product_qty_req"/>
+                    <field name="product_grand_qty_remain"/>
+                    <field name="product_available_qty"/>
+                    <field name="product_reserved_qty"/>
+                    <field name="price"/>
+                    <field name="amount_total"/>
+                </tree>
+          </field>
+        </record>
+        <record id="view_pur_req_line_report_filter" model="ir.ui.view">
+            <field name="name">pur.req.line.report.select</field>
+            <field name="model">pur.req.line.report</field>
+            <field name="arch" type="xml">
+                <search string="Purchase Requisition Search">
+                    <field name="product_id"/>
+                    <field name="erp_no"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_pur_req_line_report">
+            <field name="name">Grand Requested PR</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pur.req.line.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="view_pur_req_line_report_filter"/>
+        </record>
+        <menuitem
+            id="menu_pur_req_grand_requested"
+            sequence="7"
+            name = "Grand Requested PR"
+            parent="metro_purchase_pr"
+            action="action_pur_req_line_report"
+            groups="base.group_user,metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+    </data>
+</openerp>

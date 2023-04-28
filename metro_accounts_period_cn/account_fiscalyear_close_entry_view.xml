@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_fiscalyear_close_entry" model="ir.ui.view">
+            <field name="name">view_account_fiscalyear_close_entry</field>
+            <field name="model">account.fiscalyear.close.entry</field>
+            <field name="arch" type="xml">
+                <form string="Generate Year Closing Entries" version="7.0">
+                    <separator string="Generate Year Closing Entries"/>
+                    <label string="This wizard will generate the end of year journal entries of selected fiscal year. Note that you can run this wizard many times for the same yeat: it will simply replace the old closing entries with the new ones."/>
+                    <newline/>
+                    <group col="4">
+                        <field name="fiscalyear_id"/>
+                        <field name="journal_id"/>
+                        <field name="auto_opt"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <label for="notes"/>
+                    <field name="notes"/>
+                    <footer>
+                        <button string="Create" name="data_save" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_account_fiscalyear_close_entry" model="ir.actions.act_window">
+            <field name="name">Generate Year Closing Entries</field>
+            <field name="res_model">account.fiscalyear.close.entry</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_account_fiscalyear_close_entry"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_account_fiscalyear_close_entry"
+            id="menu_account_fiscalyear_close_entry"
+            parent="menu_account_period_cn" 
+            sequence="5"/>
+
+    </data>
+</openerp>

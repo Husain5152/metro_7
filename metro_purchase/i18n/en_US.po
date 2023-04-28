@@ -1,0 +1,1992 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* metro_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-15 09:36+0000\n"
+"PO-Revision-Date: 2016-08-15 09:36+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "{'readonly':[('state','not in',('draft','sent','rejected'))]}"
+msgstr "{'readonly':[('state','not in',('draft','sent','rejected'))]}"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Changing Rejected"
+msgstr "Changing Rejected"
+
+#. module: metro_purchase
+#: view:purchase.history.supplier.change:0
+msgid "Supplier Change Report"
+msgstr "Supplier Change Report"
+
+#. module: metro_purchase
+#: view:pur.history:0
+msgid "History"
+msgstr "History"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_po_lines_ids
+#: field:pur.req.line,po_lines_ids:0
+msgid "Purchase Order Lines"
+msgstr "Purchase Order Lines"
+
+#. module: metro_purchase
+#: field:change.log.po.line,value_new:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_value_new
+msgid "New Value"
+msgstr "New Value"
+
+#. module: metro_purchase
+#: field:change.log.po.line,field_name:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_field_name
+msgid "Field Name"
+msgstr "Field Name"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines which are in draft state"
+msgstr "Purchase order lines which are in draft state"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_reject_msg
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_reject_msg
+#: field:purchase.order,reject_msg:0
+#: field:purchase.order.line,reject_msg:0
+msgid "Rejection Message"
+msgstr "Rejection Message"
+
+#. module: metro_purchase
+#: report:purchase.quotation.metro:0
+msgid "Purchase Quotation"
+msgstr "Purchase Quotation"
+
+#. module: metro_purchase
+#: model:res.groups,name:metro_purchase.group_pur_req_checker
+msgid "Checker"
+msgstr "Checker"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "盖章(Stamp):"
+msgstr "盖章(Stamp):"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_product_uom_base_qty
+#: field:purchase.order.line,product_uom_base_qty:0
+msgid "Base Quantity"
+msgstr "Base Quantity"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_full_gen_po
+#: field:pur.req,full_gen_po:0
+msgid "All products generated PO"
+msgstr "All products generated PO"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_pur_req_line_full
+msgid "PR by Products"
+msgstr "PR by Products"
+
+#. module: metro_purchase
+#: model:res.groups,name:metro_purchase.group_pur_req_manager
+msgid "Manager"
+msgstr "Manager"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines waitting approval"
+msgstr "Purchase order lines waitting approval"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Scheduled Date"
+msgstr "Scheduled Date"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines been rejected"
+msgstr "Purchase order lines been rejected"
+
+#. module: metro_purchase
+#: help:pur.req,full_gen_po:0
+msgid "It indicates that this requsition's all lines generated PO"
+msgstr "It indicates that this requsition's all lines generated PO"
+
+#. module: metro_purchase
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+msgid "Purchase Done"
+msgstr "Purchase Done"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_pur_req
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_req_line_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_req_line_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_req_id
+#: model:ir.module.category,name:metro_purchase.module_category_pur_req
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: field:pur.req.line,req_id:0
+#: field:pur.req.po.line,req_line_id:0
+#: field:purchase.order,req_id:0
+#: field:purchase.order.line,req_line_id:0
+msgid "Purchase Requisition"
+msgstr "Purchase Requisition"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_inv_uom_id
+#: field:pur.req.line,inv_uom_id:0
+msgid "Inventory UOM"
+msgstr "Inventory UOM"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_pur_req
+#: model:ir.model,name:metro_purchase.model_pur_req
+msgid "Purchase Requisitions"
+msgstr "Purchase Requisitions"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Approved purchase order lines"
+msgstr "Approved purchase order lines"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_purchase_line_reject
+msgid "Confirm Purchase Order Line Rejection"
+msgstr "Confirm Purchase Order Line Rejection"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_price
+#: field:pur.req.po.line,uom_po_price:0
+msgid "PO Unit Price"
+msgstr "PO Unit Price"
+
+#. module: metro_purchase
+#: field:change.log.po.line,product_id:0
+#: model:ir.model,name:metro_purchase.model_product_product
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_product_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_change_product_id
+#: field:pur.history,product_id:0
+#: field:pur.invoice.line,product_id:0
+#: report:pur.req:0
+#: field:pur.req.line,product_id:0
+#: field:pur.req.po.line,product_id:0
+#: view:purchase.history:0
+#: field:purchase.history,product_id:0
+#: field:purchase.history.supplier.change,product_id:0
+#: view:purchase.order.line:0
+msgid "Product"
+msgstr "Product"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_date
+#: field:pay.po,date:0
+msgid "Payment Date"
+msgstr "Payment Date"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pay_po
+msgid "Wizard to generate a payment from the purchase order"
+msgstr "Wizard to generate a payment from the purchase order"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_inv_pay_ids
+#: view:purchase.order:0
+#: field:purchase.order,inv_pay_ids:0
+msgid "Invoice Payments"
+msgstr "Invoice Payments"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_product_template
+msgid "Product Template"
+msgstr "Product Template"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Confirm Changing"
+msgstr "Confirm Changing"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_delay
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_delay
+#: field:pur.req.po.line,supplier_delay:0
+#: field:purchase.order.line,supplier_delay:0
+msgid "Supplier Lead Time"
+msgstr "Supplier Lead Time"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "{'po_taxes_id':taxes_id}"
+msgstr "{'po_taxes_id':taxes_id}"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Changing Waiting Approval"
+msgstr "Changing Waiting Approval"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_payment_term_id
+#: field:purchase.order.line,payment_term_id:0
+msgid "Payment Term"
+msgstr "Payment Term"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_req_line
+msgid "Purchase Requisition Line"
+msgstr "Purchase Requisition Line"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "核准(Approved):"
+msgstr "核准(Approved):"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_receipt_number
+#: field:purchase.order,receipt_number:0
+msgid "Receipt Number"
+msgstr "Receipt Number"
+
+#. module: metro_purchase
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+msgid "New"
+msgstr "New"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_company_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_uom_categ_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_image_medium
+#: field:pur.req.line,company_id:0
+#: field:pur.req.line,uom_categ_id:0
+#: field:purchase.order.line,image_medium:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_invoice
+msgid "Purchase Orders Invoice Creation"
+msgstr "Purchase Orders Invoice Creation"
+
+#. module: metro_purchase
+#: view:pur.history:0
+#: view:purchase.order.line:0
+msgid "Purchasing History"
+msgstr "Purchasing History"
+
+#. module: metro_purchase
+#: help:purchase.order,payment_exists:0
+msgid "It indicates that purchase order has at least one payment."
+msgstr "It indicates that purchase order has at least one payment."
+
+#. module: metro_purchase
+#: report:pur.req:0
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Qty"
+msgstr "Qty"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Date Req."
+msgstr "Date Req."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price
+#: field:purchase.history,price:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Price"
+msgstr "Price"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_uom
+#: field:purchase.history,uom:0
+msgid "UOM"
+msgstr "UOM"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.metro_po_line_full_action
+#: view:pur.invoice:0
+msgid "Purchase Products"
+msgstr "Purchase Products"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_mfg_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_mfg_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_mfg_ids
+#: field:pur.req.line,mfg_ids:0
+#: field:pur.req.po.line,mfg_ids:0
+#: field:purchase.order.line,mfg_ids:0
+msgid "MFG IDs"
+msgstr "MFG IDs"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Confirm Order"
+msgstr "Confirm Order"
+
+#. module: metro_purchase
+#: view:change.log.po.line:0
+msgid "Change Log of PO Lines"
+msgstr "Change Log of PO Lines"
+
+#. module: metro_purchase
+#: view:pay.po:0
+msgid "Pay"
+msgstr "Pay"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_create_uid
+#: field:purchase.order.line,create_uid:0
+msgid "Creator"
+msgstr "Creator"
+
+#. module: metro_purchase
+#: view:purchase.history.supplier.change:0
+msgid "Please select the product and number of days you want to show?"
+msgstr "Please select the product and number of days you want to show?"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.open_pay_po
+msgid "Advance Purchase Payment"
+msgstr "Advance Purchase Payment"
+
+#. module: metro_purchase
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Part Number"
+msgstr "Part Number"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_product_product_product_qty_req
+#: field:product.product,product_qty_req:0
+msgid "Requesting Quantities"
+msgstr "Requesting Quantities"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "PR #"
+msgstr "PR #"
+
+#. module: metro_purchase
+#: view:purchase.history.price.change:0
+msgid "Price Change Report"
+msgstr "Price Change Report"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_date_required
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_date_required
+#: report:pur.req:0
+#: field:pur.req.line,date_required:0
+#: field:pur.req.po.line,date_required:0
+msgid "Date Required"
+msgstr "Date Required"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "red:state in ('except_invoice','except_picking','rejected') or (not shipped and state not in ('cancel', 'done', 'cancel_except') and current_date > minimum_planned_date);grey:state=='cancel';blue:state in ('wait','confirmed');green:state=='done'"
+msgstr "red:state in ('except_invoice','except_picking','rejected') or (not shipped and state not in ('cancel', 'done', 'cancel_except') and current_date > minimum_planned_date);grey:state=='cancel';blue:state in ('wait','confirmed');green:state=='done'"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_payment_moves
+#: field:purchase.order,payment_moves:0
+msgid "Payment Moves"
+msgstr "Payment Moves"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_procurement_order_pur_req_line_id
+#: field:procurement.order,pur_req_line_id:0
+msgid "Purchase Requsition Line"
+msgstr "Purchase Requsition Line"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_amount_max
+#: field:pay.po,amount_max:0
+msgid "Max Amount"
+msgstr "Max Amount"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_ids
+#: field:pur.req,po_ids:0
+msgid "Related PO"
+msgstr "Related PO"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Cancelled with Exception"
+msgstr "Cancelled with Exception"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: model:ir.actions.act_window,name:metro_purchase.act_purchase_changing_reject
+msgid "Confirm Purchase Order Changing Rejection"
+msgstr "Confirm Purchase Order Changing Rejection"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Incoming Shipments & Invoices"
+msgstr "Incoming Shipments & Invoices"
+
+#. module: metro_purchase
+#: report:purchase.history.new.product:0
+msgid "PRODUCT UPDATES"
+msgstr "PRODUCT UPDATES"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_po_info
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_qty
+#: field:pur.req.line,po_info:0
+#: field:pur.req.po.line,uom_po_qty:0
+msgid "PO Quantity"
+msgstr "PO Quantity"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Requisition #"
+msgstr "Requisition #"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Are you sure you want to make this purchase order done manually?"
+msgstr "Are you sure you want to make this purchase order done manually?"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Manual Done"
+msgstr "Manual Done"
+
+#. module: metro_purchase
+#: field:purchase.history.new.product,days:0
+#: field:purchase.history.price.change,days:0
+#: field:purchase.history.supplier.change,days:0
+msgid "Days"
+msgstr "Days"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_unread
+#: field:pur.req,message_unread:0
+msgid "Unread Messages"
+msgstr "Unread Messages"
+
+#. module: metro_purchase
+#: help:purchase.order,receipt_number:0
+msgid "The reference of this invoice as provided by the partner."
+msgstr "The reference of this invoice as provided by the partner."
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Receive Invoice"
+msgstr "Receive Invoice"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_history
+msgid "Product's purchasing history"
+msgstr "Product's purchasing history"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_confirm_msg
+msgid "Action Confirming Message"
+msgstr "Action Confirming Message"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_purchase_history_price_change
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_history_price_change
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price_change_group_price_change_ids
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_history_price_change
+#: field:purchase.history.price.change.group,price_change_ids:0
+msgid "Price Changes"
+msgstr "Price Changes"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.purchase_history_action
+#: model:ir.model,name:metro_purchase.model_purchase_history
+#: model:ir.model.fields,field_description:metro_purchase.field_product_product_purchase_history
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_purchase_history
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_purchase_history
+#: view:product.product:0
+#: field:product.product,purchase_history:0
+#: view:purchase.history:0
+#: view:purchase.order:0
+#: field:purchase.order,purchase_history:0
+msgid "Purchase History"
+msgstr "Purchase History"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Done With Exception"
+msgstr "Done With Exception"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_procurement_order_pur_req_id
+#: field:procurement.order,pur_req_id:0
+msgid "Purchase Requsition"
+msgstr "Purchase Requsition"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "采购(Purchaser):"
+msgstr "采购(Purchaser):"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Invoices and Receptions"
+msgstr "Invoices and Receptions"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_change_log_po_line
+msgid "change.log.po.line"
+msgstr "change.log.po.line"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'supplier_prod_id':supplier_prod_id,'supplier_prod_name':supplier_prod_name,'supplier_prod_code':supplier_prod_code,'supplier_delay':supplier_delay}"
+msgstr "{'supplier_prod_id':supplier_prod_id,'supplier_prod_name':supplier_prod_name,'supplier_prod_code':supplier_prod_code,'supplier_delay':supplier_delay}"
+
+#. module: metro_purchase
+#: help:pur.req,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_max_qty
+#: field:pur.invoice.line,product_max_qty:0
+msgid "Max Quantity"
+msgstr "Max Quantity"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Purchase orders which are cancelled"
+msgstr "Purchase orders which are cancelled"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_quotation_metro
+msgid "Request for Quotation"
+msgstr "Request for Quotation"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+msgid "Approved"
+msgstr "Approved"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "oe_form_sheet_width_wider"
+msgstr "oe_form_sheet_width_wider"
+
+#. module: metro_purchase
+#: constraint:pay.po:0
+msgid "Pay amount only can be between zero and the balance."
+msgstr "Pay amount only can be between zero and the balance."
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_order_group
+msgid "Purchase Order Merge"
+msgstr "Purchase Order Merge"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_report_oversight
+msgid "Oversight"
+msgstr "Oversight"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Order Date:"
+msgstr "Order Date:"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Incoming Shipments"
+msgstr "Incoming Shipments"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Reject Order"
+msgstr "Reject Order"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_product_uom_base
+#: field:purchase.order.line,product_uom_base:0
+msgid "Base UOM"
+msgstr "Base UOM"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_payment_ids
+#: view:purchase.order:0
+#: field:purchase.order,payment_ids:0
+msgid "Advance Payments"
+msgstr "Advance Payments"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_mfg_id
+#: field:purchase.order.line,mfg_id:0
+msgid "MFG ID"
+msgstr "MFG ID"
+
+#. module: metro_purchase
+#: report:purchase.history.supplier.change:0
+msgid "SUPPLIER CHANGES"
+msgstr "SUPPLIER CHANGES"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: view:pay.po:0
+#: view:pur.invoice:0
+#: view:pur.req:0
+#: view:pur.req.po:0
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+#: view:purchase.history.supplier.change:0
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: metro_purchase
+#: model:mail.message.subtype,name:metro_purchase.mt_rfq_rejected
+msgid "RFQ Rejected"
+msgstr "RFQ Rejected"
+
+#. module: metro_purchase
+#: help:pur.req,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Tel.:"
+msgstr "Tel.:"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: view:pur.req.line:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: metro_purchase
+#: field:purchase.order.line,sequence:0
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Taxes:"
+msgstr "Taxes:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_date_order
+#: field:pur.history.line,date_order:0
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Order Date"
+msgstr "Order Date"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_req_po
+msgid "Requisition's Purchase Order"
+msgstr "Requisition's Purchase Order"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Comments..."
+msgstr "Comments..."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_state
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_state
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_state
+#: field:pur.history.line,state:0
+#: view:pur.req:0
+#: field:pur.req,state:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_state:0
+#: view:purchase.order.line:0
+msgid "Status"
+msgstr "Status"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_pur_history
+msgid "Product's Purchasing History"
+msgstr "Product's Purchasing History"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_amount
+#: field:pay.po,amount:0
+msgid "Amount"
+msgstr "Amount"
+
+#. module: metro_purchase
+#: constraint:pur.req.po.line:0
+msgid "Product quantity exceeds the remaining quantity"
+msgstr "Product quantity exceeds the remaining quantity"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_ap_checked
+#: field:purchase.order,ap_checked:0
+msgid "Payable Checked"
+msgstr "Payable Checked"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Waiting Approval"
+msgstr "Waiting Approval"
+
+#. module: metro_purchase
+#: field:change.log.po.line,value_old:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_value_old
+msgid "Old Value"
+msgstr "Old Value"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Date Ordered"
+msgstr "Date Ordered"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Receive Products"
+msgstr "Receive Products"
+
+#. module: metro_purchase
+#: sql_constraint:pur.req:0
+msgid "Order Reference must be unique!"
+msgstr "Order Reference must be unique!"
+
+#. module: metro_purchase
+#: view:pay.po:0
+msgid "Purchase Order Prepayment"
+msgstr "Purchase Order Prepayment"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_pur_invoice
+msgid "Create Purchase Invoice"
+msgstr "Create Purchase Invoice"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Not Sent to Supplier"
+msgstr "Not Sent to Supplier"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_procurement_order
+msgid "Procurement"
+msgstr "Procurement"
+
+#. module: metro_purchase
+#: help:pur.req,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Expected"
+msgstr "Expected"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_req_po_line
+msgid "pur.req.po.line"
+msgstr "pur.req.po.line"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Total :"
+msgstr "Total :"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Invoices"
+msgstr "Invoices"
+
+#. module: metro_purchase
+#: view:pur.req.line:0
+msgid "Search Purchase Requisition Lines"
+msgstr "Search Purchase Requisition Lines"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_comments
+#: field:purchase.order,comments:0
+msgid "Comments"
+msgstr "Comments"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Requester:"
+msgstr "Requester:"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: view:purchase.history:0
+#: view:purchase.order.line:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_reason
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_req_reason
+#: field:pur.req.line,req_reason:0
+#: field:pur.req.po.line,req_reason:0
+msgid "Reason and use"
+msgstr "Reason and use"
+
+#. module: metro_purchase
+#: model:res.groups,name:metro_purchase.group_pur_req_buyer
+msgid "Buyer"
+msgstr "Buyer"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_uom_id
+#: field:pur.req.line,product_uom_id:0
+msgid "Product UOM"
+msgstr "Product UOM"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_invoice_line
+msgid "pur.invoice.line"
+msgstr "pur.invoice.line"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "bold:state=='done' or (not shipped and state not in ('cancel', 'done') and current_date > minimum_planned_date)"
+msgstr "bold:state=='done' or (not shipped and state not in ('cancel', 'done') and current_date > minimum_planned_date)"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Net Total :"
+msgstr "Net Total :"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_follower_ids
+#: field:pur.req,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "{'readonly':[('state','not in',('draft','sent','rejected','changing','changing_rejected'))]}"
+msgstr "{'readonly':[('state','not in',('draft','sent','rejected','changing','changing_rejected'))]}"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_ids
+#: field:pur.history,line_ids:0
+#: view:purchase.order.line:0
+msgid "PO Lines"
+msgstr "PO Lines"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: view:pur.req.line:0
+#: selection:pur.req.line,order_state:0
+msgid "In Purchasing"
+msgstr "In Purchasing"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_invoice_qty
+#: field:purchase.order.line,invoice_qty:0
+msgid "Invoice Quantity"
+msgstr "Invoice Quantity"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_company_id
+#: field:pur.req,company_id:0
+msgid "Company"
+msgstr "Company"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_order_informer
+msgid "order.informer"
+msgstr "order.informer"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_amount_paid
+#: field:purchase.order,amount_paid:0
+msgid "Amount Paid"
+msgstr "Amount Paid"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_taxes_id
+#: field:purchase.order,taxes_id:0
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Taxes"
+msgstr "Taxes"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Update UOM"
+msgstr "Update UOM"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_product_uom
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_uom_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_uom_id
+#: field:pur.history.line,product_uom:0
+#: field:pur.invoice.line,product_uom_id:0
+#: field:pur.req.po.line,product_uom_id:0
+msgid "Product Unit of Measure"
+msgstr "Product Unit of Measure"
+
+#. module: metro_purchase
+#: view:pur.req.line:0
+msgid "Purducts"
+msgstr "Purducts"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_pur_req
+msgid "Warehouse PR"
+msgstr "Warehouse PR"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_is_follower
+#: field:pur.req,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price_changed
+#: field:purchase.history,price_changed:0
+msgid "Price Changed"
+msgstr "Price Changed"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_procurement_ids
+#: field:pur.req.line,procurement_ids:0
+msgid "Procurements"
+msgstr "Procurements"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_purchase_history_supplier_change
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_history_supplier_change
+msgid "Product Updates"
+msgstr "Product Updates"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "Done with Exception"
+msgstr "Done with Exception"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Reject"
+msgstr "Reject"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Are you sure you want to finish this purchase order with exception?"
+msgstr "Are you sure you want to finish this purchase order with exception?"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_return_qty
+#: field:purchase.order.line,return_qty:0
+msgid "Returned Quantity"
+msgstr "Returned Quantity"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Approved purchase orders"
+msgstr "Approved purchase orders"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "No."
+msgstr "No."
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_partner_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_partner_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier
+#: field:pur.history.line,partner_id:0
+#: report:pur.req:0
+#: field:pur.req.po,partner_id:0
+#: field:pur.req.po.line,supplier_id:0
+#: view:purchase.history:0
+#: field:purchase.history,supplier:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+#: view:purchase.order.line:0
+msgid "Supplier"
+msgstr "Supplier"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Product Detail"
+msgstr "Product Detail"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_change_log
+#: field:purchase.order.line,change_log:0
+msgid "Changing Log"
+msgstr "Changing Log"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_quantity
+#: field:pur.history.line,product_qty:0
+#: field:pur.invoice.line,product_qty:0
+#: field:pur.req.line,product_qty:0
+#: field:pur.req.po.line,product_qty:0
+#: field:purchase.history,quantity:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+msgid "Quantity"
+msgstr "Quantity"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Purchase Requisition "
+msgstr "Purchase Requisition "
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_change_log_line
+#: field:purchase.order,change_log_line:0
+msgid "Line Changing Log"
+msgstr "Line Changing Log"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "供应商(Seller)签收:"
+msgstr "供应商(Seller)签收:"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: view:pur.req.line:0
+#: selection:pur.req.line,order_state:0
+msgid "Confirmed"
+msgstr "Confirmed"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Taxes :"
+msgstr "Taxes :"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Requisition lines"
+msgstr "Requisition lines"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Change Log"
+msgstr "Change Log"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_po_notes
+#: field:purchase.order.line,po_notes:0
+msgid "Terms and Conditions"
+msgstr "Terms and Conditions"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_new_product_days
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_price_change_days
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_change_days
+msgid "Days"
+msgstr "Work Days"
+
+#. module: metro_purchase
+#: view:pur.invoice:0
+msgid "Create&View Invoice"
+msgstr "Create&View Invoice"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_history_supplier_change
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_change_group_supplier_change_ids
+#: field:purchase.history.supplier.change.group,supplier_change_ids:0
+msgid "Supplier Changes"
+msgstr "Supplier Changes"
+
+#. module: metro_purchase
+#: field:change.log.po.line,po_line_id:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_po_line_id
+msgid "PO Line"
+msgstr "PO Line"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_create_date
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_create_date
+#: field:purchase.order,create_date:0
+#: field:purchase.order.line,create_date:0
+msgid "Creation Date"
+msgstr "Creation Date"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: view:pay.po:0
+#: view:pur.invoice:0
+#: view:pur.req.po:0
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+#: view:purchase.history.supplier.change:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_bank_account
+#: field:purchase.order,bank_account:0
+msgid "Bank Account Name"
+msgstr "Bank Account Name"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_summary
+#: field:pur.req,message_summary:0
+msgid "Summary"
+msgstr "Summary"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_factor
+#: field:pur.req.po.line,uom_po_factor:0
+msgid "UOM Ratio"
+msgstr "UOM Ratio"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+msgid "Rejection chaning reason..."
+msgstr "Rejection chaning reason..."
+
+#. module: metro_purchase
+#: report:purchase.history.new.product:0
+msgid "Create Date"
+msgstr "Create Date"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Reject Changing"
+msgstr "Reject Changing"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_supplier_change
+msgid "Purchase History Supplier Change"
+msgstr "Purchase History Supplier Change"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Waitting Approval"
+msgstr "Waitting Approval"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_has_freight
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_has_freight
+#: field:purchase.order,has_freight:0
+#: field:purchase.order.line,has_freight:0
+msgid "Has Freight"
+msgstr "Has Freight"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_purchase_history_new_product
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_history_new_product
+#: model:ir.ui.menu,name:metro_purchase.menu_purchase_history_new_product
+msgid "New Products"
+msgstr "New Products"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+msgid "Please select days you want to show?"
+msgstr "Please select days you want to show?"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_date
+#: view:purchase.history:0
+#: field:purchase.history,date:0
+#: report:purchase.history.price.change:0
+#: report:purchase.history.supplier.change:0
+#: view:purchase.order:0
+msgid "Date"
+msgstr "Date"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_prod_id
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_prod_id
+#: field:pur.req.po.line,supplier_prod_id:0
+#: field:purchase.order.line,supplier_prod_id:0
+msgid "Supplier Product ID"
+msgstr "Supplier Product ID"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Reques Date:"
+msgstr "Reques Date:"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "日期(Date):"
+msgstr "日期(Date):"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_price_change
+msgid "Purchase History Price Change"
+msgstr "Purchase History Price Change"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_warehouse_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_warehouse_id
+#: view:pur.req:0
+#: field:pur.req,warehouse_id:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_warehouse_id:0
+msgid "Warehouse"
+msgstr "Warehouse"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_description
+#: field:pay.po,description:0
+#: view:purchase.order:0
+msgid "Description"
+msgstr "Description"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_po_id
+#: field:pur.invoice,po_id:0
+msgid "PO Order ID"
+msgstr "PO Order ID"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: selection:pur.req,state:0
+#: selection:pur.req.line,order_state:0
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Rejected"
+msgstr "Rejected"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_new_product_group_product_ids
+#: view:pur.invoice:0
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: view:pur.req.po:0
+#: field:pur.req.po,line_ids:0
+#: field:purchase.history.new.product.group,product_ids:0
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Products"
+msgstr "Products"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_name
+#: field:pur.req,name:0
+msgid "Requisition#"
+msgstr "Requisition#"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Purchase for Requisitions"
+msgstr "Purchase for Requisitions"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_generated_po
+#: field:pur.req.line,generated_po:0
+msgid "PO Generated"
+msgstr "PO Generated"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:pur.req.line:0
+msgid "Canceled  Requisition"
+msgstr "Canceled  Requisition"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Select supplier and the products that you want to generate PO."
+msgstr "Select supplier and the products that you want to generate PO."
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Purchase orders waitting approval"
+msgstr "Purchase orders waitting approval"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Approve Changing"
+msgstr "Approve Changing"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Terms and conditions..."
+msgstr "Terms and conditions..."
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Payments"
+msgstr "Payments"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'readonly':[('can_change_product','=',False)]}"
+msgstr "{'readonly':[('can_change_product','=',False)]}"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: view:pur.req.line:0
+msgid "Done"
+msgstr "Done"
+
+#. module: metro_purchase
+#: view:pur.invoice:0
+msgid "Create Invoice"
+msgstr "Create Invoice"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_cron_job
+msgid "cron.job"
+msgstr "cron.job"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Cancel With Exception"
+msgstr "Cancel With Exception"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'readonly':[('can_change_price','=',False)]}"
+msgstr "{'readonly':[('can_change_price','=',False)]}"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "approved,except_picking,except_invoice,rejected,changing,changing_rejected"
+msgstr "approved,except_picking,except_invoice,rejected,changing,changing_rejected"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_residual
+#: field:purchase.order,residual:0
+msgid "Balance"
+msgstr "Balance"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "{'readonly':1}"
+msgstr "{'readonly':1}"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_receive_qty
+#: field:purchase.order.line,receive_qty:0
+msgid "Received Quantity"
+msgstr "Received Quantity"
+
+#. module: metro_purchase
+#: model:ir.ui.menu,name:metro_purchase.menu_po_line_full
+msgid "PO by Products"
+msgstr "PO by Products"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Set to Draft"
+msgstr "Set to Draft"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.act_pur_req_po
+msgid "Generate Purchase Order"
+msgstr "Generate Purchase Order"
+
+#. module: metro_purchase
+#: view:pur.invoice:0
+msgid "Select the prodcuts and change quantity that you want to create invoice."
+msgstr "Select the prodcuts and change quantity that you want to create invoice."
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Payment Term:"
+msgstr "Payment Term:"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: model:ir.actions.act_window,name:metro_purchase.act_purchase_reject
+msgid "Confirm Purchase Order Rejection"
+msgstr "Confirm Purchase Order Rejection"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "onchange_lead('date_planned',date_planned,parent.date_order,context)"
+msgstr "onchange_lead('date_planned',date_planned,parent.date_order,context)"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Confirm"
+msgstr "Confirm"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_product_qty_remain
+#: field:pur.req.po.line,product_qty_remain:0
+msgid "Quantity Remain"
+msgstr "Quantity Remain"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_emp_id
+#: field:pur.req.line,req_emp_id:0
+msgid "Employee"
+msgstr "Employee"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_wizard_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_wizard_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_wizard_id
+#: field:pur.history.line,wizard_id:0
+#: field:pur.invoice.line,wizard_id:0
+#: field:pur.req.po.line,wizard_id:0
+msgid "Wizard"
+msgstr "Wizard"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "UoM"
+msgstr "UoM"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_remark
+#: view:pur.req:0
+#: field:pur.req,remark:0
+msgid "Remark"
+msgstr "Remark"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_supplier_change_group
+msgid "Purchase History Supplier Change Group"
+msgstr "Purchase History Supplier Change Group"
+
+#. module: metro_purchase
+#: field:confirm.msg,message:0
+#: model:ir.model.fields,field_description:metro_purchase.field_confirm_msg_message
+msgid "Rejection reason"
+msgstr "Rejection reason"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_is_sent_supplier
+#: view:purchase.order:0
+#: field:purchase.order,is_sent_supplier:0
+msgid "Sent to Supplier"
+msgstr "Sent to Supplier"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_prod_name
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_prod_name
+#: field:pur.req.po.line,supplier_prod_name:0
+#: field:purchase.order.line,supplier_prod_name:0
+msgid "Supplier Product Name"
+msgstr "Supplier Product Name"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "metro_purchase.group_pur_req_manager"
+msgstr "metro_purchase.group_pur_req_manager"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_inv_qty
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_inv_qty
+#: report:pur.req:0
+#: field:pur.req.line,inv_qty:0
+#: field:pur.req.po.line,inv_qty:0
+msgid "Inventory"
+msgstr "Inventory"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_product_qty_remain
+#: field:pur.req.line,product_qty_remain:0
+msgid "Qty Remaining"
+msgstr "Qty Remaining"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_account_move_line
+msgid "Journal Items"
+msgstr "Journal Items"
+
+#. module: metro_purchase
+#: field:change.log.po.line,create_date:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_create_date
+msgid "Time"
+msgstr "Time"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_message_ids
+#: field:pur.req,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Purchase Reason"
+msgstr "Purchase Reason"
+
+#. module: metro_purchase
+#: help:pur.req.line,generated_po:0
+msgid "It indicates that this products has PO generated"
+msgstr "It indicates that this products has PO generated"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+#: view:purchase.history.price.change:0
+#: view:purchase.history.supplier.change:0
+msgid "Print"
+msgstr "Print"
+
+#. module: metro_purchase
+#: report:purchase.history.price.change:0
+msgid "PRICE CHANGES"
+msgstr "PRICE CHANGES"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_supplier_changed
+#: field:purchase.history,supplier_changed:0
+msgid "Supplier Changed"
+msgstr "Supplier Changed"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Warehouse:"
+msgstr "Warehouse:"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+msgid "In Changing"
+msgstr "In Changing"
+
+#. module: metro_purchase
+#: view:purchase.order.line:0
+msgid "Purchase order lines which are cancelled"
+msgstr "Purchase order lines which are cancelled"
+
+#. module: metro_purchase
+#: model:ir.actions.act_window,name:metro_purchase.action_pur_req_line_full
+msgid "Purchase Requisition Products"
+msgstr "Purchase Requisition Products"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_user_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_user_id
+#: view:pur.req:0
+#: field:pur.req,user_id:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_user_id:0
+#: model:res.groups,name:metro_purchase.group_pur_req_requester
+msgid "Requester"
+msgstr "Requester"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_new_product_group
+msgid "Purchase History New Product Group"
+msgstr "Purchase History New Product Group"
+
+#. module: metro_purchase
+#: model:ir.actions.report.xml,name:metro_purchase.report_purchase_order_metro
+#: model:ir.model,name:metro_purchase.model_purchase_order
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_history_po_id
+#: view:pur.req:0
+#: field:purchase.history,po_id:0
+#: report:purchase.order.metro:0
+msgid "Purchase Order"
+msgstr "Purchase Order"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_po_line_id
+#: field:pur.invoice.line,po_line_id:0
+msgid "PO Order Line ID"
+msgstr "PO Order Line ID"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Approve"
+msgstr "Approve"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_can_change_product
+#: field:purchase.order.line,can_change_product:0
+msgid "Can Change Product"
+msgstr "Can Change Product"
+
+#. module: metro_purchase
+#: view:purchase.history:0
+#: view:purchase.order.line:0
+msgid "Order"
+msgstr "Order"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_price_unit
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_price_unit
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_price_unit
+#: field:pur.history.line,price_unit:0
+#: field:pur.invoice.line,price_unit:0
+#: field:pur.req.po.line,price_unit:0
+#: report:purchase.order.metro:0
+msgid "Unit Price"
+msgstr "Unit Price"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_bank_name
+#: model:ir.model.fields,field_description:metro_purchase.field_res_partner_bank_name_5952
+#: field:purchase.order,bank_name:0
+#: field:res.partner,bank_name:0
+msgid "Bank Name"
+msgstr "Bank Name"
+
+#. module: metro_purchase
+#: report:pur.req:0
+msgid "Quotation Detail"
+msgstr "Quotation Detail"
+
+#. module: metro_purchase
+#: view:purchase.history.new.product:0
+msgid "New Product Report"
+msgstr "New Product Report"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_ticket_no
+#: field:pur.req.line,req_ticket_no:0
+msgid "Requisition Ticket#"
+msgstr "Requisition Ticket#"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Shipping address :"
+msgstr "Shipping address :"
+
+#. module: metro_purchase
+#: view:purchase.history:0
+#: view:purchase.order.line:0
+msgid "Search Purchase Order Line"
+msgstr "Search Purchase Order Line"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_res_partner_bank_account
+#: field:res.partner,bank_account:0
+msgid "Bank Account Number"
+msgstr "Bank Account Number"
+
+#. module: metro_purchase
+#: view:confirm.msg:0
+msgid "Rejection reason..."
+msgstr "Rejection reason..."
+
+#. module: metro_purchase
+#: constraint:purchase.order:0
+msgid "Error ! You can not add duplicated products!"
+msgstr "Error ! You can not add duplicated products!"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_order_date_request
+#: view:pur.req:0
+#: view:pur.req.line:0
+#: field:pur.req.line,order_date_request:0
+msgid "Requisition Date"
+msgstr "Requisition Date"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Generate PO"
+msgstr "Generate PO"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_sequence
+msgid "Sequence"
+msgstr "#"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_payment_exists
+#: field:purchase.order,payment_exists:0
+msgid "Has payments"
+msgstr "Has payments"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Are you sure you want to cancel this purchase order with exception?"
+msgstr "Are you sure you want to cancel this purchase order with exception?"
+
+#. module: metro_purchase
+#: field:change.log.po.line,create_uid:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_create_uid
+msgid "User"
+msgstr "User"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_id
+#: field:pur.req.po.line,uom_po_id:0
+msgid "PO Unit of Measure"
+msgstr "PO Unit of Measure"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Remark..."
+msgstr "Remark..."
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_account_move
+msgid "Account Entry"
+msgstr "Account Entry"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Fax:"
+msgstr "Fax:"
+
+#. module: metro_purchase
+#: field:account.move,purchase_ids:0
+#: field:account.move.line,purchase_ids:0
+#: model:ir.model.fields,field_description:metro_purchase.field_account_move_line_purchase_ids
+#: model:ir.model.fields,field_description:metro_purchase.field_account_move_purchase_ids
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Purchase Orders"
+msgstr "Purchase Orders"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Total Paid"
+msgstr "Total Paid"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_invoice_line_ids
+#: field:pur.invoice,line_ids:0
+msgid "Prodcuts"
+msgstr "Prodcuts"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_req_dept_id
+#: field:pur.req.line,req_dept_id:0
+msgid "Department"
+msgstr "Department"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pay_po_journal_id
+#: field:pay.po,journal_id:0
+#: view:purchase.order:0
+msgid "Payment Method"
+msgstr "Payment Method"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Freight:"
+msgstr "Freight:"
+
+#. module: metro_purchase
+#: view:pur.req.line:0
+msgid "Purchase Requisition Lines"
+msgstr "Purchase Requisition Lines"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_supplier_prod_code
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_supplier_prod_code
+#: field:pur.req.po.line,supplier_prod_code:0
+#: field:purchase.order.line,supplier_prod_code:0
+msgid "Supplier Product Code"
+msgstr "Supplier Product Code"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_order_line
+#: view:purchase.order.line:0
+msgid "Purchase Order Line"
+msgstr "Purchase Order Line"
+
+#. module: metro_purchase
+#: view:pur.req:0
+#: view:purchase.order.line:0
+msgid "Quotations"
+msgstr "Quotations"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "[('supplier','=',True),('is_company','=',True)]"
+msgstr "[('supplier','=',True),('is_company','=',True)]"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+#: report:purchase.quotation.metro:0
+msgid "Has Freight:"
+msgstr "Has Freight:"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_paid_done
+#: field:purchase.order,paid_done:0
+msgid "Paid Done"
+msgstr "Paid Done"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_po_line_uom_po_qty_remain
+#: field:pur.req.po.line,uom_po_qty_remain:0
+msgid "PO Quantity Remain"
+msgstr "PO Quantity Remain"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_price_subtotal
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_price_subtotal_withtax
+#: field:pur.history.line,price_subtotal:0
+#: field:purchase.order.line,price_subtotal_withtax:0
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_pur_history_line
+msgid "Product's purchasing history line"
+msgstr "Product's purchasing history line"
+
+#. module: metro_purchase
+#: report:purchase.history.new.product:0
+msgid "Name"
+msgstr "Name"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_amount_freight
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_amount_freight
+#: field:purchase.order,amount_freight:0
+#: field:purchase.order.line,amount_freight:0
+msgid "Freight"
+msgstr "Freight"
+
+#. module: metro_purchase
+#: report:purchase.order.metro:0
+msgid "Net Price"
+msgstr "Net Price"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Reference"
+msgstr "Reference"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Apply Advance Payments"
+msgstr "Apply Advance Payments"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Line Change Log"
+msgstr "Line Change Log"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_price_change_group
+msgid "Purchase History Price Change Group"
+msgstr "Purchase History Price Change Group"
+
+#. module: metro_purchase
+#: model:ir.model,name:metro_purchase.model_purchase_history_new_product
+msgid "Purchase History New Product"
+msgstr "Purchase History New Product"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Create PO"
+msgstr "Create PO"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_inform_type
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_inform_type
+#: field:purchase.order,inform_type:0
+#: field:purchase.order.line,inform_type:0
+msgid "Informer Type"
+msgstr "Informer Type"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Purchase orders been rejected"
+msgstr "Purchase orders been rejected"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_date_request
+#: field:pur.req,date_request:0
+msgid "Request Date"
+msgstr "Request Date"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_order_id
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_history_line_order_line_id
+#: field:pur.history.line,order_id:0
+#: field:pur.history.line,order_line_id:0
+#: report:pur.req:0
+msgid "Order Reference"
+msgstr "Order Reference"
+
+#. module: metro_purchase
+#: selection:pur.history.line,state:0
+#: view:pur.req:0
+#: selection:pur.req,state:0
+#: view:pur.req.line:0
+#: selection:pur.req.line,order_state:0
+#: view:purchase.order:0
+#: view:purchase.order.line:0
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Paid Amount"
+msgstr "Paid Amount"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_pur_req_line_ids
+#: field:pur.req,line_ids:0
+msgid "Products to Purchase"
+msgstr "Products to Purchase"
+
+#. module: metro_purchase
+#: help:purchase.order.line,sequence:0
+msgid "Gives the sequence order when displaying a list of sales order lines."
+msgstr "Gives the sequence order when displaying a list of sales order lines."
+
+#. module: metro_purchase
+#: field:change.log.po.line,po_id:0
+#: model:ir.model.fields,field_description:metro_purchase.field_change_log_po_line_po_id
+msgid "PO"
+msgstr "PO"
+
+#. module: metro_purchase
+#: view:pur.req.po:0
+msgid "Create&View PO"
+msgstr "Create&View PO"
+
+#. module: metro_purchase
+#: view:pur.req:0
+msgid "Search Purchase Requisition"
+msgstr "Search Purchase Requisition"
+
+#. module: metro_purchase
+#: model:ir.model.fields,field_description:metro_purchase.field_purchase_order_line_can_change_price
+#: field:purchase.order.line,can_change_price:0
+msgid "Can Change Price"
+msgstr "Can Change Price"
+
+#. module: metro_purchase
+#: view:purchase.order:0
+msgid "Change"
+msgstr "Change"
+

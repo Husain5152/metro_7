@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data noupdate="1">
+       <record model="ir.module.category" id="module_new_metro_shipping">
+           <field name="name">Metro Shipping</field>
+           <field name="parent_id" ref="base.module_category_tools"/>
+           <field name="sequence">11</field>
+       </record>
+       
+       <record id="group_metro_shipping_user_right" model="res.groups">
+           <field name="name">User</field>
+           <field name="category_id" ref="module_new_metro_shipping"/>
+           <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+       </record>
+       
+	   <record id="group_metro_shipping_manager_right" model="res.groups">
+	       <field name="name">Manager</field>
+	       <field name="category_id" ref="module_new_metro_shipping"/>
+           <field name="implied_ids" eval="[(4, ref('group_metro_shipping_user_right'))]"/>
+	   </record>
+	    
+   </data>
+</openerp>

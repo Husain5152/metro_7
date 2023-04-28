@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <report auto="False"
+                id="mto_design_print"
+                model="mto.design"
+                name="mto.design.print"
+                rml="metro_mto/report/mto_design.rml"
+                string="Product Configuration"/>
+<!--         <report auto="True"
+                id="mto_design_print"
+                model="mto.design"
+                name="mto.design.print"
+                rml=""
+                string="Product Configuration"/>   -->              
+    </data>
+</openerp>

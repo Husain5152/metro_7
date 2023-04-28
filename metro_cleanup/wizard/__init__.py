@@ -1,0 +1,3 @@
+import cleanup_product_uom_wizard
+import cleanup_switch_product_uom_wizard
+import cleanup_import_product_uom_wizard

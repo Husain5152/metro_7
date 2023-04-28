@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_config_settings_ext" model="ir.ui.view">
+            <field name="name">view_account_config_settings_ext</field>
+            <field name="model">account.config.settings</field>
+            <field name="inherit_id" ref="account.view_account_config_settings"/>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <group name="analytic_account_purchase" position="after">
+                    <separator name="report_setting" string="Report Setting" invisible="1"/>
+                    <group name="report_setting">
+                        <field name="report_bscn_id"/>
+                        <field name="report_plcn_id"/>
+                        <field name="report_cfcn_id"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+</openerp>

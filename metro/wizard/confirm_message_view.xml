@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>   
+        <record id="view_confirm_message_form" model="ir.ui.view">
+            <field name="name">view_confirm_message_form</field>
+            <field name="model">confirm.message</field>
+            <field name="arch" type="xml">
+                <form string="Confirm the action with message" version="7.0">
+                	<field name="message" placeholder="message..."/>
+                    <footer>
+                        <button name="confirm" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>   
+    </data>
+</openerp>

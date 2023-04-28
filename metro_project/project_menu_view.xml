@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<menuitem id="menu_mttl_project" name="Project" parent="metro.mttl_metro" sequence="90"/>
+		<menuitem action="project.open_view_project_all" id="menu_mttl_project_projects" name="Projects" parent="menu_mttl_project" sequence="1"/>
+	</data>
+</openerp>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="metro.email_template_pr_poem" model="email.template">
+            <field name="name">PR POEM Email</field>
+            <field name="model_id" ref="metro_purchase.model_pur_req"/>
+            <field name="email_recipients"></field>
+            <field name="subject">${object.company_id.name} Order (Ref ${object.name or 'n/a' })</field>
+            <field name="report_template" ref="report_pr_mfg_form"/>
+            <field name="report_name">Purchase_Req_${(object.name or '').replace('/','_')}</field>
+            <field name="body_html"><![CDATA[
+<h2>${object.name}</h2>
+<hr/>
+<table>
+<tr>
+<th>#</th>
+<th>ERP#</th>
+<th>Part Number</th>
+<th>Quantity</th>
+</tr>
+% for line in pr_lines:
+<tr>
+<td>${line.sequence} ${line.id}</td>
+<td>${line.erp_no}</td>
+<td>${line.part_number}</td>
+<td>${line.product_qty_remain}</td>
+<td>
+</tr>
+% endfor
+</table>
+]]>
+			</field>
+        </record>
+        <record id="metro.email_template_pr_outsource" model="email.template">
+            <field name="name">PR OutSource Email</field>
+            <field name="model_id" ref="metro_purchase.model_pur_req"/>
+            <field name="email_recipients"></field>
+            <field name="subject">${object.company_id.name} Order (Ref ${object.name or 'n/a' })</field>
+            <field name="report_template" ref="report_pr_mfg_form"/>
+            <field name="report_name">Purchase_Req_${(object.name or '').replace('/','_')}</field>
+            <field name="body_html"><![CDATA[
+<h2>${object.name}</h2>
+Please send a quotation of parts below:
+<hr/>
+<table>
+<tr>
+<th>#</th>
+<th>ERP#</th>
+<th>Part Number</th>
+<th>Quantity</th>
+</tr>
+% for line in pr_lines:
+<tr>
+<td>${line.sequence} ${line.id}</td>
+<td>${line.erp_no}</td>
+<td>${line.part_number}</td>
+<td>${line.product_qty_remain}</td>
+<td>
+</tr>
+% endfor
+</table>
+]]>
+			</field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+        <record model="ir.actions.act_window" id="act_pur_history">
+            <field name="name">Product's Purchasing History</field>
+            <field name="res_model">pur.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'po_line_id': active_id}</field>
+        </record>              
+           
+        <record id="view_pur_history_form" model="ir.ui.view">
+            <field name="name">Purchasing History</field>
+            <field name="model">pur.history</field>
+            <field name="arch" type="xml">
+                <form string="Purchasing History" version="7.0">
+                    <group>
+                        <field name="product_id"  readonly="1"/>
+                        <field name="line_ids" readonly="1">
+                            <tree string="History">
+		                        <field name="order_id"/>
+		                        <!-- <field name="order_line_id"/> -->
+		                        <field name="date_order"/>
+		                        <field name="partner_id"/>
+		                        <field name="product_qty"/>
+		                        <field name="product_uom"/>
+		                        <field name="price_unit"/>
+		                        <field name="price_subtotal"/>
+		                        <field name="state"/>
+                            </tree>
+                        </field>          
+                    </group>
+                </form>
+            </field>
+        </record>
+       <record id="view_purchase_history_supplier_change" model="ir.ui.view">
+            <field name="name">view_purchase_history_supplier_change</field>
+            <field name="model">purchase.history.supplier.change</field>
+            <field name="arch" type="xml">
+               <form string="Supplier Change Report" version="7.0">
+                    <separator string="Please select the product and number of days you want to show?"/>
+                    <field name="product_id"/>
+                    <field name="days" nolabel="1"/>
+                    <footer>
+                        <button name="do_print" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+         <record id="action_purchase_history_supplier_change" model="ir.actions.act_window">
+             <field name="name">Product Updates</field>
+             <field name="res_model">purchase.history.supplier.change</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="view_purchase_history_supplier_change"/>
+             <field name="context">{}</field>
+             <field name="target">new</field>
+       </record>
+       <record id="view_purchase_history_price_change" model="ir.ui.view">
+            <field name="name">view_purchase_history_price_change</field>
+            <field name="model">purchase.history.price.change</field>
+            <field name="arch" type="xml">
+               <form string="Price Change Report" version="7.0">
+                    <separator string="Please select days you want to show?"/>
+                    <field name="days" nolabel="1"/>
+                    <footer>
+                        <button name="do_print" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>    
+         <record id="action_purchase_history_price_change" model="ir.actions.act_window">
+             <field name="name">Price Changes</field>
+             <field name="res_model">purchase.history.price.change</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="view_purchase_history_price_change"/>
+             <field name="context">{}</field>
+             <field name="target">new</field>
+       </record>        
+       <record id="view_purchase_history_new_product" model="ir.ui.view">
+            <field name="name">view_purchase_history_new_product</field>
+            <field name="model">purchase.history.new.product</field>
+            <field name="arch" type="xml">
+               <form string="New Product Report" version="7.0">
+                    <separator string="Please select days you want to show?"/>
+                    <field name="days" nolabel="1"/>
+                    <footer>
+                        <button name="do_print" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record> 
+         <record id="action_purchase_history_new_product" model="ir.actions.act_window">
+             <field name="name">New Products</field>
+             <field name="res_model">purchase.history.new.product</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="view_purchase_history_new_product"/>
+             <field name="context">{}</field>
+             <field name="target">new</field>
+       </record>                  
+       <menuitem icon="STOCK_PRINT"
+            name="Oversight"
+            id="menu_report_oversight"
+            groups="metro.group_metro_oversight"
+            parent="base.menu_reporting"
+            sequence="1"/>
+        <menuitem icon="STOCK_PRINT"
+            name="Product Updates"
+            action="action_purchase_history_supplier_change"
+            id="menu_purchase_history_supplier_change"
+            groups="metro.group_metro_oversight"
+            parent="menu_report_oversight"
+            sequence="1"/>         
+        <menuitem icon="STOCK_PRINT"
+            name="Price Changes"
+            action="action_purchase_history_price_change"
+            id="menu_purchase_history_price_change"
+            groups="metro.group_metro_oversight"
+            parent="menu_report_oversight"
+            sequence="2"/>
+        <menuitem icon="STOCK_PRINT"
+            name="New Products"
+            action="action_purchase_history_new_product"
+            id="menu_purchase_history_new_product"
+            groups="metro.group_metro_oversight"
+            parent="menu_report_oversight"
+            sequence="3"/>                           
+    </data>
+</openerp>

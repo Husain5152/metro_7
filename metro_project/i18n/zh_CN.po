@@ -1,0 +1,860 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* metro_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-29 08:53+0000\n"
+"PO-Revision-Date: 2014-08-29 17:12+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_project
+#: model:ir.actions.report.xml,name:metro_project.report_task_group_by_assignee
+msgid "Tasks by Assignee"
+msgstr "按分配者的任务列表"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Blocked"
+msgstr "受阻"
+
+#. module: metro_project
+#: selection:project.issue,database:0 selection:project.issue,database_test:0
+msgid "Metro Production"
+msgstr "Metro Production"
+
+#. module: metro_project
+#: selection:project.project,project_type:0
+#: selection:project.task,project_type:0
+#: selection:project.task.type,project_type:0 selection:task.print,task_type:0
+msgid "Manufacture"
+msgstr "生产"
+
+#. module: metro_project
+#: report:project.task.print:0 report:project.task.sheet:0
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Planned Hours:"
+msgstr "计划时数:"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "In Progress"
+msgstr "进行中"
+
+#. module: metro_project
+#: report:project.task.print:0 report:project.task.sheet:0
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Employees:"
+msgstr "员工:"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_task_group_task_day
+#: model:ir.model.fields,field_description:metro_project.field_task_print_task_day
+#: field:task.group,task_day:0 field:task.print,task_day:0
+msgid "Day"
+msgstr "天"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_task_group
+msgid "task.group"
+msgstr "task.group"
+
+#. module: metro_project
+#: model:ir.actions.report.xml,name:metro_project.report_project_task_print
+#: model:ir.model,name:metro_project.model_project_task
+#: report:project.task.print:0
+msgid "Task"
+msgstr "任务"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_task_print_task_type
+#: field:task.print,task_type:0
+msgid "Task Type"
+msgstr "任务类型"
+
+#. module: metro_project
+#: report:project.task.print:0 report:task.group.by_assignee:0
+#: report:task.group.by_employee:0
+msgid "Dead Line:"
+msgstr "最后期限:"
+
+#. module: metro_project
+#: model:ir.actions.report.xml,name:metro_project.report_project_task_sheet
+msgid "Task Sheet"
+msgstr "任务单"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "work_hours"
+msgstr "work_hours"
+
+#. module: metro_project
+#: view:project.issue:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_project_project
+msgid "Project"
+msgstr "项目"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_project_bom_id
+#: model:ir.model.fields,field_description:metro_project.field_project_task_bom_id
+#: field:project.project,bom_id:0 view:project.task:0
+#: field:project.task,bom_id:0
+msgid "Bill of Material"
+msgstr "物料清单"
+
+#. module: metro_project
+#: view:task.print:0
+msgid "Please select the group type"
+msgstr "Please select the group type"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "True"
+msgstr "True"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_project_bom_components
+#: model:ir.model.fields,field_description:metro_project.field_project_task_components
+#: field:project.project,bom_components:0 field:project.task,components:0
+msgid "Components"
+msgstr "组件"
+
+#. module: metro_project
+#: model:ir.actions.report.xml,name:metro_project.report_task_group_by_team
+msgid "Tasks by Team"
+msgstr "按部门的任务列表"
+
+#. module: metro_project
+#: model:ir.actions.act_window,help:metro_project.action_view_task_engineer
+#: model:ir.actions.act_window,help:metro_project.action_view_task_gtd
+#: model:ir.actions.act_window,help:metro_project.action_view_task_mfg
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a new task.\n"
+"              </p><p>\n"
+"                OpenERP's project management allows you to manage the "
+"pipeline\n"
+"                of tasks in order to get things done efficiently. You can\n"
+"                track progress, discuss on tasks, attach documents, etc.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a new task.\n"
+"              </p><p>\n"
+"                OpenERP's project management allows you to manage the "
+"pipeline\n"
+"                of tasks in order to get things done efficiently. You can\n"
+"                track progress, discuss on tasks, attach documents, etc.\n"
+"              </p>\n"
+"            "
+
+#. module: metro_project
+#: view:project.task:0
+msgid "False"
+msgstr "False"
+
+#. module: metro_project
+#: selection:project.project,project_type:0
+#: selection:project.task,project_type:0
+#: selection:project.task.type,project_type:0 selection:task.print,task_type:0
+msgid "Simple"
+msgstr "普通"
+
+#. module: metro_project
+#: report:project.task.print:0 report:project.task.sheet:0
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Description:"
+msgstr "描述:"
+
+#. module: metro_project
+#: model:ir.actions.act_window,help:metro_project.open_view_project_engineer
+#: model:ir.actions.act_window,help:metro_project.open_view_project_gtd
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                  Click to start a new project.\n"
+"                </p><p>\n"
+"                  Projects are used to organize your activities; plan\n"
+"                  tasks, track issues, invoice timesheets. You can define\n"
+"                  internal projects (R&amp;D, Improve Sales Process),\n"
+"                  private projects (My Todos) or customer ones.\n"
+"                </p><p>\n"
+"                  You will be able collaborate with internal users on\n"
+"                  projects or invite customers to share your activities.\n"
+"                </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                  Click to start a new project.\n"
+"                </p><p>\n"
+"                  Projects are used to organize your activities; plan\n"
+"                  tasks, track issues, invoice timesheets. You can define\n"
+"                  internal projects (R&amp;D, Improve Sales Process),\n"
+"                  private projects (My Todos) or customer ones.\n"
+"                </p><p>\n"
+"                  You will be able collaborate with internal users on\n"
+"                  projects or invite customers to share your activities.\n"
+"                </p>\n"
+"            "
+
+#. module: metro_project
+#: selection:project.issue,type:0
+msgid "Change Request"
+msgstr "变更请求"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Extra Info"
+msgstr "额外信息"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_daily_date
+#: field:project.task,daily_date:0
+msgid "Daily Task Date"
+msgstr "日任务日期"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Edit..."
+msgstr "编辑..."
+
+#. module: metro_project
+#: report:project.task.print:0
+msgid "Timeframe:"
+msgstr "时间表:"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Today's Tasks"
+msgstr "今天的任务"
+
+#. module: metro_project
+#: report:project.task.print:0
+msgid "Stage:"
+msgstr "阶段:"
+
+#. module: metro_project
+#: view:hr.employee:0
+msgid "Employee"
+msgstr "员工"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_mrp_production_workcenter_line
+#: model:ir.model.fields,field_description:metro_project.field_project_task_workorder_id
+#: view:project.task:0 field:project.task,workorder_id:0
+msgid "Work Order"
+msgstr "工票"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_issue_type
+#: model:ir.model.fields,field_description:metro_project.field_project_project_project_type
+#: model:ir.model.fields,field_description:metro_project.field_project_task_type_project_type
+#: model:ir.model.fields,field_description:metro_project.field_task_print_print_type
+#: field:project.issue,type:0 field:project.project,project_type:0
+#: field:project.task.type,project_type:0 field:task.print,print_type:0
+msgid "Type"
+msgstr "类型"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.tasks_gtd_my_action
+msgid "My GTD Tasks"
+msgstr "我的GTD任务"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Remaining Time"
+msgstr "剩余时间"
+
+#. module: metro_project
+#: view:task.print:0
+msgid "Print"
+msgstr "打印"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "{'task_employee_ids':emp_ids,'workorder_id':workorder_id}"
+msgstr "{'task_employee_ids':emp_ids,'workorder_id':workorder_id}"
+
+#. module: metro_project
+#: selection:project.issue,database:0 selection:project.issue,database_test:0
+msgid "Metro UAT"
+msgstr "Metro UAT"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.action_view_task_mfg_my
+#: model:ir.ui.menu,name:metro_project.menu_action_view_task_mfg_my
+msgid "My Manufacture Tasks"
+msgstr "我的生产任务"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "employee list"
+msgstr "员工列表"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_production_id
+#: field:project.task,production_id:0
+msgid "Manufacture Order"
+msgstr "生产单"
+
+#. module: metro_project
+#: report:project.task.list:0
+msgid "Spent"
+msgstr "使用"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_task_group_task_ids
+#: field:task.group,task_ids:0
+msgid "Group Tasks"
+msgstr "任务分组"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_project_type
+#: field:project.task,project_type:0
+msgid "Project Type"
+msgstr "项目类型"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.action_task_print_mfg_daily
+msgid "MFG Daily Tasks"
+msgstr "生产日任务"
+
+#. module: metro_project
+#: report:project.task.list:0
+msgid "Planned"
+msgstr "计划"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_mrp_production_workcenter_line_task_ids
+#: field:mrp.production.workcenter.line,task_ids:0
+msgid "Working Tasks"
+msgstr "工作任务"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_dept_id
+#: view:project.task:0 field:project.task,dept_id:0
+msgid "Team"
+msgstr "组"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_issue_multi_images
+#: model:ir.model.fields,field_description:metro_project.field_project_task_multi_images
+#: field:project.issue,multi_images:0 field:project.task,multi_images:0
+msgid "Multi Images"
+msgstr "Multi Images"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_task_print
+msgid "task.print"
+msgstr "task.print"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Delete"
+msgstr "删除"
+
+#. module: metro_project
+#: view:board.board:0
+#: model:ir.actions.act_window,name:metro_project.action_view_task_mfg
+#: model:ir.actions.act_window,name:metro_project.tasks_opening_mfg_action
+#: model:ir.ui.menu,name:metro_project.menu_action_view_task_mfg
+msgid "Manufacture Tasks"
+msgstr "生产任务"
+
+#. module: metro_project
+#: report:project.task.print:0 report:project.task.sheet:0
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Spent Hours:"
+msgstr "使用时数:"
+
+#. module: metro_project
+#: view:mrp.production.workcenter.line:0 view:project.task:0
+msgid "Tasks"
+msgstr "任务"
+
+#. module: metro_project
+#: selection:task.print,print_type:0
+msgid "Task List By Assignee"
+msgstr "按分配者的任务列表"
+
+#. module: metro_project
+#: selection:project.issue,type:0
+msgid "Defect"
+msgstr "缺陷"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Very Important"
+msgstr "非常重要"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Validate planned time"
+msgstr "验证计划的时间"
+
+#. module: metro_project
+#: report:project.task.print:0 report:project.task.sheet:0
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Project:"
+msgstr "项目:"
+
+#. module: metro_project
+#: view:project.issue:0 view:project.task:0
+msgid "Images"
+msgstr "图片"
+
+#. module: metro_project
+#: model:ir.module.category,description:metro_project.module_category_engineer
+msgid "Helps you manage your engineering processes."
+msgstr "Helps you manage your engineering processes."
+
+#. module: metro_project
+#: view:task.print:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_issue_create_by
+#: field:project.issue,create_by:0
+msgid "Created By"
+msgstr "创建人"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_task_group_name
+#: field:task.group,name:0
+msgid "Group"
+msgstr "组"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_task_group_team_members
+#: field:task.group,team_members:0
+msgid "Team Members"
+msgstr "Team Members"
+
+#. module: metro_project
+#: report:project.task.print:0
+msgid "Context:"
+msgstr "Context:"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_project_task_work
+msgid "Project Task Work"
+msgstr "任务进度"
+
+#. module: metro_project
+#: selection:project.issue,type:0
+msgid "Feature Request"
+msgstr "特性请求"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_issue_attachment_lines
+#: view:project.issue:0 field:project.issue,attachment_lines:0
+msgid "Attachment"
+msgstr "附件"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_issue_database_test
+#: field:project.issue,database_test:0
+msgid "Testing Database"
+msgstr "测试数据库"
+
+#. module: metro_project
+#: view:board.board:0
+#: model:ir.actions.act_window,name:metro_project.tasks_opening_simple_action
+msgid "Simple Tasks"
+msgstr "普通任务"
+
+#. module: metro_project
+#: model:ir.actions.report.xml,name:metro_project.report_task_group_by_employee
+msgid "Tasks by Employee"
+msgstr "按员工的任务列表"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "í"
+msgstr "í"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Normal"
+msgstr "正常"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_workcenter_id
+#: field:project.task,workcenter_id:0
+msgid "Work Center"
+msgstr "工作中心"
+
+#. module: metro_project
+#: view:project.task.type:0
+msgid "top"
+msgstr "top"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.action_view_task_gtd
+msgid "GTD Tasks"
+msgstr "GTD任务"
+
+#. module: metro_project
+#: view:board.board:0
+msgid "Tasks Dashboard"
+msgstr "任务仪表盘"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.action_task_print
+msgid "Tasks by Group"
+msgstr "分组任务"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Gantt View"
+msgstr "甘特图"
+
+#. module: metro_project
+#: model:res.groups,name:metro_project.group_engineer_user
+msgid "User"
+msgstr "用户"
+
+#. module: metro_project
+#: view:board.board:0
+#: model:ir.actions.act_window,name:metro_project.action_view_task_engineer
+#: model:ir.actions.act_window,name:metro_project.tasks_opening_eng_action
+#: model:ir.ui.menu,name:metro_project.menu_action_view_task_engineer
+msgid "Engineer Tasks"
+msgstr "工程任务"
+
+#. module: metro_project
+#: selection:project.project,project_type:0
+#: selection:project.task,project_type:0
+#: selection:project.task.type,project_type:0 selection:task.print,task_type:0
+msgid "GTD"
+msgstr "GTD"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_issue_database
+#: field:project.issue,database:0
+msgid "Database"
+msgstr "数据库"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.action_view_task_engineer_my
+#: model:ir.ui.menu,name:metro_project.menu_action_view_task_engineer_my
+msgid "My Engineer Tasks"
+msgstr "我的工程任务"
+
+#. module: metro_project
+#: model:email.template,body_html:metro_project.project_task_assignee
+msgid ""
+"\n"
+"<h3>Task ${object.name} of Project ${object.project_id.name} was assigned to "
+"you.</h3>\n"
+"<p/>\n"
+"<div>\n"
+"<a href=\"http://erp:8069/?db=metro_production\">Metro OpenERP System</a> "
+"&nbsp;&nbsp;\n"
+"Contact: <a href=\"mailto:ncoad@metrospv.com\">Nicholas Coad</a> &nbsp;&nbsp;"
+"<a href=\"mailto:john.wang@metrospv.cn\">John Wang</a>\n"
+"</div>\n"
+"<div><a href=\"http://www.metrotowtrucks.com\" target=\"_blank\">http://www."
+"metrotowtrucks.com</a></div>            \n"
+"\n"
+"\t\t\t"
+msgstr ""
+"\n"
+"<h3>Task ${object.name} of Project ${object.project_id.name} was assigned to "
+"you.</h3>\n"
+"<p/>\n"
+"<div>\n"
+"<a href=\"http://erp:8069/?db=metro_production\">Metro OpenERP System</a> "
+"&nbsp;&nbsp;\n"
+"Contact: <a href=\"mailto:ncoad@metrospv.com\">Nicholas Coad</a> &nbsp;&nbsp;"
+"<a href=\"mailto:john.wang@metrospv.cn\">John Wang</a>\n"
+"</div>\n"
+"<div><a href=\"http://www.metrotowtrucks.com\" target=\"_blank\">http://www."
+"metrotowtrucks.com</a></div>            \n"
+"\n"
+"\t\t\t"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "float_time"
+msgstr "float_time"
+
+#. module: metro_project
+#: view:task.print:0
+msgid "Task printing by group"
+msgstr "分组任务打印"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.open_view_project_engineer
+#: model:ir.ui.menu,name:metro_project.menu_projects_engineer
+msgid "Engineer Projects"
+msgstr "工程项目"
+
+#. module: metro_project
+#: selection:project.project,project_type:0
+#: selection:project.task,project_type:0
+#: selection:project.task.type,project_type:0 selection:task.print,task_type:0
+msgid "Software"
+msgstr "软件"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "10"
+msgstr "10"
+
+#. module: metro_project
+#: report:project.task.print:0
+msgid "Date End"
+msgstr "结束日期"
+
+#. module: metro_project
+#: view:project.issue:0
+msgid "Attachments"
+msgstr "附件"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Ready for next stage"
+msgstr "准备好下一个阶段"
+
+#. module: metro_project
+#: report:project.task.list:0
+msgid "State"
+msgstr "状态"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_project_mfg_ids
+#: model:ir.model.fields,field_description:metro_project.field_project_task_mfg_ids
+#: model:ir.model.fields,field_description:metro_project.field_project_task_work_mfg_ids
+#: field:project.project,mfg_ids:0 field:project.task,mfg_ids:0
+#: field:project.task.work,mfg_ids:0
+msgid "MFG IDs"
+msgstr "生产ID"
+
+#. module: metro_project
+#: model:ir.module.category,name:metro_project.module_category_engineer
+#: model:ir.ui.menu,name:metro_project.menu_eng_engingeering
+#: selection:project.project,project_type:0
+#: selection:project.task,project_type:0
+#: selection:project.task.type,project_type:0 selection:task.print,task_type:0
+msgid "Engineering"
+msgstr "工程"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.open_view_project_gtd
+msgid "GTD Projects"
+msgstr "GTD项目"
+
+#. module: metro_project
+#: model:ir.actions.report.xml,name:metro_project.report_project_task_list
+#: report:project.task.list:0
+msgid "Task List"
+msgstr "任务列表"
+
+#. module: metro_project
+#: view:project.project:0 view:project.task:0
+msgid "Import BOM"
+msgstr "导入BOM"
+
+#. module: metro_project
+#: view:task.print:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_project
+#: view:project.project:0
+msgid "Engineer"
+msgstr "工程"
+
+#. module: metro_project
+#: view:mrp.production.workcenter.line:0
+msgid "Information"
+msgstr "信息"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_project_single_mrp_prod_order
+#: field:project.project,single_mrp_prod_order:0
+msgid "Single Manufacture Order"
+msgstr "单生产单"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Remaining Hours"
+msgstr "剩余的小时数"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_project_issue
+msgid "Project Issue"
+msgstr "项目问题"
+
+#. module: metro_project
+#: report:project.task.print:0 report:task.group.by_assignee:0
+#: report:task.group.by_employee:0
+msgid "Assignee:"
+msgstr "分配:"
+
+#. module: metro_project
+#: view:task.print:0
+msgid ""
+"Day for daily sheet, if set this date, then ingore the tasks that you "
+"selected, system will print all the tasks of this day"
+msgstr ""
+"日任务列表的天,如果设置了这个日期,系统会忽略你选择的任务,打印所有此天的任务"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Work Hours"
+msgstr "工作小时数"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_project_product_id
+#: model:ir.model.fields,field_description:metro_project.field_project_task_product
+#: model:ir.model.fields,field_description:metro_project.field_project_task_product_id
+#: field:project.project,product_id:0 field:project.task,product:0
+#: field:project.task,product_id:0
+msgid "Product"
+msgstr "产品"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_task_group_test
+msgid "task.group.test"
+msgstr "task.group.test"
+
+#. module: metro_project
+#: selection:task.print,print_type:0
+msgid "Task List By Team"
+msgstr "按部门的任务列表"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "End Date"
+msgstr "结束日期"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_emp_ids
+#: model:ir.model.fields,field_description:metro_project.field_project_task_work_emp_ids
+#: view:project.task:0 field:project.task,emp_ids:0 report:project.task.list:0
+#: field:project.task.work,emp_ids:0
+msgid "Employees"
+msgstr "员工"
+
+#. module: metro_project
+#: model:email.template,subject:metro_project.project_task_assignee
+msgid ""
+"Task ${object.name} of Project ${object.project_id.name} was assigned to you"
+msgstr ""
+"Task ${object.name} of Project ${object.project_id.name} was assigned to you"
+
+#. module: metro_project
+#: selection:task.print,print_type:0
+msgid "Task List By Employee"
+msgstr "按员工的任务列表"
+
+#. module: metro_project
+#: model:ir.model,name:metro_project.model_project_task_type
+msgid "Task Stage"
+msgstr "任务阶段"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Spent Hours"
+msgstr "花费时间"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_dept_mgr_id
+#: model:ir.model.fields,field_description:metro_project.field_task_group_team_leader
+#: field:project.task,dept_mgr_id:0 field:task.group,team_leader:0
+msgid "Team Leader"
+msgstr "组长"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "date"
+msgstr "日期"
+
+#. module: metro_project
+#: model:ir.actions.act_window,name:metro_project.open_board_task
+#: model:ir.ui.menu,name:metro_project.menu_task_dashboard
+msgid "Task Dashboard"
+msgstr "任务仪表盘"
+
+#. module: metro_project
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Date Start:"
+msgstr "开始日期:"
+
+#. module: metro_project
+#: selection:project.task.type,project_type:0 selection:task.print,task_type:0
+msgid "All"
+msgstr "所有"
+
+#. module: metro_project
+#: view:board.board:0
+#: model:ir.actions.act_window,name:metro_project.tasks_opening_erp_action
+msgid "ERP Tasks"
+msgstr "ERP任务"
+
+#. module: metro_project
+#: model:ir.model.fields,field_description:metro_project.field_project_task_private
+#: field:project.task,private:0
+msgid "Private"
+msgstr "私有"
+
+#. module: metro_project
+#: model:res.groups,name:metro_project.group_engineer_manager
+msgid "Manager"
+msgstr "经理"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "{'invisible':[('project_type','=','mfg')]}"
+msgstr "{'invisible':[('project_type','=','mfg')]}"
+
+#. module: metro_project
+#: view:project.task:0
+msgid "Add a Description..."
+msgstr "增加一个描述..."
+
+#. module: metro_project
+#: report:project.task.print:0 report:project.task.sheet:0
+msgid "Date Start"
+msgstr "开始日期"
+
+#. module: metro_project
+#: report:project.task.print:0 report:project.task.sheet:0
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Priority:"
+msgstr "优先级:"
+
+#. module: metro_project
+#: report:task.group.by_assignee:0 report:task.group.by_employee:0
+msgid "Task:"
+msgstr "任务:"
+
+#. module: metro_project
+#: model:ir.module.category,name:metro_project.module_category_engineer
+#: model:ir.ui.menu,name:metro_project.menu_eng_engingeering
+#: selection:project.project,project_type:0
+#: selection:project.task,project_type:0
+#: selection:project.task.type,project_type:0 selection:task.print,task_type:0
+msgid "Engineering"
+msgstr "工程"
+
+########################manual########################
+#. module: metro_project
+#: model:ir.ui.menu,name:base.menu_eng_root
+msgid "Engineering"
+msgstr "工程"

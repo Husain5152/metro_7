@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+<!-- Employee Payroll Pay Slip for Currency-->
+        <record id="hr_contract_view_form_emppay_currency" model="ir.ui.view">
+            <field name="name">hr_contract_view_form_emppay_currency</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract_view_form_emppay"/>
+            <field name="arch" type="xml">
+            	<field name="wage" position="after">
+            		<field name="wage_currency_id"/>
+            	</field>
+		<!-- Contract Allowance/Deduction for currency -->
+            	<xpath expr="//field[@name='alwded_ids']/tree/field[@name='amount']" position="after">
+            		<field name="currency_id"/>
+            	</xpath>
+            </field>
+        </record>
+                	
+        <record id="view_hr_emppay_list_currency" model="ir.ui.view">
+            <field name="name">view_hr_emppay_list_currency</field>
+            <field name="model">hr.emppay</field>
+            <field name="inherit_id" ref="view_hr_emppay_list"/>
+            <field name="arch" type="xml">
+            	<field name="wage_net" position="after">
+            		<field name="show_local" invisible="1"/>
+            		<field name="wage_total_local" invisible="1"/>
+            		<field name="wage_pay_local" invisible="1"/>
+            		<field name="wage_net_local" invisible="1"/>
+            	</field>
+            </field>
+        </record>
+
+        <record id="view_hr_emppay_form_currency" model="ir.ui.view">
+            <field name="name">view_hr_emppay_form_currency</field>
+            <field name="model">hr.emppay</field>
+            <field name="inherit_id" ref="view_hr_emppay_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//group[@name='attend_wage']" position="before">
+            		<group name="pay_currency">
+            			<label for='currency_id'/>
+            			<div>
+            				<field name="currency_id" class="oe_inline" readonly="1"/>@<field name="currency_rate" class="oe_inline" readonly="1"/>
+            			</div>	
+            		</group>
+            	</xpath>
+            	<field name="wage_total" position="after">
+            		<field name="show_local" invisible="1"/>
+            		<field name="wage_total_local" attrs="{'invisible':[('show_local','!=',True)]}" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+            	</field>
+            	<field name="wage_pay" position="after">
+            		<field name="wage_pay_local" attrs="{'invisible':[('show_local','!=',True)]}" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+            	</field>
+            	<field name="wage_net" position="after">
+            		<field name="wage_net_local" attrs="{'invisible':[('show_local','!=',True)]}" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+            	</field>
+            	<!--   Allowance/Deduction for currency -->
+            	<field name="alw_ids" position="attributes">
+            		<attribute name="context">{'default_type':'alw', 'default_currency_id':currency_id, 'currency_rate':currency_rate}</attribute>
+            	</field>
+            	<xpath expr="//field[@name='alw_ids']/tree/field[@name='amount']" position="attributes">
+           			<attribute name="on_change">onchange_amount(currency_id, amount, context)</attribute>
+           		</xpath>
+            	<xpath expr="//field[@name='alw_ids']/tree/field[@name='amount']" position="after">
+            		<field name="currency_id" invisible="1"/>
+            		<field name="amount_local" on_change="onchange_amount_local(currency_id, amount_local, context)"/>
+            	</xpath>
+            	
+            	<field name="alw_inwage_ids" position="attributes">
+            		<attribute name="context">{'default_type':'alw_inwage', 'default_currency_id':currency_id, 'currency_rate':currency_rate}</attribute>
+            	</field>
+            	<xpath expr="//field[@name='alw_inwage_ids']/tree/field[@name='amount']" position="attributes">
+           			<attribute name="on_change">onchange_amount(currency_id, amount, context)</attribute>
+           		</xpath>
+            	<xpath expr="//field[@name='alw_inwage_ids']/tree/field[@name='amount']" position="after">
+            		<field name="currency_id" invisible="1"/>
+            		<field name="amount_local" on_change="onchange_amount_local(currency_id, amount_local, context)"/>
+            	</xpath>
+            	
+            	<field name="ded_ids" position="attributes">
+            		<attribute name="context">{'default_type':'ded', 'default_currency_id':currency_id, 'currency_rate':currency_rate}</attribute>
+            	</field>
+            	<xpath expr="//field[@name='ded_ids']/tree/field[@name='amount']" position="attributes">
+           			<attribute name="on_change">onchange_amount(currency_id, amount, context)</attribute>
+           		</xpath>
+            	<xpath expr="//field[@name='ded_ids']/tree/field[@name='amount']" position="after">
+            		<field name="currency_id" invisible="1"/>
+            		<field name="amount_local"  on_change="onchange_amount_local(currency_id, amount_local, context)"/>
+            	</xpath>
+            	
+            	<field name="alw_total" position="after">
+            		<field name="alw_total_local" attrs="{'invisible':[('show_local','!=',True)]}" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+            	</field>
+            	<field name="ded_total" position="after">
+            		<field name="ded_total_local" attrs="{'invisible':[('show_local','!=',True)]}" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+            	</field>
+            </field>
+        </record>          
+                            
+        <record id="hr_emppay_sheet_form_currency" model="ir.ui.view">
+            <field name="name">hr_emppay_sheet_form_currency</field>
+            <field name="model">hr.emppay.sheet</field>
+            <field name="inherit_id" ref="hr_emppay_sheet_form"/>
+            <field name="arch" type="xml">
+            	<field name='account_period_id' position='after'>
+            			<label for='currency_id'/>
+            			<div>
+            				<field name="currency_id" class="oe_inline" on_change="onchange_currency(currency_id)"/>@<field name="currency_rate" class="oe_inline"/>
+            			</div>	
+            	</field>
+            </field>
+        </record>                            
+    </data>
+</openerp>
+

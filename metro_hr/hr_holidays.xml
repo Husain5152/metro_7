@@ -1,0 +1,249 @@
+<openerp>
+    <data>
+
+<!-- Holidays: Leave Request -->
+
+        <record id="holiday_leave_form_view" model="ir.ui.view">
+            <field name="name">holiday_leave_form_view</field>
+            <field name="model">hr.holidays</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_new"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="replace">
+	                <header>
+	                    <button string="Confirm" name="confirm" states="draft" type="workflow" class="oe_highlight"/>
+	                    
+	                    <button string="Approve" name="validate" states="confirm" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver" class="oe_highlight"/>
+	                    <button string="Refuse" name="refuse" states="confirm" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver"/>
+	                    	
+	                    <button string="Super Approve" name="second_validate" states="validate1" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver_super" class="oe_highlight"/>
+	                    <button string="Refuse" name="refuse" states="validate1" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver_super"/>
+	                    	
+	                    <!-- For the deletion of the final approved request 
+	                    Super approver or HR manager can cancel it, then can delete it -->
+						<button string="Refuse" name="refuse" states="validate" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver,metro_hr.group_hr_holiday_approver_super"/>	    
+	                    	                	
+	                    <button string="Reset to New" name="set_to_draft" states="refuse" type="object"/>
+	                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,validate" statusbar_colors='{"confirm":"blue","validate1":"blue","refuse":"red"}'/>
+	                </header>
+                </xpath>
+                <sheet string="Leave Request" position="replace">
+	                <sheet string="Leave Request">
+	                    <group>
+	                        <group>
+	                            <field name="name" attrs="{'readonly':[('state','!=','draft'),('state','!=','confirm')]}"/>
+	                            <field name="holiday_status_id" context="{'employee_id':employee_id}"/>
+	                            <label for="number_of_days_temp" string="Duration" help="The default duration interval between the start date and the end date is 8 hours.  Feel free to adapt it to your needs."/>
+	                            <div>
+	                                    <field name="date_from" nolabel="1" on_change="onchange_date_from(date_to, date_from)" required="1" class="oe_inline"/>
+	                                    <label string="-" class="oe_inline"/>
+	                                    <field name="date_to" nolabel="1" on_change="onchange_date_to(date_to, date_from)" required="1" class="oe_inline"/>
+		                                <div>
+		                                    <field name="number_of_days_temp" class="oe_inline"/> days
+		                                </div>
+	                            </div>	    
+	                            <field name="ticket_approve_id" groups="base.group_hr_user"/>
+	                            <field name="ticket_approve_id2" groups="base.group_hr_user"/>
+	                        </group>
+	                        <group>
+	                            <field name="holiday_type" on_change="onchange_type(holiday_type)" attrs="{'readonly':[('state','!=','draft')]}" width="130" string="Mode" groups="base.group_hr_user"/>
+                                <field name="employee_id" attrs="{'required':[('holiday_type','=','employee')],'invisible':[('holiday_type','=','category')]}" on_change="onchange_employee(employee_id)" groups="base.group_hr_user"/>
+	                            <field name="department_id" attrs="{'invisible':[('holiday_type','=','category')]}" groups="base.group_hr_user"/>
+	                            <field name="job_id" attrs="{'invisible':[('holiday_type','=','category')]}" groups="base.group_hr_user"/>
+	                            <field name="category_id" attrs="{'required':[('holiday_type','=','category')], 'invisible':[('holiday_type','=','employee')], 'readonly':[('state','!=','draft'), ('state','!=','confirm')]}"/>
+	                        </group>
+	                    </group>
+	                </sheet>
+                </sheet>
+            </field>
+        </record>
+        
+        <record id="holiday_leave_tree_view" model="ir.ui.view">
+            <field name="name">holiday_leave_tree_view</field>
+            <field name="model">hr.holidays</field>
+            <field name="inherit_id" ref="hr_holidays.view_holiday"/>
+            <field name="arch" type="xml">
+            	<!-- for the 'Leave Requests' and 'Leave Requests to Approve' menu
+            	since the  number_of_days will display negative value for the leave, so use the number_of_days_temp instead-->
+            	<field name="number_of_days" position="replace">
+            		<field name="number_of_days_temp" string="Number of Days"/>
+            	</field>
+            </field>
+        </record>
+        
+        <!-- remove ''search_default_my_leaves':1',
+		 the my leaves showing by default, 
+		 since there are record rules that by different roels see different data -->
+        <record model="ir.actions.act_window" id="hr_holidays.open_ask_holidays">
+            <field name="context">{'default_type': 'remove'}</field>
+        </record>
+        
+        <!-- change sequence from calendar/tree/form to tree/form/calendar -->
+        <record model="ir.actions.act_window.view" id="hr_holidays.action_open_ask_holidays_tree">
+            <field name="sequence" eval="1"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="hr_holidays.action_open_ask_holidays_form">
+            <field name="sequence" eval="2"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="hr_holidays.action_open_ask_holidays_calendar">
+            <field name="sequence" eval="3"/>
+        </record>
+        
+<!-- Holidays: Leave Allocation -->
+        <record id="holiday_allocation_form_view" model="ir.ui.view">
+            <field name="name">holiday_allocation_form_view</field>
+            <field name="model">hr.holidays</field>
+            <field name="inherit_id" ref="hr_holidays.allocation_leave_new"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="replace">
+	                <header>
+	                    <button string="Confirm" name="confirm" states="draft" type="workflow" class="oe_highlight"/>
+	                    
+	                    <button string="Approve" name="validate" states="confirm" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver" class="oe_highlight"/>
+	                    <button string="Refuse" name="refuse" states="confirm" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver"/>
+	                    	
+	                    <button string="Super Approve" name="second_validate" states="validate1" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver_super" class="oe_highlight"/>
+	                    <button string="Refuse" name="refuse" states="validate1" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver_super"/>
+	                    	
+	                    <!-- For the deletion of the final approved request 
+	                    Super approver or HR manager can cancel it, then can delete it -->
+						<button string="Refuse" name="refuse" states="validate" type="workflow" 
+	                    	groups="base.group_hr_user,metro_hr.group_hr_holiday_approver,metro_hr.group_hr_holiday_approver_super"/>   
+	                    	                	
+	                    <button string="Reset to New" name="set_to_draft" states="refuse" type="object"/>
+	                    
+	                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,validate" statusbar_colors='{"confirm":"blue","validate1":"blue","refuse":"red"}'/>
+	                    	                    
+	                </header>
+                </xpath>
+                
+                <xpath expr="//sheet" position="replace">
+	                <sheet string="Leave Request">
+	                    <group>
+	                        <group>
+	                            <field name="name" required="1" attrs="{'readonly':[('state','!=','draft'),('state','!=','confirm')]}"/>
+	                            <field name="holiday_status_id" context="{'employee_id':employee_id}"/>
+	                            <label for="number_of_days_temp"/>
+	                            <div>
+	                                <field name="number_of_days_temp" class="oe_inline"/> days
+	                            </div>
+	                        </group>
+	                        <group>
+	                            <field name="holiday_type" on_change="onchange_type(holiday_type)" attrs="{'readonly':[('state','!=','draft')]}" width="130" string="Mode" groups="base.group_hr_user"/>
+                                <field name="employee_id" attrs="{'required':[('holiday_type','=','employee')],'invisible':[('holiday_type','=','category')]}" on_change="onchange_employee(employee_id)" groups="base.group_hr_user"/>
+	                            <field name="department_id" attrs="{'invisible':[('holiday_type','=','category')]}" groups="base.group_hr_user"/>
+	                            <field name="job_id" attrs="{'invisible':[('holiday_type','=','category')]}" groups="base.group_hr_user"/>
+	                            <field name="category_id" attrs="{'required':[('holiday_type','=','category')], 'invisible':[('holiday_type','=','employee')], 'readonly':[('state','!=','draft'), ('state','!=','confirm')]}"/>                            	                            
+	                        </group>
+	                    </group>
+	                </sheet>
+                </xpath>
+                
+			</field>
+		</record>	                   	
+	                                
+<!-- Company add the configuration parameter for holiday -->
+        <record model="ir.ui.view" id="view_company_form_leave">
+            <field name="name">view_company_form_leave</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+				<xpath expr="//group[@name='account_grp']" position="after">
+                    <group name="hr_leave" string="Leave">
+                        <field name="hr_holiday_leave_second_approve_days"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+<!-- Add emial notification to workflow -->
+    <record model="workflow.activity" id="hr_holidays.act_confirm"> <!-- submitted -->
+        <field name="action">holidays_confirm()
+_email_notify('confirmed')</field>
+    </record>
+
+    <record model="workflow.activity" id="hr_holidays.act_validate"> <!-- accepted -->
+        <field name="action">holidays_validate()
+_email_notify('validated')</field>
+    </record>
+
+    <record model="workflow.activity" id="hr_holidays.act_validate1"> <!-- first_accepted -->
+        <field name="action">holidays_first_validate()
+_email_notify('first_validated')</field>
+    </record>
+    <record model="workflow.activity" id="hr_holidays.act_refuse"> <!-- refused -->
+        <field name="action">holidays_refuse()
+_email_notify('refused')</field>
+    </record>        
+
+<!-- User need press button send signal to confirm -->
+    <record model="workflow.transition" id="hr_holidays.holiday_draft2confirm"> 
+        <field name="act_from" ref="hr_holidays.act_draft" />
+        <field name="act_to" ref="hr_holidays.act_confirm" />
+        <field name="signal">confirm</field>
+    </record>    
+    
+<!-- Remove the transition group_id, to allow the approver and appvoer_super to make transition -->
+    <record model="workflow.transition" id="hr_holidays.holiday_confirm2validate"> <!-- 2. submitted->accepted (validate signal) if not double_validation-->
+        <field name="group_id" eval="False"/>
+    </record>
+
+    <record model="workflow.transition" id="hr_holidays.holiday_confirm2validate1"> <!-- 2. submitted -> first_accepted (validate signal) if double_validation-->
+        <field name="group_id" eval="False"/>
+    </record>
+
+    <record model="workflow.transition" id="hr_holidays.holiday_confirm2refuse"> <!-- 2. submitted->refused (refuse signal) -->
+        <field name="group_id" eval="False"/>
+    </record>
+
+    <record model="workflow.transition" id="hr_holidays.holiday_validate2refuse"> <!-- 3. accepted->refused (refuse signal) -->
+        <field name="group_id" eval="False"/>
+    </record>
+
+    <record model="workflow.transition" id="hr_holidays.holiday_validate1_validate"> <!-- 4. first_accepted -> accepted (second_validate  signal) -->
+        <field name="group_id" eval="False"/>
+    </record>
+
+    <record model="workflow.transition" id="hr_holidays.holiday_validate1_refuse"> <!-- 4. first_accepted->refused (refuse signal) -->
+        <field name="group_id" eval="False"/>
+    </record>
+    
+    </data>
+    
+	<data noupdate="1">
+<!-- The holiday approval group -->
+	    <record model="ir.module.category" id="module_category_hr_holiday">
+	        <field name="name">HR Holidays</field>
+	        <field name="parent_id" ref="base.module_category_human_resources"/>
+	        <field name="sequence">1001</field>
+	    </record>
+	    <record id="group_hr_holiday_approver" model="res.groups">
+	        <field name="name">Holiday Approver</field>
+	        <field name="category_id" ref="base.module_category_human_resources"/>
+	        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+	        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+	    </record>	
+	    <record id="group_hr_holiday_approver_super" model="res.groups">
+	        <field name="name">Holiday Super Approver</field>
+	        <field name="category_id" ref="base.module_category_human_resources"/>
+	        <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('group_hr_holiday_approver'))]"/>
+	        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+	    </record>
+
+<!-- The record rule for employee manager with approver role, can see the leaves of subordinates -->	    
+	    <record model="ir.rule" id="hr_holiday_approver">
+	        <field name="name">Holidays Approver</field>
+	        <field name="model_id" ref="model_hr_holidays"/>
+	        <field name="domain_force">[('employee_id','child_of', [user.employee_id.id])]</field>
+	        <field name="groups" eval="[(4,ref('group_hr_holiday_approver'))]"/>
+	    </record>  	    
+    </data>
+</openerp>

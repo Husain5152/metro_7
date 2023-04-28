@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<!--		 Top Menu -->
+		
+		<menuitem id="mttl_metro" name="Metro"/>
+		
+<!--		 web_icon="static\src\img\MTT_MenuLogo_Normal.png" web_icon_hover="static\src\img\MTT_MenuLogo_Hover.png"/>-->
+
+		<menuitem id="menu_mttl_config" name="Configuration" parent="mttl_metro" sequence="100"/>
+
+
+
+    </data>
+</openerp>
+

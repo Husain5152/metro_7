@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_work_order_cnc_form">
+            <field name="name">view_work_order_cnc_form</field>
+            <field name="model">work.order.cnc</field>
+            <field name="inherit_id" ref="metro_mrp.view_work_order_cnc_form"/>
+            <field name="arch" type="xml">
+                <field name="note" position="before">
+                    <field name="drawing_order_id" on_change="onchange_drawing_order(drawing_order_id,context)"
+                           domain="[('cnc_workorder_id','=',False)]"/>
+                </field>
+                <button name="print_pdf" position="after">
+                    <button name="print_dxf" string="Download DXF" type="object"/>
+                </button>
+                <field name="file_name" position="before">
+                    <field name="drawing_order_id"/>
+                </field>
+                <xpath expr="//page[@string='General']" position="after">
+                     <page string="DXF Lines">
+                        <field name="drawing_order_lines">
+                            <tree string="Drawing Order Lines">
+                                <field name="id" invisible="1"/>
+                                <field name="item_no"/>
+                                <field name="erp_no"/>
+                                <field name="product_id" string="ERP Part Number"/>
+                                <field name="part_number"/>
+                                <field name="description"/>
+                                <field name="thickness"/>
+                                <field name="material"/>
+                                <field name="part_type"/>
+                                <field name="bom_qty" sum="Total Qty"/>
+                                <field name="quantity" sum="Total Qty"/>
+                                <field name="work_steps"  class="metro_high_light" readonly="1"/>
+                                <field name="drawing_file_name" invisible="1"/>
+                                <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':['|',('drawing_file_name', '=', False),('part_type','=','PS')]}"/>
+                                <!--<button string="Upload" attrs="{'invisible':['|',('part_type','=','PS'),('state','in',['ready','confirmed','approved'])]}" name="%(action_upload_multi_drawings)d" type="action" states="draft,rejected" class="oe_highlight" context="{'line_id':id,'product_id':product_id}" icon="gtk-open"/>-->
+                                <field name="dxf_file_name" invisible="1"/>
+                                <field name="dxf_download" widget="drawing_url" filename="dxf_file_name" attrs="{'invisible':['|',('dxf_file_name', '=', False)]}"/>
+                                <!--<button string="Upload" attrs="{'invisible':[('state','in',['ready','confirmed','approved'])]}" name="%(action_upload_multi_dxfs)d" type="action" states="draft,rejected" class="oe_highlight" context="{'line_id':id,'product_id':product_id}" icon="gtk-open"/>-->
+                                <field name="status" readonly="1"/>
+                                <field name="state" invisible="1"/>
+                            </tree>
+                        </field>
+                     </page>
+                 </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_work_order_cnc_tree">
+            <field name="name">view_work_order_cnc_tree</field>
+            <field name="model">work.order.cnc</field>
+            <field name="inherit_id" ref="metro_mrp.view_work_order_cnc_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="drawing_order_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

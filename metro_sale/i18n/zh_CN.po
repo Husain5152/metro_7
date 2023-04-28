@@ -1,0 +1,955 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* metro_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-06 06:13+0000\n"
+"PO-Revision-Date: 2015-05-06 14:22+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Incoming Materials"
+msgstr "入库原材料"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Total :"
+msgstr "总计:"
+
+#. module: metro_sale
+#: field:contact.log,duration:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_duration
+msgid "Hours"
+msgstr "小时"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Payments"
+msgstr "付款"
+
+#. module: metro_sale
+#: view:pay.sale.order:0
+#: view:sale.product:0
+#: selection:sale.product,state:0
+#: view:sale.order:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_sale
+#: model:ir.actions.act_window,name:metro_sale.action_sale_product
+#: model:ir.ui.menu,name:metro_sale.menu_sale_product_mrp
+#: model:ir.ui.menu,name:metro_sale.menu_sale_product_warehouse
+#: view:sale.product:0
+msgid "MFG IDs"
+msgstr "生产ID"
+
+#. module: metro_sale
+#: view:pay.sale.order:0
+msgid "Pay"
+msgstr "付款"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "销售订单明细"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_mrp_prod_ids
+#: field:sale.product,mrp_prod_ids:0
+msgid "Manufacture Order"
+msgstr "生产单"
+
+#. module: metro_sale
+#: view:sale.product:0
+#: selection:sale.product,state:0
+msgid "Manufacture"
+msgstr "生产"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Agreements"
+msgstr "协议"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Date Ordered"
+msgstr "下单日期"
+
+#. module: metro_sale
+#: view:pay.sale.order:0
+msgid "[('type','in',('bank','cash'))]"
+msgstr "[('type','in',('bank','cash'))]"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_pay_sale_order
+msgid "Wizard to generate a payment from the sale order"
+msgstr "从销售订单付款的向导"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_message_ids
+#: field:sale.product,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Payment History"
+msgstr "付款历史"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_pay_sale_order_amount_max
+#: field:pay.sale.order,amount_max:0
+msgid "Max Amount"
+msgstr "最大金额"
+
+#. module: metro_sale
+#: model:ir.actions.act_window,name:metro_sale.contact_log_type_action
+#: model:ir.ui.menu,name:metro_sale.menu_contact_log_type
+msgid "Contact Log Types"
+msgstr "联系日志类型"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_line_mto_design_id
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_mto_design_id
+#: field:sale.order.line,mto_design_id:0
+#: field:sale.product,mto_design_id:0
+msgid "Configuration"
+msgstr "配置"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "[('state','not in',('draft','sent','cancel','agreed'))]"
+msgstr "[('state','not in',('draft','sent','cancel','agreed'))]"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Print Agreement"
+msgstr "打印协议"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Set to Draft"
+msgstr "设为草稿"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Amount"
+msgstr "金额"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Confirm Sale"
+msgstr "确认订单"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_account_invoice
+msgid "Invoice"
+msgstr "发票"
+
+#. module: metro_sale
+#: model:ir.actions.report.xml,name:metro_sale.report_sale_agreement
+#: view:sale.order:0
+msgid "Sales Agreement"
+msgstr "销售协议"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Currency"
+msgstr "外币"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Unit Price"
+msgstr "单价"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_sale_order
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_so_id
+#: report:sale.agreement:0
+#: field:sale.product,so_id:0
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: metro_sale
+#: constraint:pay.sale.order:0
+msgid "Pay amount only can be between zero and the balance."
+msgstr "付款金额必须介于零和余额之间."
+
+#. module: metro_sale
+#: selection:sale.product,priority:0
+msgid "Very important"
+msgstr "非常重要"
+
+#. module: metro_sale
+#: field:contact.log,description:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_description
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_note
+#: report:sale.agreement:0
+#: view:sale.order:0
+#: field:sale.product,note:0
+msgid "Description"
+msgstr "描述"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Net Total :"
+msgstr "净计 :"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_sale_payinfo
+msgid "sale.payinfo"
+msgstr "sale.payinfo"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Shipping address :"
+msgstr "送货地址:"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "agreed"
+msgstr "agreed"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Your Reference"
+msgstr "Your Reference"
+
+#. module: metro_sale
+#: selection:sale.product,source:0
+msgid "Stocking"
+msgstr "库存"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "线索/商机"
+
+#. module: metro_sale
+#: field:mto.design,type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: metro_sale
+#: field:account.invoice,auto_reconcile_sale_pay:0
+#: model:ir.model.fields,field_description:metro_sale.field_account_invoice_auto_reconcile_sale_pay
+msgid "Auto Reconcile Sale Payment"
+msgstr "自动核销预付款"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Tax"
+msgstr "税"
+
+#. module: metro_sale
+#: field:account.invoice,sale_payment_ids:0
+#: model:ir.model.fields,field_description:metro_sale.field_account_invoice_sale_payment_ids
+msgid "Sale Payments"
+msgstr "销售预付款"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_source
+#: view:sale.product:0
+#: field:sale.product,source:0
+msgid "Source"
+msgstr "源"
+
+#. module: metro_sale
+#: help:sale.product,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_res_company_info
+#: field:res.company,info:0
+#: report:sale.agreement:0
+msgid "Wire Transfer Information"
+msgstr "电汇信息"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Total Paid :"
+msgstr "已付:"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_payinfo_name
+#: field:sale.payinfo,name:0
+#: report:sale.agreement:0
+msgid "Name"
+msgstr "名称"
+
+#. module: metro_sale
+#: field:contact.log,name:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_name
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_message_summary
+#: field:sale.product,message_summary:0
+msgid "Summary"
+msgstr "总计"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Phone:"
+msgstr "电话:"
+
+#. module: metro_sale
+#: view:sale.product:0
+#: selection:sale.product,state:0
+msgid "Engineering"
+msgstr "工程"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Advance Payments"
+msgstr "预收款"
+
+#. module: metro_sale
+#: model:ir.actions.act_window,name:metro_sale.action_sale_agreements
+#: model:ir.ui.menu,name:metro_sale.menu_sale_agreement
+msgid "Sales Agreements"
+msgstr "销售协议"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Confirm"
+msgstr "确认"
+
+#. module: metro_sale
+#: help:sale.product,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Payment Detail"
+msgstr "付款明细"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Payment"
+msgstr "付款"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Invoice address :"
+msgstr "凭据地址 :"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "TVA :"
+msgstr "TVA :"
+
+#. module: metro_sale
+#: field:crm.lead,phonecall_ids:0
+#: model:ir.model.fields,field_description:metro_sale.field_crm_lead_phonecall_ids
+msgid "Callings"
+msgstr "通话"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_mttl_serials_mfg_id_id
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_name
+#: field:mttl.serials,mfg_id_id:0
+#: field:sale.product,name:0
+msgid "MFG ID"
+msgstr "生产ID"
+
+#. module: metro_sale
+#: view:crm.lead:0
+msgid "Contacts Log"
+msgstr "联系日志"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Documents"
+msgstr "文档"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_config_change_ids
+#: field:sale.product,config_change_ids:0
+msgid "Changes"
+msgstr "变更"
+
+#. module: metro_sale
+#: view:sale.product:0
+#: selection:sale.product,state:0
+msgid "Done"
+msgstr "完成"
+
+#. module: metro_sale
+#: view:contact.log:0
+#: view:sale.product:0
+msgid "Description..."
+msgstr "描述..."
+
+#. module: metro_sale
+#: view:contact.log:0
+#: view:contact.log.type:0
+msgid "Channels"
+msgstr "通道"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_line_config_changed
+#: field:sale.order.line,config_changed:0
+msgid "Config Changed"
+msgstr "配置已改变"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_has_project
+#: field:sale.product,has_project:0
+msgid "Has Project"
+msgstr "有项目"
+
+#. module: metro_sale
+#: help:sale.product,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Invoice Payments"
+msgstr "凭据付款"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Tel. :"
+msgstr "电话:"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Configurations"
+msgstr "配置"
+
+#. module: metro_sale
+#: help:sale.product,active:0
+msgid "If unchecked, it will allow you to hide the product without removing it."
+msgstr "If unchecked, it will allow you to hide the product without removing it."
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_pay_sale_order_attachment_name
+#: field:pay.sale.order,attachment_name:0
+msgid "Attachment File Name"
+msgstr "附件文件名"
+
+#. module: metro_sale
+#: view:contact.log:0
+#: view:contact.log.type:0
+msgid "Channel"
+msgstr "通道"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "[('customer','=',True),('is_company','=',True)]"
+msgstr "[('customer','=',True),('is_company','=',True)]"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_message_follower_ids
+#: field:sale.product,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: metro_sale
+#: field:account.move,sale_ids:0
+#: model:ir.model.fields,field_description:metro_sale.field_account_move_sale_ids
+#: view:sale.order:0
+msgid "Sales Orders"
+msgstr "销售订单"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Quote"
+msgstr "报价单"
+
+#. module: metro_sale
+#: help:account.invoice,auto_reconcile_sale_pay:0
+msgid "Auto reconcile the sale order payments when valid the invoice"
+msgstr "验证发票的时候自动核销预收款"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Fax :"
+msgstr "传真 :"
+
+#. module: metro_sale
+#: field:sale.payinfo,company_id:0
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Salesperson"
+msgstr "销售员"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_message_is_follower
+#: field:sale.product,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_create_uid
+#: field:sale.product,create_uid:0
+msgid "Creator"
+msgstr "创建人"
+
+#. module: metro_sale
+#: selection:sale.product,priority:0
+msgid "Medium"
+msgstr "中"
+
+#. module: metro_sale
+#: field:account.invoice,payinfo_id:0
+#: model:ir.model.fields,field_description:metro_sale.field_account_invoice_payinfo_id
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_payinfo_id
+#: view:res.company:0
+#: field:sale.order,payinfo_id:0
+msgid "Payment Information"
+msgstr "付款信息"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Sold To :"
+msgstr "销售地址:"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "{'config_changed':config_changed}"
+msgstr "{'config_changed':config_changed}"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_date_planned
+#: field:sale.product,date_planned:0
+msgid "Scheduled Date"
+msgstr "安排日期"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_mto_design_print_weight
+#: field:mto.design,print_weight:0
+msgid "Print Weight"
+msgstr "打印重量"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_contact_log_type
+msgid "Types"
+msgstr "类型"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "draft,sent,agreed"
+msgstr "draft,sent,agreed"
+
+#. module: metro_sale
+#: view:pay.sale.order:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_sale
+#: sql_constraint:sale.product:0
+msgid "ID must be unique!"
+msgstr "ID不能重复!"
+
+#. module: metro_sale
+#: field:contact.log,type_id:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_type_id
+#: model:ir.model.fields,field_description:metro_sale.field_mto_design_type
+msgid "Type"
+msgstr "类型"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_sale_product
+msgid "Sale Product"
+msgstr "MFG ID"
+
+#. module: metro_sale
+#: field:contact.log.type,active:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_type_active
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_active
+#: field:sale.product,active:0
+msgid "Active"
+msgstr "有效"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_mto_design_print_price
+#: field:mto.design,print_price:0
+msgid "Print Price"
+msgstr "打印价格"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Group By..."
+msgstr "分组..."
+
+#. module: metro_sale
+#: view:pay.sale.order:0
+#: report:sale.agreement:0
+#: view:sale.order:0
+msgid "Payment Method"
+msgstr "付款方式"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_state
+#: view:sale.product:0
+#: field:sale.product,state:0
+msgid "Status"
+msgstr "状态"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "ID"
+msgstr "ID"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Serial(s):"
+msgstr "序列号:"
+
+#. module: metro_sale
+#: view:sale.product:0
+#: selection:sale.product,state:0
+msgid "Confirmed"
+msgstr "已确认"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Disc.(%)"
+msgstr "折扣(%)"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_mto_design
+msgid "mto.design"
+msgstr "mto.design"
+
+#. module: metro_sale
+#: selection:sale.product,source:0
+msgid "Others"
+msgstr "其他"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_order_line_with_config
+#: field:sale.order,order_line_with_config:0
+msgid "Lines with Configuration"
+msgstr "Lines with Configuration"
+
+#. module: metro_sale
+#: field:account.invoice,sale_ids:0
+#: field:account.invoice,sale_order_ids:0
+#: model:ir.model.fields,field_description:metro_sale.field_account_invoice_sale_ids
+#: model:ir.model.fields,field_description:metro_sale.field_account_invoice_sale_order_ids
+msgid "Sale Orders"
+msgstr "销售订单"
+
+#. module: metro_sale
+#: field:crm.lead,contact_log_ids:0
+#: model:ir.model.fields,field_description:metro_sale.field_crm_lead_contact_log_ids
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_contact_log_ids
+#: field:sale.order,contact_log_ids:0
+msgid "Contact Logs"
+msgstr "联系日志"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Mail:"
+msgstr "Mail:"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Create Project"
+msgstr "创建工程项目"
+
+#. module: metro_sale
+#: field:contact.log,date:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_date
+msgid "Contact Date"
+msgstr "联系日期"
+
+#. module: metro_sale
+#: field:contact.log.type,name:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_type_name
+msgid "Type Name"
+msgstr "类型名称"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_serial_id
+#: field:sale.product,serial_id:0
+msgid "Product Serial"
+msgstr "产品序列号"
+
+#. module: metro_sale
+#: selection:sale.product,priority:0
+msgid "Important"
+msgstr "重要"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_res_company_sale_payinfo_ids
+#: field:res.company,sale_payinfo_ids:0
+msgid "Sale Payment Information"
+msgstr "销售付款信息"
+
+#. module: metro_sale
+#: selection:sale.product,priority:0
+msgid "Low"
+msgstr "低"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Currency Amount"
+msgstr "外币金额"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_message_unread
+#: field:sale.product,message_unread:0
+msgid "Unread Messages"
+msgstr "未读消息"
+
+#. module: metro_sale
+#: selection:sale.product,priority:0
+msgid "Very Low"
+msgstr "非常低"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_payinfo_content
+#: field:sale.payinfo,content:0
+msgid "Content"
+msgstr "内容"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_create_date
+#: field:sale.product,create_date:0
+msgid "Creation Date"
+msgstr "创建日期"
+
+#. module: metro_sale
+#: field:contact.log,person:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_person
+msgid "Person"
+msgstr "人"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+#: view:sale.order:0
+msgid "Paid Amount"
+msgstr "已付"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Create Manfacture Order"
+msgstr "创建生产订单"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_mttl_serials
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_line_serial_ids
+#: field:sale.order.line,serial_ids:0
+msgid "Serials"
+msgstr "序列号"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_analytic_account_id
+#: field:sale.product,analytic_account_id:0
+msgid "Contract/Analytic"
+msgstr "合同/分析科目"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Requested Material"
+msgstr "物料请购明细"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_payment_moves
+#: view:sale.order:0
+#: field:sale.order,payment_moves:0
+msgid "Payment Moves"
+msgstr "付款会计凭证明细"
+
+#. module: metro_sale
+#: selection:sale.product,source:0
+msgid "Sales"
+msgstr "销售"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Purchased Material"
+msgstr "物料采购明细"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Search MFG IDs"
+msgstr "搜索生产ID"
+
+#. module: metro_sale
+#: field:contact.log,mto_design_wiz_id:0
+#: model:ir.model.fields,field_description:metro_sale.field_contact_log_mto_design_wiz_id
+msgid "Config Log"
+msgstr "配置日志"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Total Paid"
+msgstr "已付"
+
+#. module: metro_sale
+#: view:res.company:0
+msgid "Configuration"
+msgstr "设置"
+
+#. module: metro_sale
+#: field:account.invoice,check:0
+#: model:ir.model.fields,field_description:metro_sale.field_account_invoice_check
+#: model:ir.model.fields,field_description:metro_sale.field_sale_order_checkbox
+#: field:sale.order,checkbox:0
+msgid "Include Payment Information"
+msgstr "包含付款信息"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+#: view:sale.order:0
+msgid "Date"
+msgstr "日期"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_res_company
+#: model:ir.model.fields,field_description:metro_sale.field_sale_payinfo_company_id
+msgid "Companies"
+msgstr "公司"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Balance Due:"
+msgstr "未付:"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Balance Due"
+msgstr "未付"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_mto_design_product_id
+#: model:ir.model.fields,field_description:metro_sale.field_mttl_serials_mfg_id_product
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_product_id
+#: view:sale.product:0
+#: field:sale.product,product_id:0
+#: field:mto.design,product_id:0
+#: field:mttl.serials,mfg_id_product:0
+msgid "Product"
+msgstr "产品"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Cancel Agreement"
+msgstr "取消协议"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_bom_id
+#: field:sale.product,bom_id:0
+msgid "BOM"
+msgstr "物料清单"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Edit"
+msgstr "编辑"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_project_ids
+#: field:sale.product,project_ids:0
+msgid "Engineering Project"
+msgstr "工程项目"
+
+#. module: metro_sale
+#: view:sale.product:0
+#: selection:sale.product,state:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_mto_design_so_line_id
+#: field:mto.design,so_line_id:0
+msgid "SO Line"
+msgstr "销售单行"
+
+#. module: metro_sale
+#: help:sale.product,analytic_account_id:0
+msgid "Link this MFG ID to an analytic account if you need financial management on it. "
+msgstr "如果你想管理成本,关联此制造ID到分析会计科目."
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_sale_product_priority
+#: field:sale.product,priority:0
+msgid "Priority"
+msgstr "优先级"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Subtotal"
+msgstr "小计"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Consumed Materials"
+msgstr "消耗原材料"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Taxes :"
+msgstr "税额 :"
+
+#. module: metro_sale
+#: view:sale.product:0
+msgid "Cost Detail"
+msgstr "成本明细"
+
+#. module: metro_sale
+#: view:crm.lead:0
+msgid "Calling"
+msgstr "通话"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Quantity"
+msgstr "数量"
+
+#. module: metro_sale
+#: model:ir.actions.act_window,name:metro_sale.contact_log_action
+#: model:ir.model,name:metro_sale.model_contact_log
+#: model:ir.ui.menu,name:metro_sale.menu_contact_log
+msgid "Contact Log"
+msgstr "联系日志"
+
+#. module: metro_sale
+#: view:sale.order:0
+msgid "Apply Payments"
+msgstr "登记付款"
+
+#. module: metro_sale
+#: model:ir.model.fields,field_description:metro_sale.field_pay_sale_order_attachment
+#: field:pay.sale.order,attachment:0
+msgid "Attachment"
+msgstr "附件"
+
+#. module: metro_sale
+#: view:pay.sale.order:0
+msgid "date"
+msgstr "date"
+
+#. module: metro_sale
+#: model:ir.model,name:metro_sale.model_account_move
+msgid "Account Entry"
+msgstr "凭证"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Quotation Date"
+msgstr "报价日期"
+
+#. module: metro_sale
+#: report:sale.agreement:0
+msgid "Payment Term"
+msgstr "付款条款"
+

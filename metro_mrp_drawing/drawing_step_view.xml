@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    <record model="ir.ui.view" id="view_drawing_step_tree">
+    	<field name="name">view_drawing_step_tree</field>
+    	<field name="model">drawing.step</field>
+    	<field name="arch" type="xml">
+            <tree string="Drawing Steps" editable="bottom">
+                <field name="name"/>
+            </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_drawing_step_filter">
+            <field name="name">view_drawing_step_filter</field>
+            <field name="model">drawing.step</field>
+            <field name="arch" type="xml">
+                <search string="Search Drawing Steps">
+                    <field name="name" string="Drawing Step"/>
+                </search>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_drawing_step">
+        <field name="name">Drawing Steps</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">drawing.step</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_drawing_step_filter"/>
+    </record>
+    <!--
+    <menuitem
+        id="menu_drawing_step"
+        sequence="104"
+        parent="mrp.menu_mrp_manufacturing"
+        action="action_drawing_step"
+        groups="mrp.group_mrp_manager"/>
+        -->
+    </data>
+</openerp>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="acespritech_view_ir_attachment_type_form" model="ir.ui.view">
+            <field name="name">acespritech.ir.attachment.type.form</field>
+            <field name="model">ir.attachment.type</field>
+            <field name="arch" type="xml">
+                <form string="Attachment Type" version="7.0">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="acespritech_view_ir_attachment_type_tree" model="ir.ui.view">
+            <field name="name">acespritech.ir.attachment.type.tree</field>
+            <field name="model">ir.attachment.type</field>
+            <field name="arch" type="xml">
+                <tree string="Attachment Type">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="acespritech_view_ir_attachment_form" model="ir.ui.view">
+            <field name="name">acespritech.ir.attachment.form</field>
+            <field name="model">ir.attachment</field>
+            <field eval="50" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Attachment" version="7.0">
+                    <sheet>
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group>
+                            <field name="datas" filename="datas_fname"/>
+                            <field name="datas_fname" invisible="1" class="oe_inline oe_right"/>
+                        </group>
+                        <group col="4" colspan="4">
+                            <group col="2" colspan="2">
+                                <field name="attach_type_id"/>
+                            </group>
+                            <group col="2" colspan="2">
+                                <div name="creation_div">
+                                    <field name="create_uid" readonly="1" class="oe_inline"/> on 
+                                    <field name="create_date" readonly="1" class="oe_inline"/>
+                                </div>
+                            </group>
+                        </group>
+                        
+                        <group name="description_group" string="Description" colspan="4">
+                            <field name="description" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+     </data>
+</openerp>

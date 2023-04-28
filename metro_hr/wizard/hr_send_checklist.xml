@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!-- 
+send employee welcome checking list
+ -->    	
+         <act_window name="Send Checklist"
+            res_model="hr.send.checklist"
+            src_model="hr.employee"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="action_hr_send_checklist_batch"
+            groups="base.group_hr_user"/>
+                              
+        <record id="view_hr_send_checklist_form" model="ir.ui.view">
+            <field name="name">view_hr_send_checklist_form</field>
+            <field name="model">hr.send.checklist</field>
+            <field name="arch" type="xml">
+                <form string="Send Employee Welcome Checklist" version="7.0">
+                   <group>
+                        <field name="partner_ids" widget="many2many_tags_email" placeholder="Add contacts to notify..."
+                            context="{'force_email':True, 'show_email':True}"/>
+			            <field name="emp_ids" widget="many2many_tags"/>
+                   </group>
+                <footer>
+		            <button name="send" string="Send" type="object" class="oe_highlight" 
+		            	confirm="Are you sure to send the employee welcome checklist?"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

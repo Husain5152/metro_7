@@ -1,0 +1,196 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* metro_mrp_id_stock
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-11 01:44+0000\n"
+"PO-Revision-Date: 2015-05-11 09:49+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_sale_product_bom_id_material
+#: field:sale.product,bom_id_material:0
+msgid "Material BOM"
+msgstr "物料BOM"
+
+#. module: metro_mrp_id_stock
+#: help:mfg.id.reserve,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: metro_mrp_id_stock
+#: model:ir.model,name:metro_mrp_id_stock.model_mfg_id_req
+msgid "mfg.id.req"
+msgstr "mfg.id.req"
+
+#. module: metro_mrp_id_stock
+#: view:mfg.id.req:0
+msgid "Execute"
+msgstr "执行"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_message_summary
+#: field:mfg.id.reserve,message_summary:0
+msgid "Summary"
+msgstr "总计"
+
+#. module: metro_mrp_id_stock
+#: model:ir.actions.act_window,name:metro_mrp_id_stock.act_mfg_id_req
+#: view:sale.product:0
+msgid "Generate Inventory Reservation and Purchase Requisition"
+msgstr "生成库存占用和采购申请"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model,name:metro_mrp_id_stock.model_sale_product
+msgid "Sale Product"
+msgstr "生产ID"
+
+#. module: metro_mrp_id_stock
+#: view:mfg.id.req:0
+msgid "MFG ID Purchase Requisition"
+msgstr "生产ID采购申请"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model,name:metro_mrp_id_stock.model_stock_move
+msgid "Stock Move"
+msgstr "库存调拨"
+
+#. module: metro_mrp_id_stock
+#: view:mfg.id.reserve:0
+msgid "Search MFG ID Inventory Reservation"
+msgstr "搜索生产ID库存占用"
+
+#. module: metro_mrp_id_stock
+#: view:mfg.id.req:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_mrp_id_stock
+#: view:mfg.id.req:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_mrp_id_stock
+#: model:ir.actions.act_window,name:metro_mrp_id_stock.action_mfg_id_reserve
+#: model:ir.ui.menu,name:metro_mrp_id_stock.menu_mfg_id_reserve_mrp
+#: model:ir.ui.menu,name:metro_mrp_id_stock.menu_mfg_id_reserve_stock
+#: view:mfg.id.reserve:0
+msgid "MFG ID Inventory Reservation"
+msgstr "生产ID库存占用"
+
+#. module: metro_mrp_id_stock
+#: help:mfg.id.reserve,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: metro_mrp_id_stock
+#: field:mfg.id.reserve,message_unread:0
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_message_unread
+msgid "Unread Messages"
+msgstr "未读消息"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_mfg_id
+#: field:mfg.id.reserve,mfg_id:0
+msgid "MFG ID"
+msgstr "生产ID"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model,name:metro_mrp_id_stock.model_material_request_line
+msgid "Material Request Line"
+msgstr "领料单行"
+
+#. module: metro_mrp_id_stock
+#: view:sale.product:0
+msgid "Reserved Material"
+msgstr "库存占用"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model,name:metro_mrp_id_stock.model_product_product
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_product_id
+#: field:mfg.id.reserve,product_id:0
+msgid "Product"
+msgstr "产品"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_product_qty
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_product_product_reserved_qty
+#: field:mfg.id.reserve,product_qty:0
+#: field:product.product,reserved_qty:0
+msgid "Reserved Quantity"
+msgstr "占用数量"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_pur_req_line_id
+#: field:mfg.id.reserve,pur_req_line_id:0
+msgid "Requisition Line"
+msgstr "申请行"
+
+#. module: metro_mrp_id_stock
+#: view:mfg.id.req:0
+msgid "Select stock location to reserve inventory and generate purchase requisitions."
+msgstr "选择占用库存和生成采购申请使用的库位."
+
+#. module: metro_mrp_id_stock
+#: help:mfg.id.reserve,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: metro_mrp_id_stock
+#: view:sale.product:0
+msgid "onchange_bom_id(bom_id, context)"
+msgstr "onchange_bom_id(bom_id, context)"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_message_follower_ids
+#: field:mfg.id.reserve,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model,name:metro_mrp_id_stock.model_mfg_id_reserve
+#: model:ir.model,name:metro_mrp_id_stock.model_mfg_id_resever
+msgid "Email Thread"
+msgstr "邮件链"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_product_qty_consumed
+#: field:mfg.id.reserve,product_qty_consumed:0
+msgid "Consumed Quantity"
+msgstr "消耗数量"
+
+#. module: metro_mrp_id_stock
+#: field:mfg.id.req,location_id:0
+#: field:mfg.id.reserve,location_id:0
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_req_location_id
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_location_id
+msgid "Location"
+msgstr "库位"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_pur_req_id
+#: field:mfg.id.reserve,pur_req_id:0
+msgid "Requisition"
+msgstr "申请"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_message_is_follower
+#: field:mfg.id.reserve,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: metro_mrp_id_stock
+#: model:ir.model.fields,field_description:metro_mrp_id_stock.field_mfg_id_reserve_message_ids
+#: field:mfg.id.reserve,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+

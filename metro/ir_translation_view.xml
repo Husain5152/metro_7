@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Translations -->
+        <record id="view_translation_search_ext" model="ir.ui.view">
+            <field name="name">view_translation_search_ext</field>
+            <field name="model">ir.translation</field>
+            <field name="inherit_id" ref='base.view_translation_search'/>
+            <field name="arch" type="xml">
+				<field name="value" position="after">
+					<field name="module"/>
+					<field name="type"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Type" icon="terp-personal" domain="[]" context="{'group_by':'type'}"/>
+                        <filter string="Language" icon="terp-personal" domain="[]" context="{'group_by':'lang'}"/>
+                    </group>
+				</field>
+                <field name="name" position="attributes">
+                	<attribute name='filter_domain'>['|','|',('name','ilike',self),('src','ilike',self),('value','ilike',self)]</attribute>
+                </field>
+				<filter string="Untranslated" position="replace">				
+                    <filter icon="terp-gdu-smart-failing"
+                        string="Untranslated"
+                        name='untranslated'
+                        domain="[('is_translated', '=', False)]"/>
+				</filter>
+                        				
+            </field>
+        </record>
+        <record id="view_translation_tree_ext" model="ir.ui.view">
+            <field name="name">view_translation_tree_ext</field>
+            <field name="model">ir.translation</field>
+            <field name="inherit_id" ref='base.view_translation_tree'/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+					<field name="module"/>
+					<field name="is_translated"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

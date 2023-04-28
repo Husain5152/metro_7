@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_warranty_defect_view_only,warranty.defect.view_only,model_warranty_defect,metro_warranty.group_metro_warranty_view_only_right,1,0,0,0
+access_warranty_defect_manager,warranty.defect.manager,model_warranty_defect,metro_warranty.group_metro_warranty_manager_right,1,1,1,1
+access_warranty_defect_user,warranty.defect.user,model_warranty_defect,metro_warranty.group_metro_warranty_user_right,1,1,1,1
+,,,,,,,
+access_defect_issue_view_only,defect.issue.view_only,model_defect_issue,metro_warranty.group_metro_warranty_view_only_right,1,0,0,0
+access_defect_issue_manager,defect.issue.issue.manager,model_defect_issue,metro_warranty.group_metro_warranty_manager_right,1,1,1,1
+access_defect_issue_user,defect.issue.issue.user,model_defect_issue,metro_warranty.group_metro_warranty_user_right,1,1,1,1

@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_project_mfgtask_report_tree">
+            <field name="name">view_project_mfgtask_report_tree</field>
+            <field name="model">project.mfgtask.report</field>
+            <field name="arch" type="xml">
+                <tree string="Project Mfg Task Report">
+                    <field name="id"/>
+                    <field name="dept_id"/>
+                    <field name="type"/>
+                    <field name="date_create"/>
+                    <field name="creator"/>
+                    <field name="total_kpi"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_project_mfgtask_report_form">
+    	<field name="name">view_project_mfgtask_report_form</field>
+    	<field name="model">project.mfgtask.report</field>
+    	<field name="arch" type="xml">
+    		<form string="Project Mfg Task Report" version="7.0">
+                <header>
+                    <button name="action_confirm" string="Confirm" states="draft" class="oe_highlight" type="object"/>
+                    <button name="action_cancel" string="Cancel" states="confirmed" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="id"/>
+                        <field name="dept_id"/>
+                        <field name="type"/>
+                        <field name="date_create"/>
+                        <field name="creator"/>
+                    </group>
+                    <group>
+                        <label for="emp1" string="Employee 1"/>
+                        <div>
+                            <field name="emp1" domain="[('department_id','=',dept_id)]" nolabel="1" class="oe_inline"/>
+                            <field name="emp1_kpi" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <label for="emp2" string="Employee 2"/>
+                        <div>
+                            <field name="emp2" domain="[('department_id','=',dept_id)]" nolabel="1" class="oe_inline"/>
+                            <field name="emp2_kpi" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <label for="emp3" string="Employee 3"/>
+                        <div>
+                            <field name="emp3" domain="[('department_id','=',dept_id)]" nolabel="1" class="oe_inline"/>
+                            <field name="emp3_kpi" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <label for="emp4" string="Employee 4"/>
+                        <div>
+                            <field name="emp4" domain="[('department_id','=',dept_id)]" nolabel="1" class="oe_inline"/>
+                            <field name="emp4_kpi" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <label for="emp5" string="Employee 5"/>
+                        <div>
+                            <field name="emp5" domain="[('department_id','=',dept_id)]" nolabel="1" class="oe_inline"/>
+                            <field name="emp5_kpi" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <label for="total_kpi" string=" "/>
+                        <div>
+                            <label for="total_kpi" string="Total KPI" class="oe_inline"/>
+                            <field name="total_kpi" nolabel="1" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Report Lines">
+                            <field name="report_lines" nolabel="1" colspan="4" widget="one2many_list" mode="tree" context="{'dept_id': dept_id}">
+                                <tree editable="bottom" string="Report Lines" version="7.0" class="mfgtasklines">
+                                    <field name="sequence"/>
+                                    <field name="date_create"/>
+                                    <field name="mfg_id" on_change="onchange_mfg_id(mfg_id)"/>
+                                    <field name="unit"/>
+                                    <field name="mo_id" domain="[('mfg_ids','in',[mfg_id])]"/>
+                                    <field name="workorder_id" domain="[('production_id','=',mo_id),('task_ids','!=',False)]"/>
+                                    <field name="task_id" domain="[('dept_id','=',context.get('dept_id')),('workorder_id','=',workorder_id)]"/>
+                                    <field name="task_line_id" domain="[('task_id','=',task_id),('prepare_qty','>',0),('state','!=','done')]" on_change="onchange_task_line_id(task_line_id)"/>
+                                    <field name="operation_code"/>
+                                    <field name="prepare_qty"/>
+                                    <field name="done_qty"/>
+                                    <field name="need_qty"/>
+                                    <field name="time_start"/>
+                                    <field name="time_end"/>
+                                    <field name="time_spent"/>
+                                    <field name="serial_no"/>
+                                    <field name="dispatcher"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                                <form string="Report Lines">
+                                    <field name="sequence"/>
+                                    <field name="date_create"/>
+                                    <field name="mfg_id" on_change="onchange_mfg_id(mfg_id)"/>
+                                    <field name="unit"/>
+                                    <field name="mo_id" domain="[('mfg_ids','in',[mfg_id])]"/>
+                                    <field name="workorder_id" domain="[('production_id','=',mo_id),('task_ids','!=',False)]"/>
+                                    <field name="task_id" domain="[('dept_id','=',context.get('dept_id')),('workorder_id','=',workorder_id)]"/>
+                                    <field name="task_line_id" domain="[('task_id','=',task_id),('prepare_qty','>',0),('state','!=','done')]" on_change="onchange_task_line_id(task_line_id)"/>
+                                    <field name="operation_code"/>
+                                    <field name="prepare_qty"/>
+                                    <field name="done_qty"/>
+                                    <field name="need_qty"/>
+                                    <field name="time_start"/>
+                                    <field name="time_end"/>
+                                    <field name="time_spent"/>
+                                    <field name="serial_no"/>
+                                    <field name="dispatcher"/>
+                                    <field name="state" invisible="1"/>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </group>
+            </form>
+        </field>
+        </record>
+        <record model="ir.ui.view" id="view_project_mfgtask_report_filter">
+            <field name="name">view_project_mfgtask_report_filter</field>
+            <field name="model">project.mfgtask.report</field>
+            <field name="arch" type="xml">
+                <search string="Search Project Mfg Task Report">
+                    <field name="id" string="Report #"/>
+                    <field name="dept_id" string="Department"/>
+                    <field name="type"/>
+                    <!--<field name="main_part_id"/>-->
+                    <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter icon="terp-camera_test" name="confirmed" string="Confirmed" domain="[('state','=','confirmed')]"/>
+                    <separator/>
+                    <filter icon="terp-personal-" string="Cancelled"  domain="[('state','=', 'cancel')]" help="Canceled"/>
+                    <field name="creator" />
+                    <group expand="0" string="Group By...">
+                        <filter string="Department" icon="terp-partner" domain="[]" context="{'group_by':'dept_id'}"/>
+                        <filter string="Creator" icon="terp-partner" domain="[]" context="{'group_by':'creator'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_project_mfgtask_report">
+            <field name="name">Task Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.mfgtask.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_project_mfgtask_report_filter"/>
+        </record>
+
+        <menuitem
+            id="menu_project_mfgtask_report"
+            sequence="12"
+            parent="mrp.menu_mrp_manufacturing"
+            action="action_project_mfgtask_report"
+            groups="mrp.group_mrp_user"/>
+
+    </data>
+</openerp>

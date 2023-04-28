@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="acespritech_product_normal_form_view" model="ir.ui.view">
+            <field name="name">acespritech.product.normal.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Attachment">
+                        <field name="attachment_lines" nolabel="1" colspan="4"
+                                context="{'o2m_attach': True}">
+                           <tree string="Attachment">
+                                <field name="name"/>
+                                <field name="attach_type_id"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+    </data>
+</openerp>

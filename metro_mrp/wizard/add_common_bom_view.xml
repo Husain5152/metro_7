@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="view_add_common_bom" model="ir.ui.view">
+            <field name="name">Add Common BOM</field>
+            <field name="model">add.common.bom</field>
+            <field name="arch" type="xml">
+              <form string="Add Common BOM" version="7.0">
+                  <separator string="Select Common BOMs to Add"/>
+                  <field name="mrp_bom_id" invisible="1"/>
+                  <field name="lines">
+					<tree string="Select Common BOMs" editable="bottom">
+						<field name="common_bom_id" on_change="onchange_common_bom_id(common_bom_id)"/>
+						<field name="name"/>
+						<field name="code"/>
+						<field name="product_qty"/>
+					</tree>
+                  </field>
+                  <footer>
+                      <button name="do_add" string="Add Common BOMs" type="object" class="oe_highlight"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel" />
+                  </footer>
+              </form>
+            </field>
+        </record>  
+        
+        <record id="action_view_add_common_bom" model="ir.actions.act_window">
+            <field name="name">Add Common BOM</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">add.common.bom</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_add_common_bom"/>
+            <field name="target">new</field>
+        </record>
+            
+        <record id="mrp_add_common_bom_form_view" model="ir.ui.view">
+            <field name="name">mrp_add_common_bom_form_view</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="metro_mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+            	<div name="buttons" position="inside">
+            		<button string="Add Common BOM" name="%(action_view_add_common_bom)d" type="action"/>
+            	</div>
+            </field>
+        </record>
+    </data>
+</openerp>

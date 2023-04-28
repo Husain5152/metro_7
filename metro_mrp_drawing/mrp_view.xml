@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="metro_project_task_completion_tree_view" model="ir.ui.view">
+            <field name="name">metro_project_task_completion_tree_view</field>
+            <field name="model">project.task.completion</field>
+            <field name="arch" type="xml">
+                <tree string="Task Completion">
+                    <field name="date"/>
+                    <field name="mo_id"/>
+                    <field name="dept_id"/>
+                    <field name="big_subassembly_id"/>
+                    <field name="total_qty"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="metro_project_task_completion_form_view" model="ir.ui.view">
+            <field name="name">metro_project_task_completion_form_view</field>
+            <field name="model">project.task.completion</field>
+            <field name="arch" type="xml">
+                <form string="Task Completion" version="7.0">
+                    <header>
+    				    <button name="action_confirm" string="Confirm" states="draft" class="oe_highlight" type="object"/>
+                        <field invisible="1" name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="mo_id" readonly="1" on_change="onchange_mo_dept_big_subassembly(mo_id, dept_id, big_subassembly_id)"/>
+                            <field name="dept_id" readonly="1" domain="[('code','!=',False)]" on_change="onchange_mo_dept_big_subassembly(mo_id, dept_id, big_subassembly_id)"/>
+                            <field name="big_subassembly_id" readonly="1" on_change="onchange_mo_dept_big_subassembly(mo_id, dept_id, big_subassembly_id)"/>
+                            <field name="task_id" readonly="1" on_change="onchange_task_id(task_id)" domain="[('project_type','=','mfg'),('dept_id','=',dept_id),('production_id','=',mo_id),('big_subassembly_id','=',big_subassembly_id)]"/>
+                        </group>
+                        <group>
+                            <field name="date_create"/>
+                            <field name="user_id"/>
+                            <field name="total_qty"/>
+                        </group>
+                        <separator string="Completion Lines" colspan="4"/>
+    				    <field name="completion_lines" nolabel="1" colspan="4" context="{'default_completion_id':id}" options="{'no_create': True}">
+    					    <tree string="Lines" editable="bottom">
+                                <field name="sequence"/>
+                                <field name="item_no"/>
+                                <field name="task_line_id" invisible="1"/>
+                                <field name="part_number"/>
+                                <field name="product_id"/>
+                                <field name="prepare_qty"/>
+                                <field name="done_qty"/>
+                                <field name="need_qty"/>
+                                <field name="task_done_qty"/>
+                                <field name="task_need_qty"/>
+                                <field name="task_prepare_qty"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_project_task_completion_filter">
+            <field name="name">view_project_taks_completion_filter</field>
+            <field name="model">project.task.completion</field>
+            <field name="arch" type="xml">
+                <search string="Search Task Completion">
+                    <field name="mo_id"/>
+                    <field name="date"/>
+                    <field name="dept_id"/>
+                    <field name="user_id" />
+                    <field name="task_id"/>
+                    <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter icon="terp-camera_test" name="confirmed" string="Confirmed" domain="[('state','=','confirmed')]"/>
+                    <separator/>
+                    <filter icon="terp-personal-" string="Cancelled"  domain="[('state','=', 'cancelled')]" help="Canceled"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_project_task_completion">
+            <field name="name">Dispatcher Window</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task.completion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_project_task_completion_filter"/>
+        </record>
+
+        <menuitem
+            id="menu_project_task_completion"
+            sequence="12"
+            parent="mrp.menu_mrp_manufacturing"
+            action="action_project_task_completion"
+            groups="mrp.group_mrp_user"/>
+
+        <record id="metro_mrp_production_tree_view_with_drawing_order" model="ir.ui.view">
+            <field name="name">metro_mrp_production_with_drawing_order_tree_view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="metro_mrp.metro_mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="id" string="MO #"/>
+                </field>
+                <field name="product_uom" position="after">
+                    <field name="not_generated_do_qty" string="Not generated"/>
+                </field>
+                <field name="bom_id" position="replace">
+                </field>
+                <field name="routing_id" position="replace">
+                </field>
+			</field>
+        </record>
+
+        <record id="metro_mrp_production_form_view_with_drawing_order" model="ir.ui.view">
+            <field name="name">metro_mrp_production_with_drawing_order_form_view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="metro_mrp.metro_mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='bom_id']" position="before">
+                        <field name="delivery_date"/>
+                    </xpath>
+                    <xpath expr="//field[@name='product_id']" position="before">
+                        <field name="id" string="MO #"/>
+                    </xpath>
+                    <xpath expr="//field[@name='location_src_id']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                    <xpath expr="//page[@string='Consumed Products']" position='attributes'>
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//page[@string='Finished Products']" position='attributes'>
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//page[@string='Scheduled Products']" position='attributes'>
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//page[@string='Work Orders']//tree" position='inside'>
+                        <field name="drawing_order_id"/>
+                    </xpath>
+                    <xpath expr="//page[@string='Work Orders']//field[@name='bom_id']" position='after'>
+                        <field name="drawing_order_id"/>
+                    </xpath>
+                    <xpath expr="//page[@string='Consumed Products']" position='before'>
+                        <page string="Drawing Orders">
+                            <button name="action_drawing_order_generate" states="draft"
+                                string="Generate Drawing Orders" type="object"
+                                icon="terp-stock_format-scientific"/>
+                            <button  name="%(act_mo_select_do_wizard)d" type="action" states="draft"
+                                string="Create DO Structure"
+                                icon="terp-stock_format-scientific"/>
+                            <field name="drawing_order_ids" widget="one2many_list" colspan="4">
+                                <tree string="Drawing Order">
+                                    <field name="name"/>
+                                    <field name="product_id"/>
+                                    <field name="bom_file_name"/>
+                                    <!--<field name="bom_file" widget="drawing_url" filename="bom_file_name" attrs="{'invisible':[('bom_file_name', '=', False)]}"/>-->
+                                    <field name="bom_download" widget="drawing_url" filename="bom_file_name" attrs="{'invisible':[('bom_file_name', '=', False)]}"/>
+                                    <field name="prepare_qty"/>
+                                    <field name="done_qty"/>
+                                    <field name="need_qty"/>
+                                    <field name="state"/>
+                                    <field name="workorder_id"/>
+                                    <button name="generate_tasks" confirm="Old tasks will be deleted. Are you sure you want to continue ?" string="Generate Tasks" type="object" class="oe_highlight" icon="gtk-media-play"/>
+                                </tree>
+                                <form string="Drawing Order" version="7.0">
+                                    <header>
+                                        <button name="action_ready" string="Ready" states="draft,rejected" class="oe_highlight" type="object"/>
+                                        <button name="action_confirm" string="Confirm" states="ready" class="oe_highlight" type="object" groups="metro_mrp.group_mrp_supervisor"/>
+                                        <button name="action_approve" string="Approve" states="confirmed" class="oe_highlight" type="object" groups="mrp.group_mrp_manager"/>
+                                        <button name="action_reject" string="Reject" states="confirmed" type="object" groups="mrp.group_mrp_manager"/>
+                                        
+                                        <button name="action_draft" string="Set to Draft" states="ready" type="object"/>
+                                        <button name="action_draft" string="Set to Draft" states="confirmed,cancel" type="object" groups="metro_mrp.group_mrp_supervisor"/>
+                                        <button name="action_draft" string="Set to Draft" states="approved,in_progress" type="object" groups="mrp.group_mrp_manager"/>
+                                        
+                                        <button name="action_cancel" string="Cancel" states="draft,rejected" type="object"/>
+                                        <button name="action_cancel" string="Cancel" states="confirmed" type="object"  groups="metro_mrp.group_mrp_supervisor"/>
+                                        <button name="action_cancel" string="Cancel" states="approved,in_progress" type="object" groups="mrp.group_mrp_manager"/>
+                                        <button name="update_parts" string="Update Parts" type="object" class="oe_inline" states="draft,rejected"/>
+                                        <button string="Upload Part Drawings" name="%(action_upload_multi_drawings)d" type="action" states="draft,rejected" class="oe_inline" />
+                                        <button name="print_pdf" string="Download PDF" type="object" class="oe_inline" />
+                                        
+                                        <field name="state" widget="statusbar" readonly="1"/>                 
+                                    </header>                                
+                                    <group col="4">
+                                        <field name="name"/>
+                                        <field name="product_id"/>
+                                        <field name="bom_file_name" invisible="1"/>
+                                        <field name="bom_file" filename="bom_file_name"/>  
+                                        <field name="prepare_qty"/>
+                                        <field name="done_qty"/>
+                                        <field name="need_qty"/>
+                                        <!--<field name="state" invisible="1"/>-->
+                                        <separator string="Drawing Order Lines" colspan="4"/>
+                                        <div colspan="4">P – Prepared Q-ty, D – Done Q-ty, N – Need Q-ty</div>
+                                        <field name="order_lines" widget="one2many_list" colspan="4" nolabel="1">
+                                            <tree string="Drawing Order Lines">
+                                                <field name="item_no"/>
+                                                <field name="product_id"/>
+                                                <field name="drawing_file_name" invisible="1"/>
+                                                <!--<field name="drawing_file" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '==', False)]}"/>-->
+                                                <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '==', False)]}"/>
+                                                <field name="work_steps" readonly="1"/>
+                                                <!--DYNAMIC WORKSTEPS DO NOT DELETE-->
+                                                <field name="P_prepare_qty" attrs="{'invisible':[('P_prepare_qty', '==', 0)]}" readonly="1"/>
+                                                <field name="P_done_qty" attrs="{'invisible':[('P_done_qty', '==', 0)]}" readonly="1"/>
+                                                <field name="P_need_qty" attrs="{'invisible':[('P_need_qty', '==', 0)]}" readonly="1"/>
+                                                <!--DYNAMIC WORKSTEPS DO NOT DELETE-->
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </form>          
+                            </field>
+                        </page>
+                    </xpath>                    
+                </data>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="project_task_with_drawing_mfg_form_view">
+            <field name="name">project_task_with_drawing_mfg_form_view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="metro_project.project_task_mfg_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='do_open']" position="after">
+                     <button name="do_new_task_completion" string="Update Quantity" type="object"
+                                class="oe_highlight"
+                            states="open,pending"/>
+                    <button name="action_partial_transfer" string="Partial Transfer" type="object"
+                            states="open,pending" attrs="{'invisible':[('dept_code','!=','Wa')]}"/>
+                    <button name="action_full_transfer" string="Full Transfer" type="object"
+                            states="open,pending" attrs="{'invisible':[('dept_code','!=','Wa')]}"/>
+
+                </xpath>
+                <xpath expr="//button[@name='action_close']" position="replace">
+                    <button name="action_close" string="Done" type="object" states="open,pending" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//button[@name='project_task_reevaluate']" position="replace">
+                    <button name="project_task_reevaluate" string="Reactivate" type="object" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='do_open']" position="replace">
+                    <button name="do_open" string="Start Task" type="object" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='do_cancel']" position="replace">
+                    <button name="do_cancel" string="Cancel Task" type="object" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="attrs">{"readonly":[("state","!=","draft")],"required":True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='id']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='private']" position="attributes">
+                    <attribute name="attrs">{"readonly":[("state","!=","draft")]}</attribute>
+                </xpath>    
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="attrs">{"readonly":[("state","!=","draft")]}</attribute>
+                    <attribute name="string">Created User</attribute>
+                </xpath>                            
+                <xpath expr="//field[@name='dept_id']" position="attributes">
+                    <attribute name="attrs">{"invisible":[("project_type","!=","mfg")],"readonly":[("state","!=","draft")],"required":[("project_type","=","mfg")]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='sequence']" position="attributes">
+                    <attribute name="attrs">{"readonly":[("project_type","=","mfg")]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='workorder_id']" position="attributes">
+                    <attribute name="attrs">{"invisible":[("project_type","!=","mfg")],"readonly":[("state","!=","draft")],"required":[("project_type","=","mfg")]}</attribute>
+                </xpath>                
+                <xpath expr="//field[@name='dept_mgr_id']" position="attributes">
+                    <attribute name="attrs">{"invisible":[("project_type","!=","mfg")],"readonly":[("state","!=","draft")]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='dept_mgr_id']" position="before">
+                    <field name="assigned_to" attrs='{"invisible":[("project_type","!=","mfg")],"readonly":[("state","!=","draft")]}'/>
+                </xpath>
+                <xpath expr="//field[@name='date_start']" position="before">
+                    <field name="date_issued"/>
+                </xpath>                        
+                <xpath expr="//field[@name='date_deadline']" position="before">
+                    <field name="prepare_qty"/>
+                    <field name="done_qty"/>
+                    <field name="need_qty"/>
+                </xpath>
+                <xpath expr="//field[@name='dept_id']" position="after">
+                     <field name="dept_code" invisible="1"/>
+                </xpath> 
+                <xpath expr="//field[@name='workcenter_id']" position="before">
+                     <field name="big_subassembly_id" attrs="{'invisible':[('project_type','!=','mfg')]}"/>
+                </xpath>
+                 <xpath expr="//field[@name='progress']" position="after">
+                    <label for="pdf_printed"/>
+                    <div>
+                        <field name="pdf_printed" class="oe_inline" on_change="onchange_pdf_drw_printed(pdf_printed,drw_issued)"/>
+                        <field name="pdf_printed_date" class="oe_inline" on_change="onchange_pdf_drw_printed(pdf_printed,drw_issued)"/>
+                    </div>
+                    <label for="drw_issued"/>
+                    <div>
+                        <field name="drw_issued" class="oe_inline"/>
+                        <field name="drw_issued_date" class="oe_inline"/>
+                    </div>
+                </xpath>
+                <xpath expr="//page[@string='Employees']" position="before">
+                    <page string="Task Lines" attrs="{'invisible':[('project_type','!=','mfg')]}">
+                        <button name="download_pdf" string="Download All PDFs" type="object" class="oe_inline" />
+                        <select id="parts_done_select">
+                            <option value="ALL PARTS" selected="selected">ALL PARTS</option>
+                            <option value="PARTS DONE">PARTS DONE</option>
+                            <option value="PARTS NOT DONE">PARTS NOT DONE</option>
+                            <option value="PARTS PREPARED">PARTS PREPARED</option>
+                            <option value="PARTS NOT PREPARED">PARTS NOT PREPARED</option>
+                        </select>
+                        <field name="task_lines" nolabel="1" colspan="4" options="{'no_create': True}" context="{'dept_code': dept_code}">
+                            <tree string="Task Lines" editable="bottom">
+                                <field name="sequence" readonly="1" string="#"/>
+                                <field name="item_no"/>
+                                <field name="part_number"/>
+                                <field name="product_id" readonly="1"/>
+                                <field name="drawing_file_name" invisible="1"/>
+                                <!--<field name="drawing_file" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '==', False)]}"/>-->
+                                <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '==', False)]}"/>
+                                <field name="prepare_qty" readonly="1" attrs="{'invisible':[('need_qty', '==', 0)]}" sum="Total Prepare Quantity"/>
+                                <field name="done_qty" attrs="{'invisible':[('need_qty', '==', 0)],'readonly':['|','&amp;',('state','!=','on_working'),('state','!=','done'),('prepare_qty','==',0)]}" sum="Total Done Quantity"/>
+                                <field name="need_qty" readonly="1" attrs="{'invisible':[('need_qty', '==', 0)]}" sum="Total Need Quantity"/>
+                                <field name="transfer_qty" invisible="context.get('dept_code') != 'Wa'"/>
+                                <field name="next_step" readonly="1"/>
+
+                                <field name="state" readonly="1" attrs="{'invisible':[('need_qty', '==', 0)]}"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Task Completion" attrs="{'invisible':[('project_type','!=','mfg')]}" >
+                        <field name="completion_ids" nolabel="1" colspan="4" options="{'no_create': True}">
+                            <tree string="Task Completion" editable="bottom">
+                                <field name="date" readonly="1"/>
+                                <field name="total_qty" readonly="1"/>
+                                <field name="user_id" readonly="1"/>
+                                <field name="state" readonly="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Drawing Order Lines" attrs="{'invisible':[('project_type','!=','mfg')]}">
+                        <button name="download_all_pdf" string="Download All PDFs" type="object" class="oe_inline" />
+                        <div>P – Prepared Q-ty, D – Done Q-ty, N – Need Q-ty
+                        <input type="checkbox" id="hide_drawing_file"/> Hide lines already have drawing files
+                            <select id="part_type_select">
+                                <option value="ALL" selected="selected">ALL PART TYPES</option>
+                                <option value="ASM">ASM</option>
+                                <option value="PS">PS</option>
+                                <option value="POEM">POEM</option>
+                                <option value="MATERIALS">MATERIALS</option>
+                                <option value="PMC">PMC</option>
+                                <option value="PMS">PMS</option>
+                                <option value="PML">PML</option>
+                                <option value="CD">CD</option>
+                            </select>:
+                                <span id="total_do_lines">0</span> (lines)
+                        </div>
+                        <field name="drawing_order_lines" nolabel="1" colspan="4" context="{'dept_code':dept_code}" readonly="1">
+                            <tree string="Lines" editable="bottom">
+                                <field name="item_no"/>
+                                <field name="part_number"/>
+                                <field name="product_id" attrs="{'readonly':[('status','!=','')]}"/>
+                                <field name="part_type"/>
+                                <field name="drawing_file_name" invisible="1"/>
+                                <!--<field name="drawing_file" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '==', False)]}" widget="drawing_url"/>-->
+                                <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '==', False)]}"/>
+                                <field name="work_steps"  class="metro_high_light"/>
+                                <!--DYNAMIC WORKSTEPS DO NOT DELETE-->
+                                <field name="P_prepare_qty" class="metro_high_light" attrs="{'invisible':[('P_prepare_qty', '==', 0)],'readonly': True}"/>
+                                <field name="P_done_qty" class="metro_high_light" attrs="{'invisible':[('P_need_qty', '==', 0)],'readonly': True}"/>
+                                <field name="P_need_qty" class="metro_high_light" attrs="{'invisible':[('P_need_qty', '==', 0)],'readonly': True}"/>
+                                <!--DYNAMIC WORKSTEPS DO NOT DELETE-->
+                                <field name="status" readonly="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <!--<page string="History">
+                        <field name="modifyhistory_ids" colspan="4" nolabel="1" widget="many2many_list" readonly="1">
+                           <tree string="History">
+                               <field name="date"/>
+                               <field name="user_id"/>
+                               <field name="content"/>
+                               <field name="vals"/>
+                           </tree>
+                        </field>
+                    </page>-->
+                </xpath>
+            </field>
+        </record> 
+        <!-- MFG Task Kanban View -->
+
+        <record model="ir.ui.view" id="metro_project.view_mfg_task_kanban_subgroup">
+            <field name="name">project.mfg.task.kanban.subgroup</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <kanban_subgrp version="7.0" default_group_by="dept_id" sub_group_by="production_id" quick_create="0">
+                    <field name="stage_color"/>
+                    <field name="priority"/>
+                    <field name="stage_id"/>
+                    <field name="user_id"/>
+                    <field name="user_email"/>
+                    <field name="description"/>
+                    <field name="sequence"/>
+                    <field name="state" groups="base.group_no_one"/>
+                    <field name="kanban_state"/>
+                    <field name="remaining_hours" avg="Remaining Time" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline"/>
+                    <field name="message_summary"/>
+                    <field name="categ_ids"/>
+
+                    <field name="mfg_ids"/>
+                    <field name="product"/>
+                    <field name="dept_id"/>
+                    <field name="dept_mgr_id"/>
+                    <field name="production_id"/>
+                    <field name="pdf_printed"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.stage_color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                <span class="oe_e">í</span>
+                                <ul class="oe_dropdown_menu">
+                                    <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+                                    <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                    <li>
+                                      <ul class="oe_kanban_project_times" groups="project.group_time_work_estimation_tasks">
+                                        <li><a name="set_remaining_time_1" type="object" class="oe_kanban_button">1</a></li>
+                                        <li><a name="set_remaining_time_2" type="object" class="oe_kanban_button">2</a></li>
+                                        <li><a name="set_remaining_time_5" type="object" class="oe_kanban_button">5</a></li>
+                                        <li><a name="set_remaining_time_10" type="object" class="oe_kanban_button">10</a></li>
+                                        <li><a name="do_open" states="draft" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="stage_color"/></li>
+                                </ul>
+                            </div>
+
+                            <div class="oe_kanban_content">
+                                <div><b><field name="name"/></b></div>
+                                <div><b><field name="mfg_ids"/></b></div>
+                                <div>
+                                    <field name="product"/><br/>
+                                    <field name="workorder_id"/><br/>
+                                    <field name="stage_id"/><br/>
+                                    <field name="date_deadline"/><br/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <t groups="base.group_user">
+                                        <a t-if="record.kanban_state.raw_value === 'normal'" type="object" string="In Progress" name="set_kanban_state_done" class="oe_kanban_status"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'done'" type="object" string="Ready for next stage" name="set_kanban_state_blocked" class="oe_kanban_status oe_kanban_status_green"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'blocked'" type="object" string="Blocked" name="set_kanban_state_normal" class="oe_kanban_status oe_kanban_status_red"> </a>
+                                        <a t-if="record.priority.raw_value > 0" type="object" string="Normal" name="set_high_priority" class="oe_e oe_star_off">7</a>
+                                        <a t-if="record.priority.raw_value == 0" type="object" string="Very Important" name="set_normal_priority" class="oe_e oe_star_on">7</a>
+                                    </t>
+                                    <img t-att-src="kanban_image('hr.employee', 'image_small', record.dept_mgr_id.raw_value)" t-att-title="record.dept_mgr_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <span groups="project.group_time_work_estimation_tasks" title="Remaining hours">
+                                        <span class="oe_e">N</span>
+                                        <t t-esc="Math.round(record.remaining_hours.raw_value)"/>
+                                    </span>
+                                    <input type="checkbox" t-att-data-id="record.id.raw_value"
+                                        class="oe_kanban_record_selector oe_kanban_noaction" t-att-checked="checked" title="Select"/>
+                                    <button type="object" name="download_pdf">
+                                            <span>PDF</span>
+                                        </button>
+                                    <button type="object" name="print_issue_drawing_selected">
+                                            <span>LIST</span>
+                                        </button>
+                                    <span t-if="record.pdf_printed.raw_value">Printed</span>
+                                </div>
+<!--                                 <div class="oe_kanban_footer_left" style="margin-top:5px;">
+                                    <t t-raw="record.message_summary.raw_value"/>
+                                    <field name="categ_ids"/>
+                                </div> -->
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban_subgrp>
+            </field>
+         </record>
+
+        <record model="ir.ui.view" id="metro_project.view_mfg_task_kanban">
+            <field name="name">project.mfg.task.kanban</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <!--<kanban default_group_by="dept_id" quick_create="0" edit="false">-->
+                <kanban default_group_by="dept_id" quick_create="0" edit="true">
+                    <field name="stage_color"/>
+                    <field name="priority"/>
+                    <field name="stage_id"/>
+                    <field name="user_id"/>
+                    <field name="user_email"/>
+                    <field name="description"/>
+                    <field name="sequence"/>
+                    <field name="state" groups="base.group_no_one"/>
+                    <field name="kanban_state"/>
+                    <field name="remaining_hours" sum="Remaining Time" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline"/>
+                    <field name="message_summary"/>
+                    <field name="categ_ids"/>
+                    <field name="mfg_ids"/>
+                    <field name="product"/>
+                    <field name="dept_id" readonly="True"/>
+                    <field name="dept_mgr_id"/>
+                    <field name="progress"/>
+                    <field name="pdf_printed"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.stage_color.raw_value)} oe_kanban_card oe_kanban_global_click_edit">
+                            <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                <span class="oe_e">í</span>
+                                <ul class="oe_dropdown_menu">
+                                    <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+                                    <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                    <li>
+                                      <ul class="oe_kanban_project_times" groups="project.group_time_work_estimation_tasks">
+                                        <li><a name="set_remaining_time_1" type="object" class="oe_kanban_button">1</a></li>
+                                        <li><a name="set_remaining_time_2" type="object" class="oe_kanban_button">2</a></li>
+                                        <li><a name="set_remaining_time_5" type="object" class="oe_kanban_button">5</a></li>
+                                        <li><a name="set_remaining_time_10" type="object" class="oe_kanban_button">10</a></li>
+                                        <li><a name="do_open" states="draft" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="stage_color"/></li>
+                                </ul>
+                            </div>
+
+                            <div class="oe_kanban_content">
+                                <div><b><field name="mfg_ids"/></b></div>
+                                <div>
+                                    <span class="product"><field name="product"/></span><br/>
+                                    <span class="drawing_order_id"><field name="drawing_order_id"/></span><br/>
+                                    <!--<field name="workorder_id"/><br/>-->
+                                    <field name="stage_id"/><br/>
+                                    Qty: <field name="prepare_qty"/>; <field name="done_qty"/>/<field name="need_qty"/><br/>
+                                    <field name="date_deadline"/><br/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <t groups="base.group_user">
+                                        <a t-if="record.kanban_state.raw_value === 'normal'" type="object" string="In Progress" name="set_kanban_state_done" class="oe_kanban_status"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'done'" type="object" string="Ready for next stage" name="set_kanban_state_blocked" class="oe_kanban_status oe_kanban_status_green"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'blocked'" type="object" string="Blocked" name="set_kanban_state_normal" class="oe_kanban_status oe_kanban_status_red"> </a>
+                                        <a t-if="record.priority.raw_value > 0" type="object" string="Normal" name="set_high_priority" class="oe_e oe_star_off">7</a>
+                                        <a t-if="record.priority.raw_value == 0" type="object" string="Very Important" name="set_normal_priority" class="oe_e oe_star_on">7</a>
+                                    </t>
+                                    <img t-att-src="kanban_image('hr.employee', 'image_small', record.dept_mgr_id.raw_value)" t-att-title="record.dept_mgr_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <span groups="project.group_time_work_estimation_tasks" title="Complete Percentage">
+                                        <t t-esc="Math.round(record.progress.raw_value)"/> %%
+                                    </span>
+                                    <input type="checkbox" t-att-data-id="record.id.raw_value" 
+                                        class="oe_kanban_record_selector oe_kanban_noaction" t-att-checked="checked" title="Select"/>
+                                        <button type="object" name="download_pdf">
+                                            <span>PDF</span>
+                                        </button>
+                                    <button type="object" name="print_issue_drawing_selected">
+                                            <span>LIST</span>
+                                        </button>
+                                    <span t-if="record.pdf_printed.raw_value">Printed</span>
+                                </div>
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record> 
+        <record id="metro_project.view_task_search_form_extend" model="ir.ui.view">
+            <field name="name">view_task_search_form_extend</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="project_type"/>
+                    <field name="big_subassembly_id"/>
+                    <field name="stage_id" domain="[]"/>
+                    <field name="priority"/>
+                    <field name="categ_ids"/>
+                    <field name="daily_date"
+                        filter_domain="['|',('date_start','=',False),('date_start','&lt;=', self + ' 23:59:59'),'|',('date_end','=',False),('date_end','&gt;=', self + ' 00:00:00')]"/>
+                    <filter icon="terp-go-today" string="Today's Tasks" 
+                        domain="['|',('date_start','=',False),('date_start','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),'|',('date_end','=',False),('date_end','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]"/>
+                </field>
+            </field>
+        </record>     
+        <record id="metro_project.project_task_mfg_search_view" model="ir.ui.view">
+            <field name="name">project_task_mfg_search_view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="metro_project.view_task_search_form_extend"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                    <field name="name" filter_domain="['|',('name','ilike',self),('workorder_id.name','ilike',self)]" string="Tasks"/>
+                </field>
+                <field name="project_type" position="after">
+                    <field name="dept_id"/>
+                    <field name="dept_mgr_id"/>
+                    <field name="workorder_id"/>
+                    <field name="workcenter_id"/>
+                    <field name="production_id"/>   
+                    <field name="mfg_ids" widget="many2many_tags"/>
+                    <field name="multi_mfg_ids_search"/>
+                    <field name="product"/>
+                </field>
+                <filter string="End Date" position="after">
+                    <separator/>
+                    <filter string="Team" name="group_dept_id" icon="terp-folder-violet" domain="[]" context="{'group_by':'dept_id'}"/>
+                    <filter string="Work Order" name="group_workorder_id" icon="terp-folder-violet" domain="[]" context="{'group_by':'workorder_id'}"/>
+                </filter>
+                <xpath expr="//filter[@name='draft']" position="replace"></xpath>
+                <xpath expr="//filter[@name='open']" position="replace"></xpath>
+                <xpath expr="//filter[@string='Pending']" position="replace">
+                    <filter name="created" string="Waiting on Parts" domain="[('stage_id','like','Waiting On Parts')]" help="Waiting On Part Tasks" icon="terp-camera_test"/>
+                    <filter name="pending" string="Pending" domain="[('stage_id','like','Pending')]" help="Pending Tasks" icon="terp-camera_test"/>
+                    <filter name="in_progress" string="In Progress" domain="[('stage_id','like','In Progress')]" help="In Progress Tasks" icon="terp-camera_test"/>
+                    <filter name="miss_deadline" string="Missed Deadline" domain="[('stage_id','like','Missed Dealine')]" help="Missed Deadline Tasks" icon="terp-camera_test"/>
+                    <filter name="done" string="Done" domain="[('state','=','done')]" help="Done Tasks" icon="terp-camera_test"/>
+                    <filter name="cancel" string="Cancel" domain="[('state','=','cancelled')]" help="Cancelled Tasks" icon="terp-camera_test"/>
+                    <filter name='not_done_cancelled' string="NotDoneCancel" domain="[('state','not in',('cancelled','done'))]" help="Tasks except done and cancelled" icon="terp-gtk-media-pause"/>
+                    <filter name="wa_task" string="Warehouse Tasks" domain="[('dept_code','=','Wa')]" help="Warehouse Tasks" icon="terp-camera_test"/>
+
+                </xpath>
+            </field>
+        </record>                 
+<!-- Handle 'Download PDF and Download Selected PDF' in kanban view -->
+        <record id="action_server_project_task_download_pdf" model="ir.actions.server">
+            <field name="name">Download PDF</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.download_pdf(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_download_pdf">
+            <field name="name">action_project_task_download_pdf</field>
+            <field name="action_id" ref="action_server_project_task_download_pdf" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_download_pdf'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>    
+        <record id="action_server_project_task_download_selected_pdf" model="ir.actions.server">
+            <field name="name">Download Selected PDF</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.download_pdf(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_download_selected_pdf">
+            <field name="name">action_project_task_download_selected_pdf</field>
+            <field name="action_id" ref="action_server_project_task_download_selected_pdf" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_download_selected_pdf'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+        <record model="ir.ui.view" id="project_task_modifyhistory_tree_view">
+            <field name="name">project.task.modifyhistory.tree</field>
+            <field name="model">project.task.modifyhistory</field>
+            <field name="arch" type="xml">
+                <tree string="Project Task Modify History">
+                    <field name="date"/>
+                    <field name="task_id"/>
+                    <field name="user_id"/>
+                    <field name="content"/>
+                    <field name="vals"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="project_task_modifyhistory_form_view">
+            <field name="name">project.task.modifyhistory.form</field>
+            <field name="model">project.task.modifyhistory</field>
+            <field name="arch" type="xml">
+                <form string="Project Task Modify History" version="7.0">
+                    <group>
+                    <field name="date"/>
+                    <field name="task_id"/>
+                    <field name="user_id"/>
+                    <field name="content"/>
+                    <field name="vals"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+<!-- Add 'Print Task List PDF' to project task list page -->
+        <record id="action_server_project_task_task_list_selected" model="ir.actions.server">
+            <field name="name">Print Task List PDF</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_task_list_selected(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_task_list_selected">
+            <field name="name">action_project_task_task_list_selected</field>
+            <field name="action_id" ref="action_server_project_task_deadline" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_task_list_selected'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+<!-- Add 'Print Task List PDF' to project task list page -->
+        <record id="action_server_project_task_daily_part_done_selected" model="ir.actions.server">
+            <field name="name">Print Daily Report by Parts Done</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_part_done_selected(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_daily_part_done_selected">
+            <field name="name">action_project_task_daily_part_done_selected</field>
+            <field name="action_id" ref="action_server_project_task_daily_part_done_selected" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_daily_part_done_selected'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+<!-- Add 'Print List of Issued Drawing' to project task list page -->
+        <record id="action_server_project_task_issue_drawing_selected" model="ir.actions.server">
+            <field name="name">Print List of Issued Drawing</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_issue_drawing_selected(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_issue_drawing_selected">
+            <field name="name">action_project_task_issue_drawing_selected</field>
+            <field name="action_id" ref="action_server_project_task_issue_drawing_selected" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_issue_drawing_selected'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+<!-- Add 'Print Warehouse Fulllist' to project task list page -->
+        <record id="action_server_project_task_fulllist_selected" model="ir.actions.server">
+            <field name="name">Print Warehouse Fulllist</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_warehouse_selected(cr, uid, context.get('active_ids', []), type='fulllist', context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_fulllist_selected">
+            <field name="name">action_project_task_fulllist_selected</field>
+            <field name="action_id" ref="action_server_project_task_fulllist_selected" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_fulllist_selected'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+        <record id="action_server_project_task_missing_selected" model="ir.actions.server">
+            <field name="name">Print Warehouse Missing</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_warehouse_selected(cr, uid, context.get('active_ids', []), type='missing', context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_missing_selected">
+            <field name="name">action_project_task_missing_selected</field>
+            <field name="action_id" ref="action_server_project_task_missing_selected" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_missing_selected'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+        <record id="action_server_project_task_transfer_selected" model="ir.actions.server">
+            <field name="name">Print Warehouse Transfer</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_warehouse_selected(cr, uid, context.get('active_ids', []), type='transfer', context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_transfer_selected">
+            <field name="name">action_project_task_transfer_selected</field>
+            <field name="action_id" ref="action_server_project_task_transfer_selected" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_transfer_selected'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+<!-- Add Warehouse Task in Warehouse -->
+        <!--<record id="action_view_task_mfg_warehouse" model="ir.actions.act_window">
+            <field name="name">Warehouse Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,kanban_subgrp,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="metro_project.project_task_mfg_search_view"/>
+            <field name="domain">[('project_type','=','mfg'),('dept_code','=','Wa')]</field>
+            <field name="context">{'default_project_type':'mfg','search_default_not_done_cancelled': 1,'dept_code':'Wa'}</field>
+            <field name="auto_search" eval="True"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new task.
+              </p>
+            </field>
+        </record>
+
+        <record id="open_view_task_mfg_warehouse_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="metro_project.view_mfg_task_kanban"/>
+            <field name="act_window_id" ref="action_view_task_mfg_warehouse"/>
+        </record>
+        <record id="open_view_task_mfg_lwarehouse_ist_kanban_subgroup" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">kanban_subgrp</field>
+            <field name="view_id" ref="metro_project.view_mfg_task_kanban_subgroup"/>
+            <field name="act_window_id" ref="action_view_task_mfg_warehouse"/>
+        </record>
+        <record id="open_view_task_mfg_warehouse_list_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="metro_project.view_mfg_task_tree"/>
+            <field name="act_window_id" ref="action_view_task_mfg_warehouse"/>
+        </record>
+
+        <menuitem action="action_view_task_mfg_warehouse" id="menu_action_view_task_mfg_warehouse"
+                  parent="stock.menu_stock_warehouse_mgmt" sequence="11" groups="stock.group_stock_user"/>
+           -->
+    </data>
+</openerp>

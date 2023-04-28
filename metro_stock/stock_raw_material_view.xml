@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>      
+<!-- Plate Material Inventory -->    
+        <record id="view_plate_material_tree" model="ir.ui.view">
+            <field name="name">view_plate_material_tree</field>
+            <field name="model">plate.material</field>
+            <field name="arch" type="xml">
+                <tree string="Plate Material">
+                    <field name="product_id"/>
+                    <field name="plate_whole_qty"/>
+                    <field name="on_order_qty"/>
+                    <!-- <field name="product_name"/> -->
+                </tree>
+            </field>
+        </record>
+        <record id="view_plate_material_form" model="ir.ui.view">
+            <field name="name">view_plate_material_form</field>
+            <field name="model">plate.material</field>
+            <field name="arch" type="xml">
+                <form string="Plate Material" version="7.0">
+                	<sheet>
+               		<group>
+	                    <field name="product_id"/>
+	                    <field name="plate_whole_qty"/>
+	                    <field name="on_order_qty"/>
+	                    <field name="notes"/>
+	                   	<!-- <field name="product_name"/> -->
+                   	</group>
+		            <div class="oe_chatter">
+		              <field name="message_follower_ids" widget="mail_followers"/>
+		              <field name="message_ids" widget="mail_thread"/>
+		            </div>    
+                    </sheet> 		
+                </form>
+            </field>
+        </record>
+        <record id="view_plate_material_search" model="ir.ui.view">
+            <field name="name">view_plate_material_search</field>
+            <field name="model">plate.material</field>
+            <field name="arch" type="xml">
+            	<search string="Search Plate Material">
+                    <field name="product_name"/>
+            		<field name="product_id"/>	
+            	</search>
+            </field>
+        </record>
+
+        <record id="action_plate_material_tree" model="ir.actions.act_window">
+            <field name="name">Plate Material</field>
+            <field name="res_model">plate.material</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_plate_material_search"/>
+        </record>
+        <menuitem action="action_plate_material_tree" id="menu_plate_material_tree" parent="stock.menu_stock_inventory_control" sequence="32"/>
+    </data>
+</openerp>

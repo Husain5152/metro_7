@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>    
+        <record id="view_po_line_change_log" model="ir.ui.view">
+            <field name="name">PO Line Change Log</field>
+            <field name="model">change.log.po.line</field>
+            <field name="arch" type="xml">
+				<tree string="Change Log of PO Lines">
+                  <field name="field_name"/>
+                  <field name="value_old"/>
+                  <field name="value_new"/>
+                  <field name="create_uid"/>
+                  <field name="create_date"/>
+				</tree>
+            </field>
+        </record> 
+    </data>
+</openerp>

@@ -1,0 +1,7 @@
+#. module: metro
+#. openerp-web
+#: code:addons/metro/static/src/js/metro.js:31
+#, python-format
+msgid "Switch to English"
+msgstr "切换到英语"
+

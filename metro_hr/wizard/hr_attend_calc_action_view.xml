@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <act_window name="Calculate attendance action"
+            res_model="hr.attend.calc.action"
+            src_model="hr.attendance"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="action_hr_attend_calc_action"/>
+           
+        <record id="view_hr_attend_calc_action_form" model="ir.ui.view">
+            <field name="name">view_hr_attend_calc_action_form</field>
+            <field name="model">hr.attend.calc.action</field>
+            <field name="arch" type="xml">
+                <form string="Calculate attendance action" version="7.0">
+                <separator string="Please confirm the attendance log action calculation"/>
+                <footer>
+		            <button name="do_calc" string="Calculate" type="object" class="oe_highlight" 
+		            	confirm="Are you sure to recalcuate the action of all the selected attendances?"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

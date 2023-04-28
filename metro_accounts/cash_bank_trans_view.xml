@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <record model="ir.ui.view" id="view_cash_bank_trans_form">
+    	<field name="name">view_cash_bank_trans_form</field>
+    	<field name="model">cash.bank.trans</field>
+    	<field name="arch" type="xml">
+    		<form string="Withdraw/Deposit Order" version="7.0">
+    			<header>
+    				<button name="action_done" string="Confirm" states="draft" class="oe_highlight" type="object" groups="account.group_account_invoice"/>
+    				<button name="action_cancel" string="Cancel" states="done" type="object" groups="account.group_account_manager"/>
+    				<button name="action_to_draft" string="Set to Draft" states="cancelled" type="object" groups="account.group_account_manager"/>
+    				<field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+    			</header>
+                <group>
+	                <group>
+	                    <field name="date"/>
+	                    <label for="trans_type"/>
+	                    <div>
+	                    	<field name="trans_type" class="oe_inline"/>
+	                    	<field name="amount" class="oe_inline"/>
+	                    </div>
+	                    <field name="journal_bank_id" domain="[('type','=','bank')]"/>
+	                </group>
+	                <group>
+	                    <field name="journal_cash_id" domain="[('type','=','cash')]"/>
+	                    <field name="move_id" readonly="1"/>
+	                    <field name="move_state"/>
+	            		<field name="company_id" groups="base.group_multi_company"/>
+	                </group>
+                </group>
+                <separator string='Description'/>
+                <field name="description" placeholder='Description...'/>
+                <separator string='Accounting Items'  attrs="{'invisible':[('state','!=','done')]}"/>
+                <field name="move_lines" attrs="{'invisible':[('state','!=','done')]}"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_cash_bank_trans_tree">
+    	<field name="name">view_cash_bank_trans_tree</field>
+    	<field name="model">cash.bank.trans</field>
+    	<field name="arch" type="xml">
+            <tree string="Withdraw/Deposit Order">
+                    <field name="id"/>
+                    <field name="date"/>
+                    <field name="trans_type"/>
+                    <field name="amount"/>
+                    <field name="journal_bank_id" domain="[('type','=','bank')]"/>
+                    <field name="journal_cash_id" domain="[('type','=','cash')]"/>
+                    <field name="description"/>
+    				<field name="state"/>
+                    <field name="move_id"/>
+	                <field name="move_state"/>
+            		<field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_cash_bank_trans_search">
+            <field name="name">view_cash_bank_trans_search</field>
+            <field name="model">cash.bank.trans</field>
+            <field name="arch" type="xml">
+                <search string="Search Withdraw/Deposit Order">
+                    <field name="id"/>
+                    <field name="date"/>
+                    <field name="trans_type"/>
+                    <field name="journal_bank_id" domain="[('type','=','bank')]"/>
+                    <field name="journal_cash_id" domain="[('type','=','cash')]"/>
+                    <field name="description"/>
+                    <field name="state"/>
+                    
+                    <filter icon="terp-document-new" name="withdraw" string="Withdraw" domain="[('trans_type','=','withdraw')]"/>
+                    <filter icon="terp-document-new" name="deposit" string="Deposit" domain="[('trans_type','=','deposit')]"/>
+                </search>
+            </field>
+    </record>    
+
+    <record model="ir.actions.act_window" id="action_cash_bank_trans">
+        <field name="name">Withdraw/Deposit Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cash.bank.trans</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type','=','c2b')]</field>
+        <field name="context">{'default_type':'c2b'}</field>        
+        <field name="search_view_id" ref="view_cash_bank_trans_search"/>
+    </record>         
+    <record id="action_cash_bank_trans_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_cash_bank_trans_tree"/>
+        <field name="act_window_id" ref="action_cash_bank_trans"/>
+    </record>
+    <record id="action_cash_bank_trans_view_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_cash_bank_trans_form"/>
+        <field name="act_window_id" ref="action_cash_bank_trans"/>
+    </record>
+		
+    <menuitem
+        id="menu_cash_bank_trans"
+        sequence="1"
+        parent="account.menu_finance_bank_and_cash"
+        action="action_cash_bank_trans"
+        groups="account.group_account_invoice"/>
+        
+<!-- Bank transfer -->
+    <record model="ir.ui.view" id="view_bank_trans_form">
+    	<field name="name">view_bank_trans_form</field>
+    	<field name="model">cash.bank.trans</field>
+    	<field name="arch" type="xml">
+    		<form string="Bank Transfer" version="7.0">
+    			<header>
+    				<button name="action_done" string="Confirm" states="draft" class="oe_highlight" type="object" groups="account.group_account_invoice"/>
+    				<button name="action_cancel" string="Cancel" states="done" type="object" groups="account.group_account_manager"/>
+    				<button name="action_to_draft" string="Set to Draft" states="cancelled" type="object" groups="account.group_account_manager"/>
+    				<field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+    			</header>
+                <group>
+	                <group>
+	                    <field name="date"/>
+	                    <field name="journal_bank_id" domain="[('type','=','bank')]" string="Bank From"/>
+	                    <field name="journal_cash_id" domain="[('type','=','bank')]" string="Bank To"/>
+	                </group>
+	                <group>
+	                    <field name="amount"/>
+	                	<field name="trans_type" invisible="1"/>
+	                    <field name="move_id" readonly="1"/>
+	               		<field name="move_state"/>
+	            		<field name="company_id" groups="base.group_multi_company"/>
+	                </group>
+                </group>
+                <separator string='Description'/>
+                <field name="description" placeholder='Description...'/>
+                <separator string='Accounting Items'  attrs="{'invisible':[('state','!=','done')]}"/>
+                <field name="move_lines" attrs="{'invisible':[('state','!=','done')]}"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_bank_trans_tree">
+    	<field name="name">view_bank_trans_tree</field>
+    	<field name="model">cash.bank.trans</field>
+    	<field name="arch" type="xml">
+            <tree string="Bank Trans">
+                    <field name="id"/>
+                    <field name="date"/>
+                    <field name="trans_type" invisible="1"/>
+                    <field name="journal_bank_id" domain="[('type','=','bank')]" string="Bank From"/>
+                    <field name="journal_cash_id" domain="[('type','=','bank')]" string="Bank To"/>
+                    <field name="amount"/>
+                    <field name="description"/>
+    				<field name="state"/>
+                    <field name="move_id"/>
+	                <field name="move_state"/>
+            		<field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_bank_trans_search">
+            <field name="name">view_cash_bank_trans_search</field>
+            <field name="model">cash.bank.trans</field>
+            <field name="arch" type="xml">
+                <search string="Search Bank Transfer">
+                    <field name="id"/>
+                    <field name="date"/>
+                    <field name="journal_cash_id" string="Bank Form" domain="[('type','=','bank')]"/>
+                    <field name="journal_bank_id" string="Bank To" domain="[('type','=','bank')]"/>
+                    <field name="description"/>
+                    <field name="state"/>                    
+                </search>
+            </field>
+    </record>    
+
+    <record model="ir.actions.act_window" id="action_bank_trans">
+        <field name="name">Bank Transfer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cash.bank.trans</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type','=','b2b'),('trans_type','=','withdraw')]</field>
+        <field name="context">{'default_type':'b2b','default_trans_type':'withdraw'}</field>        
+        <field name="search_view_id" ref="view_bank_trans_search"/>
+    </record>  
+    <record id="action_bank_trans_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_bank_trans_tree"/>
+        <field name="act_window_id" ref="action_bank_trans"/>
+    </record>
+    <record id="action_bank_trans_view_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_bank_trans_form"/>
+        <field name="act_window_id" ref="action_bank_trans"/>
+    </record>
+        		
+    <menuitem
+        id="menu_bank_trans"
+        sequence="2"
+        parent="account.menu_finance_bank_and_cash"
+        action="action_bank_trans"
+        groups="account.group_account_invoice"/>            
+
+<!-- other receipt and payment -->
+    <record model="ir.ui.view" id="view_rec_pay_form">
+    	<field name="name">view_rec_pay_form</field>
+    	<field name="model">cash.bank.trans</field>
+    	<field name="arch" type="xml">
+    		<form string="Other Receipts/Payments" version="7.0">
+    			<header>
+    				<button name="action_done" string="Confirm" states="draft" class="oe_highlight" type="object" groups="account.group_account_invoice"/>
+    				<button name="action_cancel" string="Cancel" states="done" type="object" groups="account.group_account_manager"/>
+    				<button name="action_to_draft" string="Set to Draft" states="cancelled" type="object" groups="account.group_account_manager"/>
+    				<field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+    			</header>
+                <group>
+	                <group>
+	                    <field name="date"/>
+	                    <field name="trans_type" invisible="1"/>
+	                    <field name="amount"/>
+	                    <field name="journal_bank_id" domain="[('type','in',('bank','cash'))]" string="Receipt/Payment Method"/>
+	                    <field name="employee_id"/>
+	                </group>
+	                <group>
+	                    <field name="account_to_id" string="Payments/Receipts account" required="1"/>
+	                    <field name="move_id" readonly="1"/>
+	               		<field name="move_state"/>
+	            		<field name="company_id" groups="base.group_multi_company"/>
+	                </group>
+                </group>
+                <separator string='Description'/>
+                <field name="description" placeholder='Description...'/>
+                <separator string='Accounting Items'  attrs="{'invisible':[('state','!=','done')]}"/>
+                <field name="move_lines" attrs="{'invisible':[('state','!=','done')]}"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_rec_pay_tree">
+    	<field name="name">view_rec_pay_tree</field>
+    	<field name="model">cash.bank.trans</field>
+    	<field name="arch" type="xml">
+            <tree string="Other Receipts/Payments">
+                    <field name="id"/>
+                    <field name="date"/>
+                    <field name="trans_type" invisible="1"/>
+                    <field name="amount"/>
+                    <field name="journal_bank_id" domain="[('type','in',('bank','cash'))]" string="Receipt/Payment Method"/>
+                    <field name="account_to_id" string="Payments/Receipts account"/>
+                    <field name="description"/>
+                    <field name="employee_id"/>
+    				<field name="state"/>
+                    <field name="move_id"/>
+	                <field name="move_state"/>
+            		<field name="company_id"/>
+            </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_rec_pay_search">
+            <field name="name">view_rec_pay_search</field>
+            <field name="model">cash.bank.trans</field>
+            <field name="arch" type="xml">
+                <search string="Search Receipts/Payments">
+                    <field name="id"/>
+                    <field name="date"/>
+                    <field name="journal_bank_id"  domain="[('type','in',('bank','cash'))]" string="Receipt/Payment Method"/>
+                    <field name="account_to_id" string="Payments/Receipts account"/>
+                    <field name="description"/>
+                    <field name="state"/>
+                </search>
+            </field>
+    </record>    
+
+    <record model="ir.actions.act_window" id="action_other_rec">
+        <field name="name">Other Receipts</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cash.bank.trans</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type','=','o_pay_rec'),('trans_type','=','deposit')]</field>
+        <field name="context">{'default_type':'o_pay_rec','default_trans_type':'deposit'}</field>        
+        <field name="search_view_id" ref="view_rec_pay_search"/>
+    </record>  
+    <record id="action_other_rec_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_rec_pay_tree"/>
+        <field name="act_window_id" ref="action_other_rec"/>
+    </record>
+    <record id="action_other_rec_view_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_rec_pay_form"/>
+        <field name="act_window_id" ref="action_other_rec"/>
+    </record>
+		
+    <menuitem
+        id="menu_other_rec"
+        sequence="5"
+        parent="account.menu_finance_bank_and_cash"
+        action="action_other_rec"
+        groups="account.group_account_invoice"/>
+
+    <record model="ir.actions.act_window" id="action_other_pay">
+        <field name="name">Other Payments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cash.bank.trans</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type','=','o_pay_rec'),('trans_type','=','withdraw')]</field>
+        <field name="context">{'default_type':'o_pay_rec','default_trans_type':'withdraw'}</field>        
+        <field name="search_view_id" ref="view_rec_pay_search"/>
+    </record>            
+    <record id="action_other_pay_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_rec_pay_tree"/>
+        <field name="act_window_id" ref="action_other_pay"/>
+    </record>
+    <record id="action_other_pay_view_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_rec_pay_form"/>
+        <field name="act_window_id" ref="action_other_pay"/>
+    </record>
+    
+    <menuitem
+        id="menu_other_pay"
+        sequence="6"
+        parent="account.menu_finance_bank_and_cash"
+        action="action_other_pay"
+        groups="account.group_account_invoice"/>
+        
+	</data>     
+</openerp>

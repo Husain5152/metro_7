@@ -1,0 +1,662 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* metro_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-31 23:57+0000\n"
+"PO-Revision-Date: 2014-09-01 08:06+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_attribute
+msgid "product.attribute"
+msgstr "product.attribute"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_uom_factor_display
+#: field:product.uom,factor_display:0
+msgid "Ratio"
+msgstr "比率"
+
+#. module: metro_product
+#: selection:product.product,measure_type:0
+msgid "Multi Units Multi Products"
+msgstr "多单位-多品种"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_qty_onhand
+#: field:product.product,qty_onhand:0
+msgid "Quantity On Hand"
+msgstr "在手数量"
+
+#. module: metro_product
+#: sql_constraint:product.attribute.line:0
+msgid "You can use an attribute on a Product once !"
+msgstr "一个属性只能在一个产品上使用一次!"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_safe_qty
+#: field:product.product,safe_qty:0
+msgid "Minimal Inventory"
+msgstr "最小库存"
+
+#. module: metro_product
+#: selection:product.batch.query,state:0
+msgid "choose"
+msgstr "选择"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_cn_name
+#: field:product.product,cn_name:0
+msgid "Chinese Name"
+msgstr "中文名"
+
+#. module: metro_product
+#: view:product.uom:0
+msgid "context.get('force_categ')"
+msgstr "context.get('force_categ')"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_qty_virtual
+#: field:product.product,qty_virtual:0
+msgid "Forecasted Quantity"
+msgstr "预测数量"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_qty_in
+#: field:product.product,qty_in:0
+msgid "Incoming"
+msgstr "将入库"
+
+#. module: metro_product
+#: selection:product.batch.query,state:0
+msgid "get"
+msgstr "get"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_attribute_line_attr_value
+#: view:product.attribute.line:0 field:product.attribute.line,attr_value:0
+msgid "Value"
+msgstr "值"
+
+#. module: metro_product
+#: model:ir.ui.menu,name:metro_product.metro_menu_product
+msgid "Products"
+msgstr "产品"
+
+#. module: metro_product
+#: view:product.product:0
+msgid ""
+"Default Unit of Measure used for all stock operation. For the new product, "
+"please save it first, and then you can define the units."
+msgstr "所有库存操作的默认计量单位. 对于新建产品,先保存,然后可定义产品单位"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_category_attribute
+#: model:ir.model.fields,field_description:metro_product.field_product_product_attribute_line
+#: view:product.attribute.line:0 view:product.category:0
+#: field:product.category,attribute:0 view:product.product:0
+#: field:product.product,attribute_line:0
+msgid "Attributes"
+msgstr "属性"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "No Print Barcode"
+msgstr "不打印条码"
+
+#. module: metro_product
+#: model:ir.actions.act_window,name:metro_product.metro_action_product_sequence
+#: model:ir.ui.menu,name:metro_product.metro_menu_product_sequence
+#: view:product.sequence:0
+msgid "Product Sequence"
+msgstr "产品顺序"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_attribute_category
+msgid "product.attribute.category"
+msgstr "product.attribute.category"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_attribute_line
+msgid "product.attribute.line"
+msgstr "product.attribute.line"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_sequence_suffix
+#: field:product.sequence,suffix:0
+msgid "Suffix"
+msgstr "后缀"
+
+#. module: metro_product
+#: view:product.batch.query:0
+msgid "Query Complete"
+msgstr "查询完毕"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_batch_query_file_template
+#: field:product.batch.query,file_template:0
+msgid "Template File"
+msgstr "模板文件"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_property_prod_loc
+#: field:product.product,property_prod_loc:0
+msgid "Location"
+msgstr "库位"
+
+#. module: metro_product
+#: view:products.approve:0
+msgid "Approve products"
+msgstr "批准产品"
+
+#. module: metro_product
+#: view:product.product:0
+msgid ""
+"red:(virtual_available and virtual_available<0);blue:virtual_available>=0 "
+"and state in ('draft', 'end', 'obsolete');black:virtual_available>=0 and "
+"state not in ('draft', 'end', 'obsolete')"
+msgstr ""
+"red:(virtual_available and virtual_available<0);blue:virtual_available>=0 "
+"and state in ('draft', 'end', 'obsolete');black:virtual_available>=0 and "
+"state not in ('draft', 'end', 'obsolete')"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_category
+msgid "Product Category"
+msgstr "产品目录"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_create_date
+#: model:ir.model.fields,field_description:metro_product.field_product_uom_create_date
+#: field:product.product,create_date:0 field:product.uom,create_date:0
+msgid "Creation Date"
+msgstr "创建日期"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_batch_query
+msgid "product.batch.query"
+msgstr "product.batch.query"
+
+#. module: metro_product
+#: model:product.uom.categ,name:metro_product.uom_categ_msp_dummy
+msgid "MSP_UOM_CATEG_DUMMY"
+msgstr "MSP_UOM_CATEG_DUMMY"
+
+#. module: metro_product
+#: view:product.product:0
+msgid ""
+"Open to view or edit the prodcut's unit of measure list! 查看维护产品相关的单"
+"位列表!"
+msgstr ""
+"Open to view or edit the prodcut's unit of measure list! 查看维护产品相关的单"
+"位列表!"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_batch_query_file_template_name
+#: field:product.batch.query,file_template_name:0
+msgid "Template File Name"
+msgstr "模板文件名称"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_attribute_category_ids
+#: field:product.attribute,category_ids:0
+msgid "Categories"
+msgstr "类别"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Print Barcode"
+msgstr "打印条码"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "您必须包括所有部件的英文名称为！"
+msgstr "您必须包括所有部件的英文名称为！"
+
+#. module: metro_product
+#: view:product.product:0 view:product.set.printflag:0
+msgid "Clear Print Flag"
+msgstr "清除打印标志"
+
+#. module: metro_product
+#: model:product.uom,name:metro_product.uom_msp_dummy
+msgid "MSP_UOM_DUMMY"
+msgstr "MSP_UOM_DUMMY"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_products_approve
+msgid "Approve products by batch"
+msgstr "批量批准产品"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_sequence_separator
+#: field:product.sequence,separator:0
+msgid "Separator"
+msgstr "Separator"
+
+#. module: metro_product
+#: view:product.batch.query:0
+msgid "Here is the exported result file:"
+msgstr "导出结果文件:"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Storage Location"
+msgstr "存储位置"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_measure_type
+#: field:product.product,measure_type:0
+msgid "Measure Type"
+msgstr "计量类型"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_products_approve_purchase_ok
+#: field:products.approve,purchase_ok:0
+msgid "Can be purchased"
+msgstr "可采购"
+
+#. module: metro_product
+#: view:product.product:0
+msgid ""
+"Only press this button to create a new part number! 只有按这个按钮来创建一个"
+"新的零件编号！"
+msgstr ""
+"Only press this button to create a new part number! 只有按这个按钮来创建一个"
+"新的零件编号！"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_loc_pos_code
+#: field:product.product,loc_pos_code:0
+msgid "Storage Position Code"
+msgstr "存放位置"
+
+#. module: metro_product
+#: model:ir.actions.act_window,name:metro_product.action_products_approve
+msgid "Approve Products"
+msgstr "批准产品"
+
+#. module: metro_product
+#: model:ir.actions.act_window,name:metro_product.action_wizard_product_batch_query
+#: model:ir.ui.menu,name:metro_product.menu_wizard_product_batch_query
+#: view:product.batch.query:0
+msgid "Product Batch Query"
+msgstr "产品批量查询"
+
+#. module: metro_product
+#: view:product.batch.query:0 view:product.set.printflag:0
+#: view:products.approve:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_uom_po_price
+#: field:product.product,uom_po_price:0
+msgid "Purchase Unit Price"
+msgstr "采购单位单价"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_uom
+msgid "Product Unit of Measure"
+msgstr "产品计量单位"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_part_no_external
+#: field:product.product,part_no_external:0
+msgid "External Part#"
+msgstr "外部物料号"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_products_approve_sale_ok
+#: field:products.approve,sale_ok:0
+msgid "Can be sold"
+msgstr "可销售"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "中国名"
+msgstr "中国名"
+
+#. module: metro_product
+#: selection:product.product,measure_type:0
+msgid "Single Unit"
+msgstr "唯一单位"
+
+#. module: metro_product
+#: selection:product.product,measure_type:0
+msgid "Multi Units Single Product"
+msgstr "多单位-单品种"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_qty_out
+#: field:product.product,qty_out:0
+msgid "Outgoing"
+msgstr "将出库"
+
+#. module: metro_product
+#: model:ir.actions.act_window,name:metro_product.action_view_product_set_printflag
+msgid "Set/Clear Print Flag"
+msgstr "设置/清除打印标志"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_uom_po_factor
+#: field:product.product,uom_po_factor:0
+msgid "UOM Ratio"
+msgstr "单位比率"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_batch_query_state
+#: field:product.batch.query,state:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: metro_product
+#: help:product.product,part_no_external:0
+msgid "The external part#, may be from engineering, purchase..."
+msgstr "外部物料号,可能来自工程,采购..."
+
+#. module: metro_product
+#: model:ir.ui.menu,name:metro_product.metro_menu_product_attribute_category_metro
+msgid "Product Attribute Category"
+msgstr "产品属性目录"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_sequence_active
+#: field:product.sequence,active:0
+msgid "Active"
+msgstr "有效"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "No Onhand"
+msgstr "无库存"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Restart"
+msgstr "重新启用"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_mfg_standard
+#: field:product.product,mfg_standard:0
+msgid "Manufacture Standard"
+msgstr "制造标准"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "[('category_id','=',uom_categ_id)]"
+msgstr "[('category_id','=',uom_categ_id)]"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "metro.group_data_maintain_manager"
+msgstr "metro.group_data_maintain_manager"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_batch_query_data_result
+#: field:product.batch.query,data_result:0
+msgid "Result File"
+msgstr "结果文件"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_max_qty
+#: field:product.product,max_qty:0
+msgid "Maximal Inventory"
+msgstr "最大库存"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_create_uid
+#: model:ir.model.fields,field_description:metro_product.field_product_uom_create_uid
+#: field:product.product,create_uid:0 field:product.uom,create_uid:0
+msgid "Creator"
+msgstr "创建人"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_attribute_line_attribute_id
+#: view:product.attribute:0 view:product.attribute.line:0
+#: field:product.attribute.line,attribute_id:0 view:product.category:0
+msgid "Attribute"
+msgstr "属性"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_is_print_barcode
+#: field:product.product,is_print_barcode:0
+msgid "Print barcode label"
+msgstr "打印条码标签"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_sequence_prefix
+#: field:product.sequence,prefix:0
+msgid "Prefix"
+msgstr "前缀"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_uom_categ_id
+#: field:product.product,uom_categ_id:0
+msgid "UOM Category"
+msgstr "单位类别"
+
+#. module: metro_product
+#: view:product.batch.query:0 view:product.set.printflag:0
+#: view:products.approve:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_product
+#: view:product.batch.query:0
+msgid "Close"
+msgstr "关闭"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_set_printflag
+msgid "Set product barcode print flag"
+msgstr "设置产品条码打印标志"
+
+#. module: metro_product
+#: view:product.set.printflag:0
+msgid "Set/Clear Products Barcode Print Flag"
+msgstr "设置/清除产品条码打印标志"
+
+#. module: metro_product
+#: model:ir.actions.act_window,name:metro_product.metro_action_product_attribute
+#: model:ir.ui.menu,name:metro_product.metro_menu_product_attribute_metro
+#: model:ir.ui.menu,name:metro_product.metro_menu_product_attribute_product
+msgid "Product Attribute"
+msgstr "产品属性"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_product
+#: model:ir.model.fields,field_description:metro_product.field_product_attribute_line_product_id
+#: field:product.attribute.line,product_id:0 view:product.product:0
+msgid "Product"
+msgstr "产品"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_product_safe_warn
+#: field:product.product,safe_warn:0
+msgid "Safe Warn"
+msgstr "安全报警"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_sequence
+msgid "product.sequence"
+msgstr "product.sequence"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "End of Life"
+msgstr "停用"
+
+#. module: metro_product
+#: view:product.uom:0
+msgid "Product UOM"
+msgstr "产品计量单位"
+
+#. module: metro_product
+#: help:product.product,mfg_standard:0
+msgid "The manufacture standard name, like GB/T5782-86"
+msgstr "制造标准,诸如GB/T5782-86"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Negative Onhand"
+msgstr "负库存"
+
+#. module: metro_product
+#: view:product.set.printflag:0
+msgid ""
+"Are you sure you want to set or clear these selected products barcode print "
+"flag?"
+msgstr "你确信要合并/清除所选择产品的条码打印标志吗？"
+
+#. module: metro_product
+#: view:products.approve:0
+msgid "Are you sure you want to approve those products?"
+msgstr "确定批准这些产品吗?"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_attribute_name
+#: field:product.attribute,name:0
+msgid "Name"
+msgstr "名称"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Multi Part#"
+msgstr "多产品"
+
+#. module: metro_product
+#: model:ir.model,name:metro_product.model_product_template
+msgid "Product Template"
+msgstr "产品模板"
+
+#. module: metro_product
+#: view:product.product:0 view:product.set.printflag:0
+msgid "Set Print Flag"
+msgstr "设置打印标志"
+
+#. module: metro_product
+#: view:product.batch.query:0
+msgid "Query"
+msgstr "查询"
+
+#. module: metro_product
+#: view:product.batch.query:0
+msgid "Select the file including your query products"
+msgstr "选择包括查询产品的文件"
+
+#. module: metro_product
+#: view:product.product:0 view:products.approve:0
+msgid "Approve"
+msgstr "批准"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_batch_query_filename
+#: field:product.batch.query,filename:0
+msgid "File Name"
+msgstr "文件名"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Obsolete"
+msgstr "废弃"
+
+#. module: metro_product
+#: model:ir.actions.act_window,name:metro_product.action_product_inventory_warning
+#: model:ir.ui.menu,name:metro_product.menu_product_inventory_warning
+msgid "Inventory Warning"
+msgstr "库存报警"
+
+#. module: metro_product
+#: model:ir.model.fields,field_description:metro_product.field_product_batch_query_data
+#: field:product.batch.query,data:0
+msgid "File"
+msgstr "Excel文件"
+
+#==================added manually - begin ==================#
+#. module: metro_product
+#: code:addons/metro_product/product.py:0
+msgid "Product Chinese Name must be unique!"
+msgstr "产品中文名称重复!"
+
+#. module: metro_product
+#: code:addons/metro_product/product.py:0
+msgid "Product Name must be unique!"
+msgstr "产品名称重复!"
+
+#. module: metro_product
+#: view:product.set.printflag:0
+msgid "Are you sure you want to set or clear these selected products barcode print flag?"
+msgstr "你确信要合并/清除所选择产品的条码打印标志吗？"
+
+#. module: product
+#: code:addons/product/product.py:361
+#, python-format
+msgid ""
+"New Unit of Measure '%s' must belong to same Unit of Measure category '%s' "
+"as of old Unit of Measure '%s'. If you need to change the unit of measure, "
+"you may deactivate this product from the 'Procurements' tab and create a new "
+"one."
+msgstr ""
+"新的计量单位'%s'的类别必须是'%s',即和老单位 '%s' 的相同。如果你要改变计量单位，你要'需求'标签停用这个产品 ，并且创建一个新的。"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Default Unit of Measure used for all stock operation. For the new product, please save it first, and then you can define the units."
+msgstr "所有库存操作的默认计量单位. 对于新建产品,先保存,然后可定义产品单位"
+
+#. module: metro_product
+#: code:addons/metro_product/product.py:138
+msgid "The manufacture standard name, like GB/T5782-86"
+msgstr "制造标准名称,例如GB/T5782-86"
+
+#. module: metro_product
+#: code:addons/metro_product/product.py:451
+#, python-format
+msgid "There are related business data with '%s', cannot change the Category,Type or Ratio."
+msgstr "'%s'已经有相关的业务数据,不能更改'类别','类型'或者'比例'."
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Approve"
+msgstr "批准"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "End of Life"
+msgstr "停用"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Obsolete"
+msgstr "废弃"
+
+#. module: metro_product
+#: view:product.product:0
+msgid "Restart"
+msgstr "重新启用"
+
+#. module: metro_product
+#: field:product.product,qty_onhand:0
+msgid "Quantity On Hand"
+msgstr "在手数量"
+
+#. module: metro_product
+#: field:product.product,qty_virtual:0
+msgid "Forecasted Quantity"
+msgstr "预测数量"
+
+#. module: stock
+#: view:product.product:0
+msgid "On hand:"
+msgstr "在手:"

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <act_window name="Generate A Purchase Order"
+                    res_model="pur.req.po"
+                    src_model="pur.req"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    multi="True"
+                    id="act_pur_req_po"/>
+
+        <record id="view_pur_req_po_form" model="ir.ui.view">
+            <field name="name">Requisition Lines</field>
+            <field name="model">pur.req.po</field>
+            <field name="arch" type="xml">
+                <form string="Requisition lines" version="7.0">
+                    <group>
+                        <separator colspan="4" string="Select supplier and the products that you want to generate PO."/>
+                        <field name="pur_req_id" invisible="1"/>
+                        <field name="supplier_ids" invisible="1"/>
+                        <field name="partner_id" domain="[('id','in',supplier_ids)]" on_change="onchange_partner(pur_req_id,partner_id,context)"/>
+                        <field name="line_ids" colspan="4">
+                            <tree string="Products" editable="bottom">
+
+                                <field name="product_id" readonly="1"/>
+                                <field name="supplier_id" invisible="1"/>
+                                <field name="product_qty_remain" invisible="1"/>
+                                <field name="product_qty" invisible="1"/>
+                                <field name="product_uom_id" invisible="1"/>
+                                <field name="price_unit" invisible="1"/>
+
+                                <field name="uom_po_qty_remain" invisible="1"/>
+                                <field name="uom_po_qty"/>
+                                <field name="uom_po_id" readonly="1"/>
+                                <field name="uom_po_price"/>
+                                <field name="uom_po_factor" readonly="1"/>
+
+                                <!--<field name="date_required" on_change = "onchange_lead('date_required',date_required,context)"/>-->
+                                <!--<field name="mfg_ids" widget="many2many_tags"/>-->
+                                <!--<field name="req_reason"/>-->
+                                <!--<field name="inv_qty" readonly="1"/>-->
+                                <field name="product_uom_id" readonly="1"/>
+                                <field name="supplier_prod_id" invisible="1"/>
+                                <field name="supplier_prod_name"/>
+                                <field name="supplier_prod_code"/>
+                                <field name="supplier_delay"
+                                       on_change="onchange_lead('supplier_delay',supplier_delay,context)"/>
+                                <field name="date_required"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="create_po" string="Create PO" type="object" class="oe_highlight"/>
+                        <button name="create_view_po" string="Create&amp;View PO" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

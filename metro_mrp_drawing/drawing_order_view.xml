@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    <record model="ir.ui.view" id="view_drawing_order_form">
+    	<field name="name">view_drawing_order_form</field>
+    	<field name="model">drawing.order</field>
+    	<field name="arch" type="xml">
+    		<form string="Drawing Order" version="7.0">
+    			<header>
+    				<button name="open_do_lines" string="Drawing Order Files" type="object" class="oe_highlight"/>
+                    <button name="action_ready" string="Ready" states="draft,bom_uploaded,pdf_uploaded,rejected" class="oe_highlight" type="object"/>
+    				<button name="action_confirm" confirm="Please confirm the M/O quantity before proceed." string="Confirm" states="ready" class="oe_highlight" type="object" groups="metro_mrp.group_mrp_supervisor"/>
+    				<button name="action_approve" string="Approve" states="confirmed" class="oe_highlight" type="object" groups="mrp.group_mrp_manager"/>
+    				<button name="action_reject" string="Reject" states="confirmed" type="object" groups="mrp.group_mrp_manager"/>
+    				
+    				<button name="action_draft" string="Set to Draft" states="ready" type="object"/>
+    				<button name="action_draft" string="Set to Draft" states="confirmed,cancel" type="object" groups="metro_mrp.group_mrp_supervisor"/>
+    				<button name="action_draft" string="Set to Draft" states="approved,in_progress" type="object" groups="mrp.group_mrp_manager"/>
+    				
+    				<button name="action_cancel" confirm="Are you sure you want to cancel this DO ?" string="Cancel" states="draft,bom_uploaded,pdf_uploaded,rejected" type="object"/>
+    				<button name="action_cancel" confirm="Are you sure you want to cancel this DO ?" string="Cancel" states="confirmed" type="object"  groups="metro_mrp.group_mrp_supervisor"/>
+    				<button name="action_cancel" confirm="Are you sure you want to cancel this DO ?" string="Cancel" states="approved,in_progress" type="object" groups="mrp.group_mrp_manager"/>
+    				
+    				<field name="state" widget="statusbar" statusbar_visible="draft,bom_uploaded,pdf_uploaded,ready,confirmed,approved"/>
+    			</header>
+    			<!-- <sheet> -->
+    				<group colspan="4" col="8">
+                        <group colspan="3" col="1">
+                            <h1 style="display:inline"><field name="name"/></h1>
+                        </group>
+    					<group colspan="5" col="1">
+                            <div class="oe_right">
+                                <button name="generate_pr" string="Generate PR" type="object" class="oe_inline" states="confirmed,approved"/>
+                                <button name="generate_tasks" string="Generate Tasks" type="object" class="oe_inline" states="ready,confirmed,approved"/>
+                                <button name="%(action_update_do_bom)d" string="Update BOM" type="action" class="oe_inline" states="ready,confirmed,approved" groups="mrp.group_mrp_manager" context="{'default_do_id': id}"/>
+                                <button name="update_parts" string="Generate parts lines" type="object" class="oe_inline" states="bom_uploaded,pdf_uploaded,rejected"/>
+                                <button string="Reuse PDF" name="reuse_parts" type="object" states="bom_uploaded,pdf_uploaded,rejected" class="oe_inline" groups="base.group_system"/>
+                                <button string="Reuse DXF" name="reuse_dxfs" type="object" states="bom_uploaded,pdf_uploaded,rejected" class="oe_inline" groups="base.group_system"/>
+                                <button string="Upload PDF" name="%(action_upload_multi_drawings)d" type="action" states="bom_uploaded,pdf_uploaded,rejected" class="oe_inline" />
+                                <button string="Upload DXF" name="upload_dxf" type="object" states="bom_uploaded,pdf_uploaded,rejected" class="oe_inline" />
+                                <button string="Fix PDF-DXF" name="%(action_fix_pdf_dxf)d" type="action" states="ready,confirmed,approved" class="oe_inline" />
+                                <button name="print_bom_xls" string="Download BOM XLS" type="object" class="oe_inline" />
+                                <button name="print_pms_xls" string="Download CNC BOM" type="object" class="oe_inline" />
+                                <!--<button name="print_pdf" string="Download PDF" type="object" class="oe_inline" />-->
+                                <button name="print_pdf_pdftk" string="Download PDF" type="object" class="oe_inline" />
+                                <button name="print_pdf_zip" string="Download PDF Zip" type="object" class="oe_inline" />
+                                <button name="print_dxf" string="Download DXF" type="object" class="oe_inline" />
+                                <button name="create_missing_erpno" string="Request Missing ERP No" type="object" class="oe_inline" />
+                                <button name="update_missing_erpno" string="Update Missing ERP No" type="object" class="oe_inline" />
+                                <button name="unlink_pr_workorder" confirm="Are you sure you want to unlink PRs,WO this DO ?" string="Unlink PR, WO" type="object" groups="base.group_erp_manager" class="oe_inline" />
+                                <button name="update_do_line_quantity" string="Fix Wrong Qty" states="draft,bom_uploaded,pdf_uploaded,ready" type="object" class="oe_inline" />
+                                <button name="fix_task_pdf" string="Fix Task Pdf" type="object" class="oe_inline" />
+                            </div>
+                        </group>
+                    </group>
+                    <group style="color:green">
+                        <field name="notice" readonly="1" attrs="{'invisible':[('notice','=',False)]}"/>
+                	</group>
+                 	<group style="color:red">
+                		<field name="reject_message" states="rejected" readonly="1"/>
+                        <field name="bom_error" readonly="1" attrs="{'invisible':[('bom_log','=',False)]}"/>
+                	</group>
+    				<group colspan="4" col="6">
+    					<group>
+    					    <!--+++ HoangTK - 11/17/2015: Add mo_id to view and remove required of sale_product_ids-->
+    					    <field name="mo_id" required="1" attrs="{'readonly': [('state','not in',['draft','bom_uploaded','pdf_uploaded'])]}" on_change="onchange_mo_id_product_id(mo_id,product_id,context)"/>
+		    				<!--<field name="sale_product_ids" widget="many2many_tags" required="1" domain="[('state','in',('confirmed','engineer','manufacture'))]"/> -->
+		    				<field name="sale_product_ids" widget="many2many_tags" readonly="1"/>
+                            <field name="mo_bigsubassembly_ids" invisible="1" readonly="1"/>
+	                        <!--<field name="main_part_id"/> -->
+	                        <field name="product_id" domain="[('id','in',mo_bigsubassembly_ids)]" attrs="{'readonly': [('state','not in',['draft','bom_uploaded','pdf_uploaded'])]}" on_change="onchange_mo_id_product_id(mo_id,product_id,context)"/>
+	                        <!--... HoangTK - 11/17/2015 -->
+	                        <field name="bom_file_name" invisible="1"/>
+	                        <field name="bom_file" widget="xlsfile_widget" filename="bom_file_name" attrs="{'readonly': [('state','not in',['draft','bom_uploaded','pdf_uploaded'])]}"/>
+                            <field name="add_watermark_when_ready" attrs="{'readonly': [('state','not in',['draft','bom_uploaded','pdf_uploaded'])]}" />
+    					</group>
+    					<group>
+                            <field name="urgent"/>
+    					<!--+++ HoangTK - 12/08/2015: Show quantities -->
+    					   <field name="prepare_qty"/>
+    					   <field name="done_qty"/>
+    					   <field name="need_qty"/>
+    					<!--... HoangTK - 12/08/2015: Show quantities -->
+
+    					</group>
+                        <group>
+                            <field name="create_uid"/>
+		    				<field name="create_date"/>
+                            <label for="id" string="DO #"/>
+                            <div>
+		    				    <field name="id" nolabel="1" class="oe_inline"/>
+                                <label for="copy_order_id" string="Copied from"/>
+                                <field name="copy_order_id" nolabel="1" class="oe_inline"/>
+                            </div>
+		    				<field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                            <label for="req_id" string="Generated PRs"/>
+                            <div>
+                                <field name="req_id" nolabel="1" class="oe_inline"/>
+                                <field name="req_o_id" nolabel="1" class="oe_inline"/>
+                                <field name="req_id_pms" nolabel="1" class="oe_inline"/>
+                                <field name="req_id_pml" nolabel="1" class="oe_inline"/>
+                            </div>
+                            <field name="workorder_id"/>
+                            <label for="id" string="CNC Work Order"/>
+                            <div>
+                                <field name="cnc_workorder_id" nolabel="1" class="oe_inline"/>
+                                <button name="link_cnc_workorder" type="object" string="Link CNC"/>
+                            </div>
+                        </group>
+    				</group>
+                    <group colspan="4">
+                        <label for="note" string="Description/Notes"/>
+                        <field name="note" nolabel="1" colspan="4" placeholder="Description/Notes..."/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Drawing Order Lines">
+                            <div>
+                                <input type="checkbox" id="hide_drawing_file"/> <span>Hide lines already have drawing files</span>
+                                <input type="checkbox" id="hide_not_aluminum"/> <span>Hide not aluminum parts</span>
+                                <select id="part_type_select">
+                                    <option value="ALL" selected="selected">ALL PART TYPES</option>
+                                    <option value="ASM">ASM</option>
+                                    <option value="PS">PS</option>
+                                    <option value="POEM">POEM</option>
+                                    <option value="MATERIALS">MATERIALS</option>
+                                    <option value="PMC">PMC</option>
+                                    <option value="PMS">PMS</option>
+                                    <option value="PML">PML</option>
+                                    <option value="CD">CD</option>
+                                </select>:
+                                <span id="total_do_lines">0</span> (lines)
+                            </div>
+                            <group colspan="4" col="8">
+                                <field name="produced_type_qty"/>
+                                <field name="purchs_type_qty"/>
+                                <field name="purchoem_type_qty"/>
+                                <field name="purchm_type_qty"/>
+                                <field name="purchmc_type_qty"/>
+                                <field name="purchms_type_qty"/>
+                                <field name="purchml_type_qty"/>
+                                <field name="purchcd_type_qty"/>
+                            </group>
+                            <field name="order_lines" nolabel="1" colspan="4" widget="one2many_list" mode="tree">
+                                <button name="generate_mfg_o" string="Generate MFG-O"/>
+                                <tree string="Lines" editable="bottom" version="7.0" class="do_order_lines" colors="black:color=='black';red:color=='red';yellow:color=='yellow'">
+                                    <field name="id" invisible="1"/>
+                                    <field name="item_no"/>
+                                    <field name="erp_no"/>
+                                    <field name="product_id" string="ERP Part Number"/>
+                                    <field name="part_number"/>
+                                    <field name="description"/>
+                                    <field name="thickness"/>
+                                    <field name="material"/>
+                                    <!--+++ HoangTK - 11/25/2015: Add bom_qty -->
+                                    <field name="part_type"/>
+                                    <field name="bom_qty" sum="Total Qty"/>
+                                    <field name="quantity" sum="Total Qty"/>
+                                    <field name="work_steps"  class="metro_high_light" readonly="1"/>
+                                    <!--... HoangTK - 11/25/2015 -->
+                                    <field name="drawing_file_name" invisible="1"/>
+                                    <!--+++ HoangTK 11/18/2015: Hide drawing_file when no drawing_file_name -->
+                                    <!--<field name="drawing_file" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':['|',('drawing_file_name', '=', False),('part_type','=','PS')]}"/>-->
+                                    <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':['|',('drawing_file_name', '=', False),('part_type','=','PS')]}"/>
+                                    <button string="Upload" attrs="{'invisible':['|',('part_type','=','PS'),('state','in',['ready','confirmed','approved'])]}" name="%(action_upload_multi_drawings)d" type="action" states="draft,rejected" class="oe_highlight" context="{'line_id':id,'product_id':product_id}" icon="gtk-open"/>
+                                    <field name="dxf_file_name" invisible="1"/>
+                                    <field name="dxf_download" widget="drawing_url" filename="dxf_file_name" attrs="{'invisible':['|',('dxf_file_name', '=', False)]}"/>
+                                    <button string="Upload" attrs="{'invisible':[('state','in',['ready','confirmed','approved'])]}" name="%(action_upload_multi_dxfs)d" type="action" states="draft,rejected" class="oe_highlight" context="{'line_id':id,'product_id':product_id}" icon="gtk-open"/>
+                                    <!--... HoangTK 11/18/2015 -->
+                                    <!--+++ HoangTK 11/17/2015: Remove step_ids add work_steps -->
+                                    <!--<field name="step_ids" widget="many2many_tags"/> -->
+                                    <field name="status" readonly="1"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="color" invisible="1"/>
+                                    <!--... HoangTK 11/17/2015 -->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Generated PRs">
+                            <field name="req_ids" colspan="4" nolabel="1" widget="one2many_list"/>
+                        </page>
+                        <page string="Error Log">
+                            <field name="bom_log" colspan="4" nolabel="1"/>
+                        </page>
+                        <!--<page string="History" groups="base.group_erp_manager">
+                           <field name="history_ids" colspan="4" nolabel="1" widget="many2many_list" readonly="1">
+                               <tree string="History">
+                                   <field name="date"/>
+                                   <field name="user_id"/>
+                                   <field name="content"/>
+                                   <field name="vals"/>
+                               </tree>
+                           </field>
+                	    </page>-->
+                    </notebook>
+    			<!-- </sheet> -->
+	            <div class="oe_chatter">
+	              <field name="message_follower_ids" widget="mail_followers"/>
+	              <field name="message_ids" widget="mail_thread"/>
+	            </div>     			
+    		</form>
+    	</field>
+    </record>
+    <record model="ir.ui.view" id="view_drawing_order_tree">
+    	<field name="name">view_drawing_order_tree</field>
+    	<field name="model">drawing.order</field>
+    	<field name="arch" type="xml">
+            <tree fonts="bold:state == 'approved'" colors="blue:state == 'confirmed';green:state == 'approved';grey:state == 'cancel';" string="Drawing Orders">
+                <field name="message_unread" invisible="1"/>
+		    	<!--+++ HoangTK - 11/17/2015: Remove sale_product_ids,id, show mo_id,product_id instead -->
+		    	<field name="id" string="DO #"/>
+                <field name="name"/>
+                <field name="urgent"/>
+                <field name="sale_product_ids" widget="many2many_tags"/>
+                <field name="mo_id"/>
+                <field name="main_part_id" string="Unit"/>
+                <field name="product_id"/>
+                <field name="cnc_workorder_id"/>
+                <!--... HoangTK - 11/17/2015 -->
+                <field name="create_uid"/>
+                <field name="req_id"/>
+                <field name="req_o_id"/>
+                <field name="req_id_pms"/>
+                <field name="req_id_pml"/>
+                <field name="create_date"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"/>
+            </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_drawing_order_filter">
+            <field name="name">view_drawing_order_filter</field>
+            <field name="model">drawing.order</field>
+            <field name="arch" type="xml">
+                <search string="Search Drawing Orders">
+                    <field name="id" string="DO #"/>
+                    <field name="name" string="Drawing Orders"/>
+                    <field name="mo_id"/>
+                    <field name="sale_product_ids"/>
+                    <field name="product_id"/>
+                    <field name="main_part_id"/>
+                    <!--<field name="main_part_id"/>-->
+                    <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter icon="terp-document-new" name="ready" string="Ready" domain="[('state','=','ready')]"/>
+                    <filter icon="terp-camera_test" name="confirmed" string="Confirmed" domain="[('state','=','confirmed')]"/>
+                    <filter icon="terp-camera_test" name="approved" string="Approved" domain="[('state','=','approved')]"/>
+                    <filter icon="terp-camera_test" name="rejected" string="Rejected" domain="[('state','=','rejected')]"/>
+                    <separator/>
+                    <filter icon="terp-personal-" string="Cancelled"  domain="[('state','=', 'cancel')]" help="Canceled"/>
+                    <field name="create_uid" />
+                    <group expand="0" string="Group By...">
+                        <filter string="Unit" icon="terp-partner" domain="[]" context="{'group_by':'main_part_id'}"/>
+                        <filter string="Manufacturer Order" icon="terp-partner" domain="[]" context="{'group_by':'mo_id'}"/>
+                        <filter string="Big Sub Assembly" icon="terp-partner" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Creator" icon="terp-partner" domain="[]" context="{'group_by':'create_uid'}"/>
+                    </group>
+                </search>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_drawing_order">
+        <field name="name">Drawing Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">drawing.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_drawing_order_filter"/>
+    </record>
+
+    <menuitem
+        id="menu_drawing_order"
+        sequence="102"
+        parent="mrp.menu_mrp_manufacturing"
+        action="action_drawing_order"
+        groups="mrp.group_mrp_user"/>
+        
+<!-- Drawing order lines to list files -->        
+    <record model="ir.ui.view" id="view_drawing_order_line_form">
+    	<field name="name">view_drawing_order_line_form</field>
+    	<field name="model">drawing.order.line</field>
+    	<field name="arch" type="xml">
+    		<form string="Drawing Order Lines" version="7.0" create="false" edit="false" delete="false">
+                <group col="4">
+
+    		    	<!--+++ HoangTK - 11/18/2015: Remove sale_product_ids,main_part_id,company_id, replace step_ids with work_steps -->
+    		    	<!-- <field name="sale_product_ids" widget="many2many_tags"/> -->
+    		    	<!-- <field name="main_part_id"/> -->
+                    <!---<field name="item_no"/>
+                    <field name="erp_no"/>
+                    <field name="product_id"/>
+                    <field name="part_number"/>
+                    <field name="description"/>
+                    <field name="thickness"/>
+                    <field name="material"/>
+                    <field name="part_type"/>
+                    <field name="bom_qty"/>
+                    <field name="quantity"/>
+    		    	<field name="drawing_file_name" invisible="1"/>
+    		    	<field name="drawing_file" filename="drawing_file_name"/>		    	
+    		    	<field name="work_steps"/>
+    		    	<field name="state"/>
+                    -->
+                    <!--... HoangTK - 11/18/2015 -->
+                    <field name="id" invisible="1"/>
+                    <field name="order_id"/>
+                    <field name="item_no"/>
+                    <field name="erp_no"/>
+                    <field name="product_id" string="ERP Part Number"/>
+                    <field name="part_number"/>
+                    <field name="description"/>
+                    <field name="thickness"/>
+                    <field name="material"/>
+                    <!--+++ HoangTK - 11/25/2015: Add bom_qty -->
+                    <field name="part_type"/>
+                    <field name="bom_qty"/>
+                    <field name="quantity"/>
+                    <field name="work_steps"  class="metro_high_light" readonly="1"/>
+                    <!--... HoangTK - 11/25/2015 -->
+                    <field name="drawing_file_name" invisible="1"/>
+                    <!--+++ HoangTK 11/18/2015: Hide drawing_file when no drawing_file_name -->
+                    <!--<field name="drawing_file" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':['|',('drawing_file_name', '=', False),('part_type','=','PS')]}"/>-->
+                    <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':['|',('drawing_file_name', '=', False),('part_type','=','PS')]}"/>
+                    <button string="Upload" attrs="{'invisible':['|',('part_type','=','PS'),('state','in',['ready','confirmed','approved'])]}" name="%(action_upload_multi_drawings)d" type="action" states="draft,rejected" class="oe_highlight" context="{'line_id':id,'product_id':product_id}" icon="gtk-open"/>
+                    <field name="dxf_file_name" invisible="1"/>
+                    <field name="dxf_download" widget="drawing_url" filename="dxf_file_name" attrs="{'invisible':['|',('dxf_file_name', '=', False)]}"/>
+                    <button string="Upload" attrs="{'invisible':[('state','in',['ready','confirmed','approved'])]}" name="%(action_upload_multi_dxfs)d" type="action" states="draft,rejected" class="oe_highlight" context="{'line_id':id,'product_id':product_id}" icon="gtk-open"/>
+                    <!--... HoangTK 11/18/2015 -->
+                    <!--+++ HoangTK 11/17/2015: Remove step_ids add work_steps -->
+                    <!--<field name="step_ids" widget="many2many_tags"/> -->
+                    <field name="status" readonly="1"/>
+                    <field name="state" invisible="1"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </group>
+    		</form>
+    	</field>
+    </record>
+    <record model="ir.ui.view" id="view_drawing_order_line_list">
+    	<field name="name">view_drawing_order_line_list</field>
+    	<field name="model">drawing.order.line</field>
+    	<field name="arch" type="xml">
+            <tree string="Drawing Order Lines" create="false" edit="false" delete="false">
+		    	<field name="order_id"/>
+		    	<!--+++ HoangTK - 11/18/2015: Remove sale_product_ids,main_part_id,company_id, replace step_ids with work_steps -->
+		    	<!--<field name="sale_product_ids" widget="many2many_tags"/> -->
+		    	<!--<field name="main_part_id"/> -->
+                <field name="item_no"/>
+                <field name="part_number"/>
+		    	<field name="product_id"/>
+                <field name="description"/>
+                <field name="thickness"/>
+                <field name="part_type"/>
+                <field name="quantity"/>
+			    <field name="drawing_file_name" invisible="1"/>
+		    	<!--<field name="drawing_file" filename="drawing_file_name" widget="drawing_url" attrs="{'invisible':[('drawing_file_name', '=', False)]}"/>-->
+                <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" attrs="{'invisible':[('drawing_file_name', '=', False)]}"/>
+		    	<field name="dxf_file_name" invisible="1"/>
+                <field name="dxf_download" widget="drawing_url" filename="dxf_file_name" attrs="{'invisible':[('dxf_file_name', '=', False)]}"/>
+                <!--<field name="step_ids"/> -->
+		    	<field name="work_steps"/>		    	
+		    	<field name="state"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+                <!--<field name="company_id" groups="base.group_multi_company"/> -->
+                <!--... HoangTK - 11/18/2015 -->
+            </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_drawing_order_line_filter">
+            <field name="name">view_drawing_order_line_filter</field>
+            <field name="model">drawing.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Drawing Order Lines">
+                    <field name="order_id" string="Drawing Orders" filter_domain="[('order_id.name','ilike',self)]"/>
+                    <field name="sale_product_ids"/>
+		    		<field name="step_ids"/>
+                    <field name="main_part_id"/>
+                    <field name="product_id"/>  
+                    <field name="drawing_file_name"/>
+                    <field name="material"/>
+                    <separator/>
+                    <filter icon="terp-document-new" name="asm_part_type" string="ASM" domain="[('part_type','=','ASM')]"/>
+                    <filter icon="terp-document-new" name="pmc_part_type" string="PMC" domain="[('part_type','=','PMC')]"/>
+                    <filter icon="terp-document-new" name="pms_part_type" string="PMS" domain="[('part_type','=','PMS')]"/>
+                    <filter icon="terp-document-new" name="alu_material" string="Aluminum" domain="[('material','=','Al 5052')]"/>
+                    <filter icon="terp-document-new" name="alu_pms_material" string="PMS + Aluminum" domain="[('material','=','Al 5052'),('part_type','=','PMS')]"/>
+                    <filter icon="terp-document-new" name="stainless_alu_pms_material" string="PMS + Aluminum + Stainless" domain="[('part_type','=','PMS'),'|',('material','=','Al 5052'),('material','ilike','stainless')]"/>
+                    <filter icon="terp-document-new" name="pml_part_type" string="PML" domain="[('part_type','=','PML')]"/>
+                    <filter icon="terp-document-new" name="ps_part_type" string="PS" domain="[('part_type','=','PS')]"/>
+                    <filter icon="terp-document-new" name="poem_part_type" string="POEM" domain="[('part_type','=','POEM')]"/>
+                    <filter icon="terp-document-new" name="cd_part_type" string="CD" domain="[('part_type','=','CD')]"/>
+                    <separator/>
+                    <filter icon="terp-document-new" name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter icon="terp-document-new" name="draft" string="Ready" domain="[('state','=','ready')]"/>
+                    <filter icon="terp-camera_test" name="confirmed" string="Confirmed" domain="[('state','=','confirmed')]"/>
+                    <filter icon="terp-camera_test" name="approved" string="Approved" domain="[('state','=','approved')]"/>
+                    <filter icon="terp-camera_test" name="rejected" string="Rejected" domain="[('state','=','rejected')]"/>
+                    <separator/>
+                    <filter icon="terp-personal-" string="Cancelled"  domain="[('state','=', 'cancel')]" help="Canceled"/>
+                    <field name="create_uid" />
+                </search>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_drawing_order_line">
+        <field name="name">Drawing Order Files</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">drawing.order.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_drawing_order_line_filter"/>
+    </record>
+
+    <menuitem
+        id="menu_drawing_order_file"
+        sequence="103"
+        parent="mrp.menu_mrp_manufacturing"
+        action="action_drawing_order_line"
+        groups="mrp.group_mrp_user"/>           
+    
+<!-- Add 'Print PDF' to drawing order list page -->
+        <record id="action_server_drawing_order_print" model="ir.actions.server">
+            <field name="name">Download PDF</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_drawing_order" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_pdf(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_drawing_order_print">
+            <field name="name">action_drawing_order_print</field>
+            <field name="action_id" ref="action_server_drawing_order_print" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_drawing_order_print'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_drawing_order" />
+            <field name="model">drawing.order</field>
+            <field name="key2">client_action_multi</field>
+        </record>     
+        
+<!-- Add 'Print PDF' to drawing order line list page -->
+        <record id="action_server_drawing_order_line_print" model="ir.actions.server">
+            <field name="name">Download PDF</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_drawing_order_line" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.print_pdf(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_drawing_order_line_print">
+            <field name="name">action_drawing_order_line_print</field>
+            <field name="action_id" ref="action_server_drawing_order_line_print" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_drawing_order_line_print'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_drawing_order_line" />
+            <field name="model">drawing.order.line</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+<!-- Add 'Create PR' to drawing order line list page -->
+        <record id="action_server_drawing_order_line_pr" model="ir.actions.server">
+            <field name="name">Generate PR</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_drawing_order_line" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.generate_pr(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_drawing_order_line_pr">
+            <field name="name">action_drawing_order_line_pr</field>
+            <field name="action_id" ref="action_server_drawing_order_line_pr" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_drawing_order_line_pr'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_drawing_order_line" />
+            <field name="model">drawing.order.line</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+<!-- Add 'Create PR MFG-O' to drawing order line list page -->
+        <record id="action_server_drawing_order_line_pr_mfg_o" model="ir.actions.server">
+            <field name="name">Generate PR MFG-O</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_drawing_order_line" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.generate_pr(cr, uid, context.get('active_ids', []), context={'mfg_o': True})</field>
+        </record>
+
+        <record model="ir.values" id="action_drawing_order_line_pr_mfg_o">
+            <field name="name">action_drawing_order_line_pr_mfg_o</field>
+            <field name="action_id" ref="action_server_drawing_order_line_pr_mfg_o" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_drawing_order_line_pr_mfg_o'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_drawing_order_line" />
+            <field name="model">drawing.order.line</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+
+        <record model="ir.ui.view" id="drawing_order_history_tree_view">
+            <field name="name">drawing.order.history.tree</field>
+            <field name="model">drawing.order.history</field>
+            <field name="arch" type="xml">
+                <tree string="Drawing Order History">
+                    <field name="date"/>
+                    <field name="drawing_order_id"/>
+                    <field name="user_id"/>
+                    <field name="content"/>
+                    <field name="vals"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="drawing_order_history_form_view">
+            <field name="name">drawing.order.history.form</field>
+            <field name="model">drawing.order.history</field>
+            <field name="arch" type="xml">
+                <form string="Drawing Order History" version="7.0">
+                    <group>
+                    <field name="date"/>
+                    <field name="drawing_order_id"/>
+                    <field name="user_id"/>
+                    <field name="content"/>
+                    <field name="vals"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="missing_erpno_tree_view">
+            <field name="name">missing.erpno.tree</field>
+            <field name="model">missing.erpno</field>
+            <field name="arch" type="xml">
+                <tree string="Missing ERP No">
+                    <field name="creator"/>
+                    <field name="date"/>
+                    <field name="order_id"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="missing_erpno_form_view">
+            <field name="name">missing.erpno.form</field>
+            <field name="model">missing.erpno</field>
+            <field name="arch" type="xml">
+                <form string="Missing ERP No" version="7.0">
+    				<group>
+	                    <div class="oe_right oe_button_box" name="buttons">
+                            <button name="update_bom_file" string="Update Bom File" type="object" class="oe_inline" />
+	                    </div>
+    				</group>
+                    <group col="4">
+                        <field name="creator"/>
+                        <field name="date"/>
+                        <field name="order_id"/>
+                        <separator string="Missing ERP NO" colspan="4"/>
+                        <field name="lines" colspan="4" nolabel="1" widget="one2many_list">
+                            <tree string="Missing ERP No" editable="bottom">
+                                <field name="item_no"/>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="product_id"/>
+                                <field name="erp_no"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <!-- </sheet> -->
+                    <div class="oe_chatter">
+                      <field name="message_follower_ids" widget="mail_followers"/>
+                      <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_missing_erpno_filter">
+            <field name="name">view_missing_erpno_filter</field>
+            <field name="model">missing.erpno</field>
+            <field name="arch" type="xml">
+                <search string="Search Missing ERP NO">
+                    <field name="order_id" string="Drawing Orders" filter_domain="[('order_id.name','ilike',self)]"/>
+                </search>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_missing_erpno">
+        <field name="name">Missing ERP NO</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">missing.erpno</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_missing_erpno_filter"/>
+    </record>
+
+    <menuitem
+        id="menu_mfg_missing_erpno"
+        sequence="104"
+        parent="mrp.menu_mrp_manufacturing"
+        action="action_missing_erpno"
+        groups="mrp.group_mrp_user"/>
+
+
+    </data>
+</openerp>

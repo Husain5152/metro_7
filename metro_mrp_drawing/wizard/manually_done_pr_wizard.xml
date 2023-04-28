@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_manually_done_pr_wizard" model="ir.ui.view">
+            <field name="name">manually.done.pr.wizard</field>
+            <field name="model">manually.done.pr.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Manually Done PR Wizard" version="7.0">
+                    <group colspan="4" col="2">
+                        <field name="pr_note" nolabel="1" colspan="2"/>
+                        <!--<separator string="Please choose the options below:" colspan="2"/>-->
+                        <!--<field name="force_done" />
+                        <field name="keep_reserve" />-->
+                        <field name="pr_ids" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="do_manually_done" confirm="Are you sure you want to close this PR?" string="Done" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

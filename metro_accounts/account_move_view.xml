@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="metro_view_account_move_form">
+            <field name="name">metro_view_account_move_form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+<!--             	<xpath expr="//field[@name='line_id']/tree" position="attributes">
+                     <attribute name="editable"/>
+            	</xpath> -->
+            	<xpath expr="//field[@name='line_id']/tree/field[@name='name']" position="after">
+                     <field name="product_id"/>
+                     <field name="quantity"/>
+                     <field name="product_uom_id"/>
+            	</xpath>
+            	<xpath expr="//field[@name='line_id']/form//field[@name='name']" position="after">
+                     <field name="product_id"/>
+                     <field name="quantity"/>
+                     <field name="product_uom_id"/>
+            	</xpath>
+            	<field name='to_check' position="attributes">
+            		<attribute name="attrs">{'invisible':[('state','=','draft')]}</attribute>
+            	</field>
+            	
+            	<button name="button_cancel" position="before">
+            		<button name="review_account_move" states="posted" string="Review" type="object" groups="account.group_account_invoice"/>
+            	</button>
+            	<!-- add move_date parameter for date_biz field to set default value -->
+            	<field name="line_id" position="attributes">
+            		<attribute name="context">{'line_id': line_id , 'journal_id': journal_id, 'move_date':date }</attribute>
+            	</field>
+            	<!-- add date_biz -->
+            	<xpath expr="//field[@name='line_id']/tree//field[@name='name']" position="before">
+                     <field name="date_biz"/>
+            	</xpath>
+            </field>
+        </record>   
+        <record model="ir.ui.view" id="metro_view_move_line_tree">
+            <field name="name">metro_view_move_line_tree</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree"/>
+            <field name="arch" type="xml">
+            	<field name='reconcile' position="after">
+                     <field name="to_check"/>
+            	</field>
+            </field>
+        </record>        
+        <record model="ir.ui.view" id="metro_view_account_move_line_filter">
+            <field name="name">metro_view_account_move_line_filter</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+            <field name="arch" type="xml">
+            	<filter name='posted' position="after">
+                    <separator/> 
+                    <filter name="checked" icon="terp-camera_test" string="To Review" domain="[('to_check','=',True)]"/>
+                    <field name="reconcile_id"/>
+                    <field name="reconcile_partial_id"/>    
+            	</filter>
+            </field>
+        </record>     
+        <record model="ir.ui.view" id="view_account_move_filter_ext">
+            <field name="name">view_account_move_filter_ext</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_move_filter"/>
+            <field name="arch" type="xml">
+            	<field name='partner_id' position="replace">
+                    <field name="line_partner_id"/>                                     
+            	</field>
+            </field>
+        </record> 
+    </data>
+</openerp>

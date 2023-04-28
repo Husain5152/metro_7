@@ -1,0 +1,26 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_shipping_manager_product,product.shipment manager,model_product_shipment,group_metro_shipping_manager_right,1,1,1,1
+access_shipping_user_product,product.shipment user,model_product_shipment,group_metro_shipping_user_right,1,0,1,0
+,,,,,,,
+access_shipping_manager_port,port.port manager,model_port_port,group_metro_shipping_manager_right,1,1,1,1
+access_shipping_user_port,port.port user,model_port_port,group_metro_shipping_user_right,1,0,0,0
+,,,,,,,
+access_shipping_manager_shipment,shipment.type manager,model_shipment_type,group_metro_shipping_manager_right,1,1,1,1
+access_shipping_user_shipment,shipment.type user,model_shipment_type,group_metro_shipping_user_right,1,0,1,0
+,,,,,,,
+access_shipping_manager_container,container.type manager,model_container_type,group_metro_shipping_manager_right,1,1,1,1
+access_shipping_user_container,container.type user,model_container_type,group_metro_shipping_user_right,1,0,0,0
+,,,,,,,
+access_shipping_manager_hs,hs.code manager,model_hs_code,group_metro_shipping_manager_right,1,1,1,1
+access_shipping_user_hs,hs.code user,model_hs_code,group_metro_shipping_user_right,1,0,0,0
+,,,,,,,
+access_shipping_manager_ship,shipment.shipment manager,model_shipment_shipment,group_metro_shipping_manager_right,1,1,1,1
+access_shipping_user_ship,shipment.shipment user,model_shipment_shipment,group_metro_shipping_user_right,1,1,1,0
+,,,,,,,
+access_shipment_cost_manager,access_shipment_cost_manager,model_shipment_cost,group_metro_shipping_manager_right,1,1,1,1
+access_shipment_cost_user,access_shipment_cost_user,model_shipment_cost,group_metro_shipping_user_right,1,1,1,0
+,,,,,,,
+access_future_shipment_manager,access_future_shipment_manager,model_future_shipment,group_metro_shipping_manager_right,1,1,1,1
+access_future_shipment_user,access_future_shipment_user,model_future_shipment,group_metro_shipping_user_right,1,1,1,0
+access_future_shipment_line_manager,access_future_shipment_line_manager,model_future_shipment_line,group_metro_shipping_manager_right,1,1,1,1
+access_future_shipment_line_user,access_future_shipment_line_user,model_future_shipment_line,group_metro_shipping_user_right,1,1,1,0

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="rpt_account_partner_gl_view" model="ir.ui.view">
+            <field name="name">Parter General Ledger</field>
+            <field name="model">rpt.account.partner</field>
+            <field name="arch" type="xml">
+            <form string="Report" version="7.0">
+                <field name="name" invisible="1"/>
+                <field name="type" invisible="1"/>
+                <group colspan="4">
+					<div class="oe_title">
+                        <h1>
+                        <!-- 1.Report title -->
+						<field name="title" readonly="1"/>
+						</h1>
+					</div>
+					<div class="oe_right oe_button_box" name="buttons">
+	                    	<field name="show_search"/>
+	                    	<field name="save_pdf" invisible="1"/>
+	                    	<button name="run_report" string="Search" type="object" default_focus="1" class="oe_highlight"/>
+	                    	<button name="save_pdf" string="PDF" type="object" attrs="{'invisible':[('save_pdf','!=',True)]}"/>
+					</div>
+                </group>                
+                <group name="options" attrs="{'invisible':[('show_search','!=',True)]}">
+	                <group colspan="4" name="options_common">
+						<field name="company_id" groups="base.group_multi_company" widget="selection" on_change="onchange_company_id(company_id,account_ids,name,context)"/>			
+	                </group>
+	                <!-- 2.Report options -->
+	                <group colspan="4" name="options_rpt">
+		                <group>
+	                        <label for="period_from" string="Periods"/>
+	                        <div>
+							    <field name="period_from" domain="[('company_id', '=', company_id)]" class="oe_inline"/> -
+							    <field name="period_to" domain="[('company_id', '=', company_id)]" class="oe_inline"/>  
+	                        </div>
+							<field name="partner_ids" widget="many2many_tags"/>
+							<field name="account_ids" widget="many2many_tags"/>		
+							<field name="target_move"/>
+							<field name="reconcile"/>
+							<field name="no_zero_balance"/>
+							
+							<field name="level" invisible="1"/>
+							<field name="partner_type" invisible="1"/>
+							<field name="show_counter" invisible="1"/>
+		                </group> 	                
+	                </group>
+                </group>
+                <field name="show_result" invisible="1"/>
+				<!-- 3.Report lines -->
+				<field name="rpt_lines" readonly="1" attrs="{'invisible':['|',('show_result','!=',True)]}">
+					<tree editable="bottom"
+						colors="blue:data_level=='period_sum';green:data_level in('init_bal','year_sum');"
+						fonts="bold:data_level in ('init_bal','period_sum','year_sum')">
+						<field name="data_level" invisible="1"/>
+						<!-- <field name="seq"/> -->
+						<!-- <field name="code"/> -->
+						<field name="name"/>
+						<field name="period_id"/>
+						<field name="notes"/>
+						<field name="debit"/>
+						<field name="credit"/>
+						<field name="bal_direct"/>
+						<field name="balance"/>
+					</tree>
+				</field>		
+            </form>
+            </field>
+        </record>   
+        
+        <record id="rpt_account_partner_gl_supplier_action" model="ir.actions.act_window">
+            <field name="name">Supplier Payable GL</field>
+            <field name="res_model">rpt.account.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="rpt_account_partner_gl_view"/>
+            <field name="context">{'default_title':'Supplier Payable GL','default_partner_type':'supplier','default_level':'general'}</field>
+            <field name="target">inline</field>
+        </record> 
+        
+        <record id="rpt_account_partner_gl_customer_action" model="ir.actions.act_window">
+            <field name="name">Customer Receivable GL</field>
+            <field name="res_model">rpt.account.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="rpt_account_partner_gl_view"/>
+            <field name="context">{'default_title':'Customer Receivable GL','default_partner_type':'customer','default_level':'general'}</field>
+            <field name="target">inline</field>
+        </record>
+
+        <record id="rpt_account_partner_detail_view" model="ir.ui.view">
+            <field name="name">Parter Accounting Detail</field>
+            <field name="model">rpt.account.partner</field>
+            <field name="arch" type="xml">
+            <form string="Report" version="7.0">
+                <field name="name" invisible="1"/>
+                <field name="type" invisible="1"/>
+                <group colspan="4">
+					<div class="oe_title">
+                        <h1>
+                        <!-- 1.Report title -->
+						<field name="title" readonly="1"/>
+						</h1>
+					</div>
+					<div class="oe_right oe_button_box" name="buttons">
+	                    	<field name="show_search"/>
+	                    	<field name="save_pdf" invisible="1"/>
+	                    	<button name="run_report" string="Search" type="object" default_focus="1" class="oe_highlight"/>
+	                    	<button name="save_pdf" string="PDF" type="object" attrs="{'invisible':[('save_pdf','!=',True)]}"/>
+					</div>
+                </group>                
+                <group name="options" attrs="{'invisible':[('show_search','!=',True)]}">
+	                <group colspan="4" name="options_common">
+						<field name="company_id" groups="base.group_multi_company" widget="selection" on_change="onchange_company_id(company_id,account_ids,name,context)"/>			
+	                </group>
+	                <!-- 2.Report options -->
+	                <group colspan="4" name="options_rpt">
+		                <group>
+	                        <label for="period_from" string="Periods"/>
+	                        <div>
+							    <field name="period_from" domain="[('company_id', '=', company_id)]" class="oe_inline"/> -
+							    <field name="period_to" domain="[('company_id', '=', company_id)]" class="oe_inline"/>  
+	                        </div>
+							<field name="partner_ids" widget="many2many_tags" required="1"/>
+							<field name="account_ids" widget="many2many_tags"/>		
+							<field name="target_move"/>	
+							<field name="reconcile"/>
+							<field name="no_zero_balance"/>		
+							
+							<field name="level" invisible="1"/>
+							<field name="partner_type" invisible="1"/>
+							<field name="show_counter" invisible="1"/>
+		                </group> 	                
+	                </group>
+                </group>
+                <field name="show_result" invisible="1"/>
+				<!-- 3.Report lines -->
+				<field name="rpt_lines" readonly="1" attrs="{'invisible':['|',('show_result','!=',True)]}">
+					<tree editable="bottom"
+						colors="blue:data_level=='period_sum';green:data_level in('init_bal','year_sum');"
+						fonts="bold:data_level in ('init_bal','period_sum','year_sum')">
+						<field name="data_level" invisible="1"/>
+						<!-- <field name="seq"/> -->
+						<field name="name"/>
+						<field name="period_id"/>
+						<field name="account_id"/>
+						<field name="date"/>
+						<field name="am_name"/>
+						<field name="notes"/>
+	                    <field name="aml_id" invisible="1"/>
+	                    <button name="open_move" string="View Account Move" type="object" icon="gtk-justify-fill" attrs="{'invisible':[('aml_id','=',False)]}"/>
+	                    <field name="aml_source_id"/>
+	                    <button name="open_source" string="View Source Order" type="object" icon="gtk-justify-fill" attrs="{'invisible':['|',('aml_id','=',False),('aml_source_id','=',False)]}"/>
+						<field name="counter_account" invisible="1"/>
+						<field name="reconcile"/>
+						<!-- <field name="reconcile_partial"/> -->
+						<field name="amount_residual"/>
+						<field name="debit"/>
+						<field name="credit"/>
+						<field name="bal_direct"/>
+						<field name="balance"/>						
+					</tree>
+				</field>		
+            </form>
+            </field>
+        </record>   
+
+        <record id="rpt_account_partner_detail_supplier_action" model="ir.actions.act_window">
+            <field name="name">Supplier Payable Detail</field>
+            <field name="res_model">rpt.account.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="rpt_account_partner_detail_view"/>
+            <field name="context">{'default_title':'Supplier Payable Detail','default_partner_type':'supplier','default_level':'detail'}</field>
+            <field name="target">inline</field>
+        </record> 
+        
+        <record id="rpt_account_partner_detail_customer_action" model="ir.actions.act_window">
+            <field name="name">Customer Receivable Detail</field>
+            <field name="res_model">rpt.account.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="rpt_account_partner_detail_view"/>
+            <field name="context">{'default_title':'Customer Receivable Detail','default_partner_type':'customer','default_level':'detail'}</field>
+            <field name="target">inline</field>
+        </record>
+                
+        <menuitem
+            id="rpt_account_partner_gl_supplier_menu"
+            action="rpt_account_partner_gl_supplier_action"
+            groups="account.group_account_manager,account.group_account_user"
+            parent="menu_rpt_account_cn"
+            sequence="7"
+           />   
+        <menuitem
+            id="rpt_account_partner_detail_supplier_menu"
+            action="rpt_account_partner_detail_supplier_action"
+            groups="account.group_account_manager,account.group_account_user"
+            parent="menu_rpt_account_cn"
+            sequence="8"
+           />   
+           
+        <menuitem
+            id="rpt_account_partner_gl_customer_menu"
+            action="rpt_account_partner_gl_customer_action"
+            groups="account.group_account_manager,account.group_account_user"
+            parent="menu_rpt_account_cn"
+            sequence="9"
+           /> 
+        <menuitem
+            id="rpt_account_partner_detail_customer_menu"
+            action="rpt_account_partner_detail_customer_action"
+            groups="account.group_account_manager,account.group_account_user"
+            parent="menu_rpt_account_cn"
+            sequence="10"
+           />                            
+    </data>
+</openerp>

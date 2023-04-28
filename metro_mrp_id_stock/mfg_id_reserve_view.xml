@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="view_mfg_id_reserve_form">
+        <field name="name">view_mfg_id_reserve_form</field>
+        <field name="model">mfg.id.reserve</field>
+        <field name="arch" type="xml">
+            <form string="MFG ID Inventory Reservation" version="7.0">
+            <sheet>
+                <group col="4">
+                	<field name="mfg_id"/>
+                	<field name="product_id"/>
+                	<field name="location_id"/>
+                	<field name="product_qty"/>
+                	<field name="product_qty_consumed"/>
+                	<field name="pur_req_line_id"/>
+                	<field name="pur_req_id"/>
+                </group>
+            </sheet>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"/>
+              <field name="message_ids" widget="mail_thread"/>
+            </div> 
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_mfg_id_reserve_tree">
+        <field name="name">view_mfg_id_reserve_tree</field>
+        <field name="model">mfg.id.reserve</field>
+        <field name="arch" type="xml">
+            <tree colors="green:product_qty == 0" string="MFG ID Inventory Reservation">
+                	<field name="mfg_id"/>
+                	<field name="product_id"/>
+                	<field name="location_id"/>
+                	<field name="product_qty"/>
+                	<field name="product_qty_consumed"/>
+                	<field name="pur_req_id"/>
+                	<field name="pur_req_line_id"/>
+            </tree>
+      </field>
+    </record>
+
+    <record id="view_mfg_id_reserve_filter" model="ir.ui.view">
+            <field name="name">view_mfg_id_reserve_filter</field>
+            <field name="model">mfg.id.reserve</field>
+            <field name="arch" type="xml">
+                <search string="Search MFG ID Inventory Reservation">
+                	<field name="mfg_id"/>
+                	<field name="product_id"/>
+                </search>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_mfg_id_reserve">
+        <field name="name">MFG ID Inventory Reservation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mfg.id.reserve</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_mfg_id_reserve_filter"/>
+    </record>
+    
+    <!-- to MRP -->
+    <menuitem
+        id="menu_mfg_id_reserve_mrp"
+        sequence="0"
+        parent="mrp.menu_mrp_manufacturing"
+        action="action_mfg_id_reserve"
+        groups="mrp.group_mrp_user"/>
+    <!-- to Stock -->      
+    <menuitem
+        id="menu_mfg_id_reserve_stock"
+        sequence="32"
+        parent="stock.menu_stock_inventory_control"
+        action="action_mfg_id_reserve"/>
+        
+<!-- Add MFG ID reserver quantity to product view -->
+    <record id="product_normal_tree_view_id_reserve" model="ir.ui.view">
+            <field name="name">product_normal_tree_view_id_reserve</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="metro_product.metro_product_product_tree_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="qty_virtual" position="after">
+	            	<field name="reserved_qty"/>
+	            </field>
+            </data>
+        	</field>
+    </record>
+    
+   <record id="product_normal_form_view_id_reserve" model="ir.ui.view">
+            <field name="name">product_normal_form_view_id_reserve</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_normal_procurement_locations_form"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="virtual_available" position="after">
+	            	<label for="reserved_qty" string="Reserved Qty" class="oe_inline"/>
+                    <div>
+                        <field name="reserved_qty" class="oe_inline"/>
+                        <button name="reserved_infor"
+                                string="View PR Reserved" type="object"
+                                icon="terp-stock_zoom" class="oe_inline"/>
+                    </div>
+	            </field>
+            </data>
+        	</field>
+    </record>
+    
+<!-- Add Matertial BOM ID to MFG ID -->
+    
+    <record id="view_sale_product_form_reserve" model="ir.ui.view">
+            <field name="name">"view_sale_product_form_reserve"</field>
+            <field name="model">sale.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="metro_sale.view_sale_product_form"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="bom_id" position="attributes">
+	            	<attribute name="on_change">onchange_bom_id(bom_id, context)</attribute>
+	            </field>
+                <field name="bom_id" position="after">
+	            	<field name="bom_id_material" domain="[('product_id','=',product_id),('bom_lines','!=',False)]"/>
+	            </field>
+	            <button name="wkf_cancel" position="after">
+	            	<button name="%(act_mfg_id_req)d" states="confirmed,engineer,manufacture" type="action" string="Generate Inventory Reservation and Purchase Requisition"/>
+	            </button>
+	            <button name="material_requested" position="before">
+	            	<button name="material_reserved" string="Reserved Material" type="object"/>
+	            </button>
+            </data>
+        	</field>
+    </record>    
+     
+    </data>    
+</openerp>

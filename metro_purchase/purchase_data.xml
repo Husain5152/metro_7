@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <!-- Purchase-related subtypes for messaging / Chatter -->
+        <record id="mt_rfq_rejected" model="mail.message.subtype">
+            <field name="name">RFQ Rejected</field>
+            <field name="default" eval="False"/>
+            <field name="res_model">purchase.order</field>
+        </record>  
+        
+        <record id="ir_cron_scheduler_order_former" model="ir.cron">
+            <field name="name">Purchase Order Informer</field>
+            <field name="interval_number">30</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model">order.informer</field>
+            <field name="function">inform</field>
+            <field name="args">('purchase.order',)</field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_mo_actions" model="ir.ui.view">
+            <field name="name">Manufacture Order Actions</field>
+            <field name="model">mo.actions</field>
+            <field name="arch" type="xml">
+               <form string="Manufacture Order Actions" version="7.0">
+                    <field name="action"/>
+                    <footer>
+                        <button name="do_action" string="Prceed Action" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+<!-- Add the 'Confirm Production' in tree's 'more...' DDLB menu -->
+        <act_window name="Manufacture Order Actions"
+            res_model="mo.actions"
+            src_model="mrp.production"
+            view_mode="form"
+            target="new"
+            multi="True"
+            id="action_mo_actions"/>
+    </data>
+</openerp>
+

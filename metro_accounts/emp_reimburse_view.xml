@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <record model="ir.ui.view" id="view_emp_reimburse_form">
+    	<field name="name">view_emp_reimburse_form</field>
+    	<field name="model">emp.reimburse</field>
+    	<field name="arch" type="xml">
+    		<form string="Employee Reimburse" version="7.0">
+    			<header>
+    				<button name="action_done" string="Confirm" states="draft" class="oe_highlight" type="object" groups="account.group_account_invoice"/>
+    				<button name="action_cancel" string="Cancel" states="done" type="object" groups="account.group_account_manager"/>
+    				<button name="action_to_draft" string="Set to Draft" states="cancelled" type="object" groups="account.group_account_manager"/>
+    				<field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+    			</header>
+                <group>
+	                <group>
+	                    <label for="emp_id"/>
+	                    <div>
+	                    	<field name="emp_id" on_change="onchange_emp_id(emp_id,context)" class="oe_inline" />
+                            <button name="get_emp_borrow" states="draft" string="Retrieve Borrow" 
+                            context="{'emp_id':emp_id}"
+                            type="object" class="oe_edit_only oe_link"
+                            invisible="1"/>
+	                    </div>
+	                    <field name="date"/>
+	                    <field name="move_id" readonly="1"/>
+	                    <field name="move_state"/>
+	                </group>
+	                <group>
+	                    <field name="journal_cash_id" domain="[('type','in',('cash','bank'))]"/>
+	                    <field name="deduct_salary"/>
+	                    <field name="property_account_salary" attrs="{'invisible':[('deduct_salary','!=',True)], 'required':[('deduct_salary','=',True)]}"/>
+	                    <field name="property_account_emp_reimburse"/>
+	            		<field name="company_id" groups="base.group_multi_company"/>
+	                </group>
+                </group>
+                <notebook>
+                	<page name="general" string="Reimbursement Detail">
+                        <field name="line_ids">
+                            <tree string="Reimbusement Lines">
+                                <field name="order_id" invisible="1"/>
+                                <field name="emp_id" invisible="1"/>
+                                <field name="name"/>
+                                <field name="date_value"/>
+                                <field name="amount" sum="Total Reimbusement"/>
+                            </tree>
+                            <form string="Reimbusement Lines" version="7.0">
+                                <group>
+                                    <group>
+                                        <field name="order_id" invisible="1"/>
+                                        <field name="name"/>
+                                        <field name="amount" sum="Total Reimbusement"/>
+                                    </group>
+                                    <group>
+                                        <field name="emp_id" invisible="1"/>
+                                        <field name="date_value"/>
+                                    </group>
+                                </group>
+
+                            </form>
+                        </field>
+	                    <field name="has_dr" invisible="1"/>
+                		<separator string="Debits" attrs="{'invisible':[('has_dr','!=',True)]}"/>
+                        <field name="line_dr_ids" attrs="{'invisible':[('has_dr','!=',True)]}">
+                            <tree string="Debits" editable="bottom" colors="gray:amount==0" create="0">
+                                <field name="move_line_id" readonly="1"/>
+                                <field name="account_id" readonly="1"/>
+                                <field name="date_original" readonly="1"/>
+                                <field name="date_due" readonly="1"/>
+                                <field name="amount_original" readonly="1"/>
+                                <field name="amount_unreconciled" readonly="1"/>
+                                <field name="reconcile" on_change="onchange_reconcile(reconcile, amount, amount_unreconciled, context)"/>
+                                <field name="amount" sum="Total Allocation" on_change="onchange_amount(amount, amount_unreconciled, context)"/>
+                                <field name="reconile_move_line_id" readonly="1"/>
+                            </tree>
+                        </field>
+	                    <field name="has_cr" invisible="1"/>
+                		<separator string="Employee Borrow Money" attrs="{'invisible':[('has_cr','!=',True)]}"/>
+                        <field name="line_cr_ids" attrs="{'invisible':[('has_cr','!=',True)]}">
+                            <tree string="Credits" editable="bottom" colors="gray:amount==0" create="0">
+                                <field name="move_line_id" readonly="1"/>
+                                <field name="account_id" readonly="1"/>
+                                <field name="date_original" readonly="1"/>
+                                <field name="date_due" readonly="1"/>
+                                <field name="amount_original" readonly="1"/>
+                                <field name="amount_unreconciled" readonly="1"/>
+                                <field name="reconcile" on_change="onchange_reconcile(reconcile, amount, amount_unreconciled, context)"/>
+                                <field name="amount" sum="Total Allocation" on_change="onchange_amount(amount, amount_unreconciled, context)"/>
+                                <field name="reconile_move_line_id" readonly="1"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <div>
+                                <separator string="Description"/>
+                                <field name="description" placeholder="Description..."/>
+                            </div>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="amount_pay" widget="monetary" options="{'currency_field': 'currency_id'}" class="oe_subtotal_footer_separator"/>
+                            </group>
+                        </group>
+                	</page>
+                	<page name="move_lines" string="Accounting Items" attrs="{'invisible':[('state','!=','done')]}">
+		                <field name="move_lines"/>
+                	</page>
+                </notebook>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_emp_reimburse_tree">
+    	<field name="name">view_emp_reimburse_tree</field>
+    	<field name="model">emp.reimburse</field>
+    	<field name="arch" type="xml">
+            <tree string="Employee Reimburse">
+                    <field name="id"/>
+	                <field name="emp_id"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+                    <field name="amount_pay"/>
+                    <field name="deduct_salary"/>
+                    <field name="description"/>
+    				<field name="state"/>
+                    <field name="move_id"/>
+                    <field name="move_state"/>
+            		<field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_emp_reimburse_search">
+            <field name="name">view_emp_reimburse_search</field>
+            <field name="model">emp.reimburse</field>
+            <field name="arch" type="xml">
+                <search string="Search Employee Reimburse">
+                    <field name="id"/>
+	                <field name="emp_id"/>
+                    <field name="date"/>
+                    <field name="description"/>
+                </search>
+            </field>
+    </record>    
+
+    <record model="ir.actions.act_window" id="action_emp_reimburse">
+        <field name="name">Employee Reimburse</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">emp.reimburse</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_emp_reimburse_search"/>
+    </record>  
+		
+    <menuitem
+        id="menu_emp_reimburse"
+        sequence="4"
+        parent="account.menu_finance_bank_and_cash"
+        action="action_emp_reimburse"
+        groups="account.group_account_invoice"/>        
+    </data>
+</openerp>

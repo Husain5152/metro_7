@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="pay_po_view">
+            <field name="name">pay.po.view</field>
+            <field name="model">pay.po</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Order Prepayment" version="7.0">
+                    <group>
+                        <field name="description"/>
+                        <field name="journal_id" domain="[('type','in',('bank','cash'))]"/>
+                        <field name="amount"/>
+                        <field name="date"/>
+                    </group>
+                    <footer>
+                        <button string="Pay" name="pay_po" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_pay_po" model="ir.actions.act_window">
+            <field name="name">Advance Purchase Payment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pay.po</field>
+            <field name="view_type">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="pay_po_view"/>
+        </record>
+    </data>
+</openerp>

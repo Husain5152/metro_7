@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>    
+         <act_window name="Ship Future Shipment"
+            res_model="future.ship.requi"
+            src_model="future.shipment"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True" id="act_fur_shipment_ship"/>
+
+        <act_window name="Split Future Shipment"
+            res_model="future.ship.requi"
+            src_model="future.shipment"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True" id="act_fur_shipment_split"/>
+           
+        <record id="view_future_ship_req_form" model="ir.ui.view">
+            <field name="name">view_future_ship_req_form</field>
+            <field name="model">future.ship.requi</field>
+            <field name="arch" type="xml">
+                <form string="Ship Future Shipment" version="7.0">
+                    <field name="real_ship_id" domain="[('state','=','transit')]" invisible="context.get('split')"
+                    required="context.get('split') != True"/>
+                    <separator string="Select Products and Quantities"/>
+                    <field name="line_ids">
+                    		<tree string="Products for requisition " editable="top">
+		                      	<field name="product_id" readonly="1"/>
+		                      	<field name="notes"/>
+		                      	<field name="product_qty_remain" invisible="1"/>
+		                      	<field name="product_qty" />
+                      		</tree>
+                    </field>
+                    <footer>
+                        <button name="do_ship" string="Ship" type="object" class="oe_highlight" invisible="context.get('split')"/>
+                        <button name="do_ship" string="Split" type="object" class="oe_highlight" invisible="not context.get('split')"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

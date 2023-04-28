@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_link_po_to_pr_wizard" model="ir.ui.view">
+            <field name="name">view_link_po_to_pr_wizard</field>
+            <field name="model">link.po.to.pr.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Link PO to PR" version="7.0">
+                    <label string="Please select PR to link, OK to continue?"/>
+                    <div colspan="4">
+Please note that: <br/>
+PO can be linked to PR if: <br/>
+* PO must be in draft state <br/>
+* PR suppliers contain this PO supplier <br/>
+* All PO product lines must be existed in PR lines <br/>
+</div>
+                    <footer>
+                        <button name="do_ok" string="OK" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

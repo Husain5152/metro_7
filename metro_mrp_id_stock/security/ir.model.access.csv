@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mfg_id_reserve_user,mfg.id.reserve user,model_mfg_id_reserve,base.group_user,1,0,0,0
+access_mfg_id_reserve_warehouse,mfg.id.reserve warehouse,model_mfg_id_reserve,stock.group_stock_manager,1,0,1,0
+access_mfg_id_reserve_cnc,mfg.id.reserve cnc,model_mfg_id_reserve,metro_mrp.group_mrp_cnc_manager,1,0,1,0
+access_mfg_id_reserve_mrp,mfg.id.reserve mrp,model_mfg_id_reserve,metro_mrp.group_mrp_assistant,1,1,1,1

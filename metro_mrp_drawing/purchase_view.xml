@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="metro_purchase_order_tree2" model="ir.ui.view">
+            <field name="name">purchase.order.tree2</field>
+            <field name="model">purchase.order</field>
+            <field name="arch" type="xml">
+                <tree fonts="bold:message_unread==True" colors="grey:state=='cancel';blue:state in ('wait','confirmed');red:state in ('except_invoice','except_picking')" string="Purchase Order">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="name" string="Reference"/>
+                    <field name="pr_type"/>
+                    <field name="create_date"/>
+                    <field name="date_order"/>
+                    <field name="minimum_planned_date" invisible="context.get('quotation_only', False)"/>
+                    <field name="partner_id"/>
+                    <field name="description"/>
+                    <field name="unit"/>
+                    <field name="sale_product_ids" widget="many2many_tags"/>
+                    <field name="bigsubassembly_id"/>
+                    <field name="amount_untaxed" sum="Total Untaxed amount" string="Untaxed"/>
+                    <field name="amount_total" sum="Total amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="metro_view_purchase_order_filter" model="ir.ui.view">
+            <field name="name">purchase.order.list.select</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="metro_purchase.metro_view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="mo_id"/>
+                    <field name="unit"/>
+                    <field name="sale_product_ids"/>
+                </xpath>
+                <xpath expr="//filter[@name='not_sent']" position="after">
+                    <separator/>
+                    <filter icon="terp-camera_test" name="manual_po" string="Manual PO"
+                            domain="[('req_id','=',False)]"/>
+                    <filter icon="terp-camera_test" name="from_pr" string="From PR"
+                            domain="[('req_id','!=',False)]"/>
+                    <separator/>
+                    <filter icon="terp-camera_test" name="from_mfg_pr" string="From MFG PR"
+                            domain="[('pr_type','=','mfg')]"/>
+                    <filter icon="terp-camera_test" name="from_mfg_o_pr" string="From MFG-O PR"
+                            domain="[('pr_type','=','mfg_o')]"/>
+                    <filter icon="terp-camera_test" name="from_canada_pr" string="From Canada PR"
+                            domain="[('pr_type','=','canada')]"/>
+                    <filter icon="terp-camera_test" name="from_normal_pr" string="From Normal PR"
+                            domain="[('pr_type','=','normal')]"/>
+                    <filter icon="terp-camera_test" name="from_sourcing_pr" string="From Outsourcing PR"
+                            domain="[('pr_type','=','sourcing')]"/>
+                    <filter icon="terp-camera_test" name="from_procurement_pr" string="From Procurement PR"
+                            domain="[('pr_type','=','procurement')]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="purchase_form_action2" model="ir.actions.act_window">
+            <field name="name">Purchase Orders New</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="context">{}</field>
+            <!--<field name="domain">[('state','not in',('draft','sent','confirmed'))]</field>-->
+            <field name="search_view_id" ref="metro_view_purchase_order_filter"/>
+            <field name="view_id" ref="metro_purchase_order_tree2"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation that will be converted into a purchase order.
+              </p><p>
+                Use this menu to search within your purchase orders by
+                references, supplier, products, etc. For each purchase order,
+                you can track the related discussion with the supplier, control
+                the products received and control the supplier invoices.
+              </p>
+            </field>
+        </record>
+
+        <record id="purchase_form_from_mfg_action" model="ir.actions.act_window">
+            <field name="name">MFG PO</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="context">{'search_default_from_mfg_pr': 1, 'po_type': 'from_mfg_pr'}</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="search_view_id" ref="metro_view_purchase_order_filter"/>
+            <field name="view_id" ref="metro_purchase_order_tree2"/>
+        </record>
+
+        <record id="purchase_form_from_mfg_o_action" model="ir.actions.act_window">
+            <field name="name">MFG-O PO</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="context">{'search_default_from_mfg_o_pr': 1, 'po_type': 'from_mfg_o_pr'}</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="search_view_id" ref="metro_view_purchase_order_filter"/>
+            <field name="view_id" ref="metro_purchase_order_tree2"/>
+        </record>
+        <!--
+        <record id="purchase_form_from_sourcing_action" model="ir.actions.act_window">
+            <field name="name">Outsourcing PO</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="context">{'search_default_from_sourcing_pr': 1}</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="search_view_id" ref="metro_view_purchase_order_filter"/>
+        </record>
+        -->
+        <record id="purchase_form_from_canada_action" model="ir.actions.act_window">
+            <field name="name">Canada PO</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="context">{'search_default_from_canada_pr': 1}</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="search_view_id" ref="metro_view_purchase_order_filter"/>
+        </record>
+
+       <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem action="purchase.purchase_rfq" id="purchase.menu_purchase_rfq"
+            parent="purchase.menu_procurement_management" name="PO All"
+                  groups="purchase.group_purchase_manager,purchase.group_purchase_user"
+            sequence="0"/>
+
+        <menuitem action="purchase_form_action2" id="menu_purchase_form_action2"
+                  parent="purchase.menu_procurement_management" sequence="6" name="PO New Menu"
+                  groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+
+        <menuitem action="purchase_form_from_mfg_action" id="menu_purchase_form_from_mfg"
+                  parent="purchase.menu_procurement_management" sequence="1" name="MFG PO"
+                  groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+
+        <!--<menuitem action="purchase_form_from_sourcing_action" id="menu_purchase_form_from_sourcing"
+                  parent="purchase.menu_procurement_management" sequence="1" name="Outsourcing PO"
+                  groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+        -->
+        <menuitem action="purchase_form_from_mfg_o_action" id="menu_purchase_form_from_mfg_o"
+                  parent="purchase.menu_procurement_management" sequence="1" name="MFG-O PO"
+                  groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+
+        <menuitem action="purchase_form_from_canada_action" id="menu_purchase_form_from_canada"
+                  parent="purchase.menu_procurement_management" sequence="2" name="Canada PO"
+                  groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+
+       <menuitem id="metro_purchase_purchase_dept" name="Purchase Dept"
+            parent="base.menu_purchase_root" sequence="3"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
+
+        <menuitem
+        id="menu_pur_missing_erpno"
+        sequence="0"
+        parent="metro_purchase_purchase_dept"
+        action="action_missing_erpno"
+        groups="metro_purchase.group_pur_req_requester,metro_purchase.group_pur_req_checker,metro_purchase.group_pur_req_buyer"/>
+
+        <menuitem id="base.menu_procurement_management_supplier_name" name="Suppliers"
+            parent="metro_purchase_purchase_dept"
+            action="base.action_partner_supplier_form" sequence="2"/>
+        <menuitem
+                id="metro_product.menu_product_inventory_warning"
+                sequence="1"
+                parent="metro_purchase_purchase_dept"
+                action="metro_product.action_product_inventory_warning"/>
+
+
+        <record id="metro_purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="metro_purchase.metro_purchase_order_form"/>
+                <field name="arch" type="xml">
+                    <field name="date_order" position="after">
+                        <field name="deposit_date"/>
+                        <field name="payment_date"/>
+                        <field name="pr_created_date"/>
+                        <field name="pr_requested_date"/>
+                        <field name="description"/>
+                    </field>
+                    <field name="date_order" position="before">
+                        <field name="request_date"/>
+                        <field name="delivery_date"/>
+                    </field>
+                    <xpath expr="//field[@name='name']" position="after">
+                        <div class="oe_right">
+                            <button invisible="1" name="action_po_report" string="All Purchase Report" type="object" class="oe_inline"
+                            groups="purchase.group_purchase_manager"/>
+                            <button name="print_pdf_zip" string="Download PDF Zip" type="object" class="oe_inline" />
+                            <button name="print_dxf" string="Download DXF" type="object" class="oe_inline" />
+                        </div>
+                    </xpath>
+                    <xpath expr="//button[@name='wkf_send_rfq']" position="after">
+                        <button name="po_email_wizard" states="draft" string="Send Email" type="object" context="{'send_rfq':True}" class="oe_highlight"/>
+                        <button name="po_email_wizard" states="sent" string="Send Email" type="object" context="{'send_rfq':True}"/>
+                        <button name="po_email_wizard" states="confirmed,approved" string="Send Email" type="object" class="oe_highlight"/>
+                        <button name="link_pr_wizard" states="draft" string="Link PR" type="object" class="oe_highlight"/>
+                        <button name="update_product_price" string="Update Price" type="object" class="oe_inline" states="draft"/>
+                        <button name="%(action_shipping_list_wizard)d" string="Shipping List" type="action" class="oe_inline"/>
+                    </xpath>
+                    <xpath expr="//button[@name='wkf_send_rfq' and @states='draft']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//button[@name='wkf_send_rfq' and @states='sent']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//button[@name='wkf_send_rfq' and @states='confirmed']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//tree/field[@name='product_id']" position="after">
+                        <field name="has_pdf" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                        <field name="has_dxf" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                        <field name="drawing_file_name" invisible="1"/>
+                        <field name="drawing_download" widget="drawing_url" filename="drawing_file_name" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" attrs="{'invisible':[('drawing_file_name', '==', False)]}"/>
+                        <field name="part_number" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                        <field name="material" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                        <field name="standard" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                        <field name="bom_qty" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                        <field name="drawing_order_id" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                        <field name="bigsubassembly_id" invisible="context.get('po_type',True)!='from_mfg_pr' and context.get('po_type',True)!='from_mfg_o_pr'" />
+                    </xpath>
+                    <page string="Incoming Shipments &amp; Invoices" position="after">
+                        <page string="PR">
+                            <group>
+                                <group>
+                                    <field name="req_id"/>
+                                    <field name="pr_type"/>
+                                </group>
+                                <group>
+                                    <field name="mo_id"/>
+                                    <field name="unit"/>
+                                    <field name="sale_product_ids" widget="many2many_tags"/>
+                                </group>
+                            </group>
+                        </page>
+                    </page>
+                </field>
+        </record>
+
+    </data>
+</openerp>

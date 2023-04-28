@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="view_stock_change_inventory_date" model="ir.ui.view">
+            <field name="name">Change Inventory Date</field>
+            <field name="model">stock.change.inventory.date</field>
+            <field name="arch" type="xml">
+              <form string="Change Inventory Date" version="7.0">
+                  <div colspan="4">Please select the date you want to change:</div>
+                  <group >
+                      <field name="inventory_date"/>
+                      <separator string="Physical Inventories"/>
+                      <field name="inv_ids" nolabel="1"/>
+                  </group>
+                  <footer>
+                      <button name="change_date" string="Change Date" type="object" class="oe_highlight"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel" />
+                  </footer>
+              </form>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../OpenERP70-0413-PROD/.idea/OpenERP70-0413-PROD.iml" filepath="$PROJECT_DIR$/../OpenERP70-0413-PROD/.idea/OpenERP70-0413-PROD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/metro-prod.iml" filepath="$PROJECT_DIR$/.idea/metro-prod.iml" />
+    </modules>
+  </component>
+</project>

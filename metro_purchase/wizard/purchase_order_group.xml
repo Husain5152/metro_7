@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_purchase_order_group" model="ir.ui.view">
+            <field name="name">Merger Purchase Orders</field>
+            <field name="model">purchase.order.group</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_group"/>
+            <field name="arch" type="xml">
+                <xpath expr="//separator" position="before">
+                    <field name="force_merge"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

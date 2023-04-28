@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!-- post in batch -->    	
+        <record id="view_account_move_post" model="ir.ui.view">
+            <field name="name">view_account_move_post</field>
+            <field name="model">account.move.batch</field>
+            <field name="arch" type="xml">
+               <form string="Post account entries by batch" version="7.0">
+                    <separator string="Are you sure to post the selected acccount entries?"/>
+                    <br/>
+                    <separator string="Note: Only unposted entries can be post!"/>
+                    
+                    <footer>
+                        <button name="validate_account_move" string="Post" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <act_window name="Post"
+            res_model="account.move.batch"
+            src_model="account.move"
+            view_mode="form"
+            target="new"
+            multi="True"
+            id="action_view_account_move_post"/>
+            
+        <record model="ir.actions.act_window.view" id="action_view_account_move_post_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_account_move_post"/>
+            <field name="act_window_id" ref="action_view_account_move_post"/>
+        </record>            
+
+<!-- review in batch -->
+        <record id="view_account_move_review" model="ir.ui.view">
+            <field name="name">view_account_move_review</field>
+            <field name="model">account.move.batch</field>
+            <field name="arch" type="xml">
+               <form string="Review account entries by batch" version="7.0">
+                    <separator string="Are you sure to review the selected acccount entries?"/>
+                    <br/>
+                    <separator string="Note: Only posted entries can be review!"/>
+                    
+                    <footer>
+                        <button name="review_account_move" string="Review" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>            
+        <act_window name="Review"
+            res_model="account.move.batch"
+            src_model="account.move"
+            view_mode="form"
+            target="new"
+            multi="True"
+            id="action_view_account_move_review"/>
+        <record model="ir.actions.act_window.view" id="action_view_account_move_review_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_account_move_review"/>
+            <field name="act_window_id" ref="action_view_account_move_review"/>
+        </record>   
+        
+<!-- cancel in batch -->
+        <record id="view_account_move_batch_cancel" model="ir.ui.view">
+            <field name="name">view_account_move_batch_cancel</field>
+            <field name="model">account.move.batch</field>
+            <field name="arch" type="xml">
+               <form string="Cancel account entries by batch" version="7.0">
+                    <separator string="Are you sure to cancel the selected acccount entries?"/>
+                    <br/>
+                    <separator string="Note: Only posted entries will be cancel!"/>
+                    
+                    <footer>
+                        <button name="cancel_account_move" string="Cancel" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>            
+        <act_window name="Cancel"
+            res_model="account.move.batch"
+            src_model="account.move"
+            view_mode="form"
+            target="new"
+            multi="True"
+            id="action_view_account_move_batch_cancel"/>
+        <record model="ir.actions.act_window.view" id="action_view_account_move_batch_cancel_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_account_move_batch_cancel"/>
+            <field name="act_window_id" ref="action_view_account_move_batch_cancel"/>
+        </record>                    
+    </data>
+</openerp>
+

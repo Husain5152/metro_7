@@ -1,0 +1,1060 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* metro_mrp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-29 09:21+0000\n"
+"PO-Revision-Date: 2014-08-29 17:38+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_mrp
+#: view:mo.actions:0
+msgid "Prceed Action"
+msgstr "Prceed Action"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_is_common
+#: field:mrp.bom,is_common:0
+msgid "Common?"
+msgstr "公共?"
+
+#. module: metro_mrp
+#: view:mrp.production.workcenter.line:0
+msgid "bold:state=='done')"
+msgstr "bold:state=='done')"
+
+#. module: metro_mrp
+#: view:mrp.production.workcenter.line:0
+msgid "Work Orders"
+msgstr "工票"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_wo_comp
+msgid "mrp.wo.comp"
+msgstr "mrp.wo.comp"
+
+#. module: metro_mrp
+#: view:mrp.production.workcenter.line:0
+msgid "Material Request"
+msgstr "领料单"
+
+#. module: metro_mrp
+#: view:mrp.production:0 view:mrp.production.workcenter.line:0
+msgid "Ready Start"
+msgstr "开始(准备好)"
+
+#. module: metro_mrp
+#: view:mrp.production:0 view:mrp.production.workcenter.line:0
+msgid "Manager Start"
+msgstr "开始(经理)"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Group By..."
+msgstr "分组..."
+
+#. module: metro_mrp
+#: field:add.common.bom,mrp_bom_id:0 field:add.common.bom.line,wizard_id:0
+#: field:bom.import,mrp_bom_id:0 view:ir.attachment:0
+#: model:ir.model.fields,field_description:metro_mrp.field_add_common_bom_line_wizard_id
+#: model:ir.model.fields,field_description:metro_mrp.field_add_common_bom_mrp_bom_id
+#: model:ir.model.fields,field_description:metro_mrp.field_bom_import_mrp_bom_id
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_routing_operation_bom_id
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_product_line_bom_id
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_bom_id
+#: view:mrp.bom:0 field:mrp.bom.routing.operation,bom_id:0
+#: field:mrp.production.product.line,bom_id:0
+#: field:mrp.production.workcenter.line,bom_id:0
+msgid "BOM"
+msgstr "物料清单"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_wo_material_request_mr_dept_id
+#: field:wo.material.request,mr_dept_id:0
+msgid "Department"
+msgstr "部门"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_comp_routing_workcenter_ids
+#: field:mrp.bom,comp_routing_workcenter_ids:0
+msgid "Work Centers"
+msgstr "工作中心"
+
+#. module: metro_mrp
+#: sql_constraint:mrp.bom:0
+msgid "Reference must be unique!"
+msgstr "编号必须唯一!"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_message_unread
+#: field:work.order.cnc,message_unread:0
+msgid "Unread Messages"
+msgstr "未读消息"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_company_id
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_company_id
+#: field:work.order.cnc,company_id:0 field:work.order.cnc.line,company_id:0
+msgid "Company"
+msgstr "公司"
+
+#. module: metro_mrp
+#: view:work.order.cnc:0
+msgid "Set to Draft"
+msgstr "设为草稿"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "My Document(s)"
+msgstr "我的单据"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_property_cnc_mr_dept
+#: field:work.order.cnc.line.done,property_cnc_mr_dept:0
+msgid "CNC MR Department"
+msgstr "CNC领料部门"
+
+#. module: metro_mrp
+#: view:add.common.bom:0
+msgid "Select Common BOMs"
+msgstr "搜索公共BOM"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_mfg_ids
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_mfg_ids
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_mfg_ids
+#: model:ir.model.fields,field_description:metro_mrp.field_procurement_order_mfg_ids
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_sale_product_ids
+#: field:mrp.production,mfg_ids:0
+#: field:mrp.production.workcenter.line,mfg_ids:0 field:mrp.wo.comp,mfg_ids:0
+#: field:procurement.order,mfg_ids:0 field:work.order.cnc,sale_product_ids:0
+msgid "MFG IDs"
+msgstr "生产ID"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_mr_id
+#: field:work.order.cnc.line,mr_id:0
+msgid "MR#"
+msgstr "领料单号"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Task"
+msgstr "任务"
+
+#. module: metro_mrp
+#: view:mrp.wo.comp:0
+msgid "WO Components"
+msgstr "工单组件"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_product_line_consume_move_id
+#: field:mrp.production.product.line,consume_move_id:0
+msgid "Consume Move"
+msgstr "移库单"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_message_ids
+#: field:work.order.cnc,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_plate_height
+#: field:work.order.cnc.line,plate_height:0
+msgid "Height(mm)"
+msgstr "厚(mm)"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_bom
+msgid "Bill of Material"
+msgstr "物料清单"
+
+#. module: metro_mrp
+#: view:mrp.routing:0
+msgid "{'default_routing_id':id}"
+msgstr "{'default_routing_id':id}"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_comp_lines
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_comp_lines
+#: view:mrp.production:0 field:mrp.production,comp_lines:0
+#: view:mrp.production.workcenter.line:0
+#: field:mrp.production.workcenter.line,comp_lines:0
+msgid "Components"
+msgstr "组件"
+
+#. module: metro_mrp
+#: view:add.common.bom:0
+#: model:ir.actions.act_window,name:metro_mrp.action_view_add_common_bom
+#: model:ir.model,name:metro_mrp.model_add_common_bom view:mrp.bom:0
+msgid "Add Common BOM"
+msgstr "增加公共BOM"
+
+#. module: metro_mrp
+#: help:work.order.cnc,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_routing_workcenter_oper_next_ids
+#: field:mrp.routing.workcenter,oper_next_ids:0
+msgid "Next Workcenters"
+msgstr "后续工作中心"
+
+#. module: metro_mrp
+#: view:work.order.cnc:0
+msgid "Search CNC Work Orders"
+msgstr "搜索CNC工单"
+
+#. module: metro_mrp
+#: field:add.common.bom.line,code:0
+#: model:ir.model.fields,field_description:metro_mrp.field_add_common_bom_line_code
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_code
+#: field:mrp.production.workcenter.line,code:0
+msgid "Reference"
+msgstr "引用参考"
+
+#. module: metro_mrp
+#: field:bom.import,import_file:0
+#: model:ir.model.fields,field_description:metro_mrp.field_bom_import_import_file
+msgid "Select your Excel File"
+msgstr "选择Excel文件"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Resource Model"
+msgstr "资源模型"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_workcenter_members
+#: field:mrp.workcenter,members:0
+msgid "Work Center Members"
+msgstr "工作中心成员"
+
+#. module: metro_mrp
+#: help:work.order.cnc,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+
+#. module: metro_mrp
+#: field:bom.import,file_template:0
+#: model:ir.model.fields,field_description:metro_mrp.field_bom_import_file_template
+msgid "Template File"
+msgstr "模板文件"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_bom_route_oper_id
+#: field:mrp.wo.comp,bom_route_oper_id:0
+msgid "Bom Routing Matrix"
+msgstr "BOM工艺关联"
+
+#. module: metro_mrp
+#: view:mrp.bom:0
+msgid "Routing Matrix"
+msgstr "工艺BOM关联"
+
+#. module: metro_mrp
+#: help:product.product,material:0
+msgid "The material of the product"
+msgstr "产品的物料"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_percent_usage
+#: field:work.order.cnc.line.done,percent_usage:0
+msgid "Usage Percent(%)"
+msgstr "利用率(%)"
+
+#. module: metro_mrp
+#: view:work.order.cnc:0 selection:work.order.cnc,state:0
+#: selection:work.order.cnc.line,state:0
+msgid "Confirmed"
+msgstr "已确认"
+
+#. module: metro_mrp
+#: view:mrp.bom:0 view:mrp.production.workcenter.line:0
+msgid "Documents"
+msgstr "文档"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_product_line_mfg_id
+#: view:mrp.production:0 field:mrp.production.product.line,mfg_id:0
+msgid "MFG ID"
+msgstr "生产ID"
+
+#. module: metro_mrp
+#: view:work.order.cnc:0
+msgid "Confirm"
+msgstr "确认"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_percent_usage_theory
+#: field:work.order.cnc.line,percent_usage_theory:0
+msgid "Usage Percent in Theory(%)"
+msgstr "理论利用率(%)"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_message_follower_ids
+#: field:work.order.cnc,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_product_inv
+#: field:work.order.cnc.line.done,product_inv:0
+msgid "Inventory"
+msgstr "库存"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_wo_material_request_mr_emp_id
+#: field:wo.material.request,mr_emp_id:0
+msgid "Employee"
+msgstr "员工"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_work_order_cnc_line
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_wo_cnc_lines
+#: field:work.order.cnc,wo_cnc_lines:0
+msgid "CNC Work Order Lines"
+msgstr "CNC工单明细"
+
+#. module: metro_mrp
+#: model:ir.actions.act_window,name:metro_mrp.action_wo_material_request
+#: view:wo.material.request:0
+msgid "Make Material Request"
+msgstr "创建领料单"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_order_id
+#: field:work.order.cnc.line,order_id:0
+msgid "Ref"
+msgstr "引用"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_clone_bom_ids
+#: view:mrp.bom:0 field:mrp.bom,clone_bom_ids:0
+msgid "Clone BOMs"
+msgstr "克隆物料清单"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_name
+#: field:work.order.cnc.line.done,name:0
+msgid "Work Order Name"
+msgstr "工单名称"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Resource Name"
+msgstr "资源名称"
+
+#. module: metro_mrp
+#: field:add.common.bom.line,product_qty:0
+#: model:ir.model.fields,field_description:metro_mrp.field_add_common_bom_line_product_qty
+msgid "Product Quantity"
+msgstr "产品数量"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_wo_next_ids
+#: view:mrp.production.workcenter.line:0
+#: field:mrp.production.workcenter.line,wo_next_ids:0
+msgid "Next WOs"
+msgstr "后续工单"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_production_product_line
+msgid "Production Scheduled Product"
+msgstr "要生产的产品"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_create_date
+#: field:work.order.cnc,create_date:0
+msgid "Creation Date"
+msgstr "创建日期"
+
+#. module: metro_mrp
+#: view:work.order.cnc:0
+msgid "Work Items"
+msgstr "工单项目"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_stock_move_ids
+#: model:ir.model.fields,field_description:metro_mrp.field_product_product_material
+#: view:mrp.production.workcenter.line:0
+#: field:mrp.production.workcenter.line,stock_move_ids:0
+#: field:product.product,material:0
+msgid "Material"
+msgstr "物料"
+
+#. module: metro_mrp
+#: view:mrp.bom:0
+msgid "{'readonly':[('common_bom_id','!=',False)]}"
+msgstr "{'readonly':[('common_bom_id','!=',False)]}"
+
+#. module: metro_mrp
+#: field:bom.import,file_template_name:0
+#: model:ir.model.fields,field_description:metro_mrp.field_bom_import_file_template_name
+msgid "Template File Name"
+msgstr "模板文件名称"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_routing_operation_id
+#: field:mrp.production.workcenter.line,routing_operation_id:0
+msgid "Routing Operation"
+msgstr "工艺操作"
+
+#. module: metro_mrp
+#: model:ir.actions.act_window,name:metro_mrp.action_mo_actions
+#: model:ir.model,name:metro_mrp.model_mo_actions view:mo.actions:0
+msgid "Manufacture Order Actions"
+msgstr "Manufacture Order Actions"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_direct_bom_id
+#: field:mrp.bom,direct_bom_id:0
+msgid "Direct BOM"
+msgstr "直接BOM"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_qty_done
+#: field:mrp.wo.comp,qty_done:0
+msgid "Quantity Done"
+msgstr "完成数量"
+
+#. module: metro_mrp
+#: view:mrp.production:0 view:mrp.production.workcenter.line:0
+msgid "draft,ready,startworking"
+msgstr "draft,ready,startworking"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_mo_id
+#: field:mrp.wo.comp,mo_id:0
+msgid "Manufacture Order"
+msgstr "生产单"
+
+#. module: metro_mrp
+#: selection:mrp.wo.comp,state:0 view:work.order.cnc:0
+#: selection:work.order.cnc,state:0 selection:work.order.cnc.line,state:0
+msgid "Cancelled"
+msgstr "取消"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_wo_material_request_mr_lines
+#: field:wo.material.request,mr_lines:0
+msgid "Request Products"
+msgstr "领料产品"
+
+#. module: metro_mrp
+#: help:mrp.workcenter,members:0
+msgid ""
+"Work Center's members are employees who can have an access to the work "
+"orders related to this work center."
+msgstr ""
+"Work Center's members are employees who can have an access to the work "
+"orders related to this work center."
+
+#. module: metro_mrp
+#: model:ir.actions.act_window,name:metro_mrp.action_mrp_document
+#: model:ir.ui.menu,name:metro_mrp.menu_mrp_document
+msgid "MRP Documents"
+msgstr "MRP文档"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_procurement_order
+msgid "Procurement"
+msgstr "需求单"
+
+#. module: metro_mrp
+#: view:mrp.workcenter:0
+msgid "Team"
+msgstr "组"
+
+#. module: metro_mrp
+#: view:mrp.production:0
+msgid "[('product_id','=',product_id),('bom_id','=',False)]"
+msgstr "[('product_id','=',product_id),('bom_id','=',False)]"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_complete_name
+#: field:mrp.bom,complete_name:0
+msgid "Full Name"
+msgstr "全称"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: metro_mrp
+#: sql_constraint:mrp.wo.comp:0
+msgid ""
+"You can not add duplicated \"Work Order Component\" with same WorkOrder and "
+"Component!"
+msgstr "能增加重复的工单组件到同一个工单和组件"
+
+#. module: metro_mrp
+#: view:mrp.production:0
+msgid ""
+"{'form_view_ref':'metro_operations."
+"mrp_production_workcenter_form_view_inherit'}"
+msgstr ""
+"{'form_view_ref':'metro_operations."
+"mrp_production_workcenter_form_view_inherit'}"
+
+#. module: metro_mrp
+#: view:work.order.cnc:0
+msgid "Canceled"
+msgstr "取消"
+
+#. module: metro_mrp
+#: selection:mo.actions,action:0
+msgid "Produce - Consume Only"
+msgstr "生产-只投料"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_add_common_bom_line
+msgid "Add Common BOM Line"
+msgstr "增加公共BOM行"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_size
+#: view:work.order.cnc:0 field:work.order.cnc.line.done,size:0
+msgid "Size"
+msgstr "尺寸"
+
+#. module: metro_mrp
+#: view:add.common.bom:0 view:bom.import:0 view:mo.actions:0
+#: view:wo.material.request:0 view:work.order.cnc.line.done:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_mrp
+#: view:add.common.bom:0
+msgid "Add Common BOMs"
+msgstr "增加公共BOM"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_bom_routing_operation
+msgid "mrp.bom.routing.operation"
+msgstr "mrp.bom.routing.operation"
+
+#. module: metro_mrp
+#: selection:mo.actions,action:0
+msgid "Produce - Consume & Produce"
+msgstr "生产-投料&生产"
+
+#. module: metro_mrp
+#: selection:mrp.wo.comp,state:0 view:work.order.cnc:0
+#: selection:work.order.cnc,state:0
+msgid "In Progress"
+msgstr "进行中"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_production
+msgid "Manufacturing Order"
+msgstr "生产单"
+
+#. module: metro_mrp
+#: view:add.common.bom:0
+msgid "Select Common BOMs to Add"
+msgstr "选择公共BOM添加"
+
+#. module: metro_mrp
+#: selection:mrp.wo.comp,state:0 view:work.order.cnc:0
+#: selection:work.order.cnc,state:0 selection:work.order.cnc.line,state:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Attachment"
+msgstr "附件"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_state
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_state
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_state
+#: field:mrp.wo.comp,state:0 field:work.order.cnc,state:0
+#: field:work.order.cnc.line,state:0
+msgid "Status"
+msgstr "状态"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mo_actions_action
+#: field:mo.actions,action:0
+msgid "unknown"
+msgstr "unknown"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_is_whole_plate
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_is_whole_plate
+#: field:work.order.cnc.line,is_whole_plate:0
+#: field:work.order.cnc.line.done,is_whole_plate:0
+msgid "Whole Plate"
+msgstr "整张板"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_routing_operation_consume_material
+#: field:mrp.bom.routing.operation,consume_material:0
+msgid "Consume Material"
+msgstr "投料"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "ID"
+msgstr "ID"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_product_produce
+msgid "Product Produce"
+msgstr "产品生产"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_message_is_follower
+#: field:work.order.cnc,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_date_finished
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_date_finished
+#: field:work.order.cnc.line,date_finished:0
+#: field:work.order.cnc.line.done,date_finished:0
+msgid "Finished Date"
+msgstr "完成日期"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_routing_workcenter_oper_pre_ids
+#: field:mrp.routing.workcenter,oper_pre_ids:0
+msgid "Previous Workcenters"
+msgstr "前置工作中心"
+
+#. module: metro_mrp
+#: field:add.common.bom.line,common_bom_id:0
+#: model:ir.model.fields,field_description:metro_mrp.field_add_common_bom_line_common_bom_id
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_common_bom_id
+#: field:mrp.bom,common_bom_id:0
+msgid "Common BOM"
+msgstr "公共BOM"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_work_order_cnc view:work.order.cnc:0
+msgid "CNC Work Order"
+msgstr "CNC工单"
+
+#. module: metro_mrp
+#: constraint:work.order.cnc.line:0
+msgid "You must assign a serial number for this product."
+msgstr "必须授予此产品一个序列号"
+
+#. module: metro_mrp
+#: view:mrp.wo.comp:0
+msgid "Search"
+msgstr "搜索"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_can_change_ids
+#: field:work.order.cnc,can_change_ids:0
+msgid "Can Change IDs"
+msgstr "能否更改ID"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_message_summary
+#: field:work.order.cnc,message_summary:0
+msgid "Summary"
+msgstr "总计"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "base.group_multi_company\""
+msgstr "base.group_multi_company\""
+
+#. module: metro_mrp
+#: view:mrp.production.workcenter.line:0
+msgid "Related WO"
+msgstr "相关工单"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_product_line_parent_bom_id
+#: field:mrp.production.product.line,parent_bom_id:0
+msgid "Parent BOM"
+msgstr "父BOM"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_qty
+#: field:mrp.wo.comp,qty:0
+msgid "Quantity"
+msgstr "数量"
+
+#. module: metro_mrp
+#: sql_constraint:mrp.bom.routing.operation:0
+msgid ""
+"You can not add duplicated \"Routing Work Center\"-\"Component\" with same "
+"BOM and Routing!"
+msgstr "不能增加重复的\"工作中心-组件\"关联到相同的BOM和工艺流程"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Attachments"
+msgstr "附件"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_create_uid
+#: field:work.order.cnc,create_uid:0
+msgid "Creator"
+msgstr "创建人"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_has_pre_ids
+#: field:mrp.production.workcenter.line,has_pre_ids:0
+msgid "Has Pre WO"
+msgstr "是否有前置工作重心"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_routing_operation_bom_comp_id
+#: field:mrp.bom.routing.operation,bom_comp_id:0
+msgid "BOM Component"
+msgstr "BOM组件"
+
+#. module: metro_mrp
+#: selection:mo.actions,action:0
+msgid "Confirm Production"
+msgstr "确认生产"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Filter on my documents"
+msgstr "用于我的单据的过滤器"
+
+#. module: metro_mrp
+#: constraint:mrp.bom:0
+msgid "BoM line product should not be duplicate under one BoM."
+msgstr "同一物料清单下的产品不能重复."
+
+#. module: metro_mrp
+#: view:mrp.production:0 view:mrp.production.workcenter.line:0
+msgid "User Start"
+msgstr "开始(用户)"
+
+#. module: metro_mrp
+#: view:wo.material.request:0 view:work.order.cnc:0
+#: selection:work.order.cnc,state:0 selection:work.order.cnc.line,state:0
+#: view:work.order.cnc.line.done:0
+msgid "Done"
+msgstr "完成"
+
+#. module: metro_mrp
+#: view:bom.import:0
+#: model:ir.actions.act_window,name:metro_mrp.action_view_bom_import
+#: model:ir.ui.menu,name:metro_mrp.menu_mrp_bom_import_action view:mrp.bom:0
+msgid "Import BOM"
+msgstr "导入BOM"
+
+#. module: metro_mrp
+#: view:add.common.bom:0 view:bom.import:0 view:mo.actions:0
+#: view:wo.material.request:0 view:work.order.cnc:0
+#: view:work.order.cnc.line.done:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_routing_operation_routing_id
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_routing_id
+#: field:mrp.bom.routing.operation,routing_id:0
+#: field:mrp.production.workcenter.line,routing_id:0
+msgid "Routing"
+msgstr "工艺流程"
+
+#. module: metro_mrp
+#: view:mrp.production.workcenter.line:0
+msgid "Information"
+msgstr "信息"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_routing_workcenter
+msgid "Work Center Usage"
+msgstr "工作中心使用情况"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_bom_routing_ids
+#: field:mrp.bom,bom_routing_ids:0
+msgid "Routing BOM Matrix"
+msgstr "工艺BOM关联"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_workcenter
+msgid "Work Center"
+msgstr "工作中心"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_mrp_production_workcenter_line
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_wo_id
+#: model:ir.model.fields,field_description:metro_mrp.field_wo_material_request_name
+#: field:mrp.wo.comp,wo_id:0 field:wo.material.request,name:0
+msgid "Work Order"
+msgstr "工票"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_product_product
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_product_id
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_product_id
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_product_id
+#: field:work.order.cnc,product_id:0 field:work.order.cnc.line,product_id:0
+#: field:work.order.cnc.line.done,product_id:0
+msgid "Product"
+msgstr "产品"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_note
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_note
+#: field:mrp.wo.comp,note:0 field:work.order.cnc,note:0
+msgid "Description"
+msgstr "描述"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_work_order_cnc_line_done
+msgid "Set CNC Work Orders Done"
+msgstr "完成CNC工单"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_production_workcenter_line_wo_pre_ids
+#: view:mrp.production.workcenter.line:0
+#: field:mrp.production.workcenter.line,wo_pre_ids:0
+msgid "Previous WOs"
+msgstr "前置工单"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_wo_comp_comp_id
+#: field:mrp.wo.comp,comp_id:0
+msgid "Component"
+msgstr "组件"
+
+#. module: metro_mrp
+#: model:ir.actions.act_window,name:metro_mrp.action_work_order_cnc
+#: model:ir.ui.menu,name:metro_mrp.menu_work_order_cnc view:work.order.cnc:0
+msgid "CNC Work Orders"
+msgstr "CNC工单"
+
+#. module: metro_mrp
+#: selection:mrp.wo.comp,state:0
+msgid "Finished"
+msgstr "完成"
+
+#. module: metro_mrp
+#: view:mrp.bom:0
+msgid "BOM Routing Matrix"
+msgstr "BOM工艺关联"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_plate_width
+#: field:work.order.cnc.line,plate_width:0
+msgid "Width(mm)"
+msgstr "宽(mm)"
+
+#. module: metro_mrp
+#: view:mrp.bom:0
+msgid "Bill of Materials Structure"
+msgstr "物料清单结构"
+
+#. module: metro_mrp
+#: model:ir.actions.act_window,name:metro_mrp.action_view_cnc_line_done
+#: view:work.order.cnc.line.done:0
+msgid "Finish the work order line"
+msgstr "完成工单行"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_percent_usage
+#: field:work.order.cnc.line,percent_usage:0
+msgid "Usage Percent of Manufacture(%)"
+msgstr "生产利用率(%)"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_wo_comp_ids
+#: field:work.order.cnc.line,wo_comp_ids:0
+msgid "Part List"
+msgstr "物料列表"
+
+#. module: metro_mrp
+#: field:add.common.bom.line,name:0
+#: model:ir.model.fields,field_description:metro_mrp.field_add_common_bom_line_name
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_name
+#: field:work.order.cnc,name:0
+msgid "Name"
+msgstr "名称"
+
+#. module: metro_mrp
+#: field:add.common.bom,lines:0
+#: model:ir.model.fields,field_description:metro_mrp.field_add_common_bom_lines
+msgid "Lines"
+msgstr "行"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_wo_material_request
+msgid "Work Order Material Request"
+msgstr "工单领料单"
+
+#. module: metro_mrp
+#: model:ir.model,name:metro_mrp.model_bom_import
+msgid "Import Bill of Material"
+msgstr "导入BOM"
+
+#. module: metro_mrp
+#: help:work.order.cnc,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_bom_routing_operation_routing_workcenter_id
+#: field:mrp.bom.routing.operation,routing_workcenter_id:0
+msgid "Routing Work Center"
+msgstr "工艺工作中心"
+
+#. module: metro_mrp
+#: view:ir.attachment:0
+msgid "Project"
+msgstr "项目"
+
+#. module: metro_mrp
+#: view:mrp.production:0
+msgid "Start Working"
+msgstr "开始工作"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_done_file_name
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_file_name
+#: field:work.order.cnc.line,file_name:0
+#: field:work.order.cnc.line.done,file_name:0
+msgid "File Name"
+msgstr "文件名"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_mrp_workcenter_manager_id
+#: field:mrp.workcenter,manager_id:0
+msgid "Manager"
+msgstr "经理"
+
+#. module: metro_mrp
+#: view:mrp.production.workcenter.line:0
+msgid ""
+"green:state=='done';gray:state=='cancel';black:state in "
+"('draft','startworking') and date_planned>=current_date;red:"
+"date_planned<current_date and state in ('draft', 'confirmed', 'ready')"
+msgstr ""
+"green:state=='done';gray:state=='cancel';black:state in "
+"('draft','startworking') and date_planned>=current_date;red:"
+"date_planned<current_date and state in ('draft', 'confirmed', 'ready')"
+
+#. module: metro_mrp
+#: model:ir.model.fields,field_description:metro_mrp.field_work_order_cnc_line_plate_length
+#: field:work.order.cnc.line,plate_length:0
+msgid "Length(mm)"
+msgstr "长(mm)"
+
+########################manual########################
+#. module: mrp
+#: view:mrp.production:0
+#: report:mrp.production.order:0
+msgid "Work Orders"
+msgstr "工单"
+
+#. module: mrp
+#: model:ir.model,name:mrp.model_mrp_production_workcenter_line
+#: field:mrp.production.workcenter.line,name:0
+msgid "Work Order"
+msgstr "工单"
+
+#. module: mrp_operations
+#: model:ir.actions.act_window,name:mrp_operations.mrp_production_wc_action_form
+#: model:ir.ui.menu,name:mrp_operations.menu_mrp_production_wc_order
+#: view:mrp.production.workcenter.line:0
+#: view:mrp.workorder:0
+msgid "Work Orders"
+msgstr "工单"
+
+#. module: mrp_operations
+#: model:process.node,note:mrp_operations.process_node_canceloperation0
+msgid "Cancel the operation."
+msgstr "工单作废"
+
+#. module: mrp_operations
+#: model:process.transition,name:mrp_operations.process_transition_productionstart0
+msgid "Creation of the work order"
+msgstr "新建工单"
+
+#. module: mrp_operations
+#: model:process.transition,note:mrp_operations.process_transition_productionstart0
+msgid "The work orders are created on the basis of the production order."
+msgstr "工单基于生产订单创建"
+
+#. module: mrp_operations
+#: model:ir.actions.act_window,name:mrp_operations.action_report_mrp_workorder
+#: model:ir.model,name:mrp_operations.model_mrp_production_workcenter_line
+msgid "Work Order"
+msgstr "工单"
+
+#. module: mrp_operations
+#: model:process.transition,note:mrp_operations.process_transition_workstartoperation0
+msgid ""
+"There is 1 work order per work center. The information about the number of "
+"cycles or the cycle time."
+msgstr "每个加工中心有一个工单。有加工的次数或工时数"
+
+#. module: mrp_operations
+#: model:ir.ui.menu,name:mrp_operations.menu_report_mrp_workorders_tree
+msgid "Work Order Analysis"
+msgstr "工单分析"
+
+#. module: mrp_operations
+#: model:ir.actions.act_window,name:mrp_operations.mrp_production_wc_draft_action
+msgid "Future Work Orders"
+msgstr "未开工工单"
+
+#. module: mrp_operations
+#: model:ir.model,name:mrp_operations.model_mrp_workorder
+msgid "Work Order Report"
+msgstr "工单报表"
+
+#. module: mrp_operations
+#: model:ir.actions.act_window,name:mrp_operations.mrp_production_wc_action_planning
+msgid "Work Orders Planning"
+msgstr "工单计划"
+
+#. module: mrp_operations
+#: model:ir.actions.act_window,name:mrp_operations.mrp_production_wc_confirm_action
+msgid "Confirmed Work Orders"
+msgstr "已确认的工单"
+
+#. module: mrp_operations
+#: view:mrp.production.workcenter.line:0
+msgid "Search Work Orders"
+msgstr "查询工单："
+
+#. module: mrp_operations
+#: model:process.transition,note:mrp_operations.process_transition_startdoneoperation0
+msgid ""
+"When the operation is finished, the operator updates the system by finishing "
+"the work order."
+msgstr "加工结束后，操作者在系统中完成工单以报工"
+
+#. module: mrp_operations
+#: model:process.transition,name:mrp_operations.process_transition_workstartoperation0
+msgid "Details of the work order"
+msgstr "工单明细"
+
+#. module: metro_mrp
+#: code:addons/metro_mrp/work_order_cnc.py:576
+#, python-format
+msgid "%s inventory is not enough, please check onhand quantity and ready to delivery stock move for it."
+msgstr "%s 库存不够，请检查在手数量和准备出库的数量."

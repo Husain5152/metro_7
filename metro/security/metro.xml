@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+	<record model="ir.module.category" id="module_metro_base_management">
+        <field name="name">Metro Base</field>
+        <field name="sequence">10001</field>
+    </record>
+
+    <record id="group_metro_base_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_metro_base_management"/>
+    </record>
+    <record id="group_metro_base_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_metro_base_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_metro_base_user'))]"/>	
+    </record> 
+    <record id="group_metro_oversight" model="res.groups">
+        <field name="name">Oversight</field>
+        <field name="category_id" ref="module_metro_base_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_metro_base_manager'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+    <record id="group_metro_product_oversight" model="res.groups">
+        <field name="name">Product Oversight</field>
+        <field name="category_id" ref="module_metro_base_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_metro_base_manager'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+    <record id="group_metro_pdf_dxf_monitor" model="res.groups">
+        <field name="name">Pdf and Dxf monitor</field>
+        <field name="category_id" ref="module_metro_base_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_metro_base_manager'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+</data>
+<data noupdate="1">    
+	<record model="ir.module.category" id="module_data_maintain">
+        <field name="name">Data Maintenance</field>
+        <field name="sequence">10010</field>
+    </record>
+    <record id="group_data_maintain" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_data_maintain"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_data_maintain_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_data_maintain"/>
+        <field name="implied_ids" eval="[(4, ref('group_data_maintain'))]"/>
+    </record>    
+</data>
+</openerp>

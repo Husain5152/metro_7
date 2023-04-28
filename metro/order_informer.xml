@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+<!-- purchase order email template -->
+        <record id="OI_po_wait_approval" model="email.template">
+            <field name="name">OI_po_wait_approval</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="report_template" ref="metro_purchase.report_purchase_order_metro"/>
+            <field name="report_name"><![CDATA[${(object.name or '').replace('/','_')}]]></field>
+            <field name="email_recipients"><![CDATA[$list_names$ need your approval]]></field>
+            <field name="subject"><![CDATA[${object.name}]]></field>
+            <field name="body_html"><![CDATA[
+<h2>Purchase Order ${object.name}</h2>
+<table>
+  <tr>
+    <td align="right"><strong>Supplier:</strong></td>
+    <td>${object.partner_id.name}</td>
+    <td align="right"><strong>Order Date:</strong></td>
+    <td>${object.date_order}</td>
+  </tr>
+  <tr>
+    <td align="right"><strong>Total:</strong></td>
+    <td>${object.amount_total}</td>
+    <td align="right"><strong>Source Document: </strong></td>
+    <td>${object.origin}</td>
+  </tr>
+  <tr>
+    <td align="right"><strong>Pricelist:</strong></td>
+    <td><p>${object.pricelist_id.name}(${object.pricelist_id.currency_id.name})</p></td>
+    <td align="right"><strong>Warehouse: </strong></td>
+    <td>${object.warehouse_id.name}</td>
+  </tr>
+  
+  <tr>
+    <td align="right"><strong>Payment Term:</strong></td>
+    <td><p>${object.payment_term_id.name}</p></td>
+    <td align="right">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right"><strong>Creator:</strong></td>
+    <td><p>${object.create_uid.name}</p></td>
+    <td align="right"><strong>Creator Date:</strong></td>
+    <td>${object.create_date}</td>
+  </tr>
+</table>            
+]]>
+			</field>
+        </record>
+        <record id="OI_po_rejected" model="email.template">
+            <field name="name">OI_po_rejected</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="email_recipients"><![CDATA[$list_names$ were rejected]]></field>
+            <field name="subject"><![CDATA[${object.name}]]></field>
+            <field name="body_html"><![CDATA[
+<h2>${object.name} with supplier ${object.partner_id.name} </h2>
+<h2>Rejection Message:${object.reject_msg}</h2>            
+]]>
+			</field>
+        </record>
+        <record id="OI_po_approved" model="email.template">
+            <field name="name">OI_po_approved</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="email_recipients"><![CDATA[$list_names$ were approved]]></field>
+            <field name="subject"><![CDATA[${object.name}]]></field>
+            <field name="body_html"><![CDATA[
+<h2>${object.name} with supplier ${object.partner_id.name} </h2>
+<h2>Total:${object.amount_total}</h2>
+]]>
+			</field>
+        </record>
+        <record id="OI_po_line_wait_approval" model="email.template">
+            <field name="name">OI_po_line_wait_approval</field>
+            <field name="model_id" ref="purchase.model_purchase_order_line"/>
+            <field name="email_recipients"><![CDATA[$list_names$ need your approval]]></field>
+            <field name="subject"><![CDATA[${object.order_id.name},${object.product_id.name}]]></field>
+            <field name="body_html"><![CDATA[
+<h2>${object.order_id.name},${object.product_id.name}</h2>
+]]>
+			</field>			
+        </record>      
+        <record id="OI_po_line_rejected" model="email.template">
+            <field name="name">OI_po_line_rejected</field>
+            <field name="model_id" ref="purchase.model_purchase_order_line"/>
+            <field name="email_recipients"><![CDATA[$list_names$ were rejected]]></field>
+            <field name="subject"><![CDATA[${object.order_id.name},${object.product_id.name}]]></field>
+            <field name="body_html"><![CDATA[
+<h2>${object.order_id.name},${object.product_id.name} was rejected </h2>
+<h2>Rejection Message:${object.reject_msg}</h2>
+]]>
+			</field>			
+        </record>
+        
+<!-- purchase order informer email header -->
+        <record id="OI_header_po_wait_approval" model="ir.config_parameter">
+            <field name="key">OI_header_po_wait_approval</field>
+            <field name="value"><![CDATA[
+<h3>Please help review the purchase orders as below, you can see the detail in the attachments, and go to <a href="http://erp:8069http://erp:8069/?db=metro_production">OpenERP Production</a> to approve/reject them.</h3>
+]]>
+            </field>
+        </record>
+        <record id="OI_header_po_rejected" model="ir.config_parameter">
+            <field name="key">OI_header_po_rejected</field>
+            <field name="value"><![CDATA[
+<h3>The following purchase orders were rejected, please correct them, and submit for approval again.</h3>
+]]>
+            </field>
+        </record>
+        <record id="OI_header_po_approved" model="ir.config_parameter">
+            <field name="key">OI_header_po_approved</field>
+            <field name="value"><![CDATA[
+<h3>The following purchase orders were approved, please send to the supplier and trace the delivery process.</h3>
+]]>
+            </field>
+        </record>
+        <record id="OI_header_po_line_wait_approval" model="ir.config_parameter">
+            <field name="key">OI_header_po_line_wait_approval</field>
+            <field name="value"><![CDATA[
+<h3>Please help review the purchase products as below, and go to <a href="http://erp:8069http://erp:8069/?db=metro_production">OpenERP Production</a> to approve/reject them.</h3>
+]]>          
+            </field>
+        </record>
+        <record id="OI_header_po_line_rejected" model="ir.config_parameter">
+            <field name="key">OI_header_po_line_rejected</field>
+            <field name="value"><![CDATA[
+<h3>The following purchase products were rejected, please correct them, and submit for approval again.</h3>
+]]>            
+            </field>
+        </record>                       
+        
+<!-- order informer email footer of ERP System -->                 
+        <record id="OI_erp_signature" model="ir.config_parameter">
+            <field name="key">OI_erp_signature</field>
+            <field name="value"><![CDATA[
+<p/>
+<div>
+<a href="http://10.3.1.110/">Metro OpenERP System</a> &nbsp;&nbsp;
+Contact: <a href="mailto:ncoad@metrospv.com">Nicholas Coad</a> &nbsp;&nbsp;<a href="mailto:hoang.tran@metrospv.cn">Hoang Tran</a>
+</div>
+<div><a href="http://www.metrotowtrucks.com" target="_blank">http://www.metrotowtrucks.com</a></div>
+]]>
+			</field>            
+        </record>          
+        
+<!-- purchase order approval group -->                 
+        <record id="OI_group_po_approve" model="ir.config_parameter">
+            <field name="key">OI_group_po_approve</field>
+            <field name="value">Purchase Requisition / Manager</field>            
+        </record>
+        
+<!-- purchase order changing approve/rejected -->  
+        <record id="OI_po_changing_wait_approval" model="email.template">
+            <field name="name">OI_po_changing_wait_approval</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="report_template" ref="metro_purchase.report_purchase_order_metro"/>
+            <field name="report_name"><![CDATA[${(object.name or '').replace('/','_')}]]></field>
+            <field name="email_recipients"><![CDATA[$list_names$ quantity or price were changed after approval, need your review and approve]]></field>
+            <field name="subject"><![CDATA[${object.name}]]></field>
+            <field name="body_html"><![CDATA[
+<h2>Purchase Order ${object.name}</h2>
+<table>
+  <tr>
+    <td align="right"><strong>Supplier:</strong></td>
+    <td>${object.partner_id.name}</td>
+    <td align="right"><strong>Order Date:</strong></td>
+    <td>${object.date_order}</td>
+  </tr>
+  <tr>
+    <td align="right"><strong>Total:</strong></td>
+    <td>${object.amount_total}</td>
+    <td align="right"><strong>Source Document: </strong></td>
+    <td>${object.origin}</td>
+  </tr>
+  <tr>
+    <td align="right"><strong>Pricelist:</strong></td>
+    <td><p>${object.pricelist_id.name}(${object.pricelist_id.currency_id.name})</p></td>
+    <td align="right"><strong>Warehouse: </strong></td>
+    <td>${object.warehouse_id.name}</td>
+  </tr>
+  
+  <tr>
+    <td align="right"><strong>Payment Term:</strong></td>
+    <td><p>${object.payment_term_id.name}</p></td>
+    <td align="right">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right"><strong>Creator:</strong></td>
+    <td><p>${object.create_uid.name}</p></td>
+    <td align="right"><strong>Creator Date:</strong></td>
+    <td>${object.create_date}</td>
+  </tr>
+</table>        
+<h2>Change Log </h2>
+<table border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+  <tr bgcolor="#666666">
+    <td style="color: #FFFFFF">PO Line</td>
+    <td style="color: #FFFFFF">Product</td>
+    <td style="color: #FFFFFF">Field Name</td>
+    <td style="color: #FFFFFF">Old Value</td>
+    <td style="color: #FFFFFF">New Value</td>
+    <td style="color: #FFFFFF">User</td>
+    <td style="color: #FFFFFF">Time</td>
+  </tr>
+% for log in object.change_log_line:
+  <tr>
+    <td>${log.po_line_id.name}</td>
+    <td>[${log.product_id.default_code}]${log.product_id.name}-${log.product_id.cn_name}</td>
+    <td>${log.field_name}</td>
+    <td>${log.value_old}</td>
+    <td>${log.value_new}</td>
+    <td>${log.create_uid.name}</td>
+    <td>${log.create_date}</td>
+  </tr>
+% endfor
+</table>    
+]]>
+			</field>
+        </record>
+        <record id="OI_po_changing_rejected" model="email.template">
+            <field name="name">OI_po_changing_rejected</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>            
+            <field name="email_recipients"><![CDATA[$list_names$ changing were rejected]]></field>
+            <field name="subject"><![CDATA[${object.name}]]></field>
+            <field name="body_html"><![CDATA[
+<h2>${object.name} with supplier ${object.partner_id.name} </h2>
+<h2>Rejection Message:${object.reject_msg}</h2>            
+]]>
+			</field>
+        </record>
+               
+        <record id="OI_header_po_changing_wait_approval" model="ir.config_parameter">
+            <field name="key">OI_header_po_changing_wait_approval</field>
+            <field name="value"><![CDATA[
+<h3>Purchase orders were changed with quantity or price after approval, please review them as below, you can see the detail in the attachments, and go to <a href="http://erp:8069http://erp:8069/?db=metro_production">OpenERP Production</a> to approve/reject them.</h3>
+]]>
+            </field>
+        </record>
+        <record id="OI_header_po_changing_rejected" model="ir.config_parameter">
+            <field name="key">OI_header_po_changing_rejected</field>
+            <field name="value"><![CDATA[
+<h3>The changing after approval of following purchase orders were rejected, please correct them, and submit for approval again.</h3>
+]]>
+            </field>
+        </record>        
+    </data>
+</openerp>

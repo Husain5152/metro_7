@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="email_compose_message_wizard_form">
+            <field name="name">mail.compose.message.form</field>
+            <field name="model">mail.compose.message</field>
+            <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_ids" position="attributes">
+                    <attribute name="domain">[('allow_send_email','=',True)]</attribute>
+                </field>
+            </field>
+        </record>
+    
+        <record id="view_metro_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <page name="page_history" position="after">
+                    <page string="Inquiries">
+                        <field name="inquiry" >
+                            <tree string="Inquiry" editable="bottom">
+                                <field name="date"/>
+                                <field name="method"/>
+                                <field name="inquiry"/>
+                                <field name="response"/>
+                            </tree> 
+                        </field>
+                    </page>
+                </page>
+                <field name="email" position="after">
+                    <field name="allow_send_email" readonly="1"/>
+                </field>
+                <field name="email" position="attributes">
+                    <attribute name="attrs">{'readonly':[('allow_send_email','=',False)]}</attribute>
+                </field>
+            </field>
+        </record>
+        
+
+<!-- Improve the domain and context to customers/suppliers menu
+1.Only show companies
+2.Show customer and company for sales
+3.Show supplier and company for purchase
+ -->    	
+<!-- menu sales|customers -->    	
+        <record model="ir.actions.act_window" id="base.action_partner_form">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="domain">[('customer','=',True)]</field>
+            <field name="context">{'default_customer':True,"search_default_type_company":True,"default_is_company":True}</field>
+        </record>
+<!-- menu account | Customer | Customers -->        
+        <record model="ir.actions.act_window" id="base.action_partner_customer_form">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="domain">[('customer','=',True)]</field>
+            <field name="context">{'default_customer':True, "search_default_type_company":True,"default_is_company":True}</field>
+        </record>  
+<!-- menu account | Supplier | Suppliers --> 
+<!-- menu purchase | purchase | Suppliers -->             
+        <record model="ir.actions.act_window" id="base.action_partner_supplier_form">
+            <field name="name">Suppliers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="domain">[('supplier','=',True)]</field>
+            <field name="context">{'default_customer': 0,'default_supplier': True,"search_default_type_company":True,"default_is_company":True}</field>
+        </record>   
+
+<!-- only show companyies and customer in sales order's customer field -->          
+        <record id="view_so_form_ext" model="ir.ui.view">
+            <field name="name">view_so_form_ext</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">  
+                <field name="partner_id" position="attributes">
+                    <attribute name="domain">[('customer','=',True),('is_company','=',True)]</attribute>
+                    <attribute name="context">{'default_customer':True,"default_is_company":True}</attribute>
+                </field>
+            </field>
+        </record>   
+<!-- only show companyies and suppliuer in purchase order's supplier field -->      
+        <record id="view_po_form_ext" model="ir.ui.view">
+            <field name="name">view_po_form_ext</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">  
+                <field name="partner_id" position="attributes">
+                    <attribute name="domain">[('supplier','=',True),('is_company','=',True)]</attribute>
+                    <attribute name="context">{'default_customer': 0,'default_supplier': True,"default_is_company":True}</attribute>
+                </field>
+            </field>
+        </record>           
+    </data>
+</openerp>

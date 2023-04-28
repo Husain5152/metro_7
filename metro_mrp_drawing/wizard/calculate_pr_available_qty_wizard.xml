@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_calculate_pr_available_qty_wizard" model="ir.ui.view">
+            <field name="name">calculate_pr_available_qty_wizard</field>
+            <field name="model">calculate.pr.available.qty.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Calculate Available Qty Wizard" version="7.0">
+                    <separator string="Please select the rule to do"/>
+                    <group>
+                        <field name="available_qty_rule"/>
+                        <div colspan="4">
+When generating PO, remain qty will be used to create the order. Rule below will help you calculate the remain amount<br/>
+Please select rule!
+* Rule  # 1 - Regarding available and incoming (default)<br/>
+(Formula: Need Qty - PO Generated Qty - Onhand Qty + Other Reserved Qty - Incoming Qty)<br/>
+* Rule  # 2 = Regarding available<br/>
+(Formula: Need Qty - PO Generated Qty - Onhand Qty - Reserved Qty)<br/>
+* Rule  # 3 = Regarding stock (N-stock)<br/>
+(Formula: Need Qty - PO Generated Qty - Onhand Qty)<br/>
+* Rule  # 4 = Ignore All rules, just order based on  PR Request<br/>
+(Formula: Need Qty)<br/>
+* Rule  # 5 = Regarding stock and incoming<br/>
+(Formula: Need Qty - PO Generated Qty - Onhand Qty - Incoming Qty)<br/>
+* Rule  # 6 = Regarding  incoming<br/>
+(Formula: Need Qty - PO Generated Qty - Incoming Qty)<br/>
+</div>
+                        <field name="pr_id"/>
+                        <field name="pr_line_ids" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="do_calculate" string="Do Calculate" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

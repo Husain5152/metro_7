@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="metro_view_voucher_form">
+            <field name="name">metro.account.voucher.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_payment_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='journal_id']" position="after">
+            		<field name="receipt_number"/>
+            	</xpath>
+            </field>
+        </record>
+        <record id="metro_invoice_supplier_form" model="ir.ui.view">
+            <field name="name">metro.account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<!-- remove the  "supplier_invoice_number, reference_type, reference" fields-->
+            	<field name="supplier_invoice_number" position="replace">
+            	</field>
+            	<xpath expr="//sheet[@string='Supplier Invoice']/group/group[1]/div" position="replace">
+            	</xpath>
+            	<xpath expr="//label[@for='reference_type']" position="replace">
+            	</xpath>
+            	<!-- move 'move_id' after the 'origin' -->
+            	<field name="move_id" position="replace">
+            	</field>
+            	<field name="origin" position="after">
+            		<field name="move_id" groups="account.group_account_user"/>
+            	</field>
+            </field>
+        </record>  
+        <record id="invoice_customer_form_ext" model="ir.ui.view">
+            <field name="name">invoice_customer_form_ext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<!-- move 'move_id' after the 'origin' -->
+            	<field name="move_id" position="replace">
+            	</field>
+            	<field name="fiscal_position" position="after">
+            		<field name="move_id" groups="account.group_account_user"/>
+            	</field>
+            </field>
+        </record>   
+          
+        <record id="view_account_invoice_filter_ext" model="ir.ui.view">
+            <field name="name">view_account_invoice_filter_ext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+            	<!-- move 'move_id' after the 'origin' -->
+            	<filter name="unpaid" position="after">
+            		<filter name="paid" string="Paid" domain="[('state','=','paid')]" help="Paid Invoices"/>
+            	</filter>
+            </field>
+        </record>   
+        
+        <!-- improve the query parameters for supplier payments -->
+        <record id="view_voucher_filter_vendor_pay_ext" model="ir.ui.view">
+            <field name="name">invoice_customer_form_ext</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter_vendor_pay"/>
+            <field name="arch" type="xml">
+            	<field name="number" position="replace">
+            		<field name="number" string="Voucher" filter_domain="['|', ('number','ilike',self), ('reference','ilike',self)]"/>
+            	</field>
+            </field>
+        </record>  
+        <record id="view_voucher_filter_customer_pay_ext" model="ir.ui.view">
+            <field name="name">invoice_customer_form_ext</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter_customer_pay"/>
+            <field name="arch" type="xml">
+            	<field name="number" position="replace">
+            		<field name="number" string="Voucher" filter_domain="['|', ('number','ilike',self), ('reference','ilike',self)]"/>
+            	</field>
+            </field>
+        </record>   
+        
+    </data>
+</openerp>

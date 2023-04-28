@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <!-- Purchase-related subtypes for messaging / Chatter -->
+        <record id="uom_categ_msp_dummy" model="product.uom.categ">
+            <field name="name">MSP_UOM_CATEG_DUMMY</field>
+        </record>  
+        <record id="uom_msp_dummy" model="product.uom">
+            <field name="name">MSP_UOM_DUMMY</field>
+            <field name="category_id" ref="uom_categ_msp_dummy"/>
+            <field name="factor">1</field>
+        </record>
+    </data>
+</openerp>

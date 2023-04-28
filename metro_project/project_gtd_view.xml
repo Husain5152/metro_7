@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data> 
+<!--         <menuitem
+            id="menu_tasks_gtd_main_action"
+            name="Tasks"
+            parent="metro.mttl_metro"
+            sequence="5"/> -->
+<!-- GTD tasks view -->            
+        <record id="action_view_task_gtd" model="ir.actions.act_window">
+            <field name="name">GTD Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('project_type','=','gtd')]</field>
+            <field name="context">{'default_project_type':'gtd'}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new task.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tasks in order to get things done efficiently. You can
+                track progress, discuss on tasks, attach documents, etc.
+              </p>
+            </field>
+        </record>
+        <record id="open_view_task_gtd_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">kanban</field>
+            <field name="act_window_id" ref="action_view_task_gtd"/>
+        </record>
+        <record id="open_view_task_gtd_list_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="action_view_task_gtd"/>
+        </record>            
+        <!-- <menuitem action="action_view_task_gtd" id="menu_tasks_gtd" parent="menu_tasks_gtd_main_action" sequence="1"/> -->
+        
+<!-- GTD projects view -->         
+        <record id="open_view_project_gtd" model="ir.actions.act_window">
+            <field name="name">GTD Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="project.view_project_kanban"/>
+            <field name="search_view_id" ref="project.view_project_project_filter"/>
+            <field name="domain">[('project_type','=','gtd')]</field>
+            <field name="context">{'search_default_Current': 1, 'default_project_type':'gtd'}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to start a new project.
+                </p><p>
+                  Projects are used to organize your activities; plan
+                  tasks, track issues, invoice timesheets. You can define
+                  internal projects (R&amp;D, Improve Sales Process),
+                  private projects (My Todos) or customer ones.
+                </p><p>
+                  You will be able collaborate with internal users on
+                  projects or invite customers to share your activities.
+                </p>
+            </field>
+        </record>
+		<!-- <menuitem action="open_view_project_gtd" id="menu_projects_gtd" parent="menu_tasks_gtd_main_action" sequence="2"/>  -->
+        		
+<!-- Menus from project_gtd module -->
+	    <record model="ir.actions.act_window" id="tasks_gtd_my_action">
+	        <field name="name">My GTD Tasks</field>
+	        <field name="res_model">project.task</field>
+	        <field name="search_view_id" ref="project_gtd.view_task_gtd_search"/>
+	        <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1,  'default_project_type':'gtd'}</field>
+	        <field name="domain">[('user_id','=',uid),('project_type','=','gtd')]</field>
+	        <field name="view_type">form</field>
+	        <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+	    </record>
+    
+<!-- 		<menuitem id="menu_tasks_gtd_mytasks" 
+			parent="menu_tasks_gtd_main_action" 
+			action="tasks_gtd_my_action" 
+			sequence="3"/>   
+			
+	    <menuitem name="Contexts" 
+		    id="menu_tasks_gtd_time_contexts"
+	        parent="menu_tasks_gtd_main_action" 
+	        action="project_gtd.open_gtd_context_tree" 
+	        groups="project.group_project_manager"
+	        sequence="4"/>
+	                
+		<menuitem name="Timeboxes" 
+			id="menu_tasks_gtd_time_timeboxes" 
+			parent="menu_tasks_gtd_main_action" 
+			action="project_gtd.open_gtd_timebox_tree" 
+			groups="project.group_project_manager"
+			sequence="5"/> -->
+    </data>
+</openerp>

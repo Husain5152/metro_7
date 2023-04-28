@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<!-- The human resource menu for employee -->
+        <menuitem id="menu_hr_emp_root" name="My Human Resources" groups="base.group_user" sequence="90"/>
+        <menuitem id="menu_hr_emp" parent="menu_hr_emp_root" name="My Human Resources" groups="base.group_user" sequence="90"/>
+        
+<!-- employee -->
+	    <record model="ir.rule" id="hr_employee_my">
+	        <field name="name">Emplloyee Self</field>
+	        <field name="model_id" ref="hr.model_hr_employee"/>	        
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+	        <field name="domain_force">[('id','=',user.employee_id.id)]</field>
+	        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+	    </record>
+	    <record model="ir.rule" id="hr_employee_all_readonly">
+	        <field name="name">Employee All Readonly</field>
+	        <field name="model_id" ref="hr.model_hr_employee"/>	        
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4,ref('stock.group_stock_user')),(4,ref('account.group_account_invoice'))]"/>
+	    </record>
+	    <record model="ir.rule" id="hr_employee_all">
+	        <field name="name">Emplloyee All</field>
+	        <field name="model_id" ref="hr.model_hr_employee"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4,ref('base.group_hr_user'))]"/>
+	    </record>	
+        <menuitem id="menu_hr_employee_my" name="Employees" action="hr.open_view_employee_list_my" sequence="1" parent="menu_hr_emp"/>
+
+<!-- Atttendance: make one new menu for employee to view self attendances -->	
+	    <record model="ir.rule" id="hr_attendance_my">
+	        <field name="name">Employee Attendance</field>
+	        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>	        
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+	        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+	    </record>
+	    <record model="ir.rule" id="hr_attendance_all">
+	        <field name="name">Manage Attendance</field>
+	        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+	        <field name="groups" eval="[(4,ref('base.group_hr_user'))]"/>
+	    </record>	
+		<record id="action_attendance_my" model="ir.actions.act_window">
+		    <field name="name">My Attendances</field>
+		    <field name="res_model">hr.attendance</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+	        <field name="context">{"search_default_today_valid":1}</field>
+		    <field name="domain">[('employee_id.user_id','=',uid)]</field>
+		    <field name="search_view_id" ref="view_hr_attendance_filter_ext" />
+		</record>	
+		<menuitem id="menu_hr_attendance_my" action="action_attendance_my" sequence="2" parent="menu_hr_emp"/>		
+                		
+<!-- payslip -->        
+	    <record model="ir.rule" id="hr_emppay_my">
+	        <field name="name">Employee Payslip</field>
+	        <field name="model_id" ref="model_hr_emppay"/>	        
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+	        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+	        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+	    </record>
+	    <record model="ir.rule" id="hr_emppay_all">
+	        <field name="name">Manage Payslip</field>
+	        <field name="model_id" ref="model_hr_emppay"/>
+	        <field name="domain_force">[(1,'=',1)]</field>
+        	<field name="groups" eval="[(4,ref('base.group_hr_user')),(4,ref('account.group_account_invoice'))]"/>        	
+	    </record>	
+        <record id="action_hr_emppay_my" model="ir.actions.act_window">
+            <field name="name">My Payslips</field>
+            <field name="res_model">hr.emppay</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_emppay_list"/>
+            <field name="search_view_id" ref="view_hr_emppay_search"/>
+		    <field name="domain">[('employee_id.user_id','=',uid)]</field>
+        </record>
+		<menuitem id="menu_hr_emppay_my" action="action_hr_emppay_my" parent="menu_hr_emp" sequence="3"/>
+		
+<!-- Employee Attendance, Payslips button -->               
+        <record id="action_hr_attendance_employee" model="ir.actions.act_window">
+            <field name="name">Attendances</field>
+            <field name="res_model">hr.attendance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+		    <field name="search_view_id" ref="view_hr_attendance_filter_ext" />
+		    <field name="domain">[('employee_id','=',active_id)]</field>
+        </record>        
+         
+        <record id="action_hr_emppay_employee" model="ir.actions.act_window">
+            <field name="name">Payslips</field>
+            <field name="res_model">hr.emppay</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_emppay_list"/>
+            <field name="search_view_id" ref="view_hr_emppay_search"/>
+		    <field name="domain">[('employee_id','=',active_id)]</field>
+        </record>        
+        
+		<record id="view_employee_form_att_pay" model="ir.ui.view">
+            <field name="name">view_employee_form_att_pay</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='button_box']" position="inside">
+                        <button name="%(action_hr_attendance_employee)d" string="Attendances" type="action" groups="base.group_hr_user"/>
+                        <button name="%(action_hr_emppay_employee)d" string="Payslips" type="action" groups="base.group_hr_user"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>		
+    </data>
+</openerp>

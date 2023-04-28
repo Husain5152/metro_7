@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="False" id="report_hr_welcome_checklist" model="hr.employee" header="True"
+                name="hr.welcome.checklist" rml="metro_hr/report/hr_welcome_checklist.rml"
+                usage="default" string="Welcome Cheklist"/>   
+                
+        <report auto="False" id="report_hr_rpt_attend_month_general" model="hr.rpt.attend.month" header="True"
+                name="hr.rpt.attend.month.general" rml="metro_hr/wizard/hr_rpt_attend_month_general.rml"
+                usage="default" string="Attendance Report"/>
+                  
+        <report auto="False" id="report_hr_rpt_attend_month_notification" model="hr.rpt.attend.month" header="True"        
+                name="hr.rpt.attend.month.notification" rml="metro_hr/wizard/hr_rpt_attend_month_notification.rml"
+                usage="default" string="Attendance Notification"/>  
+                
+        <report auto="False" id="report_hr_rpt_attend_month_inspection" model="hr.rpt.attend.month" header="True"
+                name="hr.rpt.attend.month.inspection" rml="metro_hr/wizard/hr_rpt_attend_month_inspection.rml"
+                usage="default" string="Attendance Inspection"/>  
+                
+    </data>
+</openerp>

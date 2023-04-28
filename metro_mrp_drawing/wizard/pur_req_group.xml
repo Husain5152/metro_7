@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="purchase.view_purchase_order_group" model="ir.ui.view">
+            <field name="name">Merger Purchase Orders</field>
+            <field name="model">purchase.order.group</field>
+            <field name="arch" type="xml">
+               <form string="Merge orders" version="7.0">
+                    <group>
+                        <separator string="Are you sure you want to merge these orders?"/>
+                        <div colspan="4">
+Please note that: <br/>
+Orders will only be merged if: <br/>
+* Purchase Orders are in draft <br/>
+* Purchase Orders belong to the same supplier <br/>
+* Purchase Orders are have same stock location, same pricelist <br/><br/>
+Lines will only be merged if: <br/>
+* Order lines are exactly the same except for the product,quantity and unit <br/>
+</div>
+                    </group>
+
+                    <footer>
+                        <button name="merge_orders" string="Merge orders" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="view_pur_req_group" model="ir.ui.view">
+            <field name="name">Merger Purchase Requisitions</field>
+            <field name="model">pur.req.group</field>
+            <field name="arch" type="xml">
+               <form string="Merge requisition" version="7.0">
+                    <group>
+                        <separator string="Are you sure you want to merge these orders?"/>
+                        <div colspan="4">
+Please note that:
+Requisitions will only be merged if: <br/>
+* Purchase Requisition are in draft <br/>
+* Purchase Requisition have same type, same MO, same delivery date, same unit, same ids and same warehouse<br/><br/>
+Lines will only be merged if: <br/>
+* Order lines are exactly the same erp # <br/>
+</div>
+                    </group>
+
+                    <footer>
+                        <button name="merge_orders" string="Merge Requisition" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Merge Purchase Requisitions"
+            context="{'search_default_draft': 1, 'search_default_approved': False}"
+            res_model="pur.req.group"
+            src_model="pur.req"
+            view_mode="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="action_view_pur_req_group"/>
+    </data>
+</openerp>
+

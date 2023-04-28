@@ -1,0 +1,480 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* metro_mto
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130413-232416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-29 10:39+0000\n"
+"PO-Revision-Date: 2014-08-29 18:46+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "Product Configuration Wizard"
+msgstr "产品配置向导"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_user_id
+#: field:mto.design.change,user_id:0
+msgid "Responsible User"
+msgstr "负责人"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_mto_design_change
+msgid "Product Configuration Changing Log"
+msgstr "产品配置变更日志"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_file_down
+msgid "file.down"
+msgstr "file.down"
+
+#. module: metro_mto
+#: model:ir.actions.act_window,name:metro_mto.parameter_form_action
+#: model:ir.ui.menu,name:metro_mto.menu_parameter_form
+msgid "Parameters"
+msgstr "参数"
+
+#. module: metro_mto
+#: sql_constraint:attribute.group:0
+msgid ""
+"The name of the group has to be unique for a given models attribute set !"
+msgstr "同一个配置模板下的参数组名称不能重复!"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_attribute_group
+msgid "Attribute Group"
+msgstr "属性组"
+
+#. module: metro_mto
+#: view:attribute.group:0
+msgid "Attribute Location"
+msgstr "属性位置"
+
+#. module: metro_mto
+#: sql_constraint:attribute.option:0
+msgid "The name of the option has to be unique for a given attribute !"
+msgstr "同一个属性的选项名称不能重复!"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "Group By..."
+msgstr "分组..."
+
+#. module: metro_mto
+#: view:attribute.group:0
+msgid "Parameter Group"
+msgstr "参数组"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_wiz_attachment_id
+#: field:mto.design.wiz,attachment_id:0
+msgid "Attachment"
+msgstr "附件"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_design_tmpl_id
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_wiz_design_tmpl_id
+#: view:mto.design:0 field:mto.design,design_tmpl_id:0 view:mto.design.wiz:0
+msgid "Template"
+msgstr "模板"
+
+#. module: metro_mto
+#: field:attribute.option,weight:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_option_weight
+#: view:mto.design:0
+msgid "Weight(kg)"
+msgstr "重量(kg)"
+
+#. module: metro_mto
+#: view:attribute.attribute:0
+msgid "Search Parameters"
+msgstr "搜索参数"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_source_name
+#: field:mto.design.change.source,name:0
+msgid "Source Name"
+msgstr "来源名称"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "Config"
+msgstr "配置"
+
+#. module: metro_mto
+#: field:attribute.attribute,weight_standard:0
+#: field:attribute.set,weight_standard:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_attribute_weight_standard
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_set_weight_standard
+msgid "Standard Weight(kg)"
+msgstr "标准重量(kg)"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_weight
+#: field:mto.design,weight:0
+msgid "Gross Weight"
+msgstr "毛重"
+
+#. module: metro_mto
+#: view:attribute.attribute:0 view:attribute.group:0
+msgid "Parameter"
+msgstr "参数"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_multi_images
+#: field:mto.design,multi_images:0
+msgid "Multi Images"
+msgstr "多图片"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "Select configuration template:"
+msgstr "选择配置模板:"
+
+#. module: metro_mto
+#: model:ir.actions.act_window,name:metro_mto.action_mto_design_wiz_log
+#: model:ir.ui.menu,name:metro_mto.menu_mto_design_wiz_log
+#: view:mto.design.wiz:0
+msgid "Configuration Log"
+msgstr "配置历史"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "Group by..."
+msgstr "分组..."
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_wiz_create_date
+#: field:mto.design.wiz,create_date:0
+msgid "Creation Date"
+msgstr "创建日期"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "Open Designment"
+msgstr "Open Designment"
+
+#. module: metro_mto
+#: field:attribute.option,price:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_option_price
+#: view:mto.design:0
+msgid "Price"
+msgstr "价格"
+
+#. module: metro_mto
+#: field:attribute.attribute,type:0 field:attribute.group,type:0
+#: field:attribute.set,type:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_attribute_type
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_group_type
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_set_type
+msgid "Type"
+msgstr "类型"
+
+#. module: metro_mto
+#: view:attribute.set:0
+#: model:ir.actions.act_window,name:metro_mto.design_template_form_action
+#: model:ir.ui.menu,name:metro_mto.menu_design_template_form
+#: field:mto.design.wiz,design_tmpl_id:0
+msgid "Configuration Template"
+msgstr "配置模板"
+
+#. module: metro_mto
+#: view:file.down:0
+#: model:ir.actions.act_window,name:metro_mto.action_wizard_file_down
+msgid "Download File"
+msgstr "下载文件"
+
+#. module: metro_mto
+#: model:ir.actions.act_window,name:metro_mto.mto_design_change_source_action
+#: model:ir.ui.menu,name:metro_mto.menu_mto_design_change_source
+msgid "Change Sources"
+msgstr "变更来源"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_name
+#: field:mto.design.change,name:0
+msgid "Reason"
+msgstr "原因"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_attribute_option
+msgid "Attribute Option"
+msgstr "属性选项"
+
+#. module: metro_mto
+#: view:attribute.group:0
+msgid "Search Parameter Groups"
+msgstr "搜索参数组"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_wiz_store
+#: field:mto.design.wiz,store:0
+msgid "Store"
+msgstr "存储"
+
+#. module: metro_mto
+#: field:attribute.attribute,price_standard:0
+#: field:attribute.set,price_standard:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_attribute_price_standard
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_set_price_standard
+msgid "Standard Price"
+msgstr "标准价格"
+
+#. module: metro_mto
+#: view:attribute.set:0
+#: model:ir.actions.act_window,name:metro_mto.parameter_group_form_action
+#: model:ir.ui.menu,name:metro_mto.menu_parameter_group_form
+msgid "Parameter Groups"
+msgstr "参数组"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_source_active
+#: field:mto.design.change.source,active:0
+msgid "Active"
+msgstr "有效"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "No Store"
+msgstr "不存储"
+
+#. module: metro_mto
+#: model:ir.actions.act_window,name:metro_mto.mto_design_form_action
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_mto_design_id
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_wiz_design_id
+#: model:ir.ui.menu,name:metro_mto.menu_mto_design_form view:mto.design:0
+#: field:mto.design.change,mto_design_id:0 field:mto.design.wiz,design_id:0
+msgid "Configuration"
+msgstr "配置"
+
+#. module: metro_mto
+#: model:ir.actions.act_window,name:metro_mto.action_mto_design_wiz
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_wiz_id
+#: model:ir.ui.menu,name:metro_mto.menu_mto_design_wiz
+#: field:mto.design,wiz_id:0
+msgid "Configuration Wizard"
+msgstr "配置向导"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "attributes_notebook"
+msgstr "attributes_notebook"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "Name"
+msgstr "名称"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_mto_design_change_source
+msgid "Changing Sources"
+msgstr "变更来源"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "PDF&Save Log"
+msgstr "PDF&保存日志"
+
+#. module: metro_mto
+#: field:attribute.attribute,notes:0 field:attribute.group,notes:0
+#: field:attribute.set,notes:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_attribute_notes
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_group_notes
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_set_notes
+msgid "Notes"
+msgstr "备注"
+
+#. module: metro_mto
+#: view:attribute.attribute:0
+msgid "Attribute Options"
+msgstr "属性选项"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_mto_design_wiz
+msgid "mto.design.wiz"
+msgstr "mto.design.wiz"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "describe the designment characteristics..."
+msgstr "describe the designment characteristics..."
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "Images"
+msgstr "图片"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "PDF&Save Configuration"
+msgstr "PDF&保存配置"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_mto_design
+msgid "mto.design"
+msgstr "mto.design"
+
+#. module: metro_mto
+#: model:ir.actions.report.xml,name:metro_mto.mto_design_print
+#: model:ir.ui.menu,name:metro_mto.menu_mto_design
+msgid "Product Configuration"
+msgstr "产品配置"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "PDF"
+msgstr "PDF"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_name
+#: field:mto.design,name:0
+msgid "Configuration#"
+msgstr "配置#"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_ids
+#: view:mto.design:0 field:mto.design,change_ids:0
+msgid "Changes"
+msgstr "变更"
+
+#. module: metro_mto
+#: view:attribute.set:0
+msgid "Search Configuration Templates"
+msgstr "搜索配置模板"
+
+#. module: metro_mto
+#: view:mto.design.change:0
+msgid "Product Configuration Changing"
+msgstr "产品配置变更"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_description
+#: view:mto.design:0 field:mto.design,description:0
+msgid "Description"
+msgstr "描述"
+
+#. module: metro_mto
+#: view:attribute.attribute:0
+msgid "Load Options"
+msgstr "加载选项"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "PDF&Save Log&Configuration"
+msgstr "PDF&保存日志&保存配置"
+
+#. module: metro_mto
+#: field:attribute.attribute,m2m_tags:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_attribute_m2m_tags
+msgid "Many2Many Tags"
+msgstr "Many2Many控件"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_wiz_create_uid
+#: field:mto.design.wiz,create_uid:0
+msgid "Creator"
+msgstr "创建人"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_list_price
+#: field:mto.design,list_price:0
+msgid "Sale Price"
+msgstr "销售价"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_attribute_attribute
+msgid "Attribute"
+msgstr "属性"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_change_list
+#: field:mto.design.change,change_list:0
+msgid "Changing List"
+msgstr "变更列表"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "or"
+msgstr "or"
+
+#. module: metro_mto
+#: view:mto.design.change.source:0
+msgid "Product Configuration Changing Sources"
+msgstr "产品配置变更来源"
+
+#. module: metro_mto
+#: model:ir.model,name:metro_mto.model_attribute_set
+msgid "Attribute Set"
+msgstr "属性集"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_change_date
+#: field:mto.design.change,change_date:0
+msgid "Change Date"
+msgstr "变更日期"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_source_id
+#: field:mto.design.change,source_id:0
+msgid "Source"
+msgstr "源"
+
+#. module: metro_mto
+#: field:attribute.attribute,currency_id:0 field:attribute.set,currency_id:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_attribute_currency_id
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_set_currency_id
+msgid "Currency"
+msgstr "币种"
+
+#. module: metro_mto
+#: view:mto.design:0
+msgid "Save and Close"
+msgstr "保存并关闭"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "Product Configuration Log"
+msgstr "产品配置日志"
+
+#. module: metro_mto
+#: field:file.down,filedata:0
+#: model:ir.model.fields,field_description:metro_mto.field_file_down_filedata
+msgid "File"
+msgstr "Excel文件"
+
+#. module: metro_mto
+#: model:ir.model.fields,field_description:metro_mto.field_mto_design_change_cost_diff
+#: field:mto.design.change,cost_diff:0
+msgid "Cost Changing"
+msgstr "成本变化"
+
+#. module: metro_mto
+#: view:mto.design:0 view:mto.design.wiz:0
+msgid "Cancel"
+msgstr "取消"
+
+#. module: metro_mto
+#: view:mto.design.wiz:0
+msgid "Indexed Content"
+msgstr "索引内容"
+
+#. module: metro_mto
+#: field:file.down,filename:0
+#: model:ir.model.fields,field_description:metro_mto.field_file_down_filename
+msgid "File Name"
+msgstr "文件名"
+
+#. module: metro_mto
+#: field:attribute.attribute,standard_option_id:0
+#: model:ir.model.fields,field_description:metro_mto.field_attribute_attribute_standard_option_id
+msgid "Standard Option"
+msgstr "标准选项"

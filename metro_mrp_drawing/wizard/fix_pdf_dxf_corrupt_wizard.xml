@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_fix_pdf_dxf_corrupt" model="ir.ui.view">
+            <field name="name">Fix Pdf and Dxf Corrupt</field>
+            <field name="model">fix.pdf.dxf.corrupt.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Fix Pdf and Dxf Corrupt" version="7.0">
+                    <separator string="Select pdf and dxf files to upload"/>
+                    <group>
+                        <field name="do_id"/>
+                    </group>
+                    <group>
+                        <field name="pdf_attachment_ids" widget='many2many_binary'/>
+                    </group>
+                    <group>
+                        <field name="dxf_attachment_ids" widget='many2many_binary'/>
+                    </group>
+                    <group>
+                        <separator string="Corrupted PDF lines"/>
+                        <field name="corrupted_pdf_lines" nolabel="1" colspan="4">
+                            <tree string="'Corrupted Pdf lines">
+                                <field name="item_no"/>
+                                <field name="erp_no"/>
+                                <field name="product_id" string="ERP Part Number"/>
+                                <field name="part_number"/>
+                                <field name="description"/>
+                                <field name="thickness"/>
+                                <field name="material"/>
+                                <field name="part_type"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <separator string="Corrupted DXF lines"/>
+                        <field name="corrupted_dxf_lines" nolabel="1" colspan="4">
+                            <tree string="'Corrupted Pdf lines">
+                                <field name="item_no"/>
+                                <field name="erp_no"/>
+                                <field name="product_id" string="ERP Part Number"/>
+                                <field name="part_number"/>
+                                <field name="description"/>
+                                <field name="thickness"/>
+                                <field name="material"/>
+                                <field name="part_type"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <footer>
+                        <button name="do_fix" string="Finish" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_fix_pdf_dxf" model="ir.actions.act_window">
+            <field name="name">Fix PDF and DXF Corrupted files</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fix.pdf.dxf.corrupt.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_fix_pdf_dxf_corrupt"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

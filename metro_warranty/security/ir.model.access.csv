@@ -1,0 +1,16 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_warranty_cases_view_only","warranty.cases view only","model_warranty_cases","group_metro_warranty_view_only_right",1,0,0,0
+"access_warranty_cases_manager","warranty.cases manager","model_warranty_cases","group_metro_warranty_manager_right",1,1,1,1
+"access_warranty_cases_user","warranty.cases user","model_warranty_cases","group_metro_warranty_user_right",1,1,1,1
+,,,,,,,
+"access_warranty_issue_view_only","warranty.issue view only","model_warranty_issue","group_metro_warranty_view_only_right",1,0,0,0
+"access_warranty_issue_manager","warranty.issue manager","model_warranty_issue","group_metro_warranty_manager_right",1,1,1,1
+"access_warranty_issue_user","warranty.issue user","model_warranty_issue","group_metro_warranty_user_right",1,1,1,1
+,,,,,,,
+"access_warranty_mttl_serials_view_only","mttl.serials warranty view only","metro_serial.model_mttl_serials","group_metro_warranty_view_only_right",1,0,0,0
+"access_warranty_issue_mttl_serials_manager","mttl.serials warranty manager","metro_serial.model_mttl_serials","group_metro_warranty_manager_right",1,1,1,1
+"access_warranty_issue_mttl_serials_user","mttl.serials warranty user","metro_serial.model_mttl_serials","group_metro_warranty_user_right",1,1,1,1
+,,,,,,,
+"access_warranty_mttl_model_view_only","warranty.mttl_model view only","metro_serial.model_mttl_models","group_metro_warranty_view_only_right",1,0,0,0
+"access_warranty_mttl_model_manager","warranty.mttl_model manager","metro_serial.model_mttl_models","group_metro_warranty_manager_right",1,1,1,1
+"access_warranty_mttl_model_user","warrantymttl_model user","metro_serial.model_mttl_models","group_metro_warranty_user_right",1,1,1,1

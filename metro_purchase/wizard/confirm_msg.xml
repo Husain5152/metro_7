@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>   
+        <record id="view_confirm_msg_form" model="ir.ui.view">
+            <field name="name">Confirm Purchase Order Rejection</field>
+            <field name="model">confirm.msg</field>
+            <field name="arch" type="xml">
+                <form string="Confirm Purchase Order Rejection" version="7.0">
+                	<field name="message" placeholder="Rejection reason..."/>
+                    <footer>
+                        <button name="confirm" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>   
+                      
+        <record model="ir.actions.act_window" id="act_purchase_reject">
+            <field name="name">Confirm Purchase Order Rejection</field>
+            <field name="res_model">confirm.msg</field>
+            <field name="src_model">purchase.order</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>        
+        <record id="act_purchase_reject_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_confirm_msg_form"/>
+            <field name="act_window_id" ref="act_purchase_reject"/>
+        </record>
+                                        
+        <record model="ir.actions.act_window" id="act_purchase_line_reject">
+            <field name="name">Confirm Purchase Order Line Rejection</field>
+            <field name="res_model">confirm.msg</field>
+            <field name="src_model">purchase.order.line</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <record id="act_purchase_line_reject_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_confirm_msg_form"/>
+            <field name="act_window_id" ref="act_purchase_line_reject"/>
+        </record>     
+        
+        <record id="view_reject_po_chaning_msg_form" model="ir.ui.view">
+            <field name="name">Confirm Purchase Order Changing Rejection</field>
+            <field name="model">confirm.msg</field>
+            <field name="arch" type="xml">
+                <form string="Confirm Purchase Order Changing Rejection" version="7.0">
+                	<field name="message" placeholder="Rejection chaning reason..."/>
+                    <footer>
+                        <button name="reject_changing" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>  
+                
+        <record model="ir.actions.act_window" id="act_purchase_changing_reject">
+            <field name="name">Confirm Purchase Order Changing Rejection</field>
+            <field name="res_model">confirm.msg</field>
+            <field name="src_model">purchase.order</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <record id="act_purchase_changing_reject_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_reject_po_chaning_msg_form"/>
+            <field name="act_window_id" ref="act_purchase_changing_reject"/>
+        </record> 
+      
+    </data>
+</openerp>

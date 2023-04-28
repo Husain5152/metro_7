@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_task_deadline_wizard" model="ir.ui.view">
+            <field name="name">view_task_deadline_wizard</field>
+            <field name="model">task.deadline.wizard</field>
+            <field name="arch" type="xml">
+               <form string="Task Deadline Wizard" version="7.0">
+                   <group>
+                       <field name="date_deadline"/>
+                   </group>
+                    <footer>
+                        <button name="do_set" string="Set" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+<!-- Add 'Set Deadline' to project task list page -->
+        <record id="action_server_project_task_deadline" model="ir.actions.server">
+            <field name="name">Set deadline for selected</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="state">code</field>
+            <!-- the 'action' will be get actions_servre.run() to return to calling client -->
+            <field name="code">action=self.set_deadline_wizard(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record>
+
+        <record model="ir.values" id="action_project_task_deadline">
+            <field name="name">action_project_task_deadline</field>
+            <field name="action_id" ref="action_server_project_task_deadline" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_project_task_deadline'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_project_task" />
+            <field name="model">project.task</field>
+            <field name="key2">client_action_multi</field>
+        </record>
+    </data>
+</openerp>

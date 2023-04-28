@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!--  product Configuration - Common-->
+        <record id="mto_design_search_view" model="ir.ui.view">
+            <field name="name">mto.design.search</field>
+            <field name="model">mto.design</field>
+            <field name="arch" type="xml">
+                <search string="Configuration">
+                   <field name="name" string="Configuration"/>
+                   <field name="design_tmpl_id" string="Template"/>
+                   <group  expand='0' string='Group by...'>
+                       <filter string='Template' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'design_tmpl_id'}"/>
+                   </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="mto_design_tree_view" model="ir.ui.view">
+            <field name="name">mto.design.tree</field>
+            <field name="model">mto.design</field>
+            <field name="arch" type="xml">
+                <tree string="Configuration" editable="top">
+                    <field name="name"/>
+                    <field name="design_tmpl_id" on_change="onchange_template(design_tmpl_id, context)"/>
+                    <field name="product_id"/>
+                    <field name="list_price"/>
+                    <field name="weight" string="Weight(kg)"/>
+					<button name="open_designment" string="Open Designment" type="object" icon="gtk-preferences"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mto_design_form_view" model="ir.ui.view">
+            <field name="name">mto.design.form</field>
+            <field name="model">mto.design</field>
+            <field name="arch" type="xml">
+                <form string="Configuration" version="7.0">
+                	<sheet>
+                   	<group>
+                   		<group>
+	                    	<field name="name" readonly="1"/>
+	                    	<field name="design_tmpl_id" readonly="1"/>
+                    	</group>
+                    	<group>
+	                    	<field name="product_id"/>
+	                    	<label for="list_price" string='Price'/>
+	                    	<div>
+	                    		<field name="list_price" class="oe_inline"/>	
+	                    		<field name="print_price" class="oe_inline"/>
+	                    		<label string="Print" class="oe_inline"/>
+	                    	</div>
+	                    	<label for="weight" string='Weight(kg)'/>
+	                    	<div>
+	                    		<field name="weight" class="oe_inline"/>	
+	                    		<field name="print_weight" class="oe_inline"/>
+	                    		<label string="Print" class="oe_inline"/>
+	                    	</div>
+                    	</group>
+                   	</group>
+                    <notebook string="attributes_notebook">
+                    	<separator name="attributes_placeholder" invisible="1"/> 
+                        <page string="Description">
+                        	<field name="description" placeholder="describe the designment characteristics..."/>
+                        </page>
+	                    <page string="Images">
+	                        <field name="multi_images" widget="image_multi"/>
+	                    </page>
+	                    <page string="Changes">
+				        	<field name="change_ids"/>
+	                    </page> 		
+                    </notebook>     
+                    </sheet>        		  
+                </form>
+            </field>
+        </record>
+        
+        <record id="mto_design_form_view_normal" model="ir.ui.view">
+            <field name="name">mto_design_form_view_normal</field>
+            <field name="model">mto.design</field>
+            <field name="inherit_id" ref="metro_mto.mto_design_form_view"/>
+            <field name="arch" type="xml">
+            	<notebook position="after">
+                    <footer invisible="context.get('wizard')">
+                        <button name="save_and_close_design" string="Save and Close" type="object" class="oe_highlight"/>
+                        <button name="act_pdf" string="PDF" type="object"/>
+                        or
+                        <button special="cancel" string="Cancel" class="oe_link"/>
+                    </footer>
+            	</notebook>
+            </field>
+        </record>
+                    
+        <record id="mto_design_form_action" model="ir.actions.act_window">
+            <field name="name">Configuration</field>
+            <field name="res_model">mto.design</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('type','=','common')]</field>
+            <field name="search_view_id" ref="mto_design_search_view"/>
+        </record>
+        <record id="mto_design_form_action_tree" model="ir.actions.act_window.view"> 
+        	<field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="mto_design_tree_view"/>
+        	<field name="act_window_id" ref="mto_design_form_action"/>
+        </record>  
+        <record id="mto_design_form_action_form" model="ir.actions.act_window.view"> 
+        	<field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mto_design_form_view_normal"/>
+        	<field name="act_window_id" ref="mto_design_form_action"/>
+        </record>        
+                
+         <menuitem
+             action="mto_design_form_action" id="menu_mto_design_form"
+             parent="metro_mto.menu_mto_design" sequence="1"/>
+             
+<!--  product Configuration Sale-->
+        <record id="mto_design_form_action_sale" model="ir.actions.act_window">
+            <field name="name">Order Configuration</field>
+            <field name="res_model">mto.design</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('type','=','sale')]</field>
+            <field name="search_view_id" ref="mto_design_search_view"/>
+        </record>
+        <record id="mto_design_form_action_tree" model="ir.actions.act_window.view"> 
+        	<field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="mto_design_tree_view"/>
+        	<field name="act_window_id" ref="mto_design_form_action_sale"/>
+        </record>  
+        <record id="mto_design_form_action_form" model="ir.actions.act_window.view"> 
+        	<field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mto_design_form_view_normal"/>
+        	<field name="act_window_id" ref="mto_design_form_action_sale"/>
+        </record>        
+                
+         <menuitem
+             action="mto_design_form_action_sale" id="menu_mto_design_form_sale"
+             parent="metro_mto.menu_mto_design" sequence="1"/>
+                               
+<!-- product configuration changing log -->        
+		<record id="mto_design_change_source_view_tree" model="ir.ui.view">
+		    <field name="name">mto.design.change.source.tree</field>
+		    <field name="model">mto.design.change.source</field>
+		    <field name="arch" type="xml">
+		        <tree string="Product Configuration Changing Sources" editable="bottom">
+		            <field name="name"/>
+		            <field name="active"/>
+		        </tree>
+		    </field>
+		</record>
+		<record id="mto_design_change_source_view_form" model="ir.ui.view">
+		    <field name="name">mto.design.change.source.form</field>
+		    <field name="model">mto.design.change.source</field>
+		    <field name="arch" type="xml">
+		        <form string="Product Configuration Changing Sources" version="7.0">
+		            <group>
+		                <field name="name"/>
+		                <field name="active"/>
+		            </group>
+		        </form>
+		    </field>
+		</record>
+		<!-- meto.design.change -->
+		<record id="mto_design_change_view_tree" model="ir.ui.view">
+		    <field name="name">mto.design.change.tree</field>
+		    <field name="model">mto.design.change</field>
+		    <field name="arch" type="xml">
+		        <tree string="Product Configuration Changing">
+	       			<field name="name"/>
+	       			<field name="source_id"/>
+	       			<field name="change_date"/>
+	       			<field name="user_id"/>
+	       			<field name="cost_diff"/>
+		        </tree>
+		    </field>
+		</record>
+		<record id="mto_design_change_view_form" model="ir.ui.view">
+		    <field name="name">mto.design.change.form</field>
+		    <field name="model">mto.design.change</field>
+		    <field name="arch" type="xml">
+		        <form string="Product Configuration Changing" version="7.0">
+		            <group>
+	        			<field name="name"/>
+	        			<field name="source_id"/>
+	        			<field name="change_date"/>
+	        			<field name="user_id"/>
+	        			<field name="cost_diff"/>
+		            </group>
+		            <label for="change_list"/>
+	        		<field name="change_list"/>
+		        </form>
+		    </field>
+		</record>	
+					        			
+		<!-- mto.design.change.source -->
+		<record id="mto_design_change_source_view_tree" model="ir.ui.view">
+		    <field name="name">mto.design.change.source.tree</field>
+		    <field name="model">mto.design.change.source</field>
+		    <field name="arch" type="xml">
+		        <tree string="Product Configuration Changing Sources" editable="bottom">
+		            <field name="name"/>
+		            <field name="active"/>
+		        </tree>
+		    </field>
+		</record>
+		<record id="mto_design_change_source_view_form" model="ir.ui.view">
+		    <field name="name">mto.design.change.source.form</field>
+		    <field name="model">mto.design.change.source</field>
+		    <field name="arch" type="xml">
+		        <form string="Product Configuration Changing Sources" version="7.0">
+		            <group>
+		                <field name="name"/>
+		                <field name="active"/>
+		            </group>
+		        </form>
+		    </field>
+		</record>
+		<record id="mto_design_change_source_action" model="ir.actions.act_window">
+		    <field name="name">Change Sources</field>
+		    <field name="res_model">mto.design.change.source</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem action="mto_design_change_source_action" id="menu_mto_design_change_source" 
+		parent="metro_mto.menu_mto_design" sequence="20"/>
+		                      
+    </data>
+</openerp>

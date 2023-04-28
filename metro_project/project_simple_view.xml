@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+        <record model="ir.ui.view" id="metro_project_simple_form_view">
+            <field name="name">metro_project_simple_form_view</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+            	<field name="partner_id" position="before">
+            		<!-- <field name="project_type" invisible="1"/> -->
+            		<field name="project_type" on_change="onchange_project_type(project_type)"/>
+            	</field>
+            </field>
+        </record> 
+        <record model="ir.ui.view" id="metro_project_simple_tree_view">
+            <field name="name">metro_project_simple_tree_view</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="before">
+            		<field name="id"/>
+            	</field>
+            	<field name="name" position="after">
+            		<!-- <field name="project_type" invisible="1"/> -->
+            		<field name="project_type"/>
+            	</field>
+            </field>
+        </record>           
+
+
+        <record model="ir.ui.view" id="metro_project_task_tree_view">
+            <field name="name">metro_project_task_tree_view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+            	<!-- change row colors -->
+            	<tree string="Tasks" position="attributes">
+            		<attribute name="colors">green:state == 'done';blue:state == 'pending';red:date_deadline and (date_deadline&lt;current_date) and (state in ('draft','pending','open'));grey:state == 'cancelled'</attribute>
+            	</tree>
+            	<field name="name" position="before">
+            		<field name="id"/>
+            	</field>
+            	<field name="project_id" position="after">
+            		<field name="project_type"/>
+            		<field name="sequence"/>
+            		<field name="priority"/>
+            		<field name="categ_ids" widget='many2many_tags'/>
+            	</field>
+            	<field name="date_start" position="before">
+            		<field name="date_deadline"/>
+            	</field>
+            	<field name="planned_hours" position="attributes">
+            		<attribute name="string">Planned Hours</attribute>
+            		<attribute name="widget">float_time</attribute>
+            	</field>
+            	<field name="effective_hours" position="attributes">
+            		<attribute name="string">Spent Hours</attribute>
+            		<attribute name="invisible">False</attribute>
+            	</field>
+            	<field name="remaining_hours" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>
+            	<field name="date_start" position="attributes">
+            		<attribute name="groups"></attribute>
+            		<attribute name="widget">date</attribute>
+            	</field>
+            	<field name="date_end" position="attributes">
+            		<attribute name="groups"></attribute>
+            		<attribute name="widget">date</attribute>
+            	</field>
+            </field>
+        </record>
+       
+        <!--Employee form view -->
+        <record id="view_employee_form_few" model="ir.ui.view">
+            <field name="name">view_employee_form_few</field>
+            <field name="model">hr.employee</field>
+            <field eval="100" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Employee" version="7.0">
+                    <sheet>
+                        <field name="image_medium" widget='image' class="oe_left oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            <field name="emp_code"/>
+                            <field name="department_id"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                 
+        <record model="ir.ui.view" id="metro_project_task_simple_form_view">
+            <field name="name">metro_project_task_simple_form_view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="after">
+            		<field name="project_type" invisible="1"/>
+            	</field>
+            	<!-- Add start button -->
+            	<button name="project_task_reevaluate" position="after">
+	            	<button name="do_open" string="Start Task" type="object"
+	                                states="draft,pending" class="oe_highlight"/>
+            	</button> 
+            	<!-- move description to main page from the 'Work Hours' page. -->
+				<field name="description" position="replace">
+				</field>
+				<xpath expr="//notebook" position="before">
+					<field name="description" attrs="{'readonly':[('state','=','done')]}" placeholder="Add a Description..."/>
+				</xpath>
+				<xpath expr="//page[@string='Description']" position="before">
+					<page string="Employees">
+	            		<field name="emp_ids" context="{'form_view_ref':'metro_project.view_employee_form_few'}" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}">
+							<tree string="employee list">
+								<field name="image_small" widget="image"/>
+								<field name="emp_code"/>
+								<field name="name"/>
+								<field name="department_id"/>
+							</tree>
+						</field>
+					</page>
+            	</xpath>				
+				<xpath expr="//page[@string='Description']" position="attributes">
+					<attribute name="string">Work Hours</attribute>
+					<attribute name="name">work_hours</attribute>
+				</xpath>      	
+				<!-- Add multi images -->
+				<page string='Extra Info' position='after'>
+                    <page string="Images">
+                        <field name="multi_images" widget="image_multi"/>
+                    </page>
+				</page>
+				<!-- Add private field -->
+            	<field name="project_id" position="after">
+            		<field name="private" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}"/>
+            	</field>  
+            	<!-- set project id as required -->
+            	<field name="project_id" position="attributes">
+            		<attribute name="required">True</attribute>
+            	</field>         
+            	<!-- remove "options='{"no_open": True}'" allow to view user info -->
+            	<field name="user_id" position="replace">
+            		<field name="user_id" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}"/>
+            	</field>
+            	<field name="planned_hours" position="attributes">
+            		<attribute name="string">Planned Hours</attribute>
+            	</field>
+            	<field name="effective_hours" position="attributes">
+            		<attribute name="string">Spent Hours</attribute>
+            	</field>
+            	<xpath expr="//field[@name='work_ids']/tree/field[@name='date']" position='attributes'>
+            		<attribute name='widget'>date</attribute>
+            	</xpath>
+            	<!-- move date fields together -->
+            	<group string="Gantt View" position="replace"/>
+            	<field name="date_deadline" position="after">
+            		<field name="date_start" widget="date"/>
+            		<field name="date_end" widget="date"/>
+            		<field name="create_date" widget="date"/>
+            	</field>          
+            	<!-- move sequence,priority to top -->
+            	<field name="sequence" position="replace"/>
+            	<field name="priority" position="replace"/>
+            	<field name="planned_hours" position="after">
+            		<field name="sequence"/>
+            		<field name="priority"/>
+            	</field>    
+            	<!-- set fields readonly --> 
+                <field name="name" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field> 
+                <field name="project_id" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field> 
+                <field name="planned_hours" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field> 
+                <field name="date_start" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field> 
+                <field name="date_end" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field> 
+                <field name="categ_ids" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field> 
+                <field name="work_ids" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','!=','open')]}</attribute>
+                </field> 
+                <field name="parent_ids" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field> 
+                <field name="child_ids" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','!=','open')]}</attribute>
+                </field> 
+                <field name="priority" position="attributes">
+                	<attribute name="attrs">{'readonly':[('state','in',['done', 'cancelled'])]}</attribute>
+                </field>  	  	
+            </field>
+        </record>    
+<!-- the original projects menu only display the simple projects -->
+<!--         <record id="project.open_view_project_all" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="domain">['|',('project_type','=',False),('project_type','=','simple')]</field>
+            <field name="context">{'default_project_type':'simple'}</field>
+        </record> -->
+<!-- the original tasks menu only display the simple projects -->
+<!--         <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="domain">[('project_type','=','simple')]</field>
+            <field name="context">{'default_project_type':'simple'}</field>
+        </record>    --> 
+<!-- the original projects menu default project type is 'simple' -->       
+        <record id="project.open_view_project_all" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="context">{'default_project_type':'simple'}</field>
+        </record>
+         
+<!-- remove the kanban view -->
+        <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">tree,form,calendar,gantt,graph</field>
+            <field name="context">{'default_project_type':'simple'}</field>
+        </record>         
+<!--         <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">kanban</field>
+            <field name="act_window_id" ref="project.action_view_task"/>
+        </record> -->
+<!-- remove the kanban view from 'My Tasks', and remove the context parameters, to same as the simple task screen-->
+    <record model="ir.actions.act_window" id="project_gtd.open_gtd_task">
+        <field name="name">My Tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="search_view_id" ref="project_gtd.view_task_gtd_search"/>
+        <!-- <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1}</field> -->
+        <field name="context">{'user_invisible':True, "search_default_open": 1, 'default_project_type':'simple'}</field>
+        <field name="domain">[('user_id','=',uid)]</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,calendar,gantt,graph</field>
+    </record>    
+            
+<!-- Add project_type to project.task.type view -->
+    <record id="task_type_tree_extend" model="ir.ui.view">
+        <field name="name">task_type_tree_extend</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_tree"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//tree" position="attributes">
+        		<attribute name="editable">top</attribute>
+        	</xpath>
+        	<field name="name" position="before">
+        		<field name="sequence"/>
+        		<field name="color"/>
+        	</field>
+        	<field name="state" position="after">
+        		<field name="project_type"/>
+        		<field name="case_default"/>
+        		<field name="fold"/>
+        		<field name="description"/>
+        	</field>   	
+        </field>
+    </record>       
+    <record id="task_type_edit_extend" model="ir.ui.view">
+        <field name="name">task_type_edit_extend</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+        	<field name="state" position="after">
+        		<field name="project_type"/>
+        		<field name="color"/>
+        	</field> 	
+        </field>
+    </record>     
+<!-- improve the task searching filters -->
+    <record id="view_task_search_form_extend" model="ir.ui.view">
+        <field name="name">view_task_search_form_extend</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+        	<field name="project_id" position="after">
+        		<field name="project_type"/>
+        		<field name="stage_id" domain="[]"/>
+        		<field name="priority"/>
+        		<field name="categ_ids"/>
+        		<field name="daily_date"
+        			filter_domain="['|',('date_start','=',False),('date_start','&lt;=', self + ' 23:59:59'),'|',('date_end','=',False),('date_end','&gt;=', self + ' 00:00:00')]"/>
+        		<filter icon="terp-go-today" string="Today's Tasks" 
+        			domain="['|',('date_start','=',False),('date_start','&lt;=',time.strftime('%%Y-%%m-%%d 23:59:59')),'|',('date_end','=',False),('date_end','&gt;=',time.strftime('%%Y-%%m-%%d 00:00:00'))]"/>
+        	</field>
+<!--         	<filter name="group_project_id" position="after">
+        		<filter string="Type" name="group_project_type" icon="terp-folder-violet" domain="[]" context="{'group_by':'project_type'}"/>
+        	</filter> -->
+        </field>
+    </record>         
+              
+<!-- show the img_emp_small on task anban view -->
+    <record id="view_task_kanban_ext" model="ir.ui.view">
+        <field name="name">view_task_kanban_ext</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//div[@class='oe_kanban_bottom_right']/img" position="replace">
+        		<img t-att-src="kanban_image('res.users', 'img_emp_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+        	</xpath>
+        </field>
+    </record>             
+    </data>
+</openerp>

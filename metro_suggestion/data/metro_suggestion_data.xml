@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data noupdate="1">
+        <!-- Sequences for Suggestion Number -->
+        <record id="seq_type_suggestion" model="ir.sequence.type">
+            <field name="name">Suggestion</field>
+            <field name="code">metro.suggestion</field>
+        </record>
+
+        <record id="seq_suggestion" model="ir.sequence">
+            <field name="name">Suggestion</field>
+            <field name="code">metro.suggestion</field>
+            <field name="prefix">MS4</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</openerp>

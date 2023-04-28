@@ -1,0 +1,29 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_drawing_order,drawing.order,model_drawing_order,mrp.group_mrp_user,1,1,1,1
+access_project_mfgtask_report,project.mfgtask.report,model_project_mfgtask_report,mrp.group_mrp_user,1,1,1,1
+access_project_mfgtask_report_line,project.mfgtask.report.line,model_project_mfgtask_report_line,mrp.group_mrp_user,1,1,1,1
+access_warehouse_task_report,warehouse.task.report,model_warehouse_task_report,,1,1,1,1
+access_warehouse_task_report_line,warehouse.task.report.line,model_warehouse_task_report_line,,1,1,1,1
+access_drawing_order_pr_request,drawing.order pr request,model_drawing_order,metro_purchase.group_pur_req_requester,1,0,0,0
+access_drawing_order_line,drawing.order.line,model_drawing_order_line,mrp.group_mrp_user,1,1,1,1
+access_drawing_order_line_pr_request,drawing.order.line pr request,model_drawing_order_line,metro_purchase.group_pur_req_requester,1,0,0,0
+access_drawing_step,drawing.step,model_drawing_step,mrp.group_mrp_user,1,1,1,1
+access_drawing_order_history,drawing.order.history,model_drawing_order_history,mrp.group_mrp_user,1,1,1,0
+access_project_task_modifyhistory,project.task.modifyhistory,model_project_task_modifyhistory,,1,1,1,0
+access_project_task_line,project.task.line,model_project_task_line,,1,1,1,1
+access_project_task_completion,project.task.completion,model_project_task_completion,,1,1,1,1
+access_project_task_completion_line,project.task.completion.line,model_project_task_completion_line,,1,1,1,1
+access_missing_erpno,missing.erpno,model_missing_erpno,,1,1,1,1
+access_missing_erpno_line,missing.erpno.line,model_missing_erpno_line,,1,1,1,1
+access_pur_req_reserve,pur.req.reserve,model_pur_req_reserve,,1,1,1,1
+access_pur_req_history,pur.req.history,model_pur_req_history,,1,1,1,1
+access_pur_req_move1,pur.req.move1,model_pur_req_move1,,1,1,1,1
+access_pur_req_move2,pur.req.move2,model_pur_req_move2,,1,1,1,1
+access_pur_req_move3,pur.req.move3,model_pur_req_move3,,1,1,1,1
+access_product_do_line_user,product.do.line user,model_product_do_line,base.group_user,1,1,1,1
+access_mrp_production_all,mrp.production all,model_mrp_production,base.group_user,1,0,0,0
+access_product_product_engineer,product.product engineer,model_product_product,metro_project.group_engineer_user,1,1,1,0
+access_product_product_engineer,product.product engineer,model_product_product,metro_project.group_engineer_user,1,1,1,0
+access_product_sequence_engineer,product.sequence engineer,metro_product.model_product_sequence,metro_project.group_engineer_user,1,1,1,0
+access_product_template_engineer,product.template engineer,metro_product.model_product_template,metro_project.group_engineer_user,1,1,1,0
+access_pur_req_line_report,pur.req.line.report,model_pur_req_line_report,metro_purchase.group_pur_req_requester,1,1,1,1
